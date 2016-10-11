@@ -5,12 +5,18 @@
  */
 package telas;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ELAINE
  */
 public class TelaCadastroAtividade extends javax.swing.JInternalFrame {
-
+ ArrayList<Atividade> ListaAtividade = new ArrayList<>();
+ 
+    
+    
     /**
      * Creates new form TelaCadastroAtividade
      */
@@ -33,7 +39,7 @@ public class TelaCadastroAtividade extends javax.swing.JInternalFrame {
         jTextFieldCodigo = new javax.swing.JTextField();
         jButtonSalvar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextAreaDescr = new javax.swing.JTextArea();
 
         setClosable(true);
         setIconifiable(true);
@@ -45,10 +51,15 @@ public class TelaCadastroAtividade extends javax.swing.JInternalFrame {
         jLabel2.setText("Descrição:");
 
         jButtonSalvar.setText("Cadastrar");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarActionPerformed(evt);
+            }
+        });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTextAreaDescr.setColumns(20);
+        jTextAreaDescr.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaDescr);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -56,18 +67,20 @@ public class TelaCadastroAtividade extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonSalvar)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(31, 31, 31)
-                            .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(18, 18, 18)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(31, 31, 31)
+                        .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(100, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonSalvar)
+                .addGap(19, 19, 19))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,9 +93,9 @@ public class TelaCadastroAtividade extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
                 .addComponent(jButtonSalvar)
-                .addGap(46, 46, 46))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -99,6 +112,35 @@ public class TelaCadastroAtividade extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        // TODO add your handling code here:
+        
+        if (jTextFieldCodigo.getText().equals("")){
+            jTextFieldCodigo.setVisible(true);
+            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Código.", "AVISO", JOptionPane.WARNING_MESSAGE);
+        }else if (jTextAreaDescr.getText().equals("")){
+           jTextAreaDescr.setVisible(true);
+           JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Descrição.", "AVISO", JOptionPane.WARNING_MESSAGE);
+        } else{
+            
+            
+            Atividade atividade = new Atividade(); 
+            ListaAtividade.add(atividade);
+            JOptionPane.showMessageDialog(null, "Atividade cadastrada com sucesso.", "AVISO", JOptionPane.WARNING_MESSAGE);
+            
+            jTextFieldCodigo.setText("");
+            jTextAreaDescr.setText("");
+            
+            
+        }
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonSalvar;
@@ -106,7 +148,13 @@ public class TelaCadastroAtividade extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextAreaDescr;
     private javax.swing.JTextField jTextFieldCodigo;
     // End of variables declaration//GEN-END:variables
+
+    private static class Atividade {
+
+        public Atividade() {
+        }
+    }
 }
