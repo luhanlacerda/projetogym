@@ -251,40 +251,51 @@ ArrayList<Turma> ListaTurma = new ArrayList<>();
         if (jTextFieldCodTur.getText().equals("")){
             jTextFieldCodTur.setVisible(true);
             JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Codigo da turma. ", "AVISO", JOptionPane.WARNING_MESSAGE);
+              jTextFieldCodTur.requestFocus();
             
         }else if (jTextFieldNumAlunos.getText().equals("")){
             jTextFieldNumAlunos.setVisible(true);
             JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Número de Alunos. ", "AVISO", JOptionPane.WARNING_MESSAGE);
-            
+            jTextFieldNumAlunos.requestFocus();
+       
         }else if (jTextFieldMatInst.getText().equals("")){
             jTextFieldMatInst.setVisible(isIcon);
             JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Matrícula do Instrutor. ", "AVISO", JOptionPane.WARNING_MESSAGE);
-
+            jTextFieldMatInst.requestFocus();
+            
+            
         }else if (jTextFieldCodAtiv.getText().equals("")){
             jTextFieldCodAtiv.setVisible(true);
             JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Código da Atividade. ", "AVISO", JOptionPane.WARNING_MESSAGE);
-       
+            jTextFieldCodAtiv.requestFocus();
+            
+            
         }else if (jFormattedTextFieldDurAula.getText().equals("  :  ")){
             jFormattedTextFieldDurAula.setVisible(true);{
             JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Duração da Aula.", "AVISO", JOptionPane.WARNING_MESSAGE);
+             jFormattedTextFieldDurAula.requestFocus();
         }
             
         } else if (jFormattedTextFieldHorarioAulasInicio.getText().equals("  :  ")){
             jFormattedTextFieldHorarioAulasInicio.setVisible(true);
             JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Horário das Aula.", "AVISO", JOptionPane.WARNING_MESSAGE);
-            
+            jFormattedTextFieldHorarioAulasInicio.requestFocus();
             
         }else if (jFormattedTextFieldHorarioAulasFinal.getText().equals("  :  ")){
             jFormattedTextFieldHorarioAulasFinal.setVisible(true);
             JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Horário das Aula.", "AVISO", JOptionPane.WARNING_MESSAGE);
-       
+            jFormattedTextFieldHorarioAulasFinal.requestFocus();
+            
         }else if (jFormattedTextFieldDtInicial.getText().equals("  /  /    ")){
             jFormattedTextFieldDtInicial.setVisible(true);
             JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Data Inicial.", "AVISO", JOptionPane.WARNING_MESSAGE);
-       
+            jFormattedTextFieldDtInicial.requestFocus();
+            
         }else if (jFormattedTextFieldDtFinal.getText().equals("  /  /    ")){
             jFormattedTextFieldDtFinal.setVisible(true);
             JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Data Final.", "AVISO", JOptionPane.WARNING_MESSAGE);
+            jFormattedTextFieldDtFinal.requestFocus();
+        
         }else { 
             
             Turma turma = new Turma();
@@ -301,7 +312,7 @@ ArrayList<Turma> ListaTurma = new ArrayList<>();
             jFormattedTextFieldDurAula.setText("");
             jFormattedTextFieldHorarioAulasFinal.setText("");
             jFormattedTextFieldHorarioAulasInicio.setText("");
-            
+            jTextFieldCodTur.requestFocus();
             
             
         

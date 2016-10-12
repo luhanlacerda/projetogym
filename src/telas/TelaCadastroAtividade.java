@@ -118,9 +118,13 @@ public class TelaCadastroAtividade extends javax.swing.JInternalFrame {
         if (jTextFieldCodigo.getText().equals("")){
             jTextFieldCodigo.setVisible(true);
             JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Código.", "AVISO", JOptionPane.WARNING_MESSAGE);
+             jTextFieldCodigo.requestFocus();
+        
         }else if (jTextAreaDescr.getText().equals("")){
            jTextAreaDescr.setVisible(true);
            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Descrição.", "AVISO", JOptionPane.WARNING_MESSAGE);
+           jTextAreaDescr.requestFocus();
+        
         } else{
             
             
@@ -130,6 +134,7 @@ public class TelaCadastroAtividade extends javax.swing.JInternalFrame {
             
             jTextFieldCodigo.setText("");
             jTextAreaDescr.setText("");
+            jTextFieldCodigo.requestFocus();
             
             
         }

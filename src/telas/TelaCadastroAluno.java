@@ -108,8 +108,18 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         }
 
         jRadioButtonCelular.setText("Celular");
+        jRadioButtonCelular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonCelularActionPerformed(evt);
+            }
+        });
 
         jRadioButtonConvencional.setText("Convencional");
+        jRadioButtonConvencional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonConvencionalActionPerformed(evt);
+            }
+        });
 
         try {
             jFormattedTextFieldCel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#.####-####")));
@@ -122,6 +132,11 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextFieldConv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldConvActionPerformed(evt);
+            }
+        });
 
         jButtonSalvar.setText("Cadastrar");
         jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -369,49 +384,64 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         if (jTextFieldMatricula.getText().equals("")){
         jTextFieldMatricula.setVisible(true);
         JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Matrícula ", "AVISO", JOptionPane.WARNING_MESSAGE);
+        jTextFieldMatricula.requestFocus();
         
     }else if  (jFormattedTextFieldData.getText().equals("  /  /    ")){
         jFormattedTextFieldData.setVisible(true);
         JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Data ", "AVISO", JOptionPane.WARNING_MESSAGE);
+        jFormattedTextFieldData.requestFocus();
         
     } else if (jTextFieldNome.getText().equals("")){
         jTextFieldNome.setVisible(true);
         JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Nome ", "AVISO", JOptionPane.WARNING_MESSAGE);
-       
+       jTextFieldNome.requestFocus();
+        
     }else if (jTextFieldAltura.getText().equals("")){
         jTextFieldAltura.setVisible(true);
         JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Altura ", "AVISO", JOptionPane.WARNING_MESSAGE);
-   
+        jTextFieldAltura.requestFocus();
+        
     }else if(jTextFieldPeso.getText().equals("")){
         jTextFieldPeso.setVisible(true);
         JOptionPane.showMessageDialog(null, "Por favor, preencha o campo peso ", "AVISO", JOptionPane.WARNING_MESSAGE);
+        jTextFieldPeso.requestFocus();
+        
         
     }else if (jTextFieldLogradouro.getText().equals("")){
         jTextFieldLogradouro.setVisible(true);
         JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Logradouro ", "AVISO", JOptionPane.WARNING_MESSAGE);
+        jTextFieldLogradouro.requestFocus();
         
     } else if (jTextFieldBairro.getText().equals("")){
         jTextFieldBairro.setVisible(true);
         JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Bairro ", "AVISO", JOptionPane.WARNING_MESSAGE);
+        jTextFieldBairro.requestFocus();
         
     } else if (jTextFieldUf.getText().equals("")){
         jTextFieldUf.setVisible(true);
         JOptionPane.showMessageDialog(null, "Por favor, preencha o campo UF ", "AVISO", JOptionPane.WARNING_MESSAGE);
+        jTextFieldUf.requestFocus();
         
     } else if (jTextFieldCep.getText().equals("")){
         jTextFieldCep.setVisible(true);
         JOptionPane.showMessageDialog(null, "Por favor, preencha o campo CEP ", "AVISO", JOptionPane.WARNING_MESSAGE);
+        jTextFieldCep.requestFocus();
+    
     } else if (jTextFieldPais.getText().equals("")){
         jTextFieldPais.setVisible(true);
         JOptionPane.showMessageDialog(null, "Por favor, preencha o campo País ", "AVISO", JOptionPane.WARNING_MESSAGE);
-    
-    }else if (jRadioButtonCelular.getText().equals("(  ) .    -    ")){
-        jRadioButtonCelular.setVisible(true);
+        jTextFieldPais.requestFocus();
+        
+    }else if (jFormattedTextFieldCel.getText().equals("(  ) .    -    ")){
+        jFormattedTextFieldCel.setVisible(true);
         JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Celular ", "AVISO", JOptionPane.WARNING_MESSAGE);
-          
+         jFormattedTextFieldCel.requestFocus();
+        
     }else if (jFormattedTextFieldConv.getText().equals("(  )    -    ")){
         jFormattedTextFieldConv.setValue(true);
         JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Contato Convencional ", "AVISO", JOptionPane.WARNING_MESSAGE);
+        jFormattedTextFieldConv.requestFocus();
+        
     }else{
        
          // DEIXAR OS CAMPOS EM BRANCO AO TÉRMINO DO CADASTRO
@@ -433,6 +463,10 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         jFormattedTextFieldCel.setText("");
         jFormattedTextFieldConv.setText("");
         jFormattedTextFieldData.setText("");
+        jFormattedTextFieldCel.setText("");
+        jFormattedTextFieldConv.setText("");
+        
+        jTextFieldMatricula.requestFocus();
         
 
         
@@ -447,6 +481,25 @@ public class TelaCadastroAluno extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_jButtonSalvarActionPerformed
+
+    private void jRadioButtonCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCelularActionPerformed
+        // PRECISA CORRIGIR
+        if (jRadioButtonCelular.isSelected()== true){
+            jFormattedTextFieldCel.getText();
+        }
+    }//GEN-LAST:event_jRadioButtonCelularActionPerformed
+
+    private void jRadioButtonConvencionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonConvencionalActionPerformed
+//         TODO add your handling code here:
+        if (jRadioButtonConvencional.isSelected()==true){
+            jFormattedTextFieldConv.getText();
+        }
+        
+    }//GEN-LAST:event_jRadioButtonConvencionalActionPerformed
+
+    private void jFormattedTextFieldConvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldConvActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldConvActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
