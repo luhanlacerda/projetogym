@@ -14,7 +14,7 @@ import java.util.Date;
  * @author Luhan
  */
 public class Aluno extends Pessoa {
-    
+     
     private int matricula;
     private Date dtmatricula;
 
