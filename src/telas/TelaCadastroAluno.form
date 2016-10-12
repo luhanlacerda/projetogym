@@ -89,7 +89,7 @@
                                               <Group type="102" alignment="1" attributes="0">
                                                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jTextFieldComple" min="-2" pref="123" max="-2" attributes="0"/>
+                                                  <Component id="jTextFieldComplemento" min="-2" pref="123" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="1" attributes="0">
                                                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
@@ -220,7 +220,7 @@
                       <Component id="jTextFieldnumero" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldComple" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldComplemento" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -380,14 +380,14 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel16">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Pais:"/>
+            <Property name="text" type="java.lang.String" value="Pa&#xed;s:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldLogradouro">
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldnumero">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldComple">
+        <Component class="javax.swing.JTextField" name="jTextFieldComplemento">
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldBairro">
         </Component>

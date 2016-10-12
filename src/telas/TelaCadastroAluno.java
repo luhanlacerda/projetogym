@@ -15,7 +15,7 @@ import javax.swing.text.Document;
  * @author ELAINE
  */
 public class TelaCadastroAluno extends javax.swing.JInternalFrame {
-ArrayList<Aluno> listaAluno = new ArrayList<>();
+//ArrayList<Aluno> listaAluno = new ArrayList<>();
     
     public TelaCadastroAluno() {
         initComponents();
@@ -61,7 +61,7 @@ ArrayList<Aluno> listaAluno = new ArrayList<>();
         jLabel16 = new javax.swing.JLabel();
         jTextFieldLogradouro = new javax.swing.JTextField();
         jTextFieldnumero = new javax.swing.JTextField();
-        jTextFieldComple = new javax.swing.JTextField();
+        jTextFieldComplemento = new javax.swing.JTextField();
         jTextFieldBairro = new javax.swing.JTextField();
         jTextFieldUf = new javax.swing.JTextField();
         jTextFieldCep = new javax.swing.JTextField();
@@ -142,7 +142,7 @@ ArrayList<Aluno> listaAluno = new ArrayList<>();
 
         jLabel15.setText("CEP:");
 
-        jLabel16.setText("Pais:");
+        jLabel16.setText("País:");
 
         jCheckBox11.setText("Turma 1");
 
@@ -205,7 +205,7 @@ ArrayList<Aluno> listaAluno = new ArrayList<>();
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel12)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextFieldComple, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(jTextFieldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel9)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -308,7 +308,7 @@ ArrayList<Aluno> listaAluno = new ArrayList<>();
                     .addComponent(jTextFieldnumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
                     .addComponent(jLabel12)
-                    .addComponent(jTextFieldComple, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -364,7 +364,7 @@ ArrayList<Aluno> listaAluno = new ArrayList<>();
         // PEGANDO TODOS OS DADOS DA TELA CADASTRO ALUNO
         
          jTextFieldnumero.getText();
-         jTextFieldComple.getText();
+         jTextFieldComplemento.getText();
   
         if (jTextFieldMatricula.getText().equals("")){
         jTextFieldMatricula.setVisible(true);
@@ -415,14 +415,14 @@ ArrayList<Aluno> listaAluno = new ArrayList<>();
     }else{
        
          // DEIXAR OS CAMPOS EM BRANCO AO TÉRMINO DO CADASTRO
-        Aluno aluno = new Aluno();
-        listaAluno.add(aluno);
+        //Aluno aluno = new Aluno();
+        //listaAluno.add(aluno);
         JOptionPane.showMessageDialog(null, "Aluno Cadastrado com Sucesso!");
         
         jTextFieldAltura.setText("");
         jTextFieldBairro.setText("");
         jTextFieldCep.setText("");
-        jTextFieldComple.setText("");
+        jTextFieldComplemento.setText("");
         jTextFieldLogradouro.setText("");
         jTextFieldMatricula.setText("");
         jTextFieldNome.setText("");
@@ -481,7 +481,7 @@ ArrayList<Aluno> listaAluno = new ArrayList<>();
     private javax.swing.JTextField jTextFieldAltura;
     private javax.swing.JTextField jTextFieldBairro;
     private javax.swing.JTextField jTextFieldCep;
-    private javax.swing.JTextField jTextFieldComple;
+    private javax.swing.JTextField jTextFieldComplemento;
     private javax.swing.JTextField jTextFieldLogradouro;
     private javax.swing.JTextField jTextFieldMatricula;
     private javax.swing.JTextField jTextFieldNome;
