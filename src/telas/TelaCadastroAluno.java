@@ -5,7 +5,7 @@
  */
 package telas;
 
-import classes.CaracterPermitido;
+import classesBasicas.CaracterPermitido;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.text.Document;

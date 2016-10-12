@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package classesBasicas;
+package turma;
 
+import aluno.Aluno;
+import instrutor.Instrutor;
 import java.util.ArrayList;
 import java.util.Date;
 
