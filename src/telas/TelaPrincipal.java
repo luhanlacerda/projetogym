@@ -5,17 +5,21 @@
  */
 package telas;
 
+import conexaoBD.BdadosConexaoTeste;
+
 /**
  *
  * @author aluno
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
+    BdadosConexaoTeste conecta = new BdadosConexaoTeste(); 
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
         initComponents();
+        conecta.conexao(); // conecta é o objeto que chama a conexão (com o banco)
     }
 
     /**
