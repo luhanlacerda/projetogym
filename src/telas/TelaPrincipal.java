@@ -5,7 +5,7 @@
  */
 package telas;
 
-import conexaoBD.BdadosConexaoTeste;
+
 
 /**
  *
@@ -13,13 +13,12 @@ import conexaoBD.BdadosConexaoTeste;
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
-    BdadosConexaoTeste conecta = new BdadosConexaoTeste(); 
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
         initComponents();
-        conecta.conexao(); // conecta é o objeto que chama a conexão (com o banco)
+       // conecta.conexao(); // conecta é o objeto que chama a conexão (com o banco)
     }
 
     /**
