@@ -19,6 +19,10 @@ public class Atividade {
         this.descricao = descricao;
     }
 
+    public Atividade() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getCodigo() {
         return codigo;
     }

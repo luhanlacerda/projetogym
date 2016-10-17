@@ -5,21 +5,19 @@
  */
 package telas;
 
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import turma.Turma;
 
 /**
  *
  * @author ELAINE
  */
-public class TelaCadastroTurma extends javax.swing.JInternalFrame {
-ArrayList<Turma> ListaTurma = new ArrayList<>();
-    
-    
+public class TurmaAtualizarTela extends javax.swing.JInternalFrame {
+
     /**
-     * Creates new form TelaCadastroTurma
+     * Creates new form TurmaAtualizarTela
      */
-    public TelaCadastroTurma() {
+    public TurmaAtualizarTela() {
         initComponents();
     }
 
@@ -53,12 +51,12 @@ ArrayList<Turma> ListaTurma = new ArrayList<>();
         jFormattedTextFieldHorarioAulasInicio = new javax.swing.JFormattedTextField();
         jFormattedTextFieldHorarioAulasFinal = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jButtonAtualizar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Cadastro de Turma");
+        setTitle("Atualizar Turma");
 
         jLabel1.setText("Codigo Turma: ");
 
@@ -110,10 +108,10 @@ ArrayList<Turma> ListaTurma = new ArrayList<>();
 
         jLabel10.setText("ás");
 
-        jButton2.setText("Cadastrar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAtualizar.setText("Atualizar");
+        jButtonAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonAtualizarActionPerformed(evt);
             }
         });
 
@@ -129,22 +127,23 @@ ArrayList<Turma> ListaTurma = new ArrayList<>();
                             .addComponent(jLabel5)
                             .addComponent(jLabel6))
                         .addGap(29, 29, 29)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFormattedTextFieldDtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFormattedTextFieldDtInicial)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jFormattedTextFieldDtInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                            .addComponent(jFormattedTextFieldDtFinal))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFormattedTextFieldDurAula, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jFormattedTextFieldHorarioAulasInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(19, 19, 19)
-                                .addComponent(jLabel10)
-                                .addGap(18, 18, 18)
-                                .addComponent(jFormattedTextFieldHorarioAulasFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jFormattedTextFieldDurAula, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jFormattedTextFieldHorarioAulasInicio))
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jFormattedTextFieldHorarioAulasFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(252, 252, 252))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -167,19 +166,12 @@ ArrayList<Turma> ListaTurma = new ArrayList<>();
                                 .addComponent(jLabel9)
                                 .addGap(18, 18, 18)
                                 .addComponent(jTextFieldCodAtiv)))))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jButtonAtualizar)
                 .addGap(45, 45, 45))
         );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jFormattedTextFieldDtFinal, jFormattedTextFieldDtInicial, jFormattedTextFieldDurAula, jFormattedTextFieldHorarioAulasFinal, jFormattedTextFieldHorarioAulasInicio});
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextFieldCodAtiv, jTextFieldMatAluno, jTextFieldMatInst});
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextFieldCodTur, jTextFieldNumAlunos});
-
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -222,16 +214,10 @@ ArrayList<Turma> ListaTurma = new ArrayList<>();
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jFormattedTextFieldDtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jButtonAtualizar)
                 .addGap(24, 24, 24))
         );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jFormattedTextFieldDtFinal, jFormattedTextFieldDtInicial, jFormattedTextFieldDurAula});
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jTextFieldCodAtiv, jTextFieldMatAluno, jTextFieldMatInst});
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jTextFieldCodTur, jTextFieldNumAlunos});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -247,63 +233,61 @@ ArrayList<Turma> ListaTurma = new ArrayList<>();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
         // TODO add your handling code here:
-        
+
         if (jTextFieldCodTur.getText().equals("")){
             jTextFieldCodTur.setVisible(true);
             JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Codigo da turma. ", "AVISO", JOptionPane.WARNING_MESSAGE);
-              jTextFieldCodTur.requestFocus();
-            
+            jTextFieldCodTur.requestFocus();
+
         }else if (jTextFieldNumAlunos.getText().equals("")){
             jTextFieldNumAlunos.setVisible(true);
             JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Número de Alunos. ", "AVISO", JOptionPane.WARNING_MESSAGE);
             jTextFieldNumAlunos.requestFocus();
-       
+
         }else if (jTextFieldMatInst.getText().equals("")){
             jTextFieldMatInst.setVisible(isIcon);
             JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Matrícula do Instrutor. ", "AVISO", JOptionPane.WARNING_MESSAGE);
             jTextFieldMatInst.requestFocus();
-            
-            
+
         }else if (jTextFieldCodAtiv.getText().equals("")){
             jTextFieldCodAtiv.setVisible(true);
             JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Código da Atividade. ", "AVISO", JOptionPane.WARNING_MESSAGE);
             jTextFieldCodAtiv.requestFocus();
-            
-            
+
         }else if (jFormattedTextFieldDurAula.getText().equals("  :  ")){
             jFormattedTextFieldDurAula.setVisible(true);{
-            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Duração da Aula.", "AVISO", JOptionPane.WARNING_MESSAGE);
-             jFormattedTextFieldDurAula.requestFocus();
-        }
-            
+                JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Duração da Aula.", "AVISO", JOptionPane.WARNING_MESSAGE);
+                jFormattedTextFieldDurAula.requestFocus();
+            }
+
         } else if (jFormattedTextFieldHorarioAulasInicio.getText().equals("  :  ")){
             jFormattedTextFieldHorarioAulasInicio.setVisible(true);
             JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Horário das Aula.", "AVISO", JOptionPane.WARNING_MESSAGE);
             jFormattedTextFieldHorarioAulasInicio.requestFocus();
-            
+
         }else if (jFormattedTextFieldHorarioAulasFinal.getText().equals("  :  ")){
             jFormattedTextFieldHorarioAulasFinal.setVisible(true);
             JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Horário das Aula.", "AVISO", JOptionPane.WARNING_MESSAGE);
             jFormattedTextFieldHorarioAulasFinal.requestFocus();
-            
+
         }else if (jFormattedTextFieldDtInicial.getText().equals("  /  /    ")){
             jFormattedTextFieldDtInicial.setVisible(true);
             JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Data Inicial.", "AVISO", JOptionPane.WARNING_MESSAGE);
             jFormattedTextFieldDtInicial.requestFocus();
-            
+
         }else if (jFormattedTextFieldDtFinal.getText().equals("  /  /    ")){
             jFormattedTextFieldDtFinal.setVisible(true);
             JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Data Final.", "AVISO", JOptionPane.WARNING_MESSAGE);
             jFormattedTextFieldDtFinal.requestFocus();
-        
-        }else { 
-            
-            Turma turma = new Turma();
-            ListaTurma.add(turma);
-            JOptionPane.showMessageDialog(null, "Turma Cadastrada com Sucesso!");
-            
+
+        }else {
+
+//            Turma turma = new Turma();
+//            ListaTurma.add(turma);
+            JOptionPane.showMessageDialog(null, "Turma Atualizada com Sucesso!");
+
             jTextFieldCodAtiv.setText("");
             jTextFieldCodTur.setText("");
             jTextFieldMatAluno.setText("");
@@ -315,26 +299,14 @@ ArrayList<Turma> ListaTurma = new ArrayList<>();
             jFormattedTextFieldHorarioAulasFinal.setText("");
             jFormattedTextFieldHorarioAulasInicio.setText("");
             jTextFieldCodTur.requestFocus();
-            
-            
-        
-            
-            
-            
+
         }
-        
-       
-        
-        
-        
-        
-        
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+
+    }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonAtualizar;
     private javax.swing.JFormattedTextField jFormattedTextFieldDtFinal;
     private javax.swing.JFormattedTextField jFormattedTextFieldDtInicial;
     private javax.swing.JFormattedTextField jFormattedTextFieldDurAula;
@@ -357,10 +329,4 @@ ArrayList<Turma> ListaTurma = new ArrayList<>();
     private javax.swing.JTextField jTextFieldMatInst;
     private javax.swing.JTextField jTextFieldNumAlunos;
     // End of variables declaration//GEN-END:variables
-
-    private static class Turma {
-
-        public Turma() {
-        }
-    }
 }

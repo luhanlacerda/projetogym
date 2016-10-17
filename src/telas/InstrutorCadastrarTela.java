@@ -9,12 +9,12 @@ package telas;
  *
  * @author ELAINE
  */
-public class TelaCadastroInstrutor extends javax.swing.JInternalFrame {
+public class InstrutorCadastrarTela extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form TelaCadastroInstrutor
      */
-    public TelaCadastroInstrutor() {
+    public InstrutorCadastrarTela() {
         initComponents();
     }
 
@@ -93,7 +93,7 @@ public class TelaCadastroInstrutor extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Cadastro de Instrutor");
+        setTitle("Cadastrar  Instrutor");
 
         jLabel1.setText("Matrícula:");
 

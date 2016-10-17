@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  *
  * @author ELAINE
  */
-public class TelaCadastroAtividade extends javax.swing.JInternalFrame {
+public class AtividadeCadastrarTela extends javax.swing.JInternalFrame {
  ArrayList<Atividade> ListaAtividade = new ArrayList<>();
  
     
@@ -20,7 +20,7 @@ public class TelaCadastroAtividade extends javax.swing.JInternalFrame {
     /**
      * Creates new form TelaCadastroAtividade
      */
-    public TelaCadastroAtividade() {
+    public AtividadeCadastrarTela() {
         initComponents();
     }
 
@@ -44,7 +44,7 @@ public class TelaCadastroAtividade extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Cadastro de Atividade");
+        setTitle("Cadastrar Atividade");
 
         jLabel1.setText("Código:");
 
@@ -80,7 +80,7 @@ public class TelaCadastroAtividade extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonSalvar)
-                .addGap(37, 37, 37))
+                .addGap(72, 72, 72))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,9 +93,9 @@ public class TelaCadastroAtividade extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonSalvar)
-                .addContainerGap())
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

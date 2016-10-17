@@ -5,7 +5,7 @@
     <Property name="closable" type="boolean" value="true"/>
     <Property name="iconifiable" type="boolean" value="true"/>
     <Property name="maximizable" type="boolean" value="true"/>
-    <Property name="title" type="java.lang.String" value="Cadastro de Aluno"/>
+    <Property name="title" type="java.lang.String" value="Cadastrar Aluno"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -160,7 +160,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jButtonSalvar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -245,9 +245,9 @@
                       <Component id="jRadioButtonConvencional" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jFormattedTextFieldConv" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace pref="29" max="32767" attributes="0"/>
                   <Component id="jButtonSalvar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="27" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
