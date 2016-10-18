@@ -19,4 +19,7 @@ public abstract class  Pessoa {
    private String contato;
    private Date dtnascimento;
 
+   public Pessoa(){
+       this.endereco = new Endereco();
+   }
 }
