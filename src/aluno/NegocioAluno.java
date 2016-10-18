@@ -15,9 +15,21 @@ public class NegocioAluno implements InterfaceAluno {
 
     @Override
     public void cadastrar(Aluno a) throws Exception {
-//        if (a.getMatricula() < 0) {
-//            throw new Exception("Informar a matricula do aluno");
-//        }
+if (a.getMatricula() <= 0) {
+            throw new Exception("A matricula deverá ser superior a zero");
+        }
+        if (a.getNome() == null) {
+            throw new Exception("Informar o nome do aluno");
+        }
+        if (a.getNome().trim().equals("") == true) {
+            throw new Exception("Informar o nome do aluno");
+        }
+        if (a.getNome().trim().length() > 100) {
+            throw new Exception("O nome do aluno não poderá ter mais de 100 caracteres");
+        }
+        //demais validações
+        DadosAluno d = new DadosAluno();
+        d.cadastrar(a);
     }
 
     @Override

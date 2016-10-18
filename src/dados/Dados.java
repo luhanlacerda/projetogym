@@ -16,7 +16,7 @@ import java.sql.Statement;
  */
 public class Dados {
     private Statement stmt;
-    private Connection conn;
+    public Connection conn;
 
     public Statement conectar() throws ClassNotFoundException, SQLException {
         return this.conectarSqlServer();
@@ -36,5 +36,19 @@ public class Dados {
         conn = DriverManager.getConnection(url, usuario, senha);
         stmt = conn.createStatement();
         return stmt;
+    }
+        private Statement conectarPostGreSql() throws ClassNotFoundException, SQLException {
+        Class.forName("org.postgresql.Driver");
+        String local = "localhost";
+        String banco = "TeAmoProfessorMelo";
+        String usuario = "postgres";
+        String senha = "unibratec";
+        conn = DriverManager.getConnection("jdbc:postgresql://"
+                + local + "/" + banco
+                + "?charSet=LATIN1", usuario,
+                senha);
+        //stmt = conn.createStatement();
+        return conn.createStatement();
+        //return stmt;
     }
 }
