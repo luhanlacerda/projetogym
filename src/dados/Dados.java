@@ -55,6 +55,7 @@ public class Dados {
         private Statement conectarMySql() throws ClassNotFoundException, SQLException {
         try {
 
+            
             String driver = "com.mysql.jdbc.Driver";
             String dataBaseName = "teAmoProfessorMelo";
             String url = "jdbc:mysql://localhost:3306/";
