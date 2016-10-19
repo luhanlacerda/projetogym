@@ -19,7 +19,8 @@ public class Dados {
     public Connection conn;
 
     public Statement conectar() throws ClassNotFoundException, SQLException {
-        return this.conectarSqlServer();
+        //return this.conectarSqlServer();
+        return this.conectarPostGreSql();
     }
 
     public void desconectar() throws SQLException {
@@ -29,8 +30,8 @@ public class Dados {
     private Statement conectarSqlServer() throws ClassNotFoundException, SQLException {
         String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
         String url = "jdbc:sqlserver://LUHAN:1433;DatabaseName=ProjetoAcademia";
-        String usuario = "luhan";
-        String senha = "123456";
+        String usuario = "Luhan";
+        String senha = "aoclgpn7";
         Class.forName(driver);
         //obtem uma conexao com o sgbd
         conn = DriverManager.getConnection(url, usuario, senha);
@@ -40,9 +41,9 @@ public class Dados {
         private Statement conectarPostGreSql() throws ClassNotFoundException, SQLException {
         Class.forName("org.postgresql.Driver");
         String local = "localhost";
-        String banco = "TeAmoProfessorMelo";
+        String banco = "postgres";
         String usuario = "postgres";
-        String senha = "unibratec";
+        String senha = "aoclgpn7";
         conn = DriverManager.getConnection("jdbc:postgresql://"
                 + local + "/" + banco
                 + "?charSet=LATIN1", usuario,
