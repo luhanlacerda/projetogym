@@ -52,4 +52,22 @@ public class Dados {
         return conn.createStatement();
         //return stmt;
     }
+        private Statement conectarMySql() throws ClassNotFoundException, SQLException {
+        try {
+
+            String driver = "com.mysql.jdbc.Driver";
+            String dataBaseName = "teAmoProfessorMelo";
+            String url = "jdbc:mysql://localhost:3306/";
+            String usuario = "root";
+            String senha = "";
+            Class.forName(driver).newInstance();
+            conn = (Connection) DriverManager.getConnection(url + dataBaseName, usuario, senha);
+            stmt = conn.createStatement();
+            return stmt;
+        } catch (InstantiationException ex) {
+            throw new SQLException(ex.getMessage());
+        } catch (IllegalAccessException ex) {
+            throw new SQLException(ex.getMessage());
+        }
+    }
 }
