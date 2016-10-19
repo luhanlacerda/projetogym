@@ -98,7 +98,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
             }
         } catch (SQLException e) {
             //caso haja algum erro neste método será¡ levantada esta execeção
-            throw new Exception("Erro ao executar inserÃ§Ã£o: " + e.getMessage());
+            throw new Exception("Erro ao executar inserção: " + e.getMessage());
         }
         //fechando a conexão com o banco de dados
         desconectar();
