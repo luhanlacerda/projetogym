@@ -22,13 +22,16 @@ public class DadosAluno extends Dados implements InterfaceAluno {
         //abrindo a conexao
         conectar();
         //instruçãoo sql correspondente a inserção do aluno
-        String sql = "INSERT INTO aluno (matricula,nome)";
-        sql += "VALUES (?, ?)";
+        String sql = "INSERT INTO aluno (matricula, dtmatricula, nome, nascimento, altura, peso, endereco, telefone)";
+        sql += "VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
             //executando a instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
             cmd.setInt(1, a.getMatricula());
-            cmd.setString(2, a.getNome());
+            cmd.setDate(2, a.getDtmatricula());
+            cmd.setString(3, a.getNome());
+            cmd.setDate(4, a.getDtnascimento());
+            cmd.setFloat(5, a.getAltura());
             cmd.execute();
         } catch (SQLException e) {
             //caso haja algum erro neste método será¡ levantada esta execeção

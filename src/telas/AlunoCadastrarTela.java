@@ -377,7 +377,7 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         // PEGANDO TODOS OS DADOS DA TELA CADASTRO ALUNO
-        
+  /*      
          jTextFieldnumero.getText();
          jTextFieldComplemento.getText();
   
@@ -465,13 +465,9 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
         jFormattedTextFieldData.setText("");
         jFormattedTextFieldCel.setText("");
         jFormattedTextFieldConv.setText("");
-        
         jTextFieldMatricula.requestFocus();
-        
-
-        
     }
-        
+    */    
         
       
         
