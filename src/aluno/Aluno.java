@@ -5,14 +5,13 @@
  */
 package aluno;
 
-import classesBasicas.Endereco;
 import classesBasicas.Pessoa;
-import java.sql.Date;
 
 /**
  *
  * @author Luhan
  */
+
 public class Aluno extends Pessoa {
     
     private int matricula;
