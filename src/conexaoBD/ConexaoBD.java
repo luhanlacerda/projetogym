@@ -23,7 +23,7 @@ public class ConexaoBD {
             Dados d = new Dados();
             d.conectar();
             d.desconectar();
-            JOptionPane.showMessageDialog(null, "Funcionou");
+            JOptionPane.showMessageDialog(null, "Banco de dados conectado com sucesso!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
