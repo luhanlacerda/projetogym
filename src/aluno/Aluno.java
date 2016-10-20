@@ -16,7 +16,7 @@ import java.sql.Date;
 public class Aluno extends Pessoa {
     
     private int matricula;
-    private Date dtmatricula;
+    private String dtmatricula;
     private float altura;
     private float peso;
 
@@ -28,11 +28,11 @@ public class Aluno extends Pessoa {
         this.matricula = matricula;
     }
 
-    public Date getDtmatricula() {
+    public String getDtmatricula() {
         return dtmatricula;
     }
 
-    public void setDtmatricula(Date dtmatricula) {
+    public void setDtmatricula(String dtmatricula) {
         this.dtmatricula = dtmatricula;
     }
 

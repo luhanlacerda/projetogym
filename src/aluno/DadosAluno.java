@@ -22,22 +22,27 @@ public class DadosAluno extends Dados implements InterfaceAluno {
         //abrindo a conexao
         conectar();
         //instruçãoo sql correspondente a inserção do aluno
-        String sql = "INSERT INTO aluno (matricula, dtmatricula, nome, nascimento, altura, peso, endereco, telefone)";
-        sql += "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO aluno (Alu_Matricula, Alu_DataMatricula, Alu_Nome, Alu_Nascimento, Alu_Altura, Alu_Peso, Alu_Endereco, Alu_Telefone, Alu_Rg, Alu_Cpf)";
+        sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             //executando a instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
             cmd.setInt(1, a.getMatricula());
-            cmd.setDate(2, a.getDtmatricula());
+            cmd.setString(2, a.getDtmatricula());
             cmd.setString(3, a.getNome());
-            cmd.setDate(4, a.getDtnascimento());
+            cmd.setString(4, a.getDtnascimento());
             cmd.setFloat(5, a.getAltura());
+            cmd.setFloat(6, a.getPeso());
+            cmd.setString(7, a.getEndereco());
+            cmd.setString(8, a.getContato());
+            cmd.setString(9, a.getRg());
+            cmd.setString(10, a.getCpf());
             cmd.execute();
         } catch (SQLException e) {
             //caso haja algum erro neste método será¡ levantada esta execeção
             throw new Exception("Erro ao executar inserção: " + e.getMessage());
         }
-        //fechando a conexÃ£o com o banco de dados
+        //fechando a conexão com o banco de dados
         desconectar();
     }
 
@@ -57,7 +62,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
             //caso haja algum erro neste método será¡ levantada esta execeção
             throw new Exception("Erro ao executar inserção: " + e.getMessage());
         }
-        //fechando a conexÃ£o com o banco de dados
+        //fechando a conexão com o banco de dados
         desconectar();
     }
 
@@ -76,7 +81,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
             //caso haja algum erro neste método será¡ levantada esta execeção
             throw new Exception("Erro ao executar inserção: " + e.getMessage());
         }
-        //fechando a conexÃ£o com o banco de dados
+        //fechando a conexão com o banco de dados
         desconectar();
     }
 

@@ -5,23 +5,23 @@
  */
 package classesBasicas;
 
-import java.sql.Date;
 
 /**
  *
  * @author Luhan
  */
-public abstract class  Pessoa {
+public abstract class Pessoa {
    private String nome;
    private String rg;
    private String cpf;
-   private Endereco endereco;
+   private String endereco;
+   //private Endereco endereco;
    private String contato;
-   private Date dtnascimento;
+   private String dtnascimento;
 
-   public Pessoa(){
-       this.endereco = new Endereco();
-   }
+  // public Pessoa(){
+  //     this.endereco = new Endereco();
+  // }
 
     public String getNome() {
         return nome;
@@ -47,6 +47,7 @@ public abstract class  Pessoa {
         this.cpf = cpf;
     }
 
+    /*
     public Endereco getEndereco() {
         return endereco;
     }
@@ -54,7 +55,16 @@ public abstract class  Pessoa {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
+    */
+    
+    public String getEndereco() {
+        return endereco;
+    }
 
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+    
     public String getContato() {
         return contato;
     }
@@ -63,11 +73,11 @@ public abstract class  Pessoa {
         this.contato = contato;
     }
 
-    public Date getDtnascimento() {
+    public String getDtnascimento() {
         return dtnascimento;
     }
 
-    public void setDtnascimento(Date dtnascimento) {
+    public void setDtnascimento(String dtnascimento) {
         this.dtnascimento = dtnascimento;
     }
 
