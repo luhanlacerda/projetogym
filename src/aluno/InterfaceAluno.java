@@ -21,7 +21,7 @@ public interface InterfaceAluno {
     //remover um aluno previamente cadastrado
     void remover(Aluno a) throws Exception;
     //devolver os alunos que se encaixarem no filtro da pesquisa 
-    ArrayList<Aluno> listar(Aluno filtro) throws Exception;
+    ArrayList<Aluno> listar(Aluno filtro) throws Exception; 
     //demais acoes...
     
 }
