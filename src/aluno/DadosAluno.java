@@ -87,26 +87,41 @@ public class DadosAluno extends Dados implements InterfaceAluno {
 
     @Override
     public ArrayList<Aluno> listar(Aluno filtro) throws Exception {
-     ArrayList<Aluno> retorno = new ArrayList<>();
+    int posPar = 1;
+        ArrayList<Aluno> retorno = new ArrayList<>();
         //abrindo a conexão
         conectar();
-        //instruçãoo sql correspondente a inserção do aluno
-        String sql = " SELECT matricula, nome ";
-        sql += " FROM aluno WHERE matricula > 0 ";
+        //instrução sql correspondente a inserção do aluno
+        String sql = " select matricula, nome ";
+        sql += " from aluno where matricula > 0 ";
+        if (filtro.getMatricula() > 0) {
+            sql += " and matricula = ?";
+        }
+        if (filtro.getNome().trim().equals("") == false) {
+            sql += " and nome like ? ";
+        }
         try {
             //executando a instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
+            if (filtro.getMatricula() > 0) {
+                cmd.setInt(posPar, filtro.getMatricula());
+                posPar++;
+            }
+            if (filtro.getNome().trim().equals("") == false) {
+                cmd.setString(posPar, filtro.getNome());
+                posPar++;
+            }
             //
             ResultSet leitor = cmd.executeQuery();
-            while (leitor.next()) {                
+            while (leitor.next()) {
                 Aluno a = new Aluno();
                 a.setMatricula(leitor.getInt("matricula"));
                 a.setNome(leitor.getString("nome"));
                 retorno.add(a);
             }
         } catch (SQLException e) {
-            //caso haja algum erro neste método será¡ levantada esta execeção
-            throw new Exception("Erro ao executar inserção: " + e.getMessage());
+            //caso haja algum erro neste método será levantada esta execeção
+            throw new Exception("Erro ao executar inserÃ§Ã£o: " + e.getMessage());
         }
         //fechando a conexão com o banco de dados
         desconectar();
