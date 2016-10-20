@@ -20,7 +20,7 @@ public class Dados {
 
     public Statement conectar() throws ClassNotFoundException, SQLException {
         //return this.conectarSqlServer();
-        return this.conectarPostGreSql();
+        return this.conectarMySql();
     }
 
     public void desconectar() throws SQLException {
@@ -31,7 +31,7 @@ public class Dados {
         String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
         String url = "jdbc:sqlserver://LUHAN:1433;DatabaseName=ProjetoAcademia";
         String usuario = "Luhan";
-        String senha = "aoclgpn7";
+        String senha = "123456";
         Class.forName(driver);
         //obtem uma conexao com o sgbd
         conn = DriverManager.getConnection(url, usuario, senha);
@@ -57,7 +57,7 @@ public class Dados {
 
             
             String driver = "com.mysql.jdbc.Driver";
-            String dataBaseName = "teAmoProfessorMelo";
+            String dataBaseName = "ProjetoAcademia";
             String url = "jdbc:mysql://localhost:3306/";
             String usuario = "root";
             String senha = "";

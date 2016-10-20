@@ -22,7 +22,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
         //abrindo a conexao
         conectar();
         //instruçãoo sql correspondente a inserção do aluno
-        String sql = "INSERT INTO aluno (Alu_Matricula, Alu_DataMatricula, Alu_Nome, Alu_Nascimento, Alu_Altura, Alu_Peso, Alu_Endereco, Alu_Telefone, Alu_Rg, Alu_Cpf)";
+        String sql = "INSERT INTO aluno (alu_matricula, alu_datamatricula, alu_nome, alu_nascimento, alu_altura, alu_peso, alu_endereco, alu_telefone, alu_Rg, alu_Cpf)";
         sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             //executando a instrução sql
