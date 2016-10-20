@@ -41,7 +41,7 @@ public class Dados {
         private Statement conectarPostGreSql() throws ClassNotFoundException, SQLException {
         Class.forName("org.postgresql.Driver");
         String local = "localhost";
-        String banco = "postgres";
+        String banco = "ProjetoAcademia";
         String usuario = "postgres";
         String senha = "123";
         conn = DriverManager.getConnection("jdbc:postgresql://"
