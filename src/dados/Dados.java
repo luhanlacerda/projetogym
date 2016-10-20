@@ -43,7 +43,7 @@ public class Dados {
         String local = "localhost";
         String banco = "postgres";
         String usuario = "postgres";
-        String senha = "aoclgpn7";
+        String senha = "123";
         conn = DriverManager.getConnection("jdbc:postgresql://"
                 + local + "/" + banco
                 + "?charSet=LATIN1", usuario,
