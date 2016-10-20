@@ -17,23 +17,14 @@ import java.util.Date;
 public class Turma {
     
     private int codigo;
-    private Date dtinicial, dtfinal;
-    private ArrayList<Aluno> alunos = new ArrayList<Aluno>(); //conferir se é isso mesmo
+    private String dtinicial, dtfinal;
+    private ArrayList<Aluno> alunos; //conferir se é isso mesmo
     private Instrutor instrutor;
     private String duracaoaula;
     private String horario;
 
-    public Turma(int codigo, Date dtinicial, Date dtfinal, Instrutor instrutor, String duracaoaula, String horario) {
-        this.codigo = codigo;
-        this.dtinicial = dtinicial;
-        this.dtfinal = dtfinal;
-        this.instrutor = instrutor;
-        this.duracaoaula = duracaoaula;
-        this.horario = horario;
-    }
-
     public Turma() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       this.alunos = new ArrayList<Aluno>();
     }
 
     public int getCodigo() {
@@ -44,19 +35,19 @@ public class Turma {
         this.codigo = codigo;
     }
 
-    public Date getDtinicial() {
+    public String getDtinicial() {
         return dtinicial;
     }
 
-    public void setDtinicial(Date dtinicial) {
+    public void setDtinicial(String dtinicial) {
         this.dtinicial = dtinicial;
     }
 
-    public Date getDtfinal() {
+    public String getDtfinal() {
         return dtfinal;
     }
 
-    public void setDtfinal(Date dtfinal) {
+    public void setDtfinal(String dtfinal) {
         this.dtfinal = dtfinal;
     }
 

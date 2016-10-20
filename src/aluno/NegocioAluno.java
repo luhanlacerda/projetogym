@@ -15,9 +15,9 @@ public class NegocioAluno implements InterfaceAluno {
 
     @Override
     public void cadastrar(Aluno a) throws Exception {
-//if (a.getMatricula() <= 0) {
-//           throw new Exception("A matricula deverá ser superior a zero");
-//      }
+if (a.getMatricula() <= 0) {
+           throw new Exception("A matricula deverá ser superior a zero");
+      }
         if (a.getNome() == null) {
             throw new Exception("Informar o nome do aluno");
         }
