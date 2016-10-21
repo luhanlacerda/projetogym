@@ -20,11 +20,11 @@ import javax.swing.text.Document;
  */
 public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
 //ArrayList<Aluno> listaAluno = new ArrayList<>();
-    
+
     public AlunoCadastrarTela() {
         initComponents();
         jTextFieldNome.setDocument(new CaracterPermitido());  // PEDIU PARA IMPORTAR A CLASSE CaracterPermitido
-        
+
     }
 
     /**
@@ -160,7 +160,7 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Logradouro:");
 
-        jLabel10.setText("nº:");
+        jLabel10.setText("Nº:");
 
         jLabel12.setText("Complemento:");
 
@@ -218,17 +218,17 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
                                         .addGap(12, 12, 12)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel12)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jTextFieldnumero, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jLabel10)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jTextFieldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel18)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(jTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel10)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jTextFieldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel12)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jTextFieldnumero, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(jLabel20)
@@ -337,10 +337,10 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTextFieldLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12)
-                    .addComponent(jTextFieldnumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextFieldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(jTextFieldnumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -365,7 +365,7 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButtonConvencional)
                     .addComponent(jFormattedTextFieldConv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jButtonSalvar)
                 .addContainerGap())
         );
@@ -394,145 +394,69 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
 
-        try{
-        Aluno aluno = new Aluno();
-        //alimentando o objeto
-        aluno.setNome(jTextFieldNome.getText());
-        aluno.setRg(jTextFieldRg.getText());
-        aluno.setCpf(jTextFieldCpf.getText());
-        aluno.setEndereco(jTextFieldLogradouro.getText());
-        aluno.setContato(jFormattedTextFieldCel.getText());
-        aluno.setDtnascimento(jFormattedTextFieldDataNascimento.getText());
-        aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
-        aluno.setDtmatricula(jFormattedTextFieldDataMatricula.getText());
-        aluno.setAltura(Float.parseFloat(jTextFieldAltura.getText()));
-        aluno.setPeso(Float.parseFloat(jTextFieldPeso.getText()));
-        
-        //Enviando ao banco
-        NegocioAluno negocioaluno = new NegocioAluno();
+        try {
+            Aluno aluno = new Aluno();
+            //Alimentando o objeto
+            aluno.setNome(jTextFieldNome.getText());
+            aluno.setRg(jTextFieldRg.getText());
+            aluno.setCpf(jTextFieldCpf.getText());
+            aluno.setEndereco(jTextFieldLogradouro.getText() + ", " + jTextFieldnumero.getText() + ", " + jTextFieldComplemento.getText() + ", " + jTextFieldBairro.getText()
+                    + ", " + jTextFieldCep.getText() + ", " + jTextFieldCidade.getText() + ", " + jTextFieldUf.getText() + ", " + jTextFieldPais.getText());
+            aluno.setContato(jFormattedTextFieldCel.getText());
+            aluno.setDtnascimento(jFormattedTextFieldDataNascimento.getText());
+            aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
+            aluno.setDtmatricula(jFormattedTextFieldDataMatricula.getText());
+            aluno.setAltura(Float.parseFloat(jTextFieldAltura.getText()));
+            aluno.setPeso(Float.parseFloat(jTextFieldPeso.getText()));
+
+            
+            //Enviando ao banco
+            NegocioAluno negocioaluno = new NegocioAluno();
             negocioaluno.cadastrar(aluno);
             JOptionPane.showMessageDialog(rootPane, "Aluno cadastrado com sucesso");
-        }
-        catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, e.getMessage()); 
+            
+            //Limpando os campos para um novo cadastro e mantendo o foco em matrícula
+            jTextFieldMatricula.setText("");
+            jFormattedTextFieldDataMatricula.setText("");
+            jTextFieldNome.setText("");
+            jTextFieldAltura.setText("");
+            jTextFieldPeso.setText("");
+            jTextFieldBairro.setText("");
+            jTextFieldRg.setText("");
+            jTextFieldCpf.setText("");
+            jTextFieldLogradouro.setText("");
+            jTextFieldnumero.setText("");
+            jTextFieldComplemento.setText("");
+            jTextFieldCep.setText("");
+            jTextFieldBairro.setText("");
+            jTextFieldCidade.setText("");
+            jTextFieldUf.setText("");
+            jTextFieldPais.setText("");
+            jFormattedTextFieldCel.setText("");
+            jFormattedTextFieldConv.setText("");
+            jFormattedTextFieldDataNascimento.setText("");
+            jTextFieldMatricula.requestFocus();
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
 
-
-        // PEGANDO TODOS OS DADOS DA TELA CADASTRO ALUNO
-  /*      
-         jTextFieldnumero.getText();
-         jTextFieldComplemento.getText();
-  
-        if (jTextFieldMatricula.getText().equals("")){
-        jTextFieldMatricula.setVisible(true);
-        JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Matrícula ", "AVISO", JOptionPane.WARNING_MESSAGE);
-        jTextFieldMatricula.requestFocus();
-        
-    }else if  (jFormattedTextFieldData.getText().equals("  /  /    ")){
-        jFormattedTextFieldData.setVisible(true);
-        JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Data ", "AVISO", JOptionPane.WARNING_MESSAGE);
-        jFormattedTextFieldData.requestFocus();
-        
-    } else if (jTextFieldNome.getText().equals("")){
-        jTextFieldNome.setVisible(true);
-        JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Nome ", "AVISO", JOptionPane.WARNING_MESSAGE);
-       jTextFieldNome.requestFocus();
-        
-    }else if (jTextFieldAltura.getText().equals("")){
-        jTextFieldAltura.setVisible(true);
-        JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Altura ", "AVISO", JOptionPane.WARNING_MESSAGE);
-        jTextFieldAltura.requestFocus();
-        
-    }else if(jTextFieldPeso.getText().equals("")){
-        jTextFieldPeso.setVisible(true);
-        JOptionPane.showMessageDialog(null, "Por favor, preencha o campo peso ", "AVISO", JOptionPane.WARNING_MESSAGE);
-        jTextFieldPeso.requestFocus();
-        
-        
-    }else if (jTextFieldLogradouro.getText().equals("")){
-        jTextFieldLogradouro.setVisible(true);
-        JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Logradouro ", "AVISO", JOptionPane.WARNING_MESSAGE);
-        jTextFieldLogradouro.requestFocus();
-        
-    } else if (jTextFieldBairro.getText().equals("")){
-        jTextFieldBairro.setVisible(true);
-        JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Bairro ", "AVISO", JOptionPane.WARNING_MESSAGE);
-        jTextFieldBairro.requestFocus();
-        
-    } else if (jTextFieldUf.getText().equals("")){
-        jTextFieldUf.setVisible(true);
-        JOptionPane.showMessageDialog(null, "Por favor, preencha o campo UF ", "AVISO", JOptionPane.WARNING_MESSAGE);
-        jTextFieldUf.requestFocus();
-        
-    } else if (jTextFieldCep.getText().equals("")){
-        jTextFieldCep.setVisible(true);
-        JOptionPane.showMessageDialog(null, "Por favor, preencha o campo CEP ", "AVISO", JOptionPane.WARNING_MESSAGE);
-        jTextFieldCep.requestFocus();
-    
-    } else if (jTextFieldPais.getText().equals("")){
-        jTextFieldPais.setVisible(true);
-        JOptionPane.showMessageDialog(null, "Por favor, preencha o campo País ", "AVISO", JOptionPane.WARNING_MESSAGE);
-        jTextFieldPais.requestFocus();
-        
-    }else if (jFormattedTextFieldCel.getText().equals("(  ) .    -    ")){
-        jFormattedTextFieldCel.setVisible(true);
-        JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Celular ", "AVISO", JOptionPane.WARNING_MESSAGE);
-         jFormattedTextFieldCel.requestFocus();
-        
-    }else if (jFormattedTextFieldConv.getText().equals("(  )    -    ")){
-        jFormattedTextFieldConv.setValue(true);
-        JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Contato Convencional ", "AVISO", JOptionPane.WARNING_MESSAGE);
-        jFormattedTextFieldConv.requestFocus();
-        
-    }else{
-       
-         // DEIXAR OS CAMPOS EM BRANCO AO TÉRMINO DO CADASTRO
-        //Aluno aluno = new Aluno();
-        //listaAluno.add(aluno);
-        JOptionPane.showMessageDialog(null, "Aluno Cadastrado com Sucesso!");
-        
-        jTextFieldAltura.setText("");
-        jTextFieldBairro.setText("");
-        jTextFieldCep.setText("");
-        jTextFieldComplemento.setText("");
-        jTextFieldLogradouro.setText("");
-        jTextFieldMatricula.setText("");
-        jTextFieldNome.setText("");
-        jTextFieldPais.setText("");
-        jTextFieldPeso.setText("");
-        jTextFieldUf.setText("");
-        jTextFieldnumero.setText("");
-        jFormattedTextFieldCel.setText("");
-        jFormattedTextFieldConv.setText("");
-        jFormattedTextFieldData.setText("");
-        jFormattedTextFieldCel.setText("");
-        jFormattedTextFieldConv.setText("");
-        jTextFieldMatricula.requestFocus();
-    }
-    */    
-        
-      
-        
-        
-        
-        
-        
-        
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jRadioButtonCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCelularActionPerformed
         // PRECISA CORRIGIR
-        if (jRadioButtonCelular.isSelected()== true){
+        if (jRadioButtonCelular.isSelected() == true) {
             jFormattedTextFieldCel.getText();
         }
     }//GEN-LAST:event_jRadioButtonCelularActionPerformed
 
     private void jRadioButtonConvencionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonConvencionalActionPerformed
 //         TODO add your handling code here:
-        if (jRadioButtonConvencional.isSelected()==true){
+        if (jRadioButtonConvencional.isSelected() == true) {
             jFormattedTextFieldConv.getText();
         }
-        
+
     }//GEN-LAST:event_jRadioButtonConvencionalActionPerformed
 
     private void jFormattedTextFieldConvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldConvActionPerformed
@@ -590,5 +514,4 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextFieldnumero;
     // End of variables declaration//GEN-END:variables
 
-  
 }

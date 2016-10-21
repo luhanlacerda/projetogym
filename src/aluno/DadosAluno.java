@@ -92,7 +92,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
         //abrindo a conexão
         conectar();
         //instrução sql correspondente a inserção do aluno
-        String sql = " select matricula, nome ";
+        String sql = " select alu_matricula, alu_datamatricula, alu_nome, alu_nascimento, alu_altura, alu_peso, alu_endereco, alu_telefone, alu_Rg, alu_Cpf";
         sql += " from aluno where matricula > 0 ";
         if (filtro.getMatricula() > 0) {
             sql += " and matricula = ?";
