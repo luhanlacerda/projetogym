@@ -17,9 +17,6 @@ public class NegocioAluno implements InterfaceAluno {
     public void cadastrar(Aluno a) throws Exception {
 
         //Validações
-        if (a.getMatricula() <= 0) {
-            throw new Exception("A matricula deverá ser superior a zero");
-        }
         if (a.getNome().trim().equals("") == true) {
             throw new Exception("Informar o nome do aluno");
         }
@@ -29,19 +26,7 @@ public class NegocioAluno implements InterfaceAluno {
         if (a.getNome().trim().length() > 100) {
             throw new Exception("O nome do aluno não poderá ter mais de 100 caracteres");
         }
-        if (a.getAltura() <= 0) {
-            throw new Exception("A altura é inválida");
-        }
-        if (a.getCpf().trim().length() < 11) {
-            throw new Exception("Número de CPF inválido");
-        }
-        if (a.getCpf().trim().length() > 11) {
-            throw new Exception("Número de CPF inválido");
-        }
-        if (a.getContato().trim().length() < 14) {
-            throw new Exception("Número de telefone inválido");
-        }
-        if (a.getDtmatricula().trim().equals("")) {
+        if (a.getDtmatricula().trim().equals("") == true) {
             throw new Exception("Informar data da matrícula");
         }
         if (a.getDtmatricula() == null) {
@@ -49,6 +34,27 @@ public class NegocioAluno implements InterfaceAluno {
         }
         if (a.getDtmatricula().trim().length() <= 0){
             throw new Exception("Informar data da matrícula");
+        }
+        if (a.getAltura() <= 0) {
+            throw new Exception("A altura é inválida");
+        }
+        if (a.getPeso() <= 0) {
+            throw new Exception("Informar peso");
+        }
+        if (a.getCpf().trim().length() < 11) {
+            throw new Exception("Número de CPF inválido");
+        }
+        if (a.getRg().trim().equals("") == true) {
+            throw new Exception("Informar RG");
+        }
+        if (a.getRg() == null) {
+            throw new Exception("Informar RG");
+        }
+        if (a.getCpf().trim().length() > 11) {
+            throw new Exception("Número de CPF inválido");
+        }
+        if (a.getContato().trim().length() < 14) {
+            throw new Exception("Número de telefone inválido");
         }
         if (a.getDtnascimento().trim().equals("")) {
             throw new Exception("Informar data de nascimento");
@@ -64,15 +70,6 @@ public class NegocioAluno implements InterfaceAluno {
         }
         if (a.getEndereco() == null) {
             throw new Exception("Informar endereço");
-        }
-        if (a.getPeso() <= 0) {
-            throw new Exception("Informar peso");
-        }
-        if (a.getRg().trim().equals("")) {
-            throw new Exception("Informar RG");
-        }
-        if (a.getRg() == null) {
-            throw new Exception("Informar RG");
         }
         //Cadastrando
         DadosAluno d = new DadosAluno();
