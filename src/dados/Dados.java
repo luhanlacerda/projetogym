@@ -29,9 +29,9 @@ public class Dados {
 
     private Statement conectarSqlServer() throws ClassNotFoundException, SQLException {
         String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        String url = "jdbc:sqlserver://LUHAN:1433;DatabaseName=ProjetoAcademia";
-        String usuario = "Luhan";
-        String senha = "123456";
+        String url = "jdbc:sqlserver://LUHAN-PC:1433;DatabaseName=ProjetoAcademia";
+        String usuario = "sa";
+        String senha = "123";
         Class.forName(driver);
         //obtem uma conexao com o sgbd
         conn = DriverManager.getConnection(url, usuario, senha);
