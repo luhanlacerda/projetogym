@@ -20,7 +20,7 @@ public class Dados {
 
     public Statement conectar() throws ClassNotFoundException, SQLException {
         //return this.conectarSqlServer();
-        return this.conectarMySql();
+        return this.conectarSqlServer();
     }
 
     public void desconectar() throws SQLException {
