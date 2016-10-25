@@ -94,4 +94,10 @@ public class NegocioAluno implements InterfaceAluno {
         return d.listar(filtro);
     }
 
+    @Override
+    public boolean verificaExistencia(Aluno a) throws Exception {
+        DadosAluno d = new DadosAluno();
+         return d.verificaExistencia(a);
+    }
+
 }

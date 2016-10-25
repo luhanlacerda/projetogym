@@ -22,6 +22,7 @@ public interface InterfaceAluno {
     void remover(Aluno a) throws Exception;
     //devolver os alunos que se encaixarem no filtro da pesquisa 
     ArrayList<Aluno> listar(Aluno filtro) throws Exception; 
-    //demais acoes...
+    //verificar se uma determinada matricula está contida na tabela aluno
+    boolean verificaExistencia(Aluno a) throws Exception;
     
 }

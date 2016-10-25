@@ -87,7 +87,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
 
     @Override
     public ArrayList<Aluno> listar(Aluno filtro) throws Exception {
-    int posPar = 1;
+        int posPar = 1;
         ArrayList<Aluno> retorno = new ArrayList<>();
         //abrindo a conexão
         conectar();
@@ -107,7 +107,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
                 cmd.setInt(posPar, filtro.getMatricula());
                 posPar++;
             }
-            if (filtro.getNome().trim().equals("") == false) {
+            if (filtro.getNome() != null && filtro.getNome().trim().equals("") == false) {
                 cmd.setString(posPar, filtro.getNome());
                 posPar++;
             }
@@ -124,6 +124,31 @@ public class DadosAluno extends Dados implements InterfaceAluno {
             throw new Exception("Erro ao executar inserÃ§Ã£o: " + e.getMessage());
         }
         //fechando a conexão com o banco de dados
+        desconectar();
+        return retorno;
+    }
+
+    @Override
+    public boolean verificaExistencia(Aluno a) throws Exception {
+        boolean retorno = false;
+        //abrindo a conexão
+        conectar();
+        //instruçãoo sql correspondente a inserção do aluno
+        String sql = " select matricula, nome ";
+        sql += " from aluno where matricula = ? ";
+        try {
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            cmd.setInt(1, a.getMatricula());
+            ResultSet leitor = cmd.executeQuery();
+            while (leitor.next()) {
+                retorno = true;
+                break;
+            }
+        } catch (SQLException e) {
+            //caso haja algum erro neste método será levantada esta execeção
+            throw new Exception("Erro ao executar inserÃ§Ã£o: " + e.getMessage());
+        }
+        //fechando a conexÃ£o com o banco de dados
         desconectar();
         return retorno;
     }
