@@ -20,7 +20,7 @@ public class Dados {
 
     public Statement conectar() throws ClassNotFoundException, SQLException {
         //return this.conectarSqlServer();
-        return this.conectarSqlServer();
+        return this.conectarMySql();
     }
 
     public void desconectar() throws SQLException {
@@ -38,20 +38,7 @@ public class Dados {
         stmt = conn.createStatement();
         return stmt;
     }
-        private Statement conectarPostGreSql() throws ClassNotFoundException, SQLException {
-        Class.forName("org.postgresql.Driver");
-        String local = "localhost";
-        String banco = "ProjetoAcademia";
-        String usuario = "postgres";
-        String senha = "123";
-        conn = DriverManager.getConnection("jdbc:postgresql://"
-                + local + "/" + banco
-                + "?charSet=LATIN1", usuario,
-                senha);
-        //stmt = conn.createStatement();
-        return conn.createStatement();
-        //return stmt;
-    }
+
         private Statement conectarMySql() throws ClassNotFoundException, SQLException {
         try {
 
