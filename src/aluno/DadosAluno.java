@@ -33,7 +33,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
             cmd.setString(4, a.getDtnascimento());
             cmd.setFloat(5, a.getAltura());
             cmd.setFloat(6, a.getPeso());
-            cmd.setString(7, a.getEndereco());
+            cmd.setString(7, a.getEndereco().toString());
             cmd.setString(8, a.getContato());
             cmd.setString(9, a.getRg());
             cmd.setString(10, a.getCpf());
@@ -121,7 +121,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
             }
         } catch (SQLException e) {
             //caso haja algum erro neste método será levantada esta execeção
-            throw new Exception("Erro ao executar inserÃ§Ã£o: " + e.getMessage());
+            throw new Exception("Erro ao executar inserção: " + e.getMessage());
         }
         //fechando a conexão com o banco de dados
         desconectar();
@@ -133,7 +133,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
         boolean retorno = false;
         //abrindo a conexão
         conectar();
-        //instruçãoo sql correspondente a inserção do aluno
+        //instrução sql correspondente a inserção do aluno
         String sql = " select matricula, nome ";
         sql += " from aluno where matricula = ? ";
         try {
@@ -146,7 +146,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
             }
         } catch (SQLException e) {
             //caso haja algum erro neste método será levantada esta execeção
-            throw new Exception("Erro ao executar inserÃ§Ã£o: " + e.getMessage());
+            throw new Exception("Erro ao executar inserção: " + e.getMessage());
         }
         //fechando a conexÃ£o com o banco de dados
         desconectar();

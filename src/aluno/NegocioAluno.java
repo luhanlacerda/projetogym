@@ -32,7 +32,7 @@ public class NegocioAluno implements InterfaceAluno {
         if (a.getDtmatricula() == null) {
             throw new Exception("Informar data da matrícula");
         }
-        if (a.getDtmatricula().trim().length() <= 0){
+        if (a.getDtmatricula().trim().length() <= 0) {
             throw new Exception("Informar data da matrícula");
         }
         if (a.getAltura() <= 0) {
@@ -62,14 +62,50 @@ public class NegocioAluno implements InterfaceAluno {
         if (a.getDtnascimento() == null) {
             throw new Exception("Informar data de nascimento");
         }
-        if(a.getDtnascimento().trim().length() <= 0){
+        if (a.getDtnascimento().trim().length() <= 0) {
             throw new Exception("Informar data de nascimento");
         }
-        if (a.getEndereco().trim().equals("")) {
-            throw new Exception("Informar endereço");
+        if (a.getEndereco().getLogradouro().trim().equals("")) {
+            throw new Exception("Informar nome da rua");
         }
-        if (a.getEndereco() == null) {
-            throw new Exception("Informar endereço");
+        if (a.getEndereco().getLogradouro() == null) {
+            throw new Exception("Informar nome da rua");
+        }
+        if (a.getEndereco().getNumero().trim().equals("")) {
+            throw new Exception("Informar número da residência");
+        }
+        if (a.getEndereco().getNumero() == null) {
+            throw new Exception("Informar número da residência");
+        }
+        if (a.getEndereco().getComplemento().trim().equals("")) {
+            throw new Exception("Informar número da residência");
+        }
+        if (a.getEndereco().getComplemento() == null) {
+            throw new Exception("Informar número da residência");
+        }
+        if (a.getEndereco().getCep().trim().equals("")) {
+            throw new Exception("Informar número do CEP");
+        }
+        if (a.getEndereco().getCep() == null) {
+            throw new Exception("Informar número do CEP");
+        }
+        if (a.getEndereco().getCidade().trim().equals("")) {
+            throw new Exception("Informar nome da cidade");
+        }
+        if (a.getEndereco().getCidade() == null) {
+            throw new Exception("Informar nome da cidade");
+        }
+        if (a.getEndereco().getUf().trim().equals("")) {
+            throw new Exception("Informar nome da UF(Estado)");
+        }
+        if (a.getEndereco().getUf() == null) {
+            throw new Exception("Informar nome da UF(Estado)");
+        }
+        if (a.getEndereco().getPais().trim().equals("")) {
+            throw new Exception("Informar nome do país");
+        }
+        if (a.getEndereco().getPais() == null) {
+            throw new Exception("Informar nome do país");
         }
         //Cadastrando
         DadosAluno d = new DadosAluno();
@@ -97,7 +133,7 @@ public class NegocioAluno implements InterfaceAluno {
     @Override
     public boolean verificaExistencia(Aluno a) throws Exception {
         DadosAluno d = new DadosAluno();
-         return d.verificaExistencia(a);
+        return d.verificaExistencia(a);
     }
 
 }

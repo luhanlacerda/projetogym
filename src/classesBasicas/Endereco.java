@@ -20,20 +20,6 @@ public class Endereco {
     private String cep;
     private String pais;
 
-    public Endereco (){
-        
-    }
-    
-    public Endereco(String logradouro, String numero, String complemento, String bairro, String cidade, String uf, String cep, String pais) {
-        this.logradouro = logradouro;
-        this.numero = numero;
-        this.complemento = complemento;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.uf = uf;
-        this.cep = cep;
-        this.pais = pais;
-    }
 
     public String getLogradouro() {
         return logradouro;
@@ -99,4 +85,16 @@ public class Endereco {
         this.pais = pais;
     }
     
+    public String toString(){
+        String retorno = "";
+        retorno = "Rua: " + this.getLogradouro() + ", ";
+        retorno += "Número: " + this.getNumero() + ", ";
+        retorno += "Complemento: " + this.getComplemento() + ", ";
+        retorno += "CEP: " + this.getCep() + ", ";
+        retorno += "Bairro: " + this.getBairro() + ", ";
+        retorno += "Cidade: " + this.getCidade() + ", ";
+        retorno += "UF: " + this.getUf() + ", ";
+        retorno += "País: " + this.getPais() + ", ";
+        return retorno;
+    }
 }

@@ -400,8 +400,16 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
             aluno.setNome(jTextFieldNome.getText());
             aluno.setRg(jTextFieldRg.getText());
             aluno.setCpf(jTextFieldCpf.getText());
-            aluno.setEndereco(jTextFieldLogradouro.getText() + ", " + jTextFieldnumero.getText() + ", " + jTextFieldComplemento.getText() + ", " + jTextFieldBairro.getText()
-                    + ", " + jTextFieldCep.getText() + ", " + jTextFieldCidade.getText() + ", " + jTextFieldUf.getText() + ", " + jTextFieldPais.getText());
+            //aluno.setEndereco(jTextFieldLogradouro.getText() + ", " + jTextFieldnumero.getText() + ", " + jTextFieldComplemento.getText() + ", " + jTextFieldBairro.getText()
+            //        + ", " + jTextFieldCep.getText() + ", " + jTextFieldCidade.getText() + ", " + jTextFieldUf.getText() + ", " + jTextFieldPais.getText());
+            aluno.getEndereco().setLogradouro(jTextFieldLogradouro.getText());
+            aluno.getEndereco().setNumero(jTextFieldnumero.getText());
+            aluno.getEndereco().setComplemento(jTextFieldComplemento.getText());
+            aluno.getEndereco().setCep(jTextFieldCep.getText());
+            aluno.getEndereco().setBairro(jTextFieldBairro.getText());
+            aluno.getEndereco().setCidade(jTextFieldCidade.getText());
+            aluno.getEndereco().setUf(jTextFieldUf.getText());
+            aluno.getEndereco().setPais(jTextFieldPais.getText());
             aluno.setContato(jFormattedTextFieldCel.getText());
             aluno.setDtnascimento(jFormattedTextFieldDataNascimento.getText());
             aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));

@@ -5,6 +5,8 @@
  */
 package conexaoBD;
 
+import aluno.Aluno;
+import aluno.NegocioAluno;
 import dados.Dados;
 import javax.swing.JOptionPane;
 
@@ -20,13 +22,35 @@ public class ConexaoBD {
     public static void main(String[] args) {
         // TODO code application logic here
         try {
+            /*
             Dados d = new Dados();
             d.conectar();
             d.desconectar();
             JOptionPane.showMessageDialog(null, "Banco de dados conectado com sucesso!");
+             */
+            Aluno a = new Aluno();
+            a.setNome("Mago");
+            a.setMatricula(2);
+            a.setDtmatricula("25/10/2016");
+            a.setAltura((float) 1.80);
+            a.setPeso(83);
+            a.getEndereco().setLogradouro("Rua 01");
+            a.getEndereco().setNumero("10");
+            a.getEndereco().setComplemento("Ap 01");
+            a.getEndereco().setCep("01234567");
+            a.getEndereco().setBairro("Casa Forte");
+            a.getEndereco().setCidade("Hellcife");
+            a.getEndereco().setUf("Pernambuco");
+            a.getEndereco().setPais("Brasil");
+            a.setRg("123456");
+            a.setCpf("01234567890");
+            a.setContato("(81)9.9999-9999");
+            a.setDtnascimento("01/01/2001");
+            NegocioAluno n = new NegocioAluno();
+            n.cadastrar(a);
+            JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
 }
-    
