@@ -28,7 +28,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
             //executando a instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
             cmd.setInt(1, a.getMatricula());
-            cmd.setString(2, a.getDtmatricula());
+            cmd.setDate(2, a.getDtmatricula());
             cmd.setString(3, a.getNome());
             cmd.setString(4, a.getDtnascimento());
             cmd.setFloat(5, a.getAltura());

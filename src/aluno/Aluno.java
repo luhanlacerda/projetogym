@@ -6,6 +6,7 @@
 package aluno;
 
 import classesBasicas.Pessoa;
+import java.sql.Date;
 
 /**
  *
@@ -15,7 +16,7 @@ import classesBasicas.Pessoa;
 public class Aluno extends Pessoa {
     
     private int matricula;
-    private String dtmatricula;
+    private Date dtmatricula;
     private float altura;
     private float peso;
 
@@ -27,12 +28,12 @@ public class Aluno extends Pessoa {
         this.matricula = matricula;
     }
 
-    public String getDtmatricula() {
+    public Date getDtmatricula() {
         return dtmatricula;
     }
 
     public void setDtmatricula(String dtmatricula) {
-        this.dtmatricula = dtmatricula;
+        this.dtmatricula = (Date) new java.util.Date(dtmatricula);
     }
 
     public float getAltura() {

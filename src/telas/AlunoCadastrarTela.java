@@ -8,7 +8,7 @@ package telas;
 import aluno.Aluno;
 import aluno.NegocioAluno;
 import classesBasicas.CaracterPermitido;
-import java.sql.Date;
+import java.util.Date;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;

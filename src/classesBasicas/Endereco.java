@@ -85,6 +85,7 @@ public class Endereco {
         this.pais = pais;
     }
     
+    @Override
     public String toString(){
         String retorno = "";
         retorno = "Rua: " + this.getLogradouro() + ", ";
