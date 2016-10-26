@@ -55,8 +55,8 @@ public class DadosAluno extends Dados implements InterfaceAluno {
         try {
             //executando a instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
-            cmd.setInt(1, a.getMatricula());
-            cmd.setString(2, a.getNome());
+            cmd.setString(1, a.getNome());
+            cmd.setInt(2, a.getMatricula());
             cmd.execute();
         } catch (SQLException e) {
             //caso haja algum erro neste método será¡ levantada esta execeção

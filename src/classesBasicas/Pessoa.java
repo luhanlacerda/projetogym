@@ -14,14 +14,8 @@ public abstract class Pessoa {
    private String nome;
    private String rg;
    private String cpf;
-   //private String endereco;
-   private Endereco endereco;
    private String contato;
    private String dtnascimento;
-
-   public Pessoa(){
-       this.endereco = new Endereco();
-  }
 
     public String getNome() {
         return nome;
@@ -46,24 +40,7 @@ public abstract class Pessoa {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
     
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-    /*
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-    */
     public String getContato() {
         return contato;
     }

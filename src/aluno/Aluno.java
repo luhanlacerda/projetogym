@@ -5,6 +5,7 @@
  */
 package aluno;
 
+import classesBasicas.Endereco;
 import classesBasicas.Pessoa;
 import java.sql.Date;
 
@@ -12,14 +13,18 @@ import java.sql.Date;
  *
  * @author Luhan
  */
-
 public class Aluno extends Pessoa {
-    
+
     private int matricula;
     private Date dtmatricula;
     private float altura;
     private float peso;
+    private Endereco endereco;
 
+    public Aluno(){
+        this.endereco = new Endereco();
+    }
+    
     public int getMatricula() {
         return matricula;
     }
@@ -52,6 +57,12 @@ public class Aluno extends Pessoa {
         this.peso = peso;
     }
 
+        public Endereco getEndereco() {
+        return endereco;
+    }
 
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 
 }

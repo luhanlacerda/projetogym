@@ -22,12 +22,12 @@ public class ConexaoBD {
     public static void main(String[] args) {
         // TODO code application logic here
         try {
-            /*
+            
             Dados d = new Dados();
             d.conectar();
             d.desconectar();
             JOptionPane.showMessageDialog(null, "Banco de dados conectado com sucesso!");
-            */ 
+            
             /*
             Aluno a = new Aluno();
             a.setNome("Mago");

@@ -20,7 +20,6 @@ public class Endereco {
     private String cep;
     private String pais;
 
-
     public String getLogradouro() {
         return logradouro;
     }
