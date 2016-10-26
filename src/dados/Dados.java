@@ -29,7 +29,7 @@ public class Dados {
 
     private Statement conectarSqlServer() throws ClassNotFoundException, SQLException {
         String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        String url = "jdbc:sqlserver://LUHAN-PC:1433;DatabaseName=ProjetoAcademia";
+        String url = "jdbc:sqlserver://localhost:1433;DatabaseName=ProjetoAcademia";
         String usuario = "sa";
         String senha = "123";
         Class.forName(driver);

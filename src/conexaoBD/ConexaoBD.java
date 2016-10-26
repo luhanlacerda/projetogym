@@ -27,7 +27,8 @@ public class ConexaoBD {
             d.conectar();
             d.desconectar();
             JOptionPane.showMessageDialog(null, "Banco de dados conectado com sucesso!");
-             */
+            */ 
+            /*
             Aluno a = new Aluno();
             a.setNome("Mago");
             a.setMatricula(2);
@@ -49,6 +50,7 @@ public class ConexaoBD {
             NegocioAluno n = new NegocioAluno();
             n.cadastrar(a);
             JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso!");
+            */
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
