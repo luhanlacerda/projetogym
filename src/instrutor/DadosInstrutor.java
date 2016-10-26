@@ -22,7 +22,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         conectar();
         //instruçãoo sql correspondente a inserção do aluno
         String sql = "INSERT INTO instrutor (ins_matricula, ins_rg, ins_cpf, ins_nome, ins_nascimento, ins_telefone)";
-        sql += "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        sql += "VALUES (?, ?, ?, ?, ?, ?)";
         try {
             //executando a instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
@@ -30,7 +30,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
             cmd.setString(2, instrutor.getRg());
             cmd.setString(3, instrutor.getCpf());
             cmd.setString(4, instrutor.getNome());
-            cmd.setString(5, instrutor.getDtnascimento());
+            cmd.setDate(5, instrutor.getDtnascimento());
             cmd.setString(6, instrutor.getContato());
             cmd.execute();
         } catch (SQLException e) {

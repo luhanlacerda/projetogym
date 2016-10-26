@@ -60,13 +60,7 @@ public class NegocioAluno implements InterfaceAluno {
         if (a.getContato().trim().length() < 14) {
             throw new Exception("Número de telefone inválido");
         }
-        if (a.getDtnascimento().trim().equals("")) {
-            throw new Exception("Informar data de nascimento");
-        }
         if (a.getDtnascimento() == null) {
-            throw new Exception("Informar data de nascimento");
-        }
-        if (a.getDtnascimento().trim().length() <= 0) {
             throw new Exception("Informar data de nascimento");
         }
         if (a.getEndereco().getLogradouro().trim().equals("")) {

@@ -8,6 +8,8 @@ package conexaoBD;
 import aluno.Aluno;
 import aluno.NegocioAluno;
 import dados.Dados;
+import instrutor.Instrutor;
+import instrutor.NegocioInstrutor;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,11 +24,23 @@ public class ConexaoBD {
     public static void main(String[] args) {
         // TODO code application logic here
         try {
-            
+            /*
             Dados d = new Dados();
             d.conectar();
             d.desconectar();
             JOptionPane.showMessageDialog(null, "Banco de dados conectado com sucesso!");
+            */
+            
+            Instrutor instrutor = new Instrutor();
+            instrutor.setMatricula(1);
+            instrutor.setRg("123456");
+            instrutor.setCpf("012.345.678-90");
+            instrutor.setNome("Anderson");
+            instrutor.setDtnascimento("02/02/1991");
+            instrutor.setContato("(81)9.8888-8888");
+            NegocioInstrutor negocioinstrutor = new NegocioInstrutor();
+            negocioinstrutor.cadastrar(instrutor);
+            JOptionPane.showMessageDialog(null, "Instutor cadastrado com sucesso!");
             
             /*
             Aluno a = new Aluno();

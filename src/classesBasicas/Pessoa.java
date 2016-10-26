@@ -5,6 +5,8 @@
  */
 package classesBasicas;
 
+import java.sql.Date;
+
 
 /**
  *
@@ -15,7 +17,7 @@ public abstract class Pessoa {
    private String rg;
    private String cpf;
    private String contato;
-   private String dtnascimento;
+   private Date dtnascimento;
 
     public String getNome() {
         return nome;
@@ -49,12 +51,12 @@ public abstract class Pessoa {
         this.contato = contato;
     }
 
-    public String getDtnascimento() {
+    public Date getDtnascimento() {
         return dtnascimento;
     }
 
     public void setDtnascimento(String dtnascimento) {
-        this.dtnascimento = dtnascimento;
+        this.dtnascimento = new Date(new java.util.Date(dtnascimento).getTime());
     }
 
 }

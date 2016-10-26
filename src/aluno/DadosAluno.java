@@ -30,7 +30,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
             cmd.setInt(1, a.getMatricula());
             cmd.setDate(2, a.getDtmatricula());
             cmd.setString(3, a.getNome());
-            cmd.setString(4, a.getDtnascimento());
+            cmd.setDate(4, a.getDtnascimento());
             cmd.setFloat(5, a.getAltura());
             cmd.setFloat(6, a.getPeso());
             cmd.setString(7, a.getEndereco().toString());
