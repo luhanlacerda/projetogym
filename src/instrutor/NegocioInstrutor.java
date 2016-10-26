@@ -15,9 +15,11 @@ public class NegocioInstrutor implements InterfaceInstrutor {
 
     @Override
     public void cadastrar(Instrutor i) throws Exception {
+        /*
         if(i.getMatricula() <= 0){
         throw new Exception("Matrícula inválida");
         }
+        */
         if(i.getRg() == null || i.getRg().trim().equals("")){
             throw new Exception("Número de RG inválido");
         }
@@ -34,28 +36,32 @@ public class NegocioInstrutor implements InterfaceInstrutor {
             throw new Exception("Informar número de contato");
         }
         //Cadastrando
-        DadosInstrutor dadosinstrutor = new DadosInstrutor();
-        dadosinstrutor.cadastrar(i);
+        DadosInstrutor d = new DadosInstrutor();
+        d.cadastrar(i);
     }
 
     @Override
     public void atualizar(Instrutor i) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DadosInstrutor d = new DadosInstrutor();
+        d.atualizar(i);
     }
 
     @Override
     public void remover(Instrutor i) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DadosInstrutor d = new DadosInstrutor();
+        d.remover(i);
     }
 
     @Override
     public ArrayList<Instrutor> listar(Instrutor filtro) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DadosInstrutor d = new DadosInstrutor();
+        return d.listar(filtro);
     }
 
     @Override
     public boolean verificarExistencia(Instrutor i) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DadosInstrutor d = new DadosInstrutor();
+        return d.verificarExistencia(i);
     }
 
 }

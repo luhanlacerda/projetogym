@@ -17,48 +17,52 @@ import java.util.ArrayList;
 public class DadosInstrutor extends Dados implements InterfaceInstrutor {
 
     @Override
-    public void cadastrar(Instrutor instrutor) throws Exception {
-      //abrindo a conexao
+    public void cadastrar(Instrutor i) throws Exception {
+        //abrindo a conexao
         conectar();
         //instruçãoo sql correspondente a inserção do aluno
-        String sql = "INSERT INTO instrutor (ins_matricula, ins_rg, ins_cpf, ins_nome, ins_nascimento, ins_telefone)";
+        String sql = "INSERT INTO Instrutor (Ins_Matricula, Ins_Rg, Ins_Cpf, Ins_Nome, Ins_Nascimento, Ins_Telefone)";
         sql += "VALUES (?, ?, ?, ?, ?, ?)";
         try {
             //executando a instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
-            cmd.setInt(1, instrutor.getMatricula());
-            cmd.setString(2, instrutor.getRg());
-            cmd.setString(3, instrutor.getCpf());
-            cmd.setString(4, instrutor.getNome());
-            cmd.setDate(5, instrutor.getDtnascimento());
-            cmd.setString(6, instrutor.getContato());
+            cmd.setInt(1, i.getMatricula());
+            cmd.setString(2, i.getRg());
+            cmd.setString(3, i.getCpf());
+            cmd.setString(4, i.getNome());
+            cmd.setDate(5, i.getDtnascimento());
+            cmd.setString(6, i.getContato());
             cmd.execute();
         } catch (SQLException e) {
-            //caso haja algum erro neste método será¡ levantada esta execeção
+            //caso haja algum erro neste método será levantada esta execeção
             throw new Exception("Erro ao executar inserção: " + e.getMessage());
         }
         //fechando a conexão com o banco de dados
-        desconectar(); 
+        desconectar();
     }
 
     @Override
-    public void atualizar(Instrutor instrutor) throws Exception {
-          //abrindo a conexao
+    public void atualizar(Instrutor i) throws Exception {
+        //abrindo a conexao
         conectar();
-        //instruçãoo sql correspondente a inserção do aluno
-        String sql = "UPDATE instrutor SET nome = ? WHERE matricula = ?;";
+        //instrução sql correspondente a inserção do aluno
+        String sql = "UPDATE Instrutor SET Ins_Rg = ?, Ins_Cpf = ?, Ins_Nome = ?, Ins_Nascimento = ?, Ins_Telefone = ? WHERE Ins_Matricula = ?;";
         try {
             //executando a instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
-            cmd.setString(1, instrutor.getNome());
-            cmd.setInt(2, instrutor.getMatricula());
+            cmd.setString(1, i.getRg());
+            cmd.setString(2, i.getCpf());
+            cmd.setString(3, i.getNome());
+            cmd.setDate(4, i.getDtnascimento());
+            cmd.setString(5, i.getContato());
+            cmd.setInt(6, i.getMatricula());
             cmd.execute();
         } catch (SQLException e) {
             //caso haja algum erro neste método será levantada esta execeção
             throw new Exception("Erro ao executar atualização: " + e.getMessage());
         }
         //fechando a conexão com o banco de dados
-        desconectar();   
+        desconectar();
     }
 
     @Override
@@ -75,5 +79,5 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
     public boolean verificarExistencia(Instrutor i) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

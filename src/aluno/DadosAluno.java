@@ -21,7 +21,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
     public void cadastrar(Aluno a) throws Exception {
         //abrindo a conexao
         conectar();
-        //instruçãoo sql correspondente a inserção do aluno
+        //instrução sql correspondente a inserção do aluno
         String sql = "INSERT INTO aluno (alu_matricula, alu_datamatricula, alu_nome, alu_nascimento, alu_altura, alu_peso, alu_endereco, alu_telefone, alu_Rg, alu_Cpf)";
         sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
@@ -39,7 +39,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
             cmd.setString(10, a.getCpf());
             cmd.execute();
         } catch (SQLException e) {
-            //caso haja algum erro neste método será¡ levantada esta execeção
+            //caso haja algum erro neste método será levantada esta execeção
             throw new Exception("Erro ao executar inserção: " + e.getMessage());
         }
         //fechando a conexão com o banco de dados
