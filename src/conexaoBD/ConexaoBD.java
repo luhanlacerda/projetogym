@@ -31,22 +31,20 @@ public class ConexaoBD {
             JOptionPane.showMessageDialog(null, "Banco de dados conectado com sucesso!");
              */
 
-            /* 
-            //DANDO ERRO
+            /*
             Instrutor instrutor = new Instrutor();
-            //instrutor.setMatricula(1);
+            NegocioInstrutor n = new NegocioInstrutor();
+            instrutor.setMatricula(n.pegarMatricula());
             instrutor.setRg("123456");
             instrutor.setCpf("012.345.678-90");
             instrutor.setNome("Anderson");
             instrutor.setDtnascimento("02/02/1991");
             instrutor.setContato("(81)9.8888-8888");
-            NegocioInstrutor n = new NegocioInstrutor();
             n.cadastrar(instrutor);
             JOptionPane.showMessageDialog(null, "Instrutor cadastrado com sucesso!");
-            */ 
-             
+            */
+            
             /*
-            //DANDO ERRO
             Instrutor instrutor = new Instrutor();
             instrutor.setMatricula(1);
             instrutor.setRg("123456");
