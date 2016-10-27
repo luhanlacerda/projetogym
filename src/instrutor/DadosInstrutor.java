@@ -73,7 +73,49 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
 
     @Override
     public ArrayList<Instrutor> listar(Instrutor filtro) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int posPar = 1;
+        ArrayList<Instrutor> retorno = new ArrayList<>();
+        //abrindo a conexÃ£o
+        conectar();
+        //instruçãoo sql correspondente a inserÃ§Ã£o do aluno
+        String sql = " SELECT Ins_Matricula, Ins_Rg, Ins_Cpf, Ins_Nome, Ins_Nascimento, Ins_Telefone ";
+        sql += " FROM Instrutor WHERE Ins_Matricula > 0 ";
+        if (filtro.getMatricula() > 0) {
+            sql += " AND Ins_Matricula = ?";
+        }
+        if (filtro.getNome() != null && filtro.getNome().trim().equals("") == false) {
+            sql += " AND Ins_Nome LIKE ? ";
+        }
+        try {
+            //executando a instrução sql
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            if (filtro.getMatricula() > 0) {
+                cmd.setInt(posPar, filtro.getMatricula());
+                posPar++;
+            }
+            if (filtro.getNome() != null && filtro.getNome().trim().equals("") == false) {
+                cmd.setString(posPar, filtro.getNome());
+                posPar++;
+            }
+            //
+            ResultSet leitor = cmd.executeQuery();
+            while (leitor.next()) {
+                Instrutor i = new Instrutor();
+                i.setMatricula(leitor.getInt("Matrícula"));
+                i.setRg(leitor.getString("Rg"));
+                i.setCpf(leitor.getString("CPF"));
+                i.setNome(leitor.getString("Nome"));
+                //i.setDtnascimento(leitor.getDate("Data Nascimento"));
+                i.setContato(leitor.getString("Contato"));
+                retorno.add(i);
+                     }
+        } catch (SQLException e) {
+            //caso haja algum erro neste mÃ©todo serÃ¡ levantada esta execeÃ§Ã£o
+            throw new Exception("Erro ao executar inserÃ§Ã£o: " + e.getMessage());
+        }
+        //fechando a conexÃ£o com o banco de dados
+        desconectar();
+        return retorno;
     }
 
     @Override

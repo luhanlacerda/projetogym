@@ -36,7 +36,7 @@ public class ConexaoBD {
             NegocioInstrutor n = new NegocioInstrutor();
             instrutor.setMatricula(n.pegarMatricula());
             instrutor.setRg("123456");
-            instrutor.setCpf("012.345.678-90");
+            instrutor.setCpf("013.345.678-90");
             instrutor.setNome("Anderson");
             instrutor.setDtnascimento("02/02/1991");
             instrutor.setContato("(81)9.8888-8888");
@@ -46,17 +46,17 @@ public class ConexaoBD {
             
             /*
             Instrutor instrutor = new Instrutor();
-            instrutor.setMatricula(1);
-            instrutor.setRg("123456");
-            instrutor.setCpf("012.345.678-90");
-            instrutor.setNome("Anderson");
-            instrutor.setDtnascimento("02/02/1991");
-            instrutor.setContato("(81)9.8888-8888");
+            instrutor.setMatricula(2);
+            instrutor.setRg("6543210");
+            instrutor.setCpf("987.654.321-00");
+            instrutor.setNome("Juriscleide");
+            instrutor.setDtnascimento("02/02/2002");
+            instrutor.setContato("(81)9.9999-9999");
             NegocioInstrutor n = new NegocioInstrutor();
             n.atualizar(instrutor);
             JOptionPane.showMessageDialog(null, "Instrutor atualizado com sucesso!");
-            */ 
-             
+            */
+                         
             /*
             Aluno a = new Aluno();
             a.setNome("Mago");
