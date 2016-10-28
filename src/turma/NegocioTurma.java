@@ -35,9 +35,11 @@ import java.util.ArrayList;
         }
         
         // Validando matrícicula do instrutor em turma
-       if (t.getInstrutor().trim().equals("") == true) {
+       /*
+        if (t.getInstrutor().trim().equals("") == true) {
             throw new Exception("Informar a matrícula do Instrutor");
         }
+*/
         if (t.getInstrutor()== null) {
             throw new Exception("Informar a matrícula do Instrutor");
         }
@@ -111,9 +113,11 @@ import java.util.ArrayList;
         }
         
         // Validando matrícicula do instrutor em turma
-       if (t.getInstrutor().trim().equals("") == true) {
+       /*
+        if (t.getInstrutor().trim().equals("") == true) {
             throw new Exception("Informar a matrícula do Instrutor");
         }
+*/
         if (t.getInstrutor()== null) {
             throw new Exception("Informar a matrícula do Instrutor");
         }

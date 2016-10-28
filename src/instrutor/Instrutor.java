@@ -23,8 +23,5 @@ public class Instrutor extends Pessoa {
         this.matricula = matricula;
     }
 
-    public Object trim() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
   
 }
