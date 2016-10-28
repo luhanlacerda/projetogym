@@ -22,5 +22,9 @@ public class Instrutor extends Pessoa {
     public void setMatricula(int matricula) {
         this.matricula = matricula;
     }
+
+    public Object trim() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
   
 }

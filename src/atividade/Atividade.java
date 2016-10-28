@@ -38,5 +38,9 @@ public class Atividade {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    public Object trim() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

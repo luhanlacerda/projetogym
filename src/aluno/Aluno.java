@@ -65,4 +65,8 @@ public class Aluno extends Pessoa {
         this.endereco = endereco;
     }
 
+    public Object trim() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

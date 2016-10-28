@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author ELAINE
  */
 public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
-ArrayList<Turma> ListaTurma = new ArrayList<>();
+//ArrayList<Turma> ListaTurma = new ArrayList<>();
     
     
     /**
@@ -53,7 +53,7 @@ ArrayList<Turma> ListaTurma = new ArrayList<>();
         jFormattedTextFieldHorarioAulasInicio = new javax.swing.JFormattedTextField();
         jFormattedTextFieldHorarioAulasFinal = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jButtonCadastrar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -64,7 +64,7 @@ ArrayList<Turma> ListaTurma = new ArrayList<>();
 
         jLabel2.setText("Número de Alunos:");
 
-        jLabel3.setText("Horário de Aulas:");
+        jLabel3.setText("Horário da Aula:");
 
         jLabel4.setText("Duração Aula:");
 
@@ -110,10 +110,10 @@ ArrayList<Turma> ListaTurma = new ArrayList<>();
 
         jLabel10.setText("ás");
 
-        jButton2.setText("Cadastrar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCadastrar.setText("Cadastrar");
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonCadastrarActionPerformed(evt);
             }
         });
 
@@ -170,7 +170,7 @@ ArrayList<Turma> ListaTurma = new ArrayList<>();
                 .addContainerGap(84, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jButtonCadastrar)
                 .addGap(45, 45, 45))
         );
 
@@ -223,7 +223,7 @@ ArrayList<Turma> ListaTurma = new ArrayList<>();
                     .addComponent(jFormattedTextFieldDtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jButtonCadastrar)
                 .addGap(24, 24, 24))
         );
 
@@ -247,8 +247,11 @@ ArrayList<Turma> ListaTurma = new ArrayList<>();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         // TODO add your handling code here:
+        
+       
+        /*
         
         if (jTextFieldCodTur.getText().equals("")){
             jTextFieldCodTur.setVisible(true);
@@ -322,7 +325,7 @@ ArrayList<Turma> ListaTurma = new ArrayList<>();
             
             
         }
-        
+        */
        
         
         
@@ -330,11 +333,11 @@ ArrayList<Turma> ListaTurma = new ArrayList<>();
         
         
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JFormattedTextField jFormattedTextFieldDtFinal;
     private javax.swing.JFormattedTextField jFormattedTextFieldDtInicial;
     private javax.swing.JFormattedTextField jFormattedTextFieldDurAula;
@@ -358,9 +361,5 @@ ArrayList<Turma> ListaTurma = new ArrayList<>();
     private javax.swing.JTextField jTextFieldNumAlunos;
     // End of variables declaration//GEN-END:variables
 
-    private static class Turma {
-
-        public Turma() {
-        }
-    }
+    
 }
