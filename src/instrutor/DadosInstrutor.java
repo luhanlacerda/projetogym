@@ -119,7 +119,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
     }
 
     @Override
-    public boolean verificarExistencia(Instrutor i) throws Exception {
+    public boolean verificarExistenciaMatricula(Instrutor i) throws Exception {
         boolean retorno = false;
         //abrindo a conexão
         conectar();
@@ -168,6 +168,32 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         
         return matricula;
     } 
+
+    @Override
+    public boolean verificarExistenciaCpf(Instrutor i) throws Exception {
+        boolean retorno = false;
+        //abrindo a conexão
+        conectar();
+        //instruçãoo sql correspondente a inserção do aluno
+        String sql = " SELECT Ins_Matricula, Ins_Nome, Ins_Cpf ";
+        sql += " FROM instrutor WHERE Ins_Cpf = ? ";
+        try {
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            cmd.setString(1, i.getCpf());
+            ResultSet leitor = cmd.executeQuery();
+            while (leitor.next()) {
+                retorno = true;
+                break;
+            }
+        } catch (SQLException e) {
+            //caso haja algum erro neste método será levantada esta execeção
+            throw new Exception("Erro ao executar inserção: " + e.getMessage());
+        }
+        //fechando a conexão com o banco de dados
+        desconectar();
+        return retorno;
+    
+    }
 
 
 }

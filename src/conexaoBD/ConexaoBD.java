@@ -31,9 +31,10 @@ public class ConexaoBD {
             JOptionPane.showMessageDialog(null, "Banco de dados conectado com sucesso!");
              */
 
-            /*
+            
             Instrutor instrutor = new Instrutor();
-            instrutor.setMatricula(4);
+            
+            instrutor.setMatricula(3);
             instrutor.setRg("6543210");
             instrutor.setCpf("333.333.333-33");
             instrutor.setNome("Juriscleide");
@@ -42,7 +43,7 @@ public class ConexaoBD {
             NegocioInstrutor n = new NegocioInstrutor();
             n.cadastrar(instrutor);
             JOptionPane.showMessageDialog(null, "Instrutor atualizado com sucesso!");
-            /*
+            
             
             /*
             Instrutor instrutor = new Instrutor();

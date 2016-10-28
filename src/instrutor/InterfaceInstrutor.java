@@ -22,6 +22,8 @@ public interface InterfaceInstrutor {
     //listar os instrutores cadastrados na tabela de acordo com o filtro
     ArrayList<Instrutor> listar(Instrutor filtro) throws Exception;
     //verificar se uma determinada matricula já esta cadastrada
-    boolean verificarExistencia(Instrutor i) throws Exception;
+    boolean verificarExistenciaMatricula(Instrutor i) throws Exception;
+    //verificar se um determinado cpf já esta cadastrado
+    boolean verificarExistenciaCpf(Instrutor i) throws Exception;
     
 }

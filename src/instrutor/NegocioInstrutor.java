@@ -34,6 +34,14 @@ public class NegocioInstrutor implements InterfaceInstrutor {
         if (i.getContato().trim().equals("") || i.getContato() == null || i.getContato().trim().length() < 14) {
             throw new Exception("Informar número de contato");
         }
+        if(verificarExistenciaMatricula(i) != false){
+            throw new Exception("A matrícula informada já está cadastrada no sistema.");
+        }
+        /*
+        if(verificarExistenciaCpf(i) != false){
+            throw new Exception("O Cpf informado já está cadastrado no sistema.");
+        }
+        */
         //Cadastrando
         DadosInstrutor d = new DadosInstrutor();
         d.cadastrar(i);
@@ -58,15 +66,21 @@ public class NegocioInstrutor implements InterfaceInstrutor {
     }
 
     @Override
-    public boolean verificarExistencia(Instrutor i) throws Exception {
+    public boolean verificarExistenciaMatricula(Instrutor i) throws Exception {
         DadosInstrutor d = new DadosInstrutor();
-        return d.verificarExistencia(i);
+        return d.verificarExistenciaMatricula(i);
     }
 
+    
        
     public int pegarMatricula() throws Exception {
         DadosInstrutor d = new DadosInstrutor();
         return d.pegarMatricula();
+    }
+
+    @Override
+    public boolean verificarExistenciaCpf(Instrutor i) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
      
 }
