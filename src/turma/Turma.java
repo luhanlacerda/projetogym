@@ -8,8 +8,6 @@ package turma;
 import aluno.Aluno;
 import atividade.Atividade;
 import instrutor.Instrutor;
-import java.sql.Date;
-import java.sql.Time;
 import java.util.ArrayList;
 
 /**
@@ -23,9 +21,9 @@ public class Turma { // ver tipos para data e hora, pois esta descrito como Date
     private int codigo; 
     private ArrayList<Aluno> alunos; //Contar alunos
     private Instrutor instrutor; // ver se fica assim como esta ou assim: Instrutor matricula
-    private String duracaoaula;
-    private String horario;
-    private String dtinicial, dtfinal;
+    private String duracaoaula; // ver se fica time duracaoaula
+    private String horario;     // ver se fica time horario
+    private String dtinicial, dtfinal; //ver se fica Date
     private Aluno aluno; //ver se fica assim como esta ou assim: aluno matricula
     private Atividade atividade; // ver se fica assim como esta ou assim: Atividade codigo
 

@@ -25,7 +25,7 @@ import java.util.ArrayList;
     public void cadastrar(Turma t) throws Exception {
         //abrindo a conexao
         conectar();
-        //instruçãoo sql correspondente a inserção do aluno
+        //instruçãoo sql correspondente a inserção da turma
         String sql = "INSERT INTO turma Tur_Codigo, Tur_NumeroAlunos,Tur_HorarioAulas,Tur_DuracaoAulas,Tur_DataInicial,Tur_DataFinal,Alu_Matricula";
         sql += "VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
