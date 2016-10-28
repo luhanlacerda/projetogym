@@ -63,10 +63,10 @@ public class NegocioInstrutor implements InterfaceInstrutor {
         return d.verificarExistencia(i);
     }
 
-    /*    
+       
     public int pegarMatricula() throws Exception {
         DadosInstrutor d = new DadosInstrutor();
         return d.pegarMatricula();
     }
-     */
+     
 }

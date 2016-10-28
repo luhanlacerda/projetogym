@@ -19,11 +19,11 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
 
     @Override
     public void cadastrar(Instrutor i) throws Exception {
-        //abrindo a conexao
+        //abrindo a conexão
         conectar();
-        //instruçãoo sql correspondente a inserção do aluno
-        String sql = "INSERT INTO Instrutor (Ins_Matricula, Ins_Rg, Ins_Cpf, Ins_Nome, Ins_Nascimento, Ins_Telefone)";
-        sql += "VALUES (?, ?, ?, ?, ?, ?);";
+        //instrução sql correspondente a inserção do aluno
+        String sql = "INSERT INTO instrutor (ins_matricula, ins_rg, ins_cpf, ins_nome, ins_nascimento, ins_telefone)";
+        sql += " VALUES  (?, ?, ?, ?, ?, ?)";
         try {
             //executando a instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
@@ -110,7 +110,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
                 retorno.add(i);
                      }
         } catch (SQLException e) {
-            //caso haja algum erro neste mÃ©todo serÃ¡ levantada esta execeção
+            //caso haja algum erro neste método será levantada esta execeção
             throw new Exception("Erro ao executar inserÃ§Ã£o: " + e.getMessage());
         }
         //fechando a conexÃ£o com o banco de dados
@@ -143,7 +143,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         return retorno;
     }
 
-/*    
+    
     public int pegarMatricula() throws Exception {
         int matricula = 0;
         
@@ -168,6 +168,6 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         
         return matricula;
     } 
-*/
+
 
 }
