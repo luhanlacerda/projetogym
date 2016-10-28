@@ -31,13 +31,13 @@ import java.util.ArrayList;
             //executando a instrução sql            
             PreparedStatement cmd = conn.prepareStatement(sql);
             cmd.setInt   (1, t.getCodigo());
-            cmd.setArray (2, (Array) t.getAlunos()); // OLHA AQUI ???
+            //cmd.setArray (2, (Array) t.getAlunos()); // OLHA AQUI ???
             cmd.setTime(3, t.getHorario());
             cmd.setTime(4, t.getHorario());
             cmd.setTime(5, t.getDuracaoaula());
             cmd.setDate(6, t.getDtinicial());
             cmd.setDate(7, t.getDtfinal());
-//            cmd.setAluno(8, t.getAluno()); OLHA AQUI  ????
+            //cmd.setAluno(8, t.getAluno()); OLHA AQUI  ????
             cmd.execute();
         } catch (SQLException e) {
             //caso haja algum erro 

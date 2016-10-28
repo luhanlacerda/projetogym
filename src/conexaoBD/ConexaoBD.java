@@ -31,18 +31,18 @@ public class ConexaoBD {
             JOptionPane.showMessageDialog(null, "Banco de dados conectado com sucesso!");
              */
 
-            /*
-            Instrutor instrutor = new Instrutor();
+            
+            Instrutor i = new Instrutor();
             NegocioInstrutor n = new NegocioInstrutor();
-            instrutor.setMatricula(n.pegarMatricula());
-            instrutor.setRg("123456");
-            instrutor.setCpf("013.345.678-90");
-            instrutor.setNome("Anderson");
-            instrutor.setDtnascimento("02/02/1991");
-            instrutor.setContato("(81)9.8888-8888");
-            n.cadastrar(instrutor);
+            i.setMatricula(1);
+            i.setRg("123456");
+            i.setCpf("013.345.678-90");
+            i.setNome("Anderson");
+            i.setDtnascimento("02/02/1991");
+            i.setContato("(81)9.8888-8888");
+            n.cadastrar(i);
             JOptionPane.showMessageDialog(null, "Instrutor cadastrado com sucesso!");
-            */
+            
             
             /*
             Instrutor instrutor = new Instrutor();

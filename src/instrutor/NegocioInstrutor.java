@@ -15,24 +15,23 @@ public class NegocioInstrutor implements InterfaceInstrutor {
 
     @Override
     public void cadastrar(Instrutor i) throws Exception {
-        /*
-        if(i.getMatricula() <= 0){
-        throw new Exception("Matrícula inválida");
+
+        if (i.getMatricula() <= 0) {
+            throw new Exception("Matrícula inválida");
         }
-        */
-        if(i.getRg() == null || i.getRg().trim().equals("")){
+        if (i.getRg() == null || i.getRg().trim().equals("")) {
             throw new Exception("Número de RG inválido");
         }
-        if(i.getCpf() == null || i.getCpf().trim().equals("") || i.getCpf().trim().length() < 13){
+        if (i.getCpf() == null || i.getCpf().trim().equals("") || i.getCpf().trim().length() < 13) {
             throw new Exception("Número de CPF inválido");
         }
-        if(i.getNome() == null || i.getNome().trim().equals("")){
+        if (i.getNome() == null || i.getNome().trim().equals("")) {
             throw new Exception("Informar nome");
         }
-        if(i.getDtnascimento() == null){
+        if (i.getDtnascimento() == null) {
             throw new Exception("Informar data de nascimento");
         }
-        if(i.getContato().trim().equals("") || i.getContato() == null || i.getContato().trim().length() < 14){
+        if (i.getContato().trim().equals("") || i.getContato() == null || i.getContato().trim().length() < 14) {
             throw new Exception("Informar número de contato");
         }
         //Cadastrando
@@ -63,10 +62,11 @@ public class NegocioInstrutor implements InterfaceInstrutor {
         DadosInstrutor d = new DadosInstrutor();
         return d.verificarExistencia(i);
     }
-    
+
+    /*    
     public int pegarMatricula() throws Exception {
         DadosInstrutor d = new DadosInstrutor();
         return d.pegarMatricula();
     }
-
+     */
 }

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Luhan
+ * @author Elaine
  */
 public class Turma { // ver tipos para data e hora, pois esta descrito como Date e Time no banco 
                      //ver quantidade de alunos se será arrayList ou int

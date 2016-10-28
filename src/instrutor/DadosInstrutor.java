@@ -22,17 +22,17 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         //abrindo a conexao
         conectar();
         //instruçãoo sql correspondente a inserção do aluno
-        String sql = "INSERT INTO Instrutor (Ins_Rg, Ins_Cpf, Ins_Nome, Ins_Nascimento, Ins_Telefone)";
-        sql += "VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Instrutor (Ins_Matricula, Ins_Rg, Ins_Cpf, Ins_Nome, Ins_Nascimento, Ins_Telefone)";
+        sql += "VALUES (?, ?, ?, ?, ?, ?);";
         try {
             //executando a instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
-            //cmd.setInt(1, i.getMatricula());
-            cmd.setString(1, i.getRg());
-            cmd.setString(2, i.getCpf());
-            cmd.setString(3, i.getNome());
-            cmd.setDate(4, i.getDtnascimento());
-            cmd.setString(5, i.getContato());
+            cmd.setInt(1, i.getMatricula());
+            cmd.setString(2, i.getRg());
+            cmd.setString(3, i.getCpf());
+            cmd.setString(4, i.getNome());
+            cmd.setDate(5, i.getDtnascimento());
+            cmd.setString(6, i.getContato());
             cmd.execute();
         } catch (SQLException e) {
             //caso haja algum erro neste método será levantada esta execeção
@@ -77,7 +77,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         ArrayList<Instrutor> retorno = new ArrayList<>();
         //abrindo a conexÃ£o
         conectar();
-        //instruçãoo sql correspondente a inserÃ§Ã£o do aluno
+        //instruçãoo sql correspondente a inserção do aluno
         String sql = " SELECT Ins_Matricula, Ins_Rg, Ins_Cpf, Ins_Nome, Ins_Nascimento, Ins_Telefone ";
         sql += " FROM Instrutor WHERE Ins_Matricula > 0 ";
         if (filtro.getMatricula() > 0) {
@@ -105,12 +105,12 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
                 i.setRg(leitor.getString("Rg"));
                 i.setCpf(leitor.getString("CPF"));
                 i.setNome(leitor.getString("Nome"));
-                //i.setDtnascimento(leitor.getDate("Data Nascimento"));
+                i.setDtnascimento(leitor.getDate("Data Nascimento").toString());
                 i.setContato(leitor.getString("Contato"));
                 retorno.add(i);
                      }
         } catch (SQLException e) {
-            //caso haja algum erro neste mÃ©todo serÃ¡ levantada esta execeÃ§Ã£o
+            //caso haja algum erro neste mÃ©todo serÃ¡ levantada esta execeção
             throw new Exception("Erro ao executar inserÃ§Ã£o: " + e.getMessage());
         }
         //fechando a conexÃ£o com o banco de dados
@@ -120,9 +120,30 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
 
     @Override
     public boolean verificarExistencia(Instrutor i) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean retorno = false;
+        //abrindo a conexão
+        conectar();
+        //instruçãoo sql correspondente a inserção do aluno
+        String sql = " SELECT Ins_Matricula, Ins_Nome ";
+        sql += " FROM instrutor WHERE Ins_Matricula = ? ";
+        try {
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            cmd.setInt(1, i.getMatricula());
+            ResultSet leitor = cmd.executeQuery();
+            while (leitor.next()) {
+                retorno = true;
+                break;
+            }
+        } catch (SQLException e) {
+            //caso haja algum erro neste método será levantada esta execeção
+            throw new Exception("Erro ao executar inserção: " + e.getMessage());
+        }
+        //fechando a conexão com o banco de dados
+        desconectar();
+        return retorno;
     }
-    
+
+/*    
     public int pegarMatricula() throws Exception {
         int matricula = 0;
         
@@ -147,5 +168,6 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         
         return matricula;
     } 
+*/
 
 }
