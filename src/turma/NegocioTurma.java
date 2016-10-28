@@ -23,7 +23,6 @@ import java.util.ArrayList;
         // Validando códio da turma
         if (t.getCodigo() <= 0) {
             throw new Exception("Informar código.");
-            
         }
  
         // Validando quantidade de alunos na turma
@@ -35,11 +34,6 @@ import java.util.ArrayList;
         }
         
         // Validando matrícicula do instrutor em turma
-       /*
-        if (t.getInstrutor().trim().equals("") == true) {
-            throw new Exception("Informar a matrícula do Instrutor");
-        }
-*/
         if (t.getInstrutor()== null) {
             throw new Exception("Informar a matrícula do Instrutor");
         }
@@ -61,33 +55,20 @@ import java.util.ArrayList;
         }
         
         //Validando data inicial da aula 
-        
-        if (t.getDtinicial().trim().equals("") == true) {
-            throw new Exception("Informar a data inicial");
-        }
         if (t.getDtinicial()== null) {
             throw new Exception("Informar a data inicial");
         }
 
         //Validando data final da aula 
-         if (t.getDtfinal().trim().equals("") == true) {
-            throw new Exception("Informar a data final");
-        }
         if (t.getDtfinal()== null) {
             throw new Exception("Informar a data final");
         }
         // Validando horário da aula
-         if (t.getHorario().trim().equals("") == true) {
-            throw new Exception("Informar o horário da aula");
-        }
         if (t.getHorario()== null) {
             throw new Exception("Informar o horário da aula");
         }
         
          // Validando duração da aula
-          if (t.getDuracaoaula().trim().equals("") == true) {
-            throw new Exception("Informar a duração da aula");
-        }
         if (t.getDuracaoaula()== null) {
             throw new Exception("Informar a duração da aula");
         }
@@ -100,8 +81,7 @@ import java.util.ArrayList;
     // Validando dados da atualização
     public void atualizar(Turma t) throws Exception {
           if (t.getCodigo() <= 0) {
-            throw new Exception("Informar código.");
-            
+            throw new Exception("Informar código.");   
         }
  
         // Validando quantidade de alunos na turma
@@ -113,11 +93,6 @@ import java.util.ArrayList;
         }
         
         // Validando matrícicula do instrutor em turma
-       /*
-        if (t.getInstrutor().trim().equals("") == true) {
-            throw new Exception("Informar a matrícula do Instrutor");
-        }
-*/
         if (t.getInstrutor()== null) {
             throw new Exception("Informar a matrícula do Instrutor");
         }
@@ -139,33 +114,20 @@ import java.util.ArrayList;
         }
         
         //Validando data inicial da aula 
-        
-        if (t.getDtinicial().trim().equals("") == true) {
-            throw new Exception("Informar a data inicial");
-        }
         if (t.getDtinicial()== null) {
             throw new Exception("Informar a data inicial");
         }
 
-        //Validando data final da aula 
-         if (t.getDtfinal().trim().equals("") == true) {
-            throw new Exception("Informar a data final");
-        }
+        //Validando data final da aula  
         if (t.getDtfinal()== null) {
             throw new Exception("Informar a data final");
         }
         // Validando horário da aula
-         if (t.getHorario().trim().equals("") == true) {
-            throw new Exception("Informar o horário da aula");
-        }
         if (t.getHorario()== null) {
             throw new Exception("Informar o horário da aula");
         }
         
          // Validando duração da aula
-          if (t.getDuracaoaula().trim().equals("") == true) {
-            throw new Exception("Informar a duração da aula");
-        }
         if (t.getDuracaoaula()== null) {
             throw new Exception("Informar a duração da aula");
         }

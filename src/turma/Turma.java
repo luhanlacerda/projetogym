@@ -8,6 +8,8 @@ package turma;
 import aluno.Aluno;
 import atividade.Atividade;
 import instrutor.Instrutor;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 
 /**
@@ -21,9 +23,9 @@ public class Turma { // ver tipos para data e hora, pois esta descrito como Date
     private int codigo; 
     private ArrayList<Aluno> alunos; //Contar alunos
     private Instrutor instrutor; //matricula
-    private String duracaoaula; // ver se fica time duracaoaula
-    private String horario;     // ver se fica time horario
-    private String dtinicial, dtfinal; //ver se fica Date
+    private Time duracaoaula; // ver se fica time duracaoaula
+    private Time horario;     // ver se fica time horario
+    private Date dtinicial, dtfinal; //ver se fica Date
     private Aluno aluno; //matricula
     private Atividade atividade; // código
 
@@ -72,56 +74,56 @@ public class Turma { // ver tipos para data e hora, pois esta descrito como Date
     /**
      * @return the duracaoaula
      */
-    public String getDuracaoaula() {
+    public Time getDuracaoaula() {
         return duracaoaula;
     }
 
     /**
      * @param duracaoaula the duracaoaula to set
      */
-    public void setDuracaoaula(String duracaoaula) {
+    public void setDuracaoaula(Time duracaoaula) {
         this.duracaoaula = duracaoaula;
     }
 
     /**
      * @return the horario
      */
-    public String getHorario() {
+    public Time getHorario() {
         return horario;
     }
 
     /**
      * @param horario the horario to set
      */
-    public void setHorario(String horario) {
+    public void setHorario(Time horario) {
         this.horario = horario;
     }
 
     /**
      * @return the dtinicial
      */
-    public String getDtinicial() {
+    public Date getDtinicial() {
         return dtinicial;
     }
 
     /**
      * @param dtinicial the dtinicial to set
      */
-    public void setDtinicial(String dtinicial) {
+    public void setDtinicial(Date dtinicial) {
         this.dtinicial = dtinicial;
     }
 
     /**
      * @return the dtfinal
      */
-    public String getDtfinal() {
+    public Date getDtfinal() {
         return dtfinal;
     }
 
     /**
      * @param dtfinal the dtfinal to set
      */
-    public void setDtfinal(String dtfinal) {
+    public void setDtfinal(Date dtfinal) {
         this.dtfinal = dtfinal;
     }
 
@@ -152,13 +154,8 @@ public class Turma { // ver tipos para data e hora, pois esta descrito como Date
     public void setAtividade(Atividade atividade) {
         this.atividade = atividade;
     }
-    /**
-     * @return the codigo
-     */
-    
-    /**
-     * @return the codigo
-     */
+
+   
     
    
 }
