@@ -9,7 +9,6 @@ import aluno.Aluno;
 import atividade.Atividade;
 import instrutor.Instrutor;
 import java.sql.Date;
-import java.sql.Time;
 import java.util.ArrayList;
 
 /**
@@ -21,10 +20,11 @@ public class Turma { // ver tipos para data e hora, pois esta descrito como Date
                     
     
     private int codigo; 
-    private ArrayList<Aluno> alunos; //Contar alunos
+    private int numAlunos;
+//    private ArrayList<Aluno> alunos; //Contar alunos
     private Instrutor instrutor; //matricula
-    private Time duracaoaula; // ver se fica time duracaoaula
-    private Time horario;     // ver se fica time horario
+    private String duracaoaula; // é pra ser TIME, coloquei String temporariamente
+    private String horario;     // é pra ser TIME, coloquei String temporariamente
     private Date dtinicial, dtfinal; //ver se fica Date
     private Aluno aluno; //matricula
     private Atividade atividade; // código
@@ -44,17 +44,17 @@ public class Turma { // ver tipos para data e hora, pois esta descrito como Date
     }
 
     /**
-     * @return the alunos
+     * @return the numAlunos
      */
-    public ArrayList<Aluno> getAlunos() {
-        return alunos;
+    public int getnumAlunos() {
+        return numAlunos;
     }
 
     /**
-     * @param alunos the alunos to set
+     * @param numAlunos the alunos to set
      */
-    public void setAlunos(ArrayList<Aluno> alunos) {
-        this.alunos = alunos;
+    public void setnumAlunos(int numAlunos) {
+        this.numAlunos = numAlunos;
     }
 
     /**
@@ -74,28 +74,28 @@ public class Turma { // ver tipos para data e hora, pois esta descrito como Date
     /**
      * @return the duracaoaula
      */
-    public Time getDuracaoaula() {
+    public String getDuracaoaula() {
         return duracaoaula;
     }
 
     /**
      * @param duracaoaula the duracaoaula to set
      */
-    public void setDuracaoaula(Time duracaoaula) {
+    public void setDuracaoaula(String duracaoaula) {
         this.duracaoaula = duracaoaula;
     }
 
     /**
      * @return the horario
      */
-    public Time getHorario() {
+    public String getHorario() {
         return horario;
     }
 
     /**
      * @param horario the horario to set
      */
-    public void setHorario(Time horario) {
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 
@@ -109,8 +109,9 @@ public class Turma { // ver tipos para data e hora, pois esta descrito como Date
     /**
      * @param dtinicial the dtinicial to set
      */
-    public void setDtinicial(Date dtinicial) {
-        this.dtinicial = dtinicial;
+    public void setDtinicial(String dtinicial) {
+        this.dtinicial = new Date (new java.util.Date(dtinicial).getTime());
+
     }
 
     /**
@@ -123,21 +124,21 @@ public class Turma { // ver tipos para data e hora, pois esta descrito como Date
     /**
      * @param dtfinal the dtfinal to set
      */
-    public void setDtfinal(Date dtfinal) {
-        this.dtfinal = dtfinal;
+    public void setDtfinal(String dtfinal) {
+        this.dtfinal = new Date (new java.util.Date(dtfinal).getTime());
     }
 
     /**
-     * @return the aluno
+     * @return the matricula
      */
-    public Aluno getAluno() {
+    public Aluno getaluno() {
         return aluno;
     }
 
     /**
-     * @param aluno the aluno to set
+     * @param aluno the matricula to set
      */
-    public void setAluno(Aluno aluno) {
+    public void setMatricula(Aluno aluno) {
         this.aluno = aluno;
     }
 
@@ -155,6 +156,18 @@ public class Turma { // ver tipos para data e hora, pois esta descrito como Date
         this.atividade = atividade;
     }
 
+    int getMatricula() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setMatricula(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+
+    /**
+     * @return the codigo
+     */
    
     
    

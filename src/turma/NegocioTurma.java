@@ -26,12 +26,8 @@ import java.util.ArrayList;
         }
  
         // Validando quantidade de alunos na turma
-         if (t.getAlunos().equals("") == true) {
-            throw new Exception("Informar a quantidade de alunos");
-        }
-        if (t.getAlunos() == null) {
-            throw new Exception("Informar a quantidade de alunos");
-        }
+         
+       
         
         // Validando matrícicula do instrutor em turma
         if (t.getInstrutor()== null) {
@@ -39,12 +35,7 @@ import java.util.ArrayList;
         }
         
         //Validando matrícula do aluno monitor em turma
-         if (t.getAluno().trim().equals("") == true) {
-            throw new Exception("Informar a matrícula do Aluno Monitor");
-        }
-        if (t.getAluno()== null) {
-            throw new Exception("Informar a matrícula do Aluno Monitor");
-        }
+       
         
         //Validando código da atividade
          if (t.getAtividade().trim().equals("") == true) {
@@ -85,12 +76,7 @@ import java.util.ArrayList;
         }
  
         // Validando quantidade de alunos na turma
-         if (t.getAlunos().equals("") == true) {
-            throw new Exception("Informar a quantidade de alunos");
-        }
-        if (t.getAlunos() == null) {
-            throw new Exception("Informar a quantidade de alunos");
-        }
+       
         
         // Validando matrícicula do instrutor em turma
         if (t.getInstrutor()== null) {
@@ -98,12 +84,7 @@ import java.util.ArrayList;
         }
         
         //Validando matrícula do aluno monitor em turma
-         if (t.getAluno().trim().equals("") == true) {
-            throw new Exception("Informar a matrícula do Aluno Monitor");
-        }
-        if (t.getAluno()== null) {
-            throw new Exception("Informar a matrícula do Aluno Monitor");
-        }
+        
         
         //Validando código da atividade
          if (t.getAtividade().trim().equals("") == true) {

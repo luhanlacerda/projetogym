@@ -25,21 +25,24 @@ import java.util.ArrayList;
         //abrindo a conexao
         conectar();
         //instruçãoo sql correspondente a inserção da turma
-        String sql = "INSERT INTO turma Tur_Codigo, Tur_NumeroAlunos,Tur_HorarioAulas,Tur_DuracaoAulas,Tur_DataInicial,Tur_DataFinal,Alu_Matricula";
+        String sql = "INSERT INTO turma (Tur_Codigo, Tur_NumeroAlunos,Tur_HorarioAulas,Tur_DuracaoAulas,Tur_DataInicial,Tur_DataFinal,Alu_Matricula)";
         sql += "VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
             //executando a instrução sql            
             PreparedStatement cmd = conn.prepareStatement(sql);
-            cmd.setInt   (1, t.getCodigo());
-            //cmd.setArray (2, (Array) t.getAlunos()); // OLHA AQUI ???
-            cmd.setTime(3, t.getHorario());
-            cmd.setTime(4, t.getHorario());
-            cmd.setTime(5, t.getDuracaoaula());
-            cmd.setDate(6, t.getDtinicial());
-            cmd.setDate(7, t.getDtfinal());
-            //cmd.setAluno(8, t.getAluno()); OLHA AQUI  ????
+            cmd.setInt     (1, t.getCodigo());
+            cmd.setInt     (2, t.getnumAlunos());
+//            cmd.setArray   (2,(Array) t.getAlunos()); // NÃO SEI COMO FAZ P CONTAR OS ALUNOS
+            cmd.setString  (3, t.getHorario());       // TIREI O TIME NO BANCO E AQUI
+            cmd.setString  (4, t.getDuracaoaula());   // TIREI O TIME NO BANCO E AQUI
+            cmd.setDate    (5, t.getDtinicial());
+            cmd.setDate    (6, t.getDtfinal());
+            cmd.setInt     (7, t.getMatricula()); // NÃO SEI COMO FAZER P PEGAR A MATRICULA
+           
+
             cmd.execute();
         } catch (SQLException e) {
+//         
             //caso haja algum erro 
             throw new Exception("Erro ao executar inserção: " + e.getMessage());
         }
