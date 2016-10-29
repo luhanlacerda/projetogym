@@ -29,11 +29,11 @@ public class DadosTurma extends Dados implements InferfaceTurma {
             //executando a instrução sql            
             PreparedStatement cmd = conn.prepareStatement(sql);
             cmd.setInt(1, t.getCodigo());
-            cmd.setTime(2, t.getHorario());       // TIREI O TIME NO BANCO E AQUI
-            cmd.setTime(3, t.getDuracaoaula());   // TIREI O TIME NO BANCO E AQUI
+            cmd.setTime(2, t.getHorario());       
+            cmd.setTime(3, t.getDuracaoaula());   
             cmd.setDate(4, t.getDtinicial());
             cmd.setDate(5, t.getDtfinal());
-            cmd.setInt(6, t.getAluno().getMatricula()); // NÃO SEI COMO FAZER P PEGAR A MATRICULA
+            cmd.setInt(6, t.getAluno().getMatricula()); 
             cmd.setInt(7, t.getInstrutor().getMatricula());
             cmd.setInt(8, t.getAtividade().getCodigo());
             cmd.execute();
@@ -49,12 +49,49 @@ public class DadosTurma extends Dados implements InferfaceTurma {
 
     @Override
     public void atualizar(Turma t) throws Exception {
+       //abrindo a conexao
+        conectar();
+        //instrução sql correspondente a inserção da turma
+        String sql = "UPDATE Turma SET  tur_horarioaulas = ?, tur_duracaoaulas = ?, tur_datainicial = ?, tur_datafinal= ?, alu_matricula = ?, ins_matricula = ?, atv_codigo= ? WHERE Tur_Codigo = ?;";
+        
+        try {
+            //executando a instrução sql            
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            cmd.setInt(1,  t.getCodigo());
+            cmd.setTime(2, t.getHorario());       
+            cmd.setTime(3, t.getDuracaoaula());   
+            cmd.setDate(4, t.getDtinicial());
+            cmd.setDate(5, t.getDtfinal());
+            cmd.setInt(6,  t.getAluno().getMatricula()); 
+            cmd.setInt(7,  t.getInstrutor().getMatricula());
+            cmd.setInt(8,  t.getAtividade().getCodigo());
+            cmd.execute();
+        } catch (SQLException e) {
+//         
+            //caso haja algum erro 
+            throw new Exception("Erro ao executar a atualização: " + e.getMessage());
+        }
+        //fechando a conexão com o banco de dados
+        desconectar();
 
     }
 
     @Override
     public void remover(Turma t) throws Exception {
 
+         conectar();
+        String sql = "DELETE FROM turma WHERE Tur_Codigo = ?";
+        try {
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            cmd.setInt(1, t.getCodigo());
+            cmd.execute();
+        } catch (SQLException e) {
+            throw new Exception("Erro ao executar remoção: " + e.getMessage());
+        }
+        //fechando a conexÃ£o com o banco de dados
+        desconectar();
+        
+        
     }
 
     @Override

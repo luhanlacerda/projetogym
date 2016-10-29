@@ -32,7 +32,7 @@ public class ConexaoBD {
             JOptionPane.showMessageDialog(null, "Banco de dados conectado com sucesso!");
              */
 
-            
+            /*
             Instrutor instrutor = new Instrutor();
             
             instrutor.setMatricula(3);
@@ -44,7 +44,7 @@ public class ConexaoBD {
             NegocioInstrutor n = new NegocioInstrutor();
             n.cadastrar(instrutor);
             JOptionPane.showMessageDialog(null, "Instrutor cadastrado com sucesso!");
-            
+            */
             
             /*
             Instrutor instrutor = new Instrutor();

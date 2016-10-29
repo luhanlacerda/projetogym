@@ -27,11 +27,11 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         try {
             //executando a instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
-            cmd.setInt(1, i.getMatricula());
+            cmd.setInt(1,    i.getMatricula());
             cmd.setString(2, i.getRg());
             cmd.setString(3, i.getCpf());
             cmd.setString(4, i.getNome());
-            cmd.setDate(5, i.getDtnascimento());
+            cmd.setDate(5,   i.getDtnascimento());
             cmd.setString(6, i.getContato());
             cmd.execute();
         } catch (SQLException e) {

@@ -15,21 +15,20 @@ import java.sql.Time;
  *
  * @author ELAINE
  */
-public class Turma { // ver tipos para data e hora, pois esta descrito como Date e Time no banco 
-                     //ver quantidade de alunos se será arrayList ou int
+public class Turma { 
                     
     
     private int codigo; 
     //private int numAlunos; //TIRAR DO MINIMUNDO, VAI PAR ALUNOTURMA
     private Instrutor instrutor; //matricula
-    private Time duracaoaula; // é pra ser TIME, coloquei String temporariamente
-    private Time horario;     // é pra ser TIME, coloquei String temporariamente
+    private Time duracaoaula; 
+    private Time horario;     
     private Date dtinicial;
-    private Date dtfinal; //ver se fica Date
+    private Date dtfinal; 
     private Aluno aluno; //matricula do aluno(MONITOR)
     private Atividade atividade; // código
 
-    public Turma(){
+    public Turma(){ 
         this.atividade = new Atividade();
         this.instrutor = new Instrutor();
         this.aluno = new Aluno();
