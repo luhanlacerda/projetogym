@@ -52,7 +52,7 @@ public class DadosTurma extends Dados implements InferfaceTurma {
        //abrindo a conexao
         conectar();
         //instrução sql correspondente a inserção da turma
-        String sql = "UPDATE Turma SET  tur_horarioaulas = ?, tur_duracaoaulas = ?, tur_datainicial = ?, tur_datafinal= ?, alu_matricula = ?, ins_matricula = ?, atv_codigo= ? WHERE Tur_Codigo = ?;";
+        String sql = "UPDATE Turma SET tur_horarioaulas = ?, tur_duracaoaulas = ?, tur_datainicial = ?, tur_datafinal= ?, alu_matricula = ?, ins_matricula = ?, atv_codigo= ? WHERE Tur_Codigo = ?;";
         
         try {
             //executando a instrução sql            

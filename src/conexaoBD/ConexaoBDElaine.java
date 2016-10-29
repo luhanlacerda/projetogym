@@ -94,7 +94,7 @@ public class ConexaoBDElaine {
             t.getAluno().setMatricula(1);
             t.getAtividade().setCodigo(1);
             NegocioTurma n = new NegocioTurma();
-            n.cadastrar(t);
+            n.atualizar(t);
             JOptionPane.showMessageDialog(null, "Turma atualizada com sucesso!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + e.getMessage());
