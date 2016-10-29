@@ -9,26 +9,40 @@ import aluno.Aluno;
 import atividade.Atividade;
 import instrutor.Instrutor;
 import java.sql.Date;
-import java.util.ArrayList;
+import java.sql.Time;
 
 /**
  *
- * @author Elaine
+ * @author ELAINE
  */
 public class Turma { // ver tipos para data e hora, pois esta descrito como Date e Time no banco 
                      //ver quantidade de alunos se será arrayList ou int
                     
     
     private int codigo; 
-    private int numAlunos;
-//    private ArrayList<Aluno> alunos; //Contar alunos
+    //private int numAlunos; //TIRAR DO MINIMUNDO, VAI PAR ALUNOTURMA
     private Instrutor instrutor; //matricula
-    private String duracaoaula; // é pra ser TIME, coloquei String temporariamente
-    private String horario;     // é pra ser TIME, coloquei String temporariamente
-    private Date dtinicial, dtfinal; //ver se fica Date
-    private Aluno aluno; //matricula
+    private Time duracaoaula; // é pra ser TIME, coloquei String temporariamente
+    private Time horario;     // é pra ser TIME, coloquei String temporariamente
+    private Date dtinicial;
+    private Date dtfinal; //ver se fica Date
+    private Aluno aluno; //matricula do aluno(MONITOR)
     private Atividade atividade; // código
 
+    public Turma(){
+        this.atividade = new Atividade();
+        this.instrutor = new Instrutor();
+        this.aluno = new Aluno();
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+    
     /**
      * @return the codigo
      */
@@ -41,20 +55,6 @@ public class Turma { // ver tipos para data e hora, pois esta descrito como Date
      */
     public void setCodigo(int codigo) {
         this.codigo = codigo;
-    }
-
-    /**
-     * @return the numAlunos
-     */
-    public int getnumAlunos() {
-        return numAlunos;
-    }
-
-    /**
-     * @param numAlunos the alunos to set
-     */
-    public void setnumAlunos(int numAlunos) {
-        this.numAlunos = numAlunos;
     }
 
     /**
@@ -74,29 +74,29 @@ public class Turma { // ver tipos para data e hora, pois esta descrito como Date
     /**
      * @return the duracaoaula
      */
-    public String getDuracaoaula() {
+    public Time getDuracaoaula() {
         return duracaoaula;
     }
 
     /**
      * @param duracaoaula the duracaoaula to set
      */
-    public void setDuracaoaula(String duracaoaula) {
-        this.duracaoaula = duracaoaula;
+    public void setDuracaoaula(long duracaoaula) {
+        this.duracaoaula = new Time(duracaoaula);
     }
 
     /**
      * @return the horario
      */
-    public String getHorario() {
+    public Time getHorario() {
         return horario;
     }
 
     /**
      * @param horario the horario to set
      */
-    public void setHorario(String horario) {
-        this.horario = horario;
+    public void setHorario(long horario) {
+        this.horario = new Time(horario);
     }
 
     /**
@@ -109,9 +109,8 @@ public class Turma { // ver tipos para data e hora, pois esta descrito como Date
     /**
      * @param dtinicial the dtinicial to set
      */
-    public void setDtinicial(String dtinicial) {
-        this.dtinicial = new Date (new java.util.Date(dtinicial).getTime());
-
+    public void setDtinicial(long dtinicial) {
+        this.dtinicial = new Date(dtinicial);
     }
 
     /**
@@ -124,22 +123,8 @@ public class Turma { // ver tipos para data e hora, pois esta descrito como Date
     /**
      * @param dtfinal the dtfinal to set
      */
-    public void setDtfinal(String dtfinal) {
-        this.dtfinal = new Date (new java.util.Date(dtfinal).getTime());
-    }
-
-    /**
-     * @return the matricula
-     */
-    public Aluno getaluno() {
-        return aluno;
-    }
-
-    /**
-     * @param aluno the matricula to set
-     */
-    public void setMatricula(Aluno aluno) {
-        this.aluno = aluno;
+    public void setDtfinal(long dtfinal) {
+        this.dtfinal = new Date(dtfinal);
     }
 
     /**
@@ -156,19 +141,4 @@ public class Turma { // ver tipos para data e hora, pois esta descrito como Date
         this.atividade = atividade;
     }
 
-    int getMatricula() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void setMatricula(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-
-    /**
-     * @return the codigo
-     */
-   
-    
-   
 }

@@ -55,8 +55,8 @@ public abstract class Pessoa {
         return dtnascimento;
     }
 
-    public void setDtnascimento(String dtnascimento) {
-        this.dtnascimento = new Date(new java.util.Date(dtnascimento).getTime());
+    public void setDtnascimento(long dtnascimento) {
+        this.dtnascimento = new Date(dtnascimento);
     }
 
 }

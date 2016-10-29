@@ -9,7 +9,7 @@ import classesBasicas.Pessoa;
 
 /**
  *
- * @author Luhan
+ * @author Luhana
  */
 public class Instrutor extends Pessoa {
     

@@ -7,6 +7,7 @@ package conexaoBD;
 
 import aluno.Aluno;
 import aluno.NegocioAluno;
+import classesBasicas.FormatacaoDataHora;
 import dados.Dados;
 import instrutor.Instrutor;
 import instrutor.NegocioInstrutor;
@@ -36,13 +37,13 @@ public class ConexaoBD {
             
             instrutor.setMatricula(3);
             instrutor.setRg("6543210");
-            instrutor.setCpf("333.333.333-33");
+            instrutor.setCpf("333.333.333-44");
             instrutor.setNome("Juriscleide");
-            instrutor.setDtnascimento("02/02/2002");
+            instrutor.setDtnascimento(FormatacaoDataHora.getData("02/02/2002"));
             instrutor.setContato("(81)9.9999-9999");
             NegocioInstrutor n = new NegocioInstrutor();
             n.cadastrar(instrutor);
-            JOptionPane.showMessageDialog(null, "Instrutor atualizado com sucesso!");
+            JOptionPane.showMessageDialog(null, "Instrutor cadastrado com sucesso!");
             
             
             /*

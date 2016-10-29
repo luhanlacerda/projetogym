@@ -38,7 +38,7 @@ public class Aluno extends Pessoa {
     }
 
     public void setDtmatricula(String dtmatricula) {
-        this.dtmatricula = new Date (new java.util.Date(dtmatricula).getTime());
+        this.dtmatricula = Date.valueOf(dtmatricula);
     }
 
     public float getAltura() {
@@ -63,10 +63,6 @@ public class Aluno extends Pessoa {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
-    }
-
-    public Object trim() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

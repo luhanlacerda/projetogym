@@ -5,6 +5,7 @@
  */
 package turma;
 
+import aluno.Aluno;
 import java.util.ArrayList;
 
 /**
@@ -23,6 +24,7 @@ interface InferfaceTurma {
     //devolver as turmas que se encaixarem no filtro da pesquisa 
     ArrayList<Turma> listar(Turma filtro) throws Exception; 
     //verificar se uma determinada matricula está contida na tabela aluno
-    boolean verificaExistencia(Turma a) throws Exception;
-    
+    boolean verificaExistencia(Turma t) throws Exception;
+    //pegar aluno cadastrado no banco de dados
+    ArrayList<Aluno> pegarAlunos(Turma t) throws Exception;
 }
