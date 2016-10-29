@@ -57,14 +57,14 @@ public class DadosTurma extends Dados implements InferfaceTurma {
         try {
             //executando a instrução sql            
             PreparedStatement cmd = conn.prepareStatement(sql);
-            cmd.setInt(1,  t.getCodigo());
-            cmd.setTime(2, t.getHorario());       
-            cmd.setTime(3, t.getDuracaoaula());   
-            cmd.setDate(4, t.getDtinicial());
-            cmd.setDate(5, t.getDtfinal());
-            cmd.setInt(6,  t.getAluno().getMatricula()); 
-            cmd.setInt(7,  t.getInstrutor().getMatricula());
-            cmd.setInt(8,  t.getAtividade().getCodigo());
+            cmd.setTime(1, t.getHorario());       
+            cmd.setTime(2, t.getDuracaoaula());   
+            cmd.setDate(3, t.getDtinicial());
+            cmd.setDate(4, t.getDtfinal());
+            cmd.setInt(5,  t.getAluno().getMatricula()); 
+            cmd.setInt(6,  t.getInstrutor().getMatricula());
+            cmd.setInt(7,  t.getAtividade().getCodigo());
+            cmd.setInt(8,  t.getCodigo());
             cmd.execute();
         } catch (SQLException e) {
 //         
