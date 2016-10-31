@@ -36,29 +36,15 @@ public class ConexaoBDElaine {
 //            
 //            
             /*
-            //CADASTRANDO
-            Turma t = new Turma();
-            t.setCodigo(3);
-            t.setHorario(FormatacaoDataHora.getHorario("11:00"));
-            t.setDuracaoaula(FormatacaoDataHora.getHorario("01:00"));
-            t.setDtinicial(FormatacaoDataHora.getData("28/10/2016"));
-            t.setDtfinal(FormatacaoDataHora.getData("28/11/2016"));
-            t.getInstrutor().setMatricula(1);
-            t.getAluno().setMatricula(1);
-            t.getAtividade().setCodigo(1);
-            NegocioTurma n = new NegocioTurma();
-            n.cadastrar(t);
-            JOptionPane.showMessageDialog(null, "Turma cadastrada com sucesso!");
-            */
-
-            /*
-            //CADASTRANDO
-            Turma t = new Turma();
-            t.setCodigo(3);
-            t.setHorario(FormatacaoDataHora.getHorario("11:00"));
-            t.setDuracaoaula(FormatacaoDataHora.getHorario("01:00"));
-            t.setDtinicial(FormatacaoDataHora.getData("28/10/2016"));
-            t.setDtfinal(FormatacaoDataHora.getData("28/11/2016"));
+           
+            
+//            CADASTRANDO
+           /* Turma t = new Turma();
+            t.setCodigo(1);
+            t.setHorario(FormatacaoDataHora.getHorario("19:00"));
+            t.setDuracaoaula(FormatacaoDataHora.getHorario("09:00"));
+            t.setDtinicial(FormatacaoDataHora.getData("31/10/2016"));
+            t.setDtfinal(FormatacaoDataHora.getData("31/11/2016"));
             t.getInstrutor().setMatricula(1);
             t.getAluno().setMatricula(1);
             t.getAtividade().setCodigo(1);
@@ -70,24 +56,22 @@ public class ConexaoBDElaine {
             
             //ATUALIZANDO  -- esta adicionando e não atualizando
             Turma t = new Turma();
-            t.setCodigo(3);
-            t.setHorario(FormatacaoDataHora.getHorario("15:00"));
-            t.setDuracaoaula(FormatacaoDataHora.getHorario("05:00"));
-            t.setDtinicial(FormatacaoDataHora.getData("25/10/2016"));
-            t.setDtfinal(FormatacaoDataHora.getData("25/11/2016"));
+            t.setCodigo(1);
+            t.setHorario(FormatacaoDataHora.getHorario("16:00"));
+            t.setDuracaoaula(FormatacaoDataHora.getHorario("06:00"));
+            t.setDtinicial(FormatacaoDataHora.getData("31/10/2016"));
+            t.setDtfinal(FormatacaoDataHora.getData("01/12/2020"));
             t.getInstrutor().setMatricula(1);
             t.getAluno().setMatricula(1);
             t.getAtividade().setCodigo(1);
+            
             NegocioTurma n = new NegocioTurma();
             n.atualizar(t);
             JOptionPane.showMessageDialog(null, "Turma atualizada com sucesso!");
             
     
-            // REMOVENDO
-            
-            
-            
-            
+           
+
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + e.getMessage());

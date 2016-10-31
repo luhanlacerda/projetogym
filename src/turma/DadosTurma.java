@@ -89,7 +89,7 @@ public class DadosTurma extends Dados implements InferfaceTurma {
             throw new Exception("Erro ao executar remoção: " + e.getMessage());
         }
         //fechando a conexÃ£o com o banco de dados
-        desconectar();
+        desconectar(); 
         
         
     }
