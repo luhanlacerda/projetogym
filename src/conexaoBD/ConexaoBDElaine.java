@@ -38,7 +38,7 @@ public class ConexaoBDElaine {
             /*
            
             
-//            CADASTRANDO
+           // CADASTRANDO
            /* Turma t = new Turma();
             t.setCodigo(1);
             t.setHorario(FormatacaoDataHora.getHorario("19:00"));
@@ -54,8 +54,8 @@ public class ConexaoBDElaine {
             */
             
             
-            //ATUALIZANDO  -- esta adicionando e não atualizando
-            Turma t = new Turma();
+            //ATUALIZANDO  
+            /*Turma t = new Turma();
             t.setCodigo(1);
             t.setHorario(FormatacaoDataHora.getHorario("16:00"));
             t.setDuracaoaula(FormatacaoDataHora.getHorario("06:00"));
@@ -68,14 +68,19 @@ public class ConexaoBDElaine {
             NegocioTurma n = new NegocioTurma();
             n.atualizar(t);
             JOptionPane.showMessageDialog(null, "Turma atualizada com sucesso!");
+            */
             
-    
+            //REMOVENDO
+           /*  Turma t = new Turma();
+             t.setCodigo(1);
+             NegocioTurma n = new NegocioTurma();
+             n.remover(t);
+             JOptionPane.showMessageDialog(null, "Turma removida com sucesso!");
+           */
            
-
-            
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + e.getMessage());
-
+            JOptionPane.showMessageDialog(null, "Erro ao REMOVER: " + e.getMessage());
+            
         }
     }
 }

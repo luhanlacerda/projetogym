@@ -80,7 +80,9 @@ public class DadosTurma extends Dados implements InferfaceTurma {
     public void remover(Turma t) throws Exception {
 
          conectar();
-        String sql = "DELETE FROM turma WHERE Tur_Codigo = ?";
+         //Instrução sql para remover a turma
+        String sql = "DELETE FROM Turma WHERE Tur_Codigo= ?";
+               
         try {
             PreparedStatement cmd = conn.prepareStatement(sql);
             cmd.setInt(1, t.getCodigo());
@@ -88,9 +90,8 @@ public class DadosTurma extends Dados implements InferfaceTurma {
         } catch (SQLException e) {
             throw new Exception("Erro ao executar remoção: " + e.getMessage());
         }
-        //fechando a conexÃ£o com o banco de dados
         desconectar(); 
-        
+    
         
     }
 

@@ -54,7 +54,7 @@ public class NegocioTurma implements InferfaceTurma {
             throw new Exception("Informar a duração da aula");
         }
         
-        //cadastrando
+        //CADASTRANDO
         DadosTurma d = new DadosTurma();
         d.cadastrar(t);
 
@@ -96,14 +96,17 @@ public class NegocioTurma implements InferfaceTurma {
         if (t.getDuracaoaula() == null) {
             throw new Exception("Informar a duração da aula");
         }
-        //cadastrando
+        //ATUALIZANDO
         DadosTurma d = new DadosTurma();
         d.atualizar(t);
     }
 
     @Override
     public void remover(Turma t) throws Exception {
-
+         //REMOVENDO
+         DadosTurma d = new DadosTurma();
+         d.remover(t);
+        
     }
 
     @Override
