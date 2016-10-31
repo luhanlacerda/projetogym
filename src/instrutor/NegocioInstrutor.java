@@ -19,6 +19,9 @@ public class NegocioInstrutor implements InterfaceInstrutor {
         if (i.getMatricula() <= 0) {
             throw new Exception("Matrícula inválida");
         }
+        if(verificarExistenciaMatricula(i) != false){
+            throw new Exception("A matrícula informada já está cadastrada no sistema.");
+        }
         if (i.getRg() == null || i.getRg().trim().equals("")) {
             throw new Exception("Número de RG inválido");
         }
@@ -33,9 +36,6 @@ public class NegocioInstrutor implements InterfaceInstrutor {
         }
         if (i.getContato().trim().equals("") || i.getContato() == null || i.getContato().trim().length() < 14) {
             throw new Exception("Informar número de contato");
-        }
-        if(verificarExistenciaMatricula(i) != false){
-            throw new Exception("A matrícula informada já está cadastrada no sistema.");
         }
         /*
         if(verificarExistenciaCpf(i) != false){

@@ -23,5 +23,14 @@ public class Instrutor extends Pessoa {
         this.matricula = matricula;
     }
 
-  
+    public String listarInstrutores(){
+        String retorno = "";
+        retorno = "Nome: " + this.getNome() + "\n";
+        retorno += "Matrícula: " + this.getMatricula() + "\n";
+        retorno += "Cpf: " + this.getCpf() + "\n";
+        retorno += "Rg: " + this.getRg() + "\n";
+        retorno += "Contato: " + this.getContato();
+        return retorno;
+    }
+    
 }

@@ -11,6 +11,7 @@ import classesBasicas.FormatacaoDataHora;
 import dados.Dados;
 import instrutor.Instrutor;
 import instrutor.NegocioInstrutor;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,10 +36,10 @@ public class ConexaoBD {
             /*
             //teste para cadastro de instrutor
             Instrutor instrutor = new Instrutor();            
-            instrutor.setMatricula(3);
+            instrutor.setMatricula(2);
             instrutor.setRg("6543210");
-            instrutor.setCpf("333.333.333-44");
-            instrutor.setNome("Juriscleide");
+            instrutor.setCpf("333.333.333-33");
+            instrutor.setNome("Mirosmar");
             instrutor.setDtnascimento(FormatacaoDataHora.getData("02/02/2002"));
             instrutor.setContato("(81)9.9999-9999");
             NegocioInstrutor n = new NegocioInstrutor();
@@ -68,6 +69,16 @@ public class ConexaoBD {
             n.remover(instrutor);
             JOptionPane.showMessageDialog(null, "Instrutor removido com sucesso!");
             */
+            
+            
+            //teste para listagem de instrutores
+            Instrutor instrutor = new Instrutor();
+            NegocioInstrutor n = new NegocioInstrutor();
+            ArrayList<Instrutor> retorno = n.listar(instrutor);
+            for (Instrutor i : retorno) {
+                JOptionPane.showMessageDialog(null, instrutor.listarInstrutores());
+            } 
+            
             
             /*
             Aluno a = new Aluno();

@@ -89,10 +89,10 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
     public ArrayList<Instrutor> listar(Instrutor filtro) throws Exception {
         int posPar = 1;
         ArrayList<Instrutor> retorno = new ArrayList<>();
-        //abrindo a conexÃ£o
+        //abrindo a conexão
         conectar();
-        //instruçãoo sql correspondente a inserção do instrutor
-        String sql = " SELECT Ins_Matricula, Ins_Rg, Ins_Cpf, Ins_Nome, Ins_Nascimento, Ins_Telefone ";
+        //instrução sql correspondente a inserção do instrutor
+        String sql = " SELECT Ins_Matricula AS 'Matrícula', Ins_Rg AS 'RG', Ins_Cpf AS 'CPF', Ins_Nome AS 'Nome', Ins_Nascimento AS 'Data Nascimento', Ins_Telefone AS 'Contato'";
         sql += " FROM Instrutor WHERE Ins_Matricula > 0 ";
         if (filtro.getMatricula() > 0) {
             sql += " AND Ins_Matricula = ?";
@@ -125,7 +125,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
                      }
         } catch (SQLException e) {
             //caso haja algum erro neste método será levantada esta execeção
-            throw new Exception("Erro ao executar inserÃ§Ã£o: " + e.getMessage());
+            throw new Exception("Erro ao executar inserção: " + e.getMessage());
         }
         //fechando a conexÃ£o com o banco de dados
         desconectar();
