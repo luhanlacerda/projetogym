@@ -21,7 +21,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
     public void cadastrar(Instrutor i) throws Exception {
         //abrindo a conexão
         conectar();
-        //instrução sql correspondente a inserção do aluno
+        //instrução sql correspondente a inserção do instrutor
         String sql = "INSERT INTO instrutor (ins_matricula, ins_rg, ins_cpf, ins_nome, ins_nascimento, ins_telefone)";
         sql += " VALUES  (?, ?, ?, ?, ?, ?)";
         try {
@@ -46,7 +46,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
     public void atualizar(Instrutor i) throws Exception {
         //abrindo a conexao
         conectar();
-        //instrução sql correspondente a inserção do aluno
+        //instrução sql correspondente a inserção do instrutor
         String sql = "UPDATE Instrutor SET Ins_Rg = ?, Ins_Cpf = ?, Ins_Nome = ?, Ins_Nascimento = ?, Ins_Telefone = ? WHERE Ins_Matricula = ?;";
         try {
             //executando a instrução sql
@@ -68,7 +68,21 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
 
     @Override
     public void remover(Instrutor i) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //abrindo conexão
+        conectar();
+        //instrução sql correspondente para remover um instrutor
+        String sql = " DELETE FROM Instrutor WHERE Ins_Matricula = ?";
+        try{
+            //executando a instrução sql
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            cmd.setInt(1, i.getMatricula());
+            cmd.execute();
+        }catch (SQLException e){
+            //caso haja algum erro neste método, será levantada esta exceção
+            throw new Exception("Erro ao remover: " + e.getMessage());
+        }
+        //fechando conexão com o banco de dados
+        desconectar();
     }
 
     @Override
@@ -77,7 +91,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         ArrayList<Instrutor> retorno = new ArrayList<>();
         //abrindo a conexÃ£o
         conectar();
-        //instruçãoo sql correspondente a inserção do aluno
+        //instruçãoo sql correspondente a inserção do instrutor
         String sql = " SELECT Ins_Matricula, Ins_Rg, Ins_Cpf, Ins_Nome, Ins_Nascimento, Ins_Telefone ";
         sql += " FROM Instrutor WHERE Ins_Matricula > 0 ";
         if (filtro.getMatricula() > 0) {
@@ -123,7 +137,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         boolean retorno = false;
         //abrindo a conexão
         conectar();
-        //instruçãoo sql correspondente a inserção do aluno
+        //instruçãoo sql correspondente a inserção do instrutor
         String sql = " SELECT Ins_Matricula, Ins_Nome ";
         sql += " FROM instrutor WHERE Ins_Matricula = ? ";
         try {
@@ -149,7 +163,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         
         //abrindo a conexao
         conectar();
-        //instrução sql correspondente a inserção do aluno
+        //instrução sql correspondente a inserção do instrutor
         String sql = "SELECT MAX(Ins_Matricula) + 1 AS 'Matricula' FROM Instrutor;";
         try {
             //executando a instrução sql
@@ -174,7 +188,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         boolean retorno = false;
         //abrindo a conexão
         conectar();
-        //instruçãoo sql correspondente a inserção do aluno
+        //instruçãoo sql correspondente a inserção do instrutor
         String sql = " SELECT Ins_Matricula, Ins_Nome, Ins_Cpf ";
         sql += " FROM instrutor WHERE Ins_Cpf = ? ";
         try {

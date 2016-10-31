@@ -33,8 +33,8 @@ public class ConexaoBD {
              */
 
             /*
-            Instrutor instrutor = new Instrutor();
-            
+            //teste para cadastro de instrutor
+            Instrutor instrutor = new Instrutor();            
             instrutor.setMatricula(3);
             instrutor.setRg("6543210");
             instrutor.setCpf("333.333.333-44");
@@ -44,21 +44,31 @@ public class ConexaoBD {
             NegocioInstrutor n = new NegocioInstrutor();
             n.cadastrar(instrutor);
             JOptionPane.showMessageDialog(null, "Instrutor cadastrado com sucesso!");
-            */
+             */
             
             /*
+            //teste para atualização de instrutor
             Instrutor instrutor = new Instrutor();
             instrutor.setMatricula(1);
             instrutor.setRg("6543210");
             instrutor.setCpf("987.654.321-00");
-            instrutor.setNome("Juriscleide");
+            instrutor.setNome("Mirosmar");
             instrutor.setDtnascimento("02/02/2002");
             instrutor.setContato("(81)9.9999-9999");
             NegocioInstrutor n = new NegocioInstrutor();
             n.atualizar(instrutor);
             JOptionPane.showMessageDialog(null, "Instrutor atualizado com sucesso!");
             */
-                         
+ 
+            /*
+            //teste para remoção de instrutor
+            Instrutor instrutor = new Instrutor();
+            instrutor.setMatricula(2);
+            NegocioInstrutor n = new NegocioInstrutor();
+            n.remover(instrutor);
+            JOptionPane.showMessageDialog(null, "Instrutor removido com sucesso!");
+            */
+            
             /*
             Aluno a = new Aluno();
             a.setNome("Mago");
@@ -82,6 +92,7 @@ public class ConexaoBD {
             n.cadastrar(a);
             JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso!");
              */
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
