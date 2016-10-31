@@ -76,7 +76,7 @@ public class ConexaoBD {
             NegocioInstrutor n = new NegocioInstrutor();
             ArrayList<Instrutor> retorno = n.listar(instrutor);
             for (Instrutor i : retorno) {
-                JOptionPane.showMessageDialog(null, instrutor.listarInstrutores());
+                JOptionPane.showMessageDialog(null, i.listarInstrutores());
             } 
             
             
