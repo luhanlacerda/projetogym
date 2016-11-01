@@ -34,10 +34,7 @@ public class ConexaoBDElaine {
 //            d.conectar();
 //            d.desconectar();
 //            JOptionPane.showMessageDialog(null, "Banco de dados conectado com sucesso!");
-//            
-//            
-            
-           
+
             
            // CADASTRANDO
 //            Turma t = new Turma();
@@ -52,9 +49,7 @@ public class ConexaoBDElaine {
 //            NegocioTurma n = new NegocioTurma();
 //            n.cadastrar(t);
 //            JOptionPane.showMessageDialog(null, "Turma cadastrada com sucesso!");
-            
-            
-            
+                      
             //ATUALIZANDO  
             /*Turma t = new Turma();
             t.setCodigo(1);
@@ -79,6 +74,7 @@ public class ConexaoBDElaine {
              JOptionPane.showMessageDialog(null, "Turma removida com sucesso!");
            */
            
+           //LISTANDO TURMA
 //             Turma turma = new Turma();
 //             NegocioTurma n = new NegocioTurma();
 //            ArrayList<Turma> retorno = n.listar(turma);
@@ -86,9 +82,18 @@ public class ConexaoBDElaine {
 //                JOptionPane.showMessageDialog(null, t.listarTurmas());
 //               
 //         }
+
+           //PESQUISANDO ALUNO MONITOR EM TURMA
+           
+            Turma t = new Turma();
+            t.getAluno().setMatricula(2);
+            NegocioTurma n = new NegocioTurma();
+            n.pegarMonitor(t);
+            JOptionPane.showMessageDialog(null, "Pesquisa realizada com sucesso!");
+           
            
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao REMOVER: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao Pesquisar: " + e.getMessage());
             
         }
     }
