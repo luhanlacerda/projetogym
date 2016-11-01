@@ -26,7 +26,7 @@ public class NegocioInstrutor implements InterfaceInstrutor {
         if (i.getRg() == null || i.getRg().trim().equals("")) {
             throw new Exception("Número de RG inválido");
         }
-        if (i.getCpf() == null || i.getCpf().trim().equals("") || i.getCpf().trim().length() < 13) {
+        if (i.getCpf() == null || i.getCpf().trim().equals("") || i.getCpf().trim().length() < 13 || i.getCpf().trim().length() > 13)  {
             throw new Exception("Número de CPF inválido");
         }
         if (i.getNome() == null || i.getNome().trim().equals("")) {
@@ -124,6 +124,11 @@ public class NegocioInstrutor implements InterfaceInstrutor {
     //metodo para verificar se um determinado cpf já se encontra cadastrado no sistema, caso o campo nao seja unique
     @Override
     public boolean verificarExistenciaCpf(Instrutor i) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int selecionarCodInstrutor(Instrutor i) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

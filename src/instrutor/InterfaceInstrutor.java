@@ -25,5 +25,7 @@ public interface InterfaceInstrutor {
     boolean verificarExistenciaMatricula(Instrutor i) throws Exception;
     //verificar se um determinado cpf já esta cadastrado
     boolean verificarExistenciaCpf(Instrutor i) throws Exception;
+    //selecionar matricula de um instrutor
+    int selecionarCodInstrutor(Instrutor i) throws Exception;
     
 }

@@ -22,7 +22,7 @@ public interface InterfaceAtividade {
     void remover(Atividade a) throws Exception;
     //listar as atividades de acordo com o filtro 
     ArrayList<Atividade> listar(Atividade filtro) throws Exception;
-    
-    
-    
+    //selecionar atividade
+    int selecionarCodAtividade (Atividade a) throws Exception;
+     
 }

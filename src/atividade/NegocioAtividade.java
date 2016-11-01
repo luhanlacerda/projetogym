@@ -5,10 +5,52 @@
  */
 package atividade;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Luhan
  */
-public class NegocioAtividade {
-    
+public class NegocioAtividade implements InterfaceAtividade {
+
+    @Override
+    public void cadastrar(Atividade a) throws Exception {
+        if (a.getCodigo() <= 0) {
+            throw new Exception("Informar um código válido(Maior que zero)");
+        }
+        if (a.getDescricao() == null || a.getDescricao().trim().equals("")) {
+            throw new Exception("Informar a descrição da atividade");
+        }
+    }
+
+    @Override
+    public void atualizar(Atividade a) throws Exception {
+        if (a.getCodigo() <= 0) {
+            throw new Exception("Informar um código válido(Maior que zero)");
+        }
+        if (a.getDescricao() == null || a.getDescricao().trim().equals("")) {
+            throw new Exception("Informar a descrição da atividade");
+        }
+    }
+
+    @Override
+    public void remover(Atividade a) throws Exception {
+        if (a.getCodigo() <= 0) {
+            throw new Exception("Informar um código válido(Maior que zero)");
+        }
+        if (a.getDescricao() == null || a.getDescricao().trim().equals("")) {
+            throw new Exception("Informar a descrição da atividade");
+        }
+    }
+
+    @Override
+    public ArrayList<Atividade> listar(Atividade filtro) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int selecionarCodAtividade(Atividade a) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

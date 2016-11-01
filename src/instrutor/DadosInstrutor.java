@@ -209,5 +209,29 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
     
     }
 
+    @Override
+    public int selecionarCodInstrutor(Instrutor i) throws Exception {
+        int matricula = 0;
+    //conectando no banco
+    conectar();
+    //instrução para selecionar uma matricula
+    String sql = " SELECT Ins_Matricula AS 'Matricula', Ins_Nome AS 'Nome'";
+    sql += " FROM Instrutor WHERE Ins_Matricula = ?";
+    try{
+     PreparedStatement cmd = conn.prepareStatement(sql);
+     cmd.setInt(1, i.getMatricula());
+     ResultSet result = cmd.executeQuery();
+            if (result.next()) {
+                matricula = result.getInt("Matricula");
+            }
+    } catch(SQLException e){
+        throw new Exception("Erro ao executar seleção: " + e.getMessage());
+    }
+    //fechando conexão
+    desconectar();
+    //retornando a matricula
+    return matricula;
+    }
+
 
 }
