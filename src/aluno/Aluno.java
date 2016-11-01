@@ -65,4 +65,21 @@ public class Aluno extends Pessoa {
         this.endereco = endereco;
     }
 
+    public String toString(){
+        String retorno = "";
+        retorno = "Matrícula: " + this.getMatricula() + "\n";
+        retorno += "Nome: " + this.getNome() + "\n";
+        retorno += "Altura: " + this.getAltura() + "\n";
+        retorno += "Peso: " + this.getPeso() + "\n";
+        retorno += "Endereco: " + this.getEndereco() + "\n";
+        retorno += "Contato: " + this.getContato();
+        return retorno;
+    }
+    
+    public String retornoNecessario(){
+        String retorno = "";
+        retorno = "Matrícula: " + this.getMatricula();
+        retorno += "Nome: " + this.getNome();
+        return retorno;
+    }
 }

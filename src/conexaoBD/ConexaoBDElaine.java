@@ -10,6 +10,7 @@ import dados.Dados;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -35,23 +36,23 @@ public class ConexaoBDElaine {
 //            JOptionPane.showMessageDialog(null, "Banco de dados conectado com sucesso!");
 //            
 //            
-            /*
+            
            
             
            // CADASTRANDO
-           /* Turma t = new Turma();
-            t.setCodigo(1);
-            t.setHorario(FormatacaoDataHora.getHorario("19:00"));
-            t.setDuracaoaula(FormatacaoDataHora.getHorario("09:00"));
-            t.setDtinicial(FormatacaoDataHora.getData("31/10/2016"));
-            t.setDtfinal(FormatacaoDataHora.getData("31/11/2016"));
-            t.getInstrutor().setMatricula(1);
-            t.getAluno().setMatricula(1);
-            t.getAtividade().setCodigo(1);
-            NegocioTurma n = new NegocioTurma();
-            n.cadastrar(t);
-            JOptionPane.showMessageDialog(null, "Turma cadastrada com sucesso!");
-            */
+//            Turma t = new Turma();
+//            t.setCodigo(4);
+//            t.setHorario(FormatacaoDataHora.getHorario("15:00"));
+//            t.setDuracaoaula(FormatacaoDataHora.getHorario("8:00"));
+//            t.setDtinicial(FormatacaoDataHora.getData("01/11/2016"));
+//            t.setDtfinal(FormatacaoDataHora.getData("05/11/2016"));
+//            t.getInstrutor().setMatricula(1);
+//            t.getAluno().setMatricula(1);
+//            t.getAtividade().setCodigo(1);
+//            NegocioTurma n = new NegocioTurma();
+//            n.cadastrar(t);
+//            JOptionPane.showMessageDialog(null, "Turma cadastrada com sucesso!");
+            
             
             
             //ATUALIZANDO  
@@ -77,6 +78,14 @@ public class ConexaoBDElaine {
              n.remover(t);
              JOptionPane.showMessageDialog(null, "Turma removida com sucesso!");
            */
+           
+//             Turma turma = new Turma();
+//             NegocioTurma n = new NegocioTurma();
+//            ArrayList<Turma> retorno = n.listar(turma);
+//            for (Turma t : retorno) {
+//                JOptionPane.showMessageDialog(null, t.listarTurmas());
+//               
+//         }
            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao REMOVER: " + e.getMessage());

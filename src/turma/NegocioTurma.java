@@ -124,7 +124,13 @@ public class NegocioTurma implements InferfaceTurma {
     @Override
     public ArrayList<Aluno> pegarAlunos(Turma t) throws Exception {
          DadosTurma d = new DadosTurma();
-         return d.pegarAlunos(); // Pediu pra criar um método
+         return d.pegarAlunos(t); // Pediu pra criar um método
+    }
+
+    @Override
+    public int pegarMonitor(Turma t) throws Exception {
+        DadosTurma d = new DadosTurma();
+         return d.pegarMonitor(t);
     }
 
 }

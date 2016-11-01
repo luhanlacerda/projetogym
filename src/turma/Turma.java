@@ -139,5 +139,20 @@ public class Turma {
     public void setAtividade(Atividade atividade) {
         this.atividade = atividade;
     }
+    
+    public String listarTurmas(){
+        String retorno = "";
+        retorno = "codigo:" + this.getCodigo() + "\n";
+        retorno += "Hora Aula" + this.getHorario() + "\n";
+        retorno += "Duração Aula" + this.getDuracaoaula()+ "\n";
+        retorno += "Data Inicial" + this.getDtinicial() + "\n";
+        retorno += "Data Final"   + this.getDtfinal() + "\n";
+        retorno += "Aluno Monitor" + this.getAluno().getMatricula() + "\n";
+        retorno += "Matrícula Instrutor" + this.getInstrutor().getMatricula() + "\n";
+        retorno += "Atividade Código" + this.getAtividade().getCodigo() + "\n";
+        return retorno;
+  
+    }
+
 
 }
