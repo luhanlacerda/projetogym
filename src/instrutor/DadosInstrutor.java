@@ -21,11 +21,11 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
     public void cadastrar(Instrutor i) throws Exception {
         //abrindo a conexão
         conectar();
-        //instrução sql correspondente a inserção do instrutor
+        //instrução para cadastro de um instrutor
         String sql = "INSERT INTO instrutor (ins_matricula, ins_rg, ins_cpf, ins_nome, ins_nascimento, ins_telefone)";
         sql += " VALUES  (?, ?, ?, ?, ?, ?)";
         try {
-            //executando a instrução sql
+            //executando instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
             cmd.setInt(1,    i.getMatricula());
             cmd.setString(2, i.getRg());
@@ -35,7 +35,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
             cmd.setString(6, i.getContato());
             cmd.execute();
         } catch (SQLException e) {
-            //caso haja algum erro neste método será levantada esta execeção
+            //caso ocorra algum erro será executada essa execeção
             throw new Exception("Erro ao executar inserção: " + e.getMessage());
         }
         //fechando a conexão com o banco de dados
@@ -46,10 +46,10 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
     public void atualizar(Instrutor i) throws Exception {
         //abrindo a conexao
         conectar();
-        //instrução sql correspondente a inserção do instrutor
+        //instrução para atualizar dados do instrutor
         String sql = "UPDATE Instrutor SET Ins_Rg = ?, Ins_Cpf = ?, Ins_Nome = ?, Ins_Nascimento = ?, Ins_Telefone = ? WHERE Ins_Matricula = ?;";
         try {
-            //executando a instrução sql
+            //executando instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
             cmd.setString(1, i.getRg());
             cmd.setString(2, i.getCpf());
@@ -59,7 +59,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
             cmd.setInt(6, i.getMatricula());
             cmd.execute();
         } catch (SQLException e) {
-            //caso haja algum erro neste método será levantada esta execeção
+            //caso ocorra algum erro será executada essa execeção
             throw new Exception("Erro ao executar atualização: " + e.getMessage());
         }
         //fechando a conexão com o banco de dados
@@ -70,15 +70,15 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
     public void remover(Instrutor i) throws Exception {
         //abrindo conexão
         conectar();
-        //instrução sql correspondente para remover um instrutor
+        //instrução para remover um instrutor
         String sql = " DELETE FROM Instrutor WHERE Ins_Matricula = ?";
         try{
-            //executando a instrução sql
+            //executando instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
             cmd.setInt(1, i.getMatricula());
             cmd.execute();
         }catch (SQLException e){
-            //caso haja algum erro neste método, será levantada esta exceção
+            //caso ocorra algum erro será executada essa execeção
             throw new Exception("Erro ao remover: " + e.getMessage());
         }
         //fechando conexão com o banco de dados
@@ -89,9 +89,9 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
     public ArrayList<Instrutor> listar(Instrutor filtro) throws Exception {
         int posPar = 1;
         ArrayList<Instrutor> retorno = new ArrayList<>();
-        //abrindo a conexão
+        //abrindo conexão
         conectar();
-        //instrução sql correspondente a inserção do instrutor
+        //instrução para listagem dos instrutores de acordo com o filtro de pesquisa
         String sql = " SELECT Ins_Matricula AS 'Matrícula', Ins_Rg AS 'RG', Ins_Cpf AS 'CPF', Ins_Nome AS 'Nome', Ins_Nascimento AS 'Data Nascimento', Ins_Telefone AS 'Contato'";
         sql += " FROM Instrutor WHERE Ins_Matricula > 0 ";
         if (filtro.getMatricula() > 0) {
@@ -124,10 +124,10 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
                 retorno.add(i);
                      }
         } catch (SQLException e) {
-            //caso haja algum erro neste método será levantada esta execeção
+            //caso ocorra algum erro será executada essa execeção
             throw new Exception("Erro ao executar inserção: " + e.getMessage());
         }
-        //fechando a conexÃ£o com o banco de dados
+        //fechando a conexão com o banco de dados
         desconectar();
         return retorno;
     }
@@ -137,7 +137,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         boolean retorno = false;
         //abrindo a conexão
         conectar();
-        //instruçãoo sql correspondente a inserção do instrutor
+        //instrução para verificar se uma determinada matricula já contem no banco de dados
         String sql = " SELECT Ins_Matricula, Ins_Nome ";
         sql += " FROM instrutor WHERE Ins_Matricula = ? ";
         try {
@@ -149,7 +149,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
                 break;
             }
         } catch (SQLException e) {
-            //caso haja algum erro neste método será levantada esta execeção
+            //caso ocorra algum erro será executada essa execeção
             throw new Exception("Erro ao executar inserção: " + e.getMessage());
         }
         //fechando a conexão com o banco de dados
@@ -163,7 +163,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         
         //abrindo a conexao
         conectar();
-        //instrução sql correspondente a inserção do instrutor
+        //instrução sql para pegar a próxima matricula, caso o campo seja identity
         String sql = "SELECT MAX(Ins_Matricula) + 1 AS 'Matricula' FROM Instrutor;";
         try {
             //executando a instrução sql
@@ -174,7 +174,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
             }
 
         } catch (SQLException e) {
-            //caso haja algum erro neste método será levantada esta execeção
+            //caso ocorra algum erro será executada essa execeção
             throw new Exception("Erro ao ...: " + e.getMessage());
         }
         //fechando a conexão com o banco de dados
@@ -188,7 +188,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         boolean retorno = false;
         //abrindo a conexão
         conectar();
-        //instruçãoo sql correspondente a inserção do instrutor
+        //instrução para verificação de existencia de um cpf já cadastrado, caso o campo não seja unique
         String sql = " SELECT Ins_Matricula, Ins_Nome, Ins_Cpf ";
         sql += " FROM instrutor WHERE Ins_Cpf = ? ";
         try {
@@ -200,7 +200,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
                 break;
             }
         } catch (SQLException e) {
-            //caso haja algum erro neste método será levantada esta execeção
+            //caso ocorra algum erro será executada essa execeção
             throw new Exception("Erro ao executar inserção: " + e.getMessage());
         }
         //fechando a conexão com o banco de dados
