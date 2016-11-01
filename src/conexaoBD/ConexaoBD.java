@@ -7,6 +7,8 @@ package conexaoBD;
 
 import aluno.Aluno;
 import aluno.NegocioAluno;
+import atividade.Atividade;
+import atividade.NegocioAtividade;
 import classesBasicas.FormatacaoDataHora;
 import dados.Dados;
 import instrutor.Instrutor;
@@ -70,7 +72,7 @@ public class ConexaoBD {
             JOptionPane.showMessageDialog(null, "Instrutor removido com sucesso!");
             */
             
-            
+            /*
             //LISTAR INSTRUTOR
             Instrutor instrutor = new Instrutor();
             NegocioInstrutor n = new NegocioInstrutor();
@@ -78,27 +80,20 @@ public class ConexaoBD {
             for (Instrutor i : retorno) {
                 JOptionPane.showMessageDialog(null, i.listarInstrutores());
             } 
+            */
+            
+            
+            Atividade atividade = new Atividade();
+            NegocioAtividade n = new NegocioAtividade();
+            int retorno =  n.listar(atividade);
+            atividade.setDescricao("Boxe");
+            atividade.listarAtividade();
+            JOptionPane.showMessageDialog(null, retorno);
             
             
             /*
             Aluno a = new Aluno();
-            a.setNome("Mago");
-            a.setMatricula(2);
-            a.setDtmatricula("25/10/2016");
-            a.setAltura((float) 1.80);
-            a.setPeso(83);
-            a.getEndereco().setLogradouro("Rua 01");
-            a.getEndereco().setNumero("10");
-            a.getEndereco().setComplemento("Ap 01");
-            a.getEndereco().setCep("01234567");
-            a.getEndereco().setBairro("Casa Forte");
-            a.getEndereco().setCidade("Hellcife");
-            a.getEndereco().setUf("Pernambuco");
-            a.getEndereco().setPais("Brasil");
-            a.setRg("123456");
-            a.setCpf("01234567890");
-            a.setContato("(81)9.9999-9999");
-            a.setDtnascimento("01/01/2001");
+            
             NegocioAluno n = new NegocioAluno();
             n.cadastrar(a);
             JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso!");

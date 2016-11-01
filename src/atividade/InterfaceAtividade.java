@@ -7,6 +7,7 @@ package atividade;
 
 import java.util.ArrayList;
 
+
 /**
  *
  * @author ELAINE
@@ -21,8 +22,6 @@ public interface InterfaceAtividade {
     //remover uma atividade cadastrada
     void remover(Atividade a) throws Exception;
     //listar as atividades de acordo com o filtro 
-    ArrayList<Atividade> listar(Atividade filtro) throws Exception;
-    //selecionar atividade
-    int selecionarCodAtividade (Atividade a) throws Exception;
+    int listar(Atividade filtro) throws Exception;
      
 }
