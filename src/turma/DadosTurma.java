@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author ELAINE
+ * @author Elaine
  */
 public class DadosTurma extends Dados implements InferfaceTurma {
 

@@ -85,11 +85,11 @@ public class ConexaoBDElaine {
 
            //PESQUISANDO ALUNO MONITOR EM TURMA
            
-            Turma t = new Turma();
-            t.getAluno().setMatricula(2);
-            NegocioTurma n = new NegocioTurma();
-            n.pegarMonitor(t);
-            JOptionPane.showMessageDialog(null, "Pesquisa realizada com sucesso!");
+//            Turma t = new Turma();
+//            t.getAluno().setMatricula(2);
+//            NegocioTurma n = new NegocioTurma();
+//            n.pegarMonitor(t);
+//            JOptionPane.showMessageDialog(null, "Pesquisa realizada com sucesso!");
            
            
         } catch (Exception e) {
