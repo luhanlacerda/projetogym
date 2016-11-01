@@ -109,7 +109,7 @@ public class DadosTurma extends Dados implements InferfaceTurma {
         conectar();
         //INSTRUÇÃO SQL
         String sql = " SELECT tur_codigo AS 'Código', tur_horarioaulas AS 'Hora Aula', tur_duracaoaulas AS 'Duração Aula', tur_datainicial AS 'Data Inicial', tur_datafinal AS 'Data Final',"
-                + " alu_matricula AS 'Matrícula Aluno', ins_matricula AS 'Matrícula Instrutor', atv_codigo AS 'Código Atividade'";
+                + " alu_matricula AS 'Aluno Monitor', ins_matricula AS 'Matrícula Instrutor', atv_codigo AS 'Código Atividade'";
         
         sql += " FROM Turma WHERE tur_codigo > 0 ";
         if (filtro.getCodigo()> 0) {
@@ -127,13 +127,13 @@ public class DadosTurma extends Dados implements InferfaceTurma {
             while (leitor.next()) {
                 Turma t = new Turma();
                 t.setCodigo(leitor.getInt("Código"));
-                t.setHorario(leitor.getTime("Horário").getTime());
+                t.setHorario(leitor.getTime("Hora Aula").getTime());
                 t.setDuracaoaula(leitor.getTime("Duração Aula").getTime());
                 t.setDtinicial(leitor.getDate("Data Inicial").getTime());
                 t.setDtfinal(leitor.getDate("Data Final").getTime());
-               // t.setAluno
-               //t.setInstrutor
-               //t.setatividade
+                t.getAluno().setMatricula(leitor.getInt("Aluno Monitor"));
+                t.getInstrutor().setMatricula(leitor.getInt("Matrícula Instrutor"));
+                t.getAtividade().setCodigo(leitor.getInt("Código Atividade"));
                  
                 retorno.add(t);
                      
