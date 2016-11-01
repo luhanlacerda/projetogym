@@ -19,7 +19,7 @@ public class NegocioInstrutor implements InterfaceInstrutor {
         if (i.getMatricula() <= 0) {
             throw new Exception("Matrícula inválida");
         }
-        if(verificarExistenciaMatricula(i) != false){
+        if (verificarExistenciaMatricula(i) != false) {
             throw new Exception("A matrícula informada já está cadastrada no sistema.");
         }
         if (i.getRg() == null || i.getRg().trim().equals("")) {
@@ -37,11 +37,6 @@ public class NegocioInstrutor implements InterfaceInstrutor {
         if (i.getContato().trim().equals("") || i.getContato() == null || i.getContato().trim().length() < 14) {
             throw new Exception("Informar número de contato");
         }
-        /*
-        if(verificarExistenciaCpf(i) != false){
-            throw new Exception("O Cpf informado já está cadastrado no sistema.");
-        }
-        */
         //Cadastrando
         DadosInstrutor d = new DadosInstrutor();
         d.cadastrar(i);
@@ -49,12 +44,56 @@ public class NegocioInstrutor implements InterfaceInstrutor {
 
     @Override
     public void atualizar(Instrutor i) throws Exception {
+        if (i.getMatricula() <= 0) {
+            throw new Exception("Matrícula inválida");
+        }
+        if (verificarExistenciaMatricula(i) != false) {
+            throw new Exception("A matrícula informada já está cadastrada no sistema.");
+        }
+        if (i.getRg() == null || i.getRg().trim().equals("")) {
+            throw new Exception("Número de RG inválido");
+        }
+        if (i.getCpf() == null || i.getCpf().trim().equals("") || i.getCpf().trim().length() < 13 || i.getCpf().trim().length() > 13) {
+            throw new Exception("Número de CPF inválido");
+        }
+        if (i.getNome() == null || i.getNome().trim().equals("")) {
+            throw new Exception("Informar nome");
+        }
+        if (i.getDtnascimento() == null) {
+            throw new Exception("Informar data de nascimento");
+        }
+        if (i.getContato().trim().equals("") || i.getContato() == null || i.getContato().trim().length() < 14) {
+            throw new Exception("Informar número de contato");
+        }
+        //Atualizando Instrutor
         DadosInstrutor d = new DadosInstrutor();
         d.atualizar(i);
     }
 
     @Override
     public void remover(Instrutor i) throws Exception {
+         if (i.getMatricula() <= 0) {
+            throw new Exception("Matrícula inválida");
+        }
+        if (verificarExistenciaMatricula(i) != false) {
+            throw new Exception("A matrícula informada já está cadastrada no sistema.");
+        }
+        if (i.getRg() == null || i.getRg().trim().equals("")) {
+            throw new Exception("Número de RG inválido");
+        }
+        if (i.getCpf() == null || i.getCpf().trim().equals("") || i.getCpf().trim().length() < 13 || i.getCpf().trim().length() > 13) {
+            throw new Exception("Número de CPF inválido");
+        }
+        if (i.getNome() == null || i.getNome().trim().equals("")) {
+            throw new Exception("Informar nome");
+        }
+        if (i.getDtnascimento() == null) {
+            throw new Exception("Informar data de nascimento");
+        }
+        if (i.getContato().trim().equals("") || i.getContato() == null || i.getContato().trim().length() < 14) {
+            throw new Exception("Informar número de contato");
+        }
+        //Removendo um instrutor
         DadosInstrutor d = new DadosInstrutor();
         d.remover(i);
     }
@@ -80,5 +119,5 @@ public class NegocioInstrutor implements InterfaceInstrutor {
     public boolean verificarExistenciaCpf(Instrutor i) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-     
+
 }
