@@ -18,10 +18,10 @@ import java.util.ArrayList;
  */
 public class DadosTurma extends Dados implements InferfaceTurma {
 
-    // Métodos abstratos. 
+    // MÉTODOS ABSTRATOS
     @Override
     public void cadastrar(Turma t) throws Exception {
-        //abrindo a conexao
+       // CONECTANDO
         conectar();
         //instrução sql correspondente a inserção da turma
         String sql = "INSERT INTO turma (tur_codigo, tur_horarioaulas, tur_duracaoaulas, tur_datainicial, tur_datafinal, alu_matricula, ins_matricula, atv_codigo)";
@@ -40,17 +40,17 @@ public class DadosTurma extends Dados implements InferfaceTurma {
             cmd.execute();
         } catch (SQLException e) {
 //         
-            //caso haja algum erro 
+            
             throw new Exception("Erro ao executar inserção: " + e.getMessage());
         }
-        //fechando a conexão com o banco de dados
+        //DESCONECTANDO
         desconectar();
 
     }
 
     @Override
     public void atualizar(Turma t) throws Exception {
-       //abrindo a conexao
+        // CONECTANDO
         conectar();
         //instrução sql correspondente a inserção da turma
         String sql = "UPDATE Turma SET tur_horarioaulas = ?, tur_duracaoaulas = ?, tur_datainicial = ?, tur_datafinal= ?, alu_matricula = ?, ins_matricula = ?, atv_codigo= ? WHERE Tur_Codigo = ?;";
@@ -69,17 +69,17 @@ public class DadosTurma extends Dados implements InferfaceTurma {
             cmd.execute();
         } catch (SQLException e) {
 //         
-            //caso haja algum erro 
+             
             throw new Exception("Erro ao executar a atualização: " + e.getMessage());
         }
-        //fechando a conexão com o banco de dados
+        //DESCONECTANDO
         desconectar();
 
     }
 
     @Override
     public void remover(Turma t) throws Exception {
-
+          // CONECTANDO
          conectar();
          //Instrução sql para remover a turma
         String sql = "DELETE FROM turma WHERE Tur_Codigo = ?";
@@ -91,21 +91,18 @@ public class DadosTurma extends Dados implements InferfaceTurma {
         } catch (SQLException e) {
             throw new Exception("Erro ao executar remoção: " + e.getMessage());
         }
+        //DESCONECTANDO
         desconectar(); 
-
-//        
-        
-        
-        
+    
     }
 
     @Override
     
-    // VER LISTAGEM! FALTA TERMINAR
+    
     public ArrayList<Turma> listar(Turma filtro) throws Exception {
         int posPar = 1;
         ArrayList<Turma> retorno = new ArrayList<>();
-     
+         // CONECTANDO
         conectar();
         //INSTRUÇÃO SQL
         String sql = " SELECT tur_codigo AS 'Código', tur_horarioaulas AS 'Hora Aula', tur_duracaoaulas AS 'Duração Aula', tur_datainicial AS 'Data Inicial', tur_datafinal AS 'Data Final',"
@@ -140,10 +137,10 @@ public class DadosTurma extends Dados implements InferfaceTurma {
             }
     
     } catch (SQLException e) {
-            //caso haja algum erro neste método será levantada esta execeção
+            
             throw new Exception("Erro ao executar a listagem: " + e.getMessage());
         }
-        
+        //DESCONECTANDO
         desconectar();
         return retorno;
     
@@ -168,7 +165,7 @@ public class DadosTurma extends Dados implements InferfaceTurma {
                 break;
             }
         } catch (SQLException e) {
-            //caso haja algum erro neste método será levantada esta execeção
+            
             throw new Exception("Erro ao pesquisar existtencia: " + e.getMessage());
         }
         
