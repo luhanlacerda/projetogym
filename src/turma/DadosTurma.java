@@ -8,6 +8,7 @@ package turma;
 import aluno.Aluno;
 import dados.Dados;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -81,7 +82,7 @@ public class DadosTurma extends Dados implements InferfaceTurma {
 
          conectar();
          //Instrução sql para remover a turma
-        String sql = "DELETE FROM Turma WHERE Tur_Codigo= ?";
+        String sql = "DELETE FROM turma WHERE Tur_Codigo = ?";
                
         try {
             PreparedStatement cmd = conn.prepareStatement(sql);
@@ -91,23 +92,102 @@ public class DadosTurma extends Dados implements InferfaceTurma {
             throw new Exception("Erro ao executar remoção: " + e.getMessage());
         }
         desconectar(); 
-    
+
+//        
+        
+        
         
     }
 
     @Override
+    
+    // VER LISTAGEM! FALTA TERMINAR
     public ArrayList<Turma> listar(Turma filtro) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int posPar = 1;
+        ArrayList<Turma> retorno = new ArrayList<>();
+     
+        conectar();
+        //INSTRUÇÃO SQL
+        String sql = " SELECT tur_codigo AS 'Código', tur_horarioaulas AS 'Hora Aula', tur_duracaoaulas AS 'Duração Aula', tur_datainicial AS 'Data Inicial', tur_datafinal AS 'Data Final',"
+                + " alu_matricula AS 'Matrícula Aluno', ins_matricula AS 'Matrícula Instrutor', atv_codigo AS 'Código Atividade'";
+        
+        sql += " FROM Turma WHERE tur_codigo > 0 ";
+        if (filtro.getCodigo()> 0) {
+            sql += " AND tur_codigo = ?";
+        }
+        
+        try {
+            //EXECUTANDO A INSTRUÇÃO
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            if (filtro.getCodigo()> 0) {
+                cmd.setInt(posPar, filtro.getCodigo());
+                posPar++;
+            }
+         ResultSet leitor = cmd.executeQuery();
+            while (leitor.next()) {
+                Turma t = new Turma();
+                t.setCodigo(leitor.getInt("Código"));
+                t.setHorario(leitor.getTime("Horário").getTime());
+                t.setDuracaoaula(leitor.getTime("Duração Aula").getTime());
+                t.setDtinicial(leitor.getDate("Data Inicial").getTime());
+                t.setDtfinal(leitor.getDate("Data Final").getTime());
+               // t.setAluno
+               //t.setInstrutor
+               //t.setatividade
+                 
+                retorno.add(t);
+                     
+            }
+    
+    } catch (SQLException e) {
+            //caso haja algum erro neste método será levantada esta execeção
+            throw new Exception("Erro ao executar a listagem: " + e.getMessage());
+        }
+        
+        desconectar();
+        return retorno;
+    
+    
     }
 
     @Override
     public boolean verificaExistencia(Turma a) throws Exception {
+           boolean retorno = false;
+        
+        conectar();
+        //INSTRUÇÃO SQL
+        String sql = " SELECT tur_codigo";
+        sql += " FROM Turma WHERE tur_codigo = ? ";
+        try {
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            Turma t = new Turma();
+            cmd.setInt(1, t.getCodigo());
+            ResultSet leitor = cmd.executeQuery();
+            while (leitor.next()) {
+                retorno = true;
+                break;
+            }
+        } catch (SQLException e) {
+            //caso haja algum erro neste método será levantada esta execeção
+            throw new Exception("Erro ao pesquisar existtencia: " + e.getMessage());
+        }
+        
+        desconectar();
+        return retorno;
+    }    
+    
+    
+     @Override
+    public ArrayList<Aluno> pegarAlunos(Turma t) throws Exception {
+        return new ArrayList<>();
+   }
+
+    ArrayList<Aluno> pegarAlunos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public ArrayList<Aluno> pegarAlunos(Turma t) throws Exception {
-        return new ArrayList<>();
     }
 
-}
+ 
+   
+

@@ -71,8 +71,6 @@ public class NegocioInstrutor implements InterfaceInstrutor {
         return d.verificarExistenciaMatricula(i);
     }
 
-    
-       
     public int pegarMatricula() throws Exception {
         DadosInstrutor d = new DadosInstrutor();
         return d.pegarMatricula();

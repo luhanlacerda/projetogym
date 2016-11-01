@@ -111,17 +111,20 @@ public class NegocioTurma implements InferfaceTurma {
 
     @Override
     public ArrayList<Turma> listar(Turma filtro) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     DadosTurma d = new DadosTurma();
+        return d.listar(filtro);   
     }
 
     @Override
-    public boolean verificaExistencia(Turma a) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean verificaExistencia(Turma t) throws Exception {
+       DadosTurma d = new DadosTurma();
+        return d.verificaExistencia(t);
     }
 
     @Override
     public ArrayList<Aluno> pegarAlunos(Turma t) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         DadosTurma d = new DadosTurma();
+         return d.pegarAlunos(); // Pediu pra criar um método
     }
 
 }

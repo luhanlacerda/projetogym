@@ -34,7 +34,7 @@ public class ConexaoBD {
              */
 
             /*
-            //teste para cadastro de instrutor
+            //CADASTRO INSTRUTOR
             Instrutor instrutor = new Instrutor();            
             instrutor.setMatricula(2);
             instrutor.setRg("6543210");
@@ -48,7 +48,7 @@ public class ConexaoBD {
              */
             
             /*
-            //teste para atualização de instrutor
+            //ATUALIZAR INSTRUTOR
             Instrutor instrutor = new Instrutor();
             instrutor.setMatricula(1);
             instrutor.setRg("6543210");
@@ -62,7 +62,7 @@ public class ConexaoBD {
             */
  
             /*
-            //teste para remoção de instrutor
+            //DELETAR INSTRUTOR
             Instrutor instrutor = new Instrutor();
             instrutor.setMatricula(2);
             NegocioInstrutor n = new NegocioInstrutor();
@@ -71,7 +71,7 @@ public class ConexaoBD {
             */
             
             
-            //teste para listagem de instrutores
+            //LISTAR INSTRUTOR
             Instrutor instrutor = new Instrutor();
             NegocioInstrutor n = new NegocioInstrutor();
             ArrayList<Instrutor> retorno = n.listar(instrutor);
