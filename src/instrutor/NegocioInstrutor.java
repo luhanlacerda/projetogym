@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public class NegocioInstrutor implements InterfaceInstrutor {
 
+    //Método de cadastrar Instrutor
     @Override
     public void cadastrar(Instrutor i) throws Exception {
 
@@ -42,6 +43,7 @@ public class NegocioInstrutor implements InterfaceInstrutor {
         d.cadastrar(i);
     }
 
+    //método de atualização de instrutor
     @Override
     public void atualizar(Instrutor i) throws Exception {
         if (i.getMatricula() <= 0) {
@@ -70,6 +72,7 @@ public class NegocioInstrutor implements InterfaceInstrutor {
         d.atualizar(i);
     }
 
+    //metodo para remover um instrutor
     @Override
     public void remover(Instrutor i) throws Exception {
          if (i.getMatricula() <= 0) {
@@ -98,23 +101,27 @@ public class NegocioInstrutor implements InterfaceInstrutor {
         d.remover(i);
     }
 
+    //método para listagem de instrutores de acordo com o filtro
     @Override
     public ArrayList<Instrutor> listar(Instrutor filtro) throws Exception {
         DadosInstrutor d = new DadosInstrutor();
         return d.listar(filtro);
     }
 
+    //metodo para verificacao de existencia de uma determinada matricula ja cadastrada no banco de dados
     @Override
     public boolean verificarExistenciaMatricula(Instrutor i) throws Exception {
         DadosInstrutor d = new DadosInstrutor();
         return d.verificarExistenciaMatricula(i);
     }
 
+    //metodo para pegar a proxima matricula a ser usada, caso o campo seja identity
     public int pegarMatricula() throws Exception {
         DadosInstrutor d = new DadosInstrutor();
         return d.pegarMatricula();
     }
 
+    //metodo para verificar se um determinado cpf já se encontra cadastrado no sistema, caso o campo nao seja unique
     @Override
     public boolean verificarExistenciaCpf(Instrutor i) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

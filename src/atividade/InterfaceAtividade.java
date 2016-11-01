@@ -14,16 +14,15 @@ import java.util.ArrayList;
 
 public interface InterfaceAtividade {
     
-        //cadastrar o aluno na tabela aluno
+    //cadastrar uma atividade
     void cadastrar(Atividade a) throws Exception;
-    //atualizar os dados de uma aluno 
-    //previamente cadastrado
+    //atualizar dados de uma atividade cadastrada
     void atualizar(Atividade a) throws Exception;
-    //remover um aluno previamente cadastrado
+    //remover uma atividade cadastrada
     void remover(Atividade a) throws Exception;
-    //devolver os alunos que se encaixarem no filtro da pesquisa 
+    //listar as atividades de acordo com o filtro 
     ArrayList<Atividade> listar(Atividade filtro) throws Exception;
-    //demais acoes...
+    
     
     
 }
