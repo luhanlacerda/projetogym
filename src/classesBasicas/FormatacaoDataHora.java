@@ -25,7 +25,7 @@ public final class FormatacaoDataHora {
     //Todos métodos static, para chamar sem instancia. Neste casó é obrigatório, já que não pode ser herdada e instânciada. 
     
 
-    //método para converter para horário padrão. By MahGostosão30cmNoFRIOINTENSO!
+    //método para converter para horário padrão. By Matheus
     //http://tutorials.jenkov.com/java-internationalization/simpledateformat.html
     public static long getHorario(String fonte) {
         try {

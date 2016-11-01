@@ -30,4 +30,11 @@ public class Atividade {
         this.descricao = descricao;
     }
     
+    public String listarAtividade(){
+        String retorno = "";
+        retorno = "Código: " + this.getCodigo() + "\n";
+        retorno += "Descrição: " + this.getDescricao();
+        return retorno;
+    }
+    
 }
