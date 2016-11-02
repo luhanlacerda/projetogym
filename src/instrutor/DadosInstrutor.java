@@ -17,6 +17,7 @@ import java.util.ArrayList;
  */
 public class DadosInstrutor extends Dados implements InterfaceInstrutor {
 
+    //cadastra um instrutor
     @Override
     public void cadastrar(Instrutor i) throws Exception {
         //abrindo a conexão
@@ -42,6 +43,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         desconectar();
     }
 
+    //atualiza dados de um determinado instrutor cadastrado
     @Override
     public void atualizar(Instrutor i) throws Exception {
         //abrindo a conexao
@@ -66,6 +68,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         desconectar();
     }
 
+    //remove um determinado instrutor cadastrado
     @Override
     public void remover(Instrutor i) throws Exception {
         //abrindo conexão
@@ -85,6 +88,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         desconectar();
     }
 
+    //faz uma listagem de todos os instrutores de acordo com o filtro desejado
     @Override
     public ArrayList<Instrutor> listar(Instrutor filtro) throws Exception {
         int posPar = 1;
@@ -132,6 +136,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         return retorno;
     }
 
+    //verifica se uma determinada matrícula ja foi cadastrada no sistema
     @Override
     public boolean verificarExistenciaMatricula(Instrutor i) throws Exception {
         boolean retorno = false;
@@ -157,32 +162,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         return retorno;
     }
 
-    
-    public int pegarMatricula() throws Exception {
-        int matricula = 0;
-        
-        //abrindo a conexao
-        conectar();
-        //instrução sql para pegar a próxima matricula, caso o campo seja identity
-        String sql = "SELECT MAX(Ins_Matricula) + 1 AS 'Matricula' FROM Instrutor;";
-        try {
-            //executando a instrução sql
-            PreparedStatement cmd = conn.prepareStatement(sql);
-            ResultSet result = cmd.executeQuery();
-            if (result.next()) {
-                matricula = result.getInt("Matricula");
-            }
-
-        } catch (SQLException e) {
-            //caso ocorra algum erro será executada essa execeção
-            throw new Exception("Erro ao ...: " + e.getMessage());
-        }
-        //fechando a conexão com o banco de dados
-        desconectar();
-        
-        return matricula;
-    } 
-
+    //verificação de existencia de um cpf já cadastrado caso o campo não seja unique
     @Override
     public boolean verificarExistenciaCpf(Instrutor i) throws Exception {
         boolean retorno = false;
@@ -209,6 +189,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
     
     }
 
+    //selecionar o codigo do instrutor atraves do nome
     @Override
     public int selecionarCodInstrutor(Instrutor i) throws Exception {
         int matricula = 0;
@@ -216,21 +197,48 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
     conectar();
     //instrução para selecionar uma matricula
     String sql = " SELECT Ins_Matricula AS 'Matricula', Ins_Nome AS 'Nome'";
-    sql += " FROM Instrutor WHERE Ins_Matricula = ?";
+    sql += " FROM Instrutor WHERE Ins_Nome LIKE ?";
     try{
      PreparedStatement cmd = conn.prepareStatement(sql);
-     cmd.setInt(1, i.getMatricula());
+     cmd.setString(1, i.getNome() + "%");
      ResultSet result = cmd.executeQuery();
             if (result.next()) {
-                matricula = result.getInt("Matricula");
+                matricula = result.getInt("Matrícula");
             }
     } catch(SQLException e){
-        throw new Exception("Erro ao executar seleção: " + e.getMessage());
+        throw new Exception("Erro ao selecionar matrícula do instrutor: " + e.getMessage());
     }
     //fechando conexão
     desconectar();
     //retornando a matricula
     return matricula;
+    }
+
+    //pegar a próxima matricula caso o campo seja identity
+    @Override
+    public int pegarMatricula(Instrutor i) throws Exception {
+                int matricula = 0;
+        
+        //abrindo a conexao
+        conectar();
+        //instrução sql para pegar a próxima matricula caso o campo seja identity
+        String sql = "SELECT MAX(Ins_Matricula) + 1 AS 'Matricula' FROM Instrutor;";
+        try {
+            //executando a instrução sql
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            ResultSet result = cmd.executeQuery();
+            if (result.next()) {
+                matricula = result.getInt("Matricula");
+            }
+
+        } catch (SQLException e) {
+            //caso ocorra algum erro será executada essa execeção
+            throw new Exception("Erro ao ...: " + e.getMessage());
+        }
+        //fechando a conexão com o banco de dados
+        desconectar();
+        
+        return matricula;
     }
 
 

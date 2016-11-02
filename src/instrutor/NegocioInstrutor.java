@@ -111,25 +111,37 @@ public class NegocioInstrutor implements InterfaceInstrutor {
     //metodo para verificacao de existencia de uma determinada matricula ja cadastrada no banco de dados
     @Override
     public boolean verificarExistenciaMatricula(Instrutor i) throws Exception {
+        if (i.getMatricula() <= 0) {
+            throw new Exception("Matrícula inválida!");
+        }
         DadosInstrutor d = new DadosInstrutor();
         return d.verificarExistenciaMatricula(i);
-    }
-
-    //metodo para pegar a proxima matricula a ser usada, caso o campo seja identity
-    public int pegarMatricula() throws Exception {
-        DadosInstrutor d = new DadosInstrutor();
-        return d.pegarMatricula();
     }
 
     //metodo para verificar se um determinado cpf já se encontra cadastrado no sistema, caso o campo nao seja unique
     @Override
     public boolean verificarExistenciaCpf(Instrutor i) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (i.getCpf() == null || i.getCpf().trim().equals("") || i.getCpf().trim().length() < 13 || i.getCpf().trim().length() > 13) {
+            throw new Exception("Número de CPF inválido!");
+        }
+       DadosInstrutor d = new DadosInstrutor();
+       return d.verificarExistenciaCpf(i);
     }
 
     @Override
     public int selecionarCodInstrutor(Instrutor i) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (i.getNome() == null || i.getNome().trim().equals("")) {
+            throw new Exception("Informar nome!");
+        }
+       DadosInstrutor d = new DadosInstrutor();
+       return d.selecionarCodInstrutor(i);
+    }
+
+    //metodo para pegar a proxima matricula a ser usada, caso o campo seja identity
+    @Override
+    public int pegarMatricula(Instrutor i) throws Exception {
+          DadosInstrutor d = new DadosInstrutor();
+        return d.pegarMatricula(i);
     }
 
 }
