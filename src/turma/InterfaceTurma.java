@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author ELAINE
  */
-interface InferfaceTurma {
+interface InterfaceTurma {
     
     //cadastrar o turma
     void cadastrar(Turma t) throws Exception;

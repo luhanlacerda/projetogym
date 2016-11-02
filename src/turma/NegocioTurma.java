@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author ELAINE
  */
-public class NegocioTurma implements InferfaceTurma {
+public class NegocioTurma implements InterfaceTurma {
 
     @Override
     public void cadastrar(Turma t) throws Exception {

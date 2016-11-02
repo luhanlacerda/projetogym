@@ -129,12 +129,12 @@ public class NegocioInstrutor implements InterfaceInstrutor {
     }
 
     @Override
-    public int selecionarCodInstrutor(Instrutor i) throws Exception {
+    public int selecionarMatInstrutor(Instrutor i) throws Exception {
         if (i.getNome() == null || i.getNome().trim().equals("")) {
             throw new Exception("Informar nome!");
         }
        DadosInstrutor d = new DadosInstrutor();
-       return d.selecionarCodInstrutor(i);
+       return d.selecionarMatInstrutor(i);
     }
 
     //metodo para pegar a proxima matricula a ser usada, caso o campo seja identity

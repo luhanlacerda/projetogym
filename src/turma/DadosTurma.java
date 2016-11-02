@@ -16,7 +16,7 @@ import java.util.ArrayList;
  *
  * @author Elaine
  */
-public class DadosTurma extends Dados implements InferfaceTurma {
+public class DadosTurma extends Dados implements InterfaceTurma {
 
     // MÉTODOS ABSTRATOS
     @Override

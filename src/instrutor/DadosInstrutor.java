@@ -191,7 +191,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
 
     //selecionar a matrícula do instrutor atraves do nome
     @Override
-    public int selecionarCodInstrutor(Instrutor i) throws Exception {
+    public int selecionarMatInstrutor(Instrutor i) throws Exception {
         int matricula = 0;
     //conectando no banco
     conectar();
