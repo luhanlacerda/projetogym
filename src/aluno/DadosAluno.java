@@ -153,4 +153,29 @@ public class DadosAluno extends Dados implements InterfaceAluno {
         return retorno;
     }
 
+    //selecionar a matrícula do aluno atraves do nome
+    @Override
+    public int selecionarMatAluno(Aluno a) throws Exception {
+        int matricula = 0;
+        //conectando no banco
+        conectar();
+        //instrução para selecionar uma matricula
+        String sql = " SELECT Alu_Matricula AS 'Matricula', Alu_Nome AS 'Nome'";
+        sql += " FROM Instrutor WHERE Ins_Nome LIKE ?";
+        try {
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            cmd.setString(1, a.getNome() + "%");
+            ResultSet result = cmd.executeQuery();
+            if (result.next()) {
+                matricula = result.getInt("Matrícula");
+            }
+        } catch (SQLException e) {
+            throw new Exception("Erro ao selecionar matrícula do aluno: " + e.getMessage());
+        }
+        //fechando conexão
+        desconectar();
+        //retornando a matricula
+        return matricula;
+    }
+
 }

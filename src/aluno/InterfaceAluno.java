@@ -24,5 +24,7 @@ public interface InterfaceAluno {
     ArrayList<Aluno> listar(Aluno filtro) throws Exception; 
     //verificar se uma determinada matricula está contida na tabela aluno
     boolean verificaExistencia(Aluno a) throws Exception;
+    //selecionar matrícula do aluno
+    int selecionarMatAluno(Aluno a) throws Exception;
     
 }

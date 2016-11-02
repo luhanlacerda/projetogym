@@ -30,7 +30,7 @@ public class NegocioAluno implements InterfaceAluno {
         if (a.getDtmatricula().trim().equals("") == true) {
             throw new Exception("Informar data da matrícula");
         }
-        */
+         */
         if (a.getDtmatricula() == null) {
             throw new Exception("Informar data da matrícula");
         }
@@ -38,7 +38,7 @@ public class NegocioAluno implements InterfaceAluno {
         if (a.getDtmatricula().trim().length() <= 0) {
             throw new Exception("Informar data da matrícula");
         }
-        */
+         */
         if (a.getAltura() <= 0) {
             throw new Exception("A altura é inválida");
         }
@@ -132,6 +132,21 @@ public class NegocioAluno implements InterfaceAluno {
     public boolean verificaExistencia(Aluno a) throws Exception {
         DadosAluno d = new DadosAluno();
         return d.verificaExistencia(a);
+    }
+
+    @Override
+    public int selecionarMatAluno(Aluno a) throws Exception {
+        if (a.getNome().trim().equals("") == true) {
+            throw new Exception("Informar o nome do aluno");
+        }
+        if (a.getNome() == null) {
+            throw new Exception("Informar o nome do aluno");
+        }
+        if (a.getNome().trim().length() > 100) {
+            throw new Exception("O nome do aluno não poderá ter mais de 100 caracteres");
+        }
+        DadosAluno d = new DadosAluno();
+        return d.selecionarMatAluno(a);
     }
 
 }

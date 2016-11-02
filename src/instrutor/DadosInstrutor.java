@@ -189,7 +189,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
     
     }
 
-    //selecionar o codigo do instrutor atraves do nome
+    //selecionar a matrícula do instrutor atraves do nome
     @Override
     public int selecionarCodInstrutor(Instrutor i) throws Exception {
         int matricula = 0;

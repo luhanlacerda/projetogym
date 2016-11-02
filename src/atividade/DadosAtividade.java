@@ -39,10 +39,10 @@ public class DadosAtividade extends Dados implements InterfaceAtividade {
         conectar();
         //instrução para selecionar um codigo
         String sql = " SELECT Atv_Codigo AS 'Código', Atv_Descricao AS 'Descricao'";
-        sql += " FROM Atividade WHERE Atividade_Descricao = ?";
+        sql += " FROM Atividade WHERE Atv_Descricao LIKE ?";
         try {
             PreparedStatement cmd = conn.prepareStatement(sql);
-            cmd.setString(1, filtro.getDescricao());
+            cmd.setString(1, filtro.getDescricao() + "%");
             ResultSet result = cmd.executeQuery();
             if (result.next()) {
                 codigo = result.getInt("Código");
