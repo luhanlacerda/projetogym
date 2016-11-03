@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author ELAINE
+ * @author Elaine
  */
 public class NegocioTurma implements InterfaceTurma {
 
@@ -146,29 +146,32 @@ public class NegocioTurma implements InterfaceTurma {
     
     @Override
     public ArrayList<Turma> listar(Turma filtro) throws Exception {
-        
-        
-        
-        
+          
+
      DadosTurma d = new DadosTurma();
-        return d.listar(filtro);   
-        
+        return d.listar(filtro);     
     }
 
     @Override
     public boolean verificaExistencia(Turma t) throws Exception {
-       DadosTurma d = new DadosTurma();
+       if (t.getCodigo()<= 0) {
+            throw new Exception("Turma inválida!");
+        }
+        DadosTurma d = new DadosTurma();
         return d.verificaExistencia(t);
+      
     }
-
     @Override
     public ArrayList<Aluno> pegarAlunos(Turma t) throws Exception {
-         DadosTurma d = new DadosTurma();
-         return d.pegarAlunos(t); // Pediu pra criar um método
+    DadosTurma d = new DadosTurma();
+         return d.pegarAlunos(t); 
     }
-
     @Override
     public int pegarMonitor(Turma t) throws Exception {
+        if (t.getAluno().getMatricula()<= 0) {
+            throw new Exception("Aluno inválido!");
+        }
+        
         DadosTurma d = new DadosTurma();
          return d.pegarMonitor(t);
     }

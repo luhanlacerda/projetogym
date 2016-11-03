@@ -147,7 +147,7 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
        DadosTurma d = new DadosTurma();
         return d.listar(filtro);  
     }
-
+ 
     @Override
     public boolean verificaExistencia(Turma t) throws Exception {
         DadosTurma d = new DadosTurma();
