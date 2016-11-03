@@ -15,8 +15,9 @@ import instrutor.Instrutor;
 import instrutor.InterfaceInstrutor;
 import instrutor.NegocioInstrutor;
 import java.util.ArrayList;
+import turma.DadosTurma;
 import turma.InterfaceTurma;
-import turma.Turma;
+import turma.Turma; 
 
 /**
  *
@@ -125,37 +126,44 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
 
     @Override
     public void cadastrar(Turma t) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         DadosTurma d = new DadosTurma();
+         d.cadastrar(t);
     }
 
     @Override
     public void atualizar(Turma t) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DadosTurma d = new DadosTurma();
+        d.atualizar(t);
     }
 
     @Override
     public void remover(Turma t) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DadosTurma d = new DadosTurma();
+         d.remover(t);
     }
 
     @Override
     public ArrayList<Turma> listar(Turma filtro) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       DadosTurma d = new DadosTurma();
+        return d.listar(filtro);  
     }
 
     @Override
     public boolean verificaExistencia(Turma t) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DadosTurma d = new DadosTurma();
+        return d.verificaExistencia(t);
     }
 
     @Override
     public int pegarMonitor(Turma t) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DadosTurma d = new DadosTurma();
+         return d.pegarMonitor(t);
     }
 
     @Override
-    public ArrayList<Aluno> pegarAlunos(Turma t) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<Aluno> pegarAlunos(Turma t) throws Exception { // ver se vai precisar disso, já que já vai pegar alunoMonitor
+        DadosTurma d = new DadosTurma();
+         return d.pegarAlunos(t);
     }
 
 }
