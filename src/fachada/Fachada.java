@@ -15,12 +15,14 @@ import instrutor.Instrutor;
 import instrutor.InterfaceInstrutor;
 import instrutor.NegocioInstrutor;
 import java.util.ArrayList;
+import turma.InterfaceTurma;
+import turma.Turma;
 
 /**
  *
  * @author Luhan
  */
-public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceInstrutor {
+public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceInstrutor, InterfaceTurma{
 
     @Override
     public void cadastrar(Aluno a) throws Exception {
@@ -118,6 +120,41 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
 
     @Override
     public int pegarMatricula(Instrutor i) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void cadastrar(Turma t) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void atualizar(Turma t) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void remover(Turma t) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<Turma> listar(Turma filtro) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean verificaExistencia(Turma t) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int pegarMonitor(Turma t) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<Aluno> pegarAlunos(Turma t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
