@@ -37,7 +37,7 @@ public class DadosAtividade extends Dados implements InterfaceAtividade {
         int codigo = 0;
         //conectando no banco
         conectar();
-        //instrução para selecionar um codigo
+        //instrução para selecionar um codigo de atividade
         String sql = " SELECT Atv_Codigo AS 'Código', Atv_Descricao AS 'Descricao'";
         sql += " FROM Atividade WHERE Atv_Descricao LIKE ?";
         try {

@@ -17,25 +17,29 @@ import instrutor.NegocioInstrutor;
 import java.util.ArrayList;
 import turma.DadosTurma;
 import turma.InterfaceTurma;
-import turma.Turma; 
+import turma.Turma;
+
 
 /**
  *
  * @author Luhan
  */
-public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceInstrutor, InterfaceTurma{
+public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceInstrutor, InterfaceTurma {
 
     @Override
+    //não utilizado
     public void cadastrar(Aluno a) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    //não utilizado
     public void atualizar(Aluno a) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    //não utilizado
     public void remover(Aluno a) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -47,6 +51,7 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
     }
 
     @Override
+    //não utilizado
     public boolean verificaExistencia(Aluno a) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -58,16 +63,19 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
     }
 
     @Override
+    //não utilizado
     public void cadastrar(Atividade a) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    //não utilizado
     public void atualizar(Atividade a) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
+    //não utilizado
     public void remover(Atividade a) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -109,8 +117,10 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
     }
 
     @Override
+    //não utilizado
     public boolean verificarExistenciaCpf(Instrutor i) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        NegocioInstrutor n = new NegocioInstrutor();
+        return n.verificarExistenciaCpf(i);
     }
 
     @Override
@@ -121,7 +131,8 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
 
     @Override
     public int pegarMatricula(Instrutor i) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        NegocioInstrutor n = new NegocioInstrutor();
+        return n.pegarMatricula(i);
     }
 
     @Override

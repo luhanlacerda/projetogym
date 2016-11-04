@@ -86,8 +86,7 @@ public class ConexaoBD {
             Atividade atividade = new Atividade();
             NegocioAtividade n = new NegocioAtividade();
             int retorno =  n.listar(atividade);
-            atividade.setDescricao("Boxe");
-            atividade.listarAtividade();
+            n.listar(atividade);
             JOptionPane.showMessageDialog(null, retorno);
             
             
