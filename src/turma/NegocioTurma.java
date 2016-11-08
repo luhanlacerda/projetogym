@@ -22,11 +22,11 @@ public class NegocioTurma implements InterfaceTurma {
         if (t.getCodigo() <= 0) {
             throw new Exception("Informar código.");
         }
-         // Validando horário da aula
+        // Validando horário da aula
         if (t.getHorario() == null) {
             throw new Exception("Informar o horário da aula");
         }
-         // Validando duração da aula
+        // Validando duração da aula
         if (t.getDuracaoaula() == null) {
             throw new Exception("Informar a duração da aula");
         }
@@ -46,10 +46,10 @@ public class NegocioTurma implements InterfaceTurma {
         if (t.getDtfinal() == null) {
             throw new Exception("Informar a data final");
         }
-       //Validando aluno matrícula
-       if (t.getAluno().getMatricula()<=0){
-           throw new Exception("Informar a matrícula do aluno");
-       }
+        //Validando aluno matrícula
+        if (t.getAluno().getMatricula() <= 0) {
+            throw new Exception("Informar a matrícula do aluno");
+        }
         //MÉTODO CADASTRAR
         DadosTurma d = new DadosTurma();
         d.cadastrar(t);
@@ -65,11 +65,11 @@ public class NegocioTurma implements InterfaceTurma {
         if (t.getCodigo() <= 0) {
             throw new Exception("Informar código!");
         }
-         // Validando horário da aula
+        // Validando horário da aula
         if (t.getHorario() == null) {
             throw new Exception("Informar o horário da aula!");
         }
-         // Validando duração da aula
+        // Validando duração da aula
         if (t.getDuracaoaula() == null) {
             throw new Exception("Informar a duração da aula!");
         }
@@ -89,10 +89,10 @@ public class NegocioTurma implements InterfaceTurma {
         if (t.getDtfinal() == null) {
             throw new Exception("Informar a data final!");
         }
-       //Validando aluno matrícula
-       if (t.getAluno().getMatricula()<=0){
-           throw new Exception("Informar a matrícula do aluno!");
-       }
+        //Validando aluno matrícula
+        if (t.getAluno().getMatricula() <= 0) {
+            throw new Exception("Informar a matrícula do aluno!");
+        }
         //MÉTODO ATUALIZAR
         DadosTurma d = new DadosTurma();
         d.atualizar(t);
@@ -100,12 +100,12 @@ public class NegocioTurma implements InterfaceTurma {
 
     @Override
     public void remover(Turma t) throws Exception {
-         //VALIDANDO DADOS REMOVER
-         if (t.getCodigo()<= 0) {
+        //VALIDANDO DADOS REMOVER
+        if (t.getCodigo() <= 0) {
             throw new Exception("Código Inválido!");
         }
-         //Verificando existência
-         if (verificaExistencia(t) != false) {
+        //Verificando existência
+        if (verificaExistencia(t) != false) {
             throw new Exception("A turma informada já está cadastrada no sistema!");
         }
         /*
@@ -137,43 +137,43 @@ public class NegocioTurma implements InterfaceTurma {
        if (t.getAluno().getMatricula()<=0){
            throw new Exception("Matrícula do aluno Inválida!");
        }
-        */
-         // MÉTODO REMOVER
-         DadosTurma d = new DadosTurma();
-         d.remover(t);
-        
+         */
+        // MÉTODO REMOVER
+        DadosTurma d = new DadosTurma();
+        d.remover(t);
+
     }
-    
+
     @Override
     public ArrayList<Turma> listar(Turma filtro) throws Exception {
-          
-
-     DadosTurma d = new DadosTurma();
-        return d.listar(filtro);     
+        DadosTurma d = new DadosTurma();
+        return d.listar(filtro);
     }
 
     @Override
     public boolean verificaExistencia(Turma t) throws Exception {
-       if (t.getCodigo()<= 0) {
+        if (t.getCodigo() <= 0) {
             throw new Exception("Turma inválida!");
         }
         DadosTurma d = new DadosTurma();
         return d.verificaExistencia(t);
-      
+
     }
+
     @Override
-    public ArrayList<Aluno> pegarAlunos(Turma t) throws Exception {
-    DadosTurma d = new DadosTurma();
-         return d.pegarAlunos(t); 
+    public ArrayList<Aluno> listarAlunos(Turma filtro) throws Exception {
+        DadosTurma d = new DadosTurma();
+        return d.listarAlunos(filtro);
     }
+
     @Override
     public int pegarMonitor(Turma t) throws Exception {
-        if (t.getAluno().getMatricula()<= 0) {
+        if (t.getAluno().getMatricula() <= 0) {
             throw new Exception("Aluno inválido!");
         }
-        
+
         DadosTurma d = new DadosTurma();
-         return d.pegarMonitor(t);
+        return d.pegarMonitor(t);
     }
 
 }

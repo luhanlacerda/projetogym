@@ -10,6 +10,7 @@ import atividade.Atividade;
 import instrutor.Instrutor;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
 
 /**
  *
@@ -27,6 +28,7 @@ public class Turma {
     private Date dtfinal; 
     private Aluno aluno; //matricula do aluno(MONITOR)
     private Atividade atividade; // código
+    private ArrayList<Aluno> listaAlunos;
 
     public Turma(){ 
         this.atividade = new Atividade();
@@ -153,6 +155,13 @@ public class Turma {
         return retorno;
   
     }
+    
+        public ArrayList<Aluno> getListaAlunos() {
+        return listaAlunos;
+    }
 
+    public void setListaAlunos(ArrayList<Aluno> listaAlunos) {
+        this.listaAlunos = listaAlunos;
+    }
 
 }

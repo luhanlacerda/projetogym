@@ -16,8 +16,7 @@ public interface InterfaceTurma {
     
     //cadastrar o turma
     void cadastrar(Turma t) throws Exception;
-    //atualizar os dados de uma turma
-    //previamente cadastrado
+    //atualizar os dados de uma turma previamente cadastrado
     void atualizar(Turma t) throws Exception;
     //remover uma turma previamente cadastrado
     void remover(Turma t) throws Exception;
@@ -27,5 +26,6 @@ public interface InterfaceTurma {
     boolean verificaExistencia(Turma t) throws Exception;
     //pegar aluno cadastrado no banco de dados
     int pegarMonitor(Turma t) throws Exception;
-    ArrayList<Aluno> pegarAlunos(Turma t) throws Exception;
+    //listar alunos da turma
+    ArrayList<Aluno> listarAlunos(Turma filtro) throws Exception;
 }

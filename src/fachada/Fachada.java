@@ -19,7 +19,6 @@ import turma.DadosTurma;
 import turma.InterfaceTurma;
 import turma.Turma;
 
-
 /**
  *
  * @author Luhan
@@ -137,8 +136,8 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
 
     @Override
     public void cadastrar(Turma t) throws Exception {
-         DadosTurma d = new DadosTurma();
-         d.cadastrar(t);
+        DadosTurma d = new DadosTurma();
+        d.cadastrar(t);
     }
 
     @Override
@@ -150,15 +149,15 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
     @Override
     public void remover(Turma t) throws Exception {
         DadosTurma d = new DadosTurma();
-         d.remover(t);
+        d.remover(t);
     }
 
     @Override
     public ArrayList<Turma> listar(Turma filtro) throws Exception {
-       DadosTurma d = new DadosTurma();
-        return d.listar(filtro);  
+        DadosTurma d = new DadosTurma();
+        return d.listar(filtro);
     }
- 
+
     @Override
     public boolean verificaExistencia(Turma t) throws Exception {
         DadosTurma d = new DadosTurma();
@@ -168,13 +167,13 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
     @Override
     public int pegarMonitor(Turma t) throws Exception {
         DadosTurma d = new DadosTurma();
-         return d.pegarMonitor(t);
+        return d.pegarMonitor(t);
     }
 
     @Override
-    public ArrayList<Aluno> pegarAlunos(Turma t) throws Exception { // ver se vai precisar disso, já que já vai pegar alunoMonitor
+    public ArrayList<Aluno> listarAlunos(Turma filtro) throws Exception {
         DadosTurma d = new DadosTurma();
-         return d.pegarAlunos(t);
+        return d.listarAlunos(filtro);
     }
 
 }

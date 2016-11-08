@@ -184,7 +184,7 @@ public class DadosTurma extends Dados implements InterfaceTurma {
             cmd.setInt(1, t.getAluno().getMatricula());
             ResultSet leitor = cmd.executeQuery();
             while (leitor.next()) {
-                
+
                 break;
             }
         } catch (SQLException e) {
@@ -198,8 +198,8 @@ public class DadosTurma extends Dados implements InterfaceTurma {
     }
 
     @Override
-    public ArrayList<Aluno> pegarAlunos(Turma t) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<Aluno> listarAlunos(Turma filtro) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.   
     }
 
 }
