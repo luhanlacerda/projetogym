@@ -80,7 +80,7 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
     }
 
     @Override
-    public int listar(Atividade filtro) throws Exception {
+    public Atividade listar(Atividade filtro) throws Exception {
         NegocioAtividade n = new NegocioAtividade();
         return n.listar(filtro);
     }

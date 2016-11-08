@@ -33,19 +33,20 @@ public class DadosAtividade extends Dados implements InterfaceAtividade {
     }
 
     @Override
-    public int listar(Atividade filtro) throws Exception {
-        int codigo = 0;
+    public Atividade listar(Atividade a) throws Exception {
+        Atividade retorno = new Atividade();
         //conectando no banco
         conectar();
         //instrução para selecionar um codigo de atividade
         String sql = " SELECT Atv_Codigo AS 'Código', Atv_Descricao AS 'Descricao'";
-        sql += " FROM Atividade WHERE Atv_Descricao LIKE ?";
+        sql += " FROM Atividade WHERE Atv_Codigo = ?";
         try {
             PreparedStatement cmd = conn.prepareStatement(sql);
-            cmd.setString(1, filtro.getDescricao() + "%");
+            cmd.setInt(1, a.getCodigo());
             ResultSet result = cmd.executeQuery();
             if (result.next()) {
-                codigo = result.getInt("Código");
+                retorno.setCodigo(result.getInt("Código"));
+                retorno.setDescricao(result.getString("Descricao"));
             }
         } catch (SQLException e) {
             throw new Exception("Erro ao executar seleção: " + e.getMessage());
@@ -53,7 +54,7 @@ public class DadosAtividade extends Dados implements InterfaceAtividade {
         //fechando conexão
         desconectar();
         //retornando o codigo da atividade
-        return codigo;
+        return retorno;
     }
 
 }

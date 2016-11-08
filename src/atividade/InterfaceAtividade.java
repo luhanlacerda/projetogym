@@ -22,6 +22,6 @@ public interface InterfaceAtividade {
     //remover uma atividade cadastrada
     void remover(Atividade a) throws Exception;
     //listar as atividades de acordo com o filtro 
-    int listar(Atividade filtro) throws Exception;
+    Atividade listar(Atividade a) throws Exception;
      
 }

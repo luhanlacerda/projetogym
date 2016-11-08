@@ -44,9 +44,9 @@ public class NegocioAtividade implements InterfaceAtividade {
     }
 
     @Override
-    public int listar(Atividade filtro) throws Exception {
+    public Atividade listar(Atividade a) throws Exception {
         DadosAtividade d = new DadosAtividade();
-        return d.listar(filtro);
+        return d.listar(a);
     }
 
 }
