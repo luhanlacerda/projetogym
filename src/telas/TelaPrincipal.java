@@ -53,7 +53,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemInstrutorCadastrar = new javax.swing.JMenuItem();
         jMenuItemInstrutorAtualizar = new javax.swing.JMenuItem();
         jMenuItemInstrutorConsultar = new javax.swing.JMenuItem();
-        jMenuItemInstrutorDeletar = new javax.swing.JMenuItem();
         jMenuSobre = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -216,14 +215,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenuInstrutor.add(jMenuItemInstrutorConsultar);
 
-        jMenuItemInstrutorDeletar.setText("Deletar");
-        jMenuItemInstrutorDeletar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemInstrutorDeletarActionPerformed(evt);
-            }
-        });
-        jMenuInstrutor.add(jMenuItemInstrutorDeletar);
-
         jMenuBar1.add(jMenuInstrutor);
 
         jMenuSobre.setText("Sobre");
@@ -363,12 +354,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         instrutorConsultarTela.setVisible(true);
     }//GEN-LAST:event_jMenuItemInstrutorConsultarActionPerformed
 
-    private void jMenuItemInstrutorDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInstrutorDeletarActionPerformed
-        InstrutorDeletarTela instrutorDeletarTela = new InstrutorDeletarTela();
-        jDesktopPaneTelaPrincipal.add(instrutorDeletarTela);
-        instrutorDeletarTela.setVisible(true);
-    }//GEN-LAST:event_jMenuItemInstrutorDeletarActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -424,7 +409,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemInstrutorAtualizar;
     private javax.swing.JMenuItem jMenuItemInstrutorCadastrar;
     private javax.swing.JMenuItem jMenuItemInstrutorConsultar;
-    private javax.swing.JMenuItem jMenuItemInstrutorDeletar;
     private javax.swing.JMenuItem jMenuItemTurmaAtualizar;
     private javax.swing.JMenuItem jMenuItemTurmaCadastrar;
     private javax.swing.JMenuItem jMenuItemTurmaConsultar;
