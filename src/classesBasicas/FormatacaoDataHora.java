@@ -5,6 +5,8 @@
  */
 package classesBasicas;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
@@ -27,26 +29,28 @@ public final class FormatacaoDataHora {
 
     //método para converter para horário padrão. By Matheus
     //http://tutorials.jenkov.com/java-internationalization/simpledateformat.html
-    public static long getHorario(String fonte) {
+    public static Time getHorario(String fonte) {
+        Time horario = null;
         try {
             String padrao = "HH:mm";
             SimpleDateFormat dataSimples = new SimpleDateFormat(padrao);
-            return dataSimples.parse(fonte).getTime();
+            horario = new Time(dataSimples.parse(fonte).getTime());
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "Não foi possível encontrar o horário/data informado.");
         }
-        return 0;
+        return horario;
     }
 
     //método para converter para data padrão BR
-    public static long getData(String fonte) {
+    public static Date getData(String fonte) {
+        Date data = null;
         try {
             String padrao = "dd/MM/yyyy";
             SimpleDateFormat dataSimples = new SimpleDateFormat(padrao);
-            return dataSimples.parse(fonte).getTime();
+            data = new Date(dataSimples.parse(fonte).getTime());
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "Não foi possível encontrar a data informada.");
         }
-        return 0;
+        return data;
     }
 }

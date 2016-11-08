@@ -87,6 +87,8 @@ public class ConexaoBDElaine {
            //nome, cpf, rg, contato,data matricula, data nasc, altura, peso,logradouro,numero,complemento,cep, uf, pais
             Turma t = new Turma();
             t.getAluno().setMatricula(1);
+            t.getAluno().setNome("João");
+            t.getAluno().setDtmatricula(FormatacaoDataHora.getData("10/12/2016"));
             
             NegocioTurma n = new NegocioTurma();
             n.pegarMonitor(t);
