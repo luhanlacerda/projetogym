@@ -172,7 +172,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
             cmd.setInt(1, a.getMatricula());
             ResultSet result = cmd.executeQuery();
             if (result.next()) {
-                retorno.setMatricula(result.getInt("Matrícula"));
+                retorno.setMatricula(result.getInt("Matrícula")); 
                 retorno.setNome(result.getString("Nome"));
                 retorno.setCpf(result.getString("CPF"));
                 retorno.setRg(result.getString("RG"));

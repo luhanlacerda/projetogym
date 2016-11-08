@@ -165,7 +165,7 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
     }
 
     @Override
-    public int pegarMonitor(Turma t) throws Exception {
+    public Aluno pegarMonitor(Turma t) throws Exception {
         DadosTurma d = new DadosTurma();
         return d.pegarMonitor(t);
     }

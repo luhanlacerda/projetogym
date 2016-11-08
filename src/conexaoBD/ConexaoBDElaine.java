@@ -38,11 +38,11 @@ public class ConexaoBDElaine {
             
            // CADASTRANDO
 //            Turma t = new Turma();
-//            t.setCodigo(4);
-//            t.setHorario(FormatacaoDataHora.getHorario("15:00"));
-//            t.setDuracaoaula(FormatacaoDataHora.getHorario("8:00"));
-//            t.setDtinicial(FormatacaoDataHora.getData("01/11/2016"));
-//            t.setDtfinal(FormatacaoDataHora.getData("05/11/2016"));
+//            t.setCodigo(3);
+//            t.setHorario(FormatacaoDataHora.getHorario("8:00"));
+//            t.setDuracaoaula(FormatacaoDataHora.getHorario("9:00"));
+//            t.setDtinicial(FormatacaoDataHora.getData("06/11/2016"));
+//            t.setDtfinal(FormatacaoDataHora.getData("10/11/2016"));
 //            t.getInstrutor().setMatricula(1);
 //            t.getAluno().setMatricula(1);
 //            t.getAtividade().setCodigo(1);
@@ -80,16 +80,17 @@ public class ConexaoBDElaine {
 //            ArrayList<Turma> retorno = n.listar(turma);
 //            for (Turma t : retorno) {
 //                JOptionPane.showMessageDialog(null, t.listarTurmas());
-//               
+               
 //         }
 
            //PESQUISANDO ALUNO MONITOR EM TURMA
-           
-//            Turma t = new Turma();
-//            t.getAluno().setMatricula(2);
-//            NegocioTurma n = new NegocioTurma();
-//            n.pegarMonitor(t);
-//            JOptionPane.showMessageDialog(null, "Pesquisa realizada com sucesso!");
+           //nome, cpf, rg, contato,data matricula, data nasc, altura, peso,logradouro,numero,complemento,cep, uf, pais
+            Turma t = new Turma();
+            t.getAluno().setMatricula(1);
+            
+            NegocioTurma n = new NegocioTurma();
+            n.pegarMonitor(t);
+            JOptionPane.showMessageDialog(null, "Pesquisa realizada com sucesso!");
            
            
         } catch (Exception e) {

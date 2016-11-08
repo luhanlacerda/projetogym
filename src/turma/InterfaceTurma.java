@@ -25,7 +25,7 @@ public interface InterfaceTurma {
     //verificar se uma determinada matricula está contida na tabela aluno
     boolean verificaExistencia(Turma t) throws Exception;
     //pegar aluno cadastrado no banco de dados
-    int pegarMonitor(Turma t) throws Exception;
+    Aluno pegarMonitor(Turma t) throws Exception;
     //listar alunos da turma
     ArrayList<Aluno> listarAlunos(Turma filtro) throws Exception;
 }

@@ -6,6 +6,7 @@
 package turma;
 
 import aluno.Aluno;
+import classesBasicas.Endereco;
 import dados.Dados;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -172,20 +173,37 @@ public class DadosTurma extends Dados implements InterfaceTurma {
     }
 
     @Override
-    public int pegarMonitor(Turma t) throws Exception {
-        int retorno = 0;
+    public Aluno pegarMonitor(Turma t) throws Exception {
+        Aluno retorno = new Aluno();
         conectar();
         //INSTRUÇÃO SQL
-        String sql = " SELECT Alu_Matricula";
-        sql += " FROM Aluno WHERE Alu_Matricula = ? ";
+        String sql = " SELECT Alu_Matricula AS 'Matricula', Alu_Nome AS 'Nome', Alu_Cpf AS 'CPF', Alu_Rg AS 'RG', Alu_Contato AS 'Contato', + "
+                + " Alu_dtmatricula AS 'Data Matrícula', Alu_nascimento AS 'Data Nascimento', Alu_altura AS 'Altura', Alu_peso AS 'Peso', Alu_logradouro AS 'Logradouro' + "
+                + "Alu_Numero AS 'Numero', Alu_Complemento AS 'Complemento', Alu_Bairro AS 'Bairro', Alu_Cep AS 'CEP', Alu_Cidade AS 'Cidade' +"
+                + "Alu_Uf AS 'Uf', Alu_Pais AS 'País';";
+        sql += " FROM Instrutor WHERE Ins_Matricula = ?";
         try {
             PreparedStatement cmd = conn.prepareStatement(sql);
-            Aluno a = new Aluno();
             cmd.setInt(1, t.getAluno().getMatricula());
-            ResultSet leitor = cmd.executeQuery();
-            while (leitor.next()) {
-
-                break;
+            ResultSet result = cmd.executeQuery();
+            if (result.next()) {
+                retorno.setMatricula(result.getInt("Matrícula"));
+                retorno.setNome(result.getString("Nome"));
+                retorno.setCpf(result.getString("CPF"));
+                retorno.setRg(result.getString("RG"));
+                retorno.setContato(result.getString("Contato"));
+                retorno.setDtmatricula(result.getDate("Data Matrícula"));
+                retorno.setDtnascimento(result.getDate("Data Nascimento"));
+                retorno.setAltura(result.getFloat("Altura"));
+                retorno.setPeso(result.getFloat("Peso"));
+                Endereco e = new Endereco();
+                e.setLogradouro(result.getString("Logradouro"));
+                e.setNumero(result.getString("Numero"));
+                e.setComplemento(result.getString("Complemento"));
+                e.setCep(result.getString("CEP"));
+                e.setUf(result.getString("Uf"));
+                e.setPais(result.getString("País"));
+                retorno.setEndereco(e);
             }
         } catch (SQLException e) {
 
