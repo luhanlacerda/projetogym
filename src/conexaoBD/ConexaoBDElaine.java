@@ -84,13 +84,21 @@ public class ConexaoBDElaine {
 //         }
 
            //PESQUISANDO ALUNO MONITOR EM TURMA
-           //nome, cpf, rg, contato,data matricula, data nasc, altura, peso,logradouro,numero,complemento,cep, uf, pais
+           //logradouro,numero,complemento,cep, uf, pais
             Turma t = new Turma();
+            NegocioTurma n = new NegocioTurma();
+            n.pegarMonitor(t);
+            t.getAluno();
             t.getAluno().setMatricula(1);
             t.getAluno().setNome("João");
             t.getAluno().setDtmatricula(FormatacaoDataHora.getData("10/12/2016"));
+            t.getAluno().setDtnascimento(FormatacaoDataHora.getData("15/12/1987"));
+            t.getAluno().setAltura(10.2f);
+            t.getAluno().setPeso(10.2f);
+//            t.getAluno().
             
-            NegocioTurma n = new NegocioTurma();
+            
+//            NegocioTurma n = new NegocioTurma();
             n.pegarMonitor(t);
             JOptionPane.showMessageDialog(null, "Pesquisa realizada com sucesso!");
            
