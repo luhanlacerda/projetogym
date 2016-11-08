@@ -5,6 +5,8 @@
  */
 package conexaoBD;
 
+import aluno.Aluno;
+import classesBasicas.Endereco;
 import classesBasicas.FormatacaoDataHora;
 import dados.Dados;
 import java.sql.Date;
@@ -84,25 +86,29 @@ public class ConexaoBDElaine {
 //         }
 
            //PESQUISANDO ALUNO MONITOR EM TURMA
-           //logradouro,numero,complemento,cep, uf, pais
+         
             Turma t = new Turma();
+            t.setCodigo(1);
             NegocioTurma n = new NegocioTurma();
-            n.pegarMonitor(t);
-            t.getAluno();
-            t.getAluno().setMatricula(1);
-            t.getAluno().setNome("João");
-            t.getAluno().setDtmatricula(FormatacaoDataHora.getData("10/12/2016"));
-            t.getAluno().setDtnascimento(FormatacaoDataHora.getData("15/12/1987"));
-            t.getAluno().setAltura(10.2f);
-            t.getAluno().setPeso(10.2f);
-//            t.getAluno().
-            
-            
-//            NegocioTurma n = new NegocioTurma();
-            n.pegarMonitor(t);
-            JOptionPane.showMessageDialog(null, "Pesquisa realizada com sucesso!");
            
-           
+//            for (Aluno a : retorno) {
+//            t.getAluno().setMatricula(1);
+//            t.getAluno().setNome("João");
+//            t.getAluno().setDtmatricula(FormatacaoDataHora.getData("10/12/2016"));
+//            t.getAluno().setDtnascimento(FormatacaoDataHora.getData("15/12/1987"));
+//            t.getAluno().setAltura(10.2f);
+//            t.getAluno().setPeso(10.2f);
+//            Endereco e = new Endereco();
+//            t.getAluno().getEndereco().setLogradouro("Rua");
+//            t.getAluno().getEndereco().setNumero("1");
+//            t.getAluno().getEndereco().setComplemento("Ap101");
+//            t.getAluno().getEndereco().setCep("51.130-300");
+//            t.getAluno().getEndereco().setUf("PE");
+//            t.getAluno().getEndereco().setPais("Brasil");
+            t.setAluno(n.pegarMonitor(t));
+            String mensagem = t.getAluno().toString();
+            JOptionPane.showMessageDialog(null, mensagem);
+            //JOptionPane.showMessageDialog(null, "Pesquisa realizada com sucesso!");  
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao Pesquisar: " + e.getMessage());
             

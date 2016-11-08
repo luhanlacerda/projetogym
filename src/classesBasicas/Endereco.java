@@ -86,7 +86,7 @@ public class Endereco {
     
     @Override
     public String toString(){
-        String retorno = "";
+        String retorno;
         retorno = "Rua: " + this.getLogradouro() + ", ";
         retorno += "Número: " + this.getNumero() + ", ";
         retorno += "Complemento: " + this.getComplemento() + ", ";

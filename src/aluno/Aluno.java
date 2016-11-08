@@ -21,10 +21,10 @@ public class Aluno extends Pessoa {
     private float peso;
     private Endereco endereco;
 
-    public Aluno(){
+    public Aluno() {
         this.endereco = new Endereco();
     }
-    
+
     public int getMatricula() {
         return matricula;
     }
@@ -57,7 +57,7 @@ public class Aluno extends Pessoa {
         this.peso = peso;
     }
 
-        public Endereco getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
@@ -65,18 +65,19 @@ public class Aluno extends Pessoa {
         this.endereco = endereco;
     }
 
-    public String toString(){
-        String retorno = "";
+    @Override
+    public String toString() {
+        String retorno;
         retorno = "Matrícula: " + this.getMatricula() + "\n";
         retorno += "Nome: " + this.getNome() + "\n";
         retorno += "Altura: " + this.getAltura() + "\n";
         retorno += "Peso: " + this.getPeso() + "\n";
-        retorno += "Endereco: " + this.getEndereco() + "\n";
-        retorno += "Contato: " + this.getContato();
+        retorno += "Contato: " + this.getContato() + "\n";
+        retorno += this.getEndereco().toString();
         return retorno;
     }
-    
-    public String retornoNecessario(){
+
+    public String retornoNecessario() {
         String retorno = "";
         retorno = "Matrícula: " + this.getMatricula();
         retorno += "Nome: " + this.getNome();

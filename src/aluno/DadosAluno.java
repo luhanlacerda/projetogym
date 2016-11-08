@@ -186,6 +186,8 @@ public class DadosAluno extends Dados implements InterfaceAluno {
                 e.setNumero(result.getString("Numero"));
                 e.setComplemento(result.getString("Complemento"));
                 e.setCep(result.getString("CEP"));
+                e.setBairro(result.getString("Bairro"));
+                e.setCidade(result.getString("Cidade"));
                 e.setUf(result.getString("Uf"));
                 e.setPais(result.getString("País"));
                 retorno.setEndereco(e);

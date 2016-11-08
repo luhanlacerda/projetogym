@@ -168,7 +168,11 @@ public class NegocioTurma implements InterfaceTurma {
 
     @Override
     public Aluno pegarMonitor(Turma t) throws Exception {
-        if (t.getAluno().getMatricula() <= 0) {
+        if (t.getCodigo() <= 0) {
+            throw new Exception("Turma inválida!");
+        }
+        
+        if (t.getAluno() == null) {
             throw new Exception("Aluno inválido!");
         }
 

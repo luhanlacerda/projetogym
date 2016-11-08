@@ -177,14 +177,15 @@ public class DadosTurma extends Dados implements InterfaceTurma {
         Aluno retorno = new Aluno();
         conectar();
         //INSTRUÇÃO SQL
-        String sql = " SELECT Alu_Matricula AS 'Matricula', Alu_Nome AS 'Nome', Alu_Cpf AS 'CPF', Alu_Rg AS 'RG', Alu_Contato AS 'Contato', + "
-                + " Alu_dtmatricula AS 'Data Matrícula', Alu_nascimento AS 'Data Nascimento', Alu_altura AS 'Altura', Alu_peso AS 'Peso', Alu_logradouro AS 'Logradouro' + "
-                + "Alu_Numero AS 'Numero', Alu_Complemento AS 'Complemento', Alu_Bairro AS 'Bairro', Alu_Cep AS 'CEP', Alu_Cidade AS 'Cidade' +"
-                + "Alu_Uf AS 'Uf', Alu_Pais AS 'País';";
-        sql += " FROM Instrutor WHERE Ins_Matricula = ?";
+        String sql = "SELECT Alu.Alu_Matricula AS 'Matrícula', Alu.Alu_Nome AS 'Nome', Alu.Alu_Cpf AS 'CPF', Alu.Alu_Rg AS 'RG', Alu.Alu_Telefone AS 'Contato'," +
+                     "Alu.Alu_datamatricula AS 'Data Matrícula', Alu.Alu_nascimento AS 'Data Nascimento', Alu.Alu_altura AS 'Altura', Alu.Alu_peso AS 'Peso', Alu.Alu_logradouro AS 'Logradouro'," +
+                     "Alu.Alu_Numero AS 'Numero', Alu.Alu_Complemento AS 'Complemento', Alu.Alu_Bairro AS 'Bairro', Alu.Alu_Cep AS 'CEP', Alu.Alu_Cidade AS 'Cidade', Alu.Alu_Uf AS 'Uf', Alu.Alu_Pais AS 'País' ";
+        sql += "FROM Turma AS Tur ";
+        sql += "INNER JOIN Aluno AS Alu ON Tur.Alu_Matricula = Alu.Alu_Matricula ";
+        sql += "WHERE Tur.Tur_Codigo = ?;";
         try {
             PreparedStatement cmd = conn.prepareStatement(sql);
-            cmd.setInt(1, t.getAluno().getMatricula());
+            cmd.setInt(1, t.getCodigo());
             ResultSet result = cmd.executeQuery();
             if (result.next()) {
                 retorno.setMatricula(result.getInt("Matrícula"));
@@ -201,13 +202,15 @@ public class DadosTurma extends Dados implements InterfaceTurma {
                 e.setNumero(result.getString("Numero"));
                 e.setComplemento(result.getString("Complemento"));
                 e.setCep(result.getString("CEP"));
+                e.setBairro(result.getString("Bairro"));
+                e.setCidade(result.getString("Cidade"));
                 e.setUf(result.getString("Uf"));
                 e.setPais(result.getString("País"));
                 retorno.setEndereco(e);
             }
         } catch (SQLException e) {
 
-            throw new Exception("Erro ao solicitar aluno Instrutor: " + e.getMessage());
+            throw new Exception("Erro ao solicitar aluno Monitor: " + e.getMessage());
         }
 
         desconectar();
