@@ -51,8 +51,6 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
         jFormattedTextFieldDtInicial = new javax.swing.JFormattedTextField();
         jFormattedTextFieldDtFinal = new javax.swing.JFormattedTextField();
         jFormattedTextFieldHorarioAulasInicio = new javax.swing.JFormattedTextField();
-        jFormattedTextFieldHorarioAulasFinal = new javax.swing.JFormattedTextField();
-        jLabel10 = new javax.swing.JLabel();
         jButtonCadastrar = new javax.swing.JButton();
 
         setClosable(true);
@@ -72,7 +70,7 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Data Final:");
 
-        jLabel7.setText("Matrícula Monitor:");
+        jLabel7.setText("Aluno Monitor:");
 
         jLabel8.setText("Matrícula Instrutor:");
 
@@ -101,14 +99,6 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-
-        try {
-            jFormattedTextFieldHorarioAulasFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        jLabel10.setText("ás");
 
         jButtonCadastrar.setText("Cadastrar");
         jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -139,12 +129,7 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jFormattedTextFieldDurAula, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jFormattedTextFieldHorarioAulasInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(19, 19, 19)
-                                .addComponent(jLabel10)
-                                .addGap(18, 18, 18)
-                                .addComponent(jFormattedTextFieldHorarioAulasFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jFormattedTextFieldHorarioAulasInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -167,14 +152,14 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel9)
                                 .addGap(18, 18, 18)
                                 .addComponent(jTextFieldCodAtiv)))))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonCadastrar)
                 .addGap(45, 45, 45))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jFormattedTextFieldDtFinal, jFormattedTextFieldDtInicial, jFormattedTextFieldDurAula, jFormattedTextFieldHorarioAulasFinal, jFormattedTextFieldHorarioAulasInicio});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jFormattedTextFieldDtFinal, jFormattedTextFieldDtInicial, jFormattedTextFieldDurAula, jFormattedTextFieldHorarioAulasInicio});
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextFieldCodAtiv, jTextFieldMatAluno, jTextFieldMatInst});
 
@@ -207,9 +192,7 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jFormattedTextFieldHorarioAulasInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextFieldHorarioAulasFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
+                    .addComponent(jFormattedTextFieldHorarioAulasInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -222,7 +205,7 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jFormattedTextFieldDtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jButtonCadastrar)
                 .addGap(24, 24, 24))
         );
@@ -285,11 +268,7 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
             jFormattedTextFieldHorarioAulasInicio.setVisible(true);
             JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Horário das Aula.", "AVISO", JOptionPane.WARNING_MESSAGE);
             jFormattedTextFieldHorarioAulasInicio.requestFocus();
-            
-        }else if (jFormattedTextFieldHorarioAulasFinal.getText().equals("  :  ")){
-            jFormattedTextFieldHorarioAulasFinal.setVisible(true);
-            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Horário das Aula.", "AVISO", JOptionPane.WARNING_MESSAGE);
-            jFormattedTextFieldHorarioAulasFinal.requestFocus();
+      
             
         }else if (jFormattedTextFieldDtInicial.getText().equals("  /  /    ")){
             jFormattedTextFieldDtInicial.setVisible(true);
@@ -341,10 +320,8 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField jFormattedTextFieldDtFinal;
     private javax.swing.JFormattedTextField jFormattedTextFieldDtInicial;
     private javax.swing.JFormattedTextField jFormattedTextFieldDurAula;
-    private javax.swing.JFormattedTextField jFormattedTextFieldHorarioAulasFinal;
     private javax.swing.JFormattedTextField jFormattedTextFieldHorarioAulasInicio;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -28,4 +28,5 @@ public interface InterfaceTurma {
     Aluno pegarMonitor(Turma t) throws Exception;
     //listar alunos da turma
     ArrayList<Aluno> listarAlunos(Turma filtro) throws Exception;
+    
 }

@@ -25,7 +25,8 @@ public class DadosTurma extends Dados implements InterfaceTurma {
         // CONECTANDO
         conectar();
         //instrução sql correspondente a inserção da turma
-        String sql = "INSERT INTO turma (tur_codigo, tur_horarioaulas, tur_duracaoaulas, tur_datainicial, tur_datafinal, alu_matricula, ins_matricula, atv_codigo)";
+        String sql = "INSERT INTO turma (tur_codigo, tur_horarioaulas, tur_duracaoaulas, "
+                    + "tur_datainicial, tur_datafinal, alu_matricula, ins_matricula, atv_codigo)";
         sql += " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             //executando a instrução sql            
@@ -54,7 +55,8 @@ public class DadosTurma extends Dados implements InterfaceTurma {
         // CONECTANDO
         conectar();
         //instrução sql correspondente a inserção da turma
-        String sql = "UPDATE Turma SET tur_horarioaulas = ?, tur_duracaoaulas = ?, tur_datainicial = ?, tur_datafinal= ?, alu_matricula = ?, ins_matricula = ?, atv_codigo= ? WHERE Tur_Codigo = ?;";
+        String sql = "UPDATE Turma SET tur_horarioaulas = ?, tur_duracaoaulas = ?, tur_datainicial = ?,"
+                + " tur_datafinal= ?, alu_matricula = ?, ins_matricula = ?, atv_codigo= ? WHERE Tur_Codigo = ?;";
 
         try {
             //executando a instrução sql            
@@ -105,8 +107,10 @@ public class DadosTurma extends Dados implements InterfaceTurma {
         // CONECTANDO
         conectar();
         //INSTRUÇÃO SQL
-        String sql = " SELECT tur_codigo AS 'Código', tur_horarioaulas AS 'Hora Aula', tur_duracaoaulas AS 'Duração Aula', tur_datainicial AS 'Data Inicial', tur_datafinal AS 'Data Final',"
-                + " alu_matricula AS 'Aluno Monitor', ins_matricula AS 'Matrícula Instrutor', atv_codigo AS 'Código Atividade'";
+        String sql = " SELECT tur_codigo AS 'Código', tur_horarioaulas AS 'Hora Aula', "
+                + "tur_duracaoaulas AS 'Duração Aula', tur_datainicial AS 'Data Inicial', "
+                + "tur_datafinal AS 'Data Final', alu_matricula AS 'Aluno Monitor', ins_matricula "
+                + "AS 'Matrícula Instrutor', atv_codigo AS 'Código Atividade'";
 
         sql += " FROM Turma WHERE tur_codigo > 0 ";
         if (filtro.getCodigo() > 0) {
@@ -222,5 +226,7 @@ public class DadosTurma extends Dados implements InterfaceTurma {
     public ArrayList<Aluno> listarAlunos(Turma filtro) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.   
     }
+
+   
 
 }

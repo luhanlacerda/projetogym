@@ -31,8 +31,6 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextFieldCodigoTurma = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableTurma = new javax.swing.JTable();
         jButtonLimpar = new javax.swing.JButton();
 
         setClosable(true);
@@ -43,26 +41,6 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
         jLabel1.setText("Código Turma:");
 
         jButton1.setText("Consultar");
-
-        jTableTurma.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Cod", "Num Alunos", "Horario/Aulas", "Duração/Aulas", "Data/Inicial", "Data/Final"
-            }
-        ));
-        jScrollPane1.setViewportView(jTableTurma);
 
         jButtonLimpar.setText("Limpar");
 
@@ -79,13 +57,10 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
                         .addComponent(jTextFieldCodigoTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(264, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButtonLimpar))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonLimpar)
                         .addGap(73, 73, 73))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -96,11 +71,9 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(jTextFieldCodigoTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(302, 302, 302)
                 .addComponent(jButtonLimpar)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -123,8 +96,6 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonLimpar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableTurma;
     private javax.swing.JTextField jTextFieldCodigoTurma;
     // End of variables declaration//GEN-END:variables
 }
