@@ -35,7 +35,7 @@ public class ConexaoBD {
             JOptionPane.showMessageDialog(null, "Banco de dados conectado com sucesso!");
              */
 
-            /*
+ /*
             //CADASTRO INSTRUTOR
             Instrutor instrutor = new Instrutor();            
             instrutor.setMatricula(2);
@@ -48,8 +48,7 @@ public class ConexaoBD {
             n.cadastrar(instrutor);
             JOptionPane.showMessageDialog(null, "Instrutor cadastrado com sucesso!");
              */
-            
-            /*
+ /*
             //ATUALIZAR INSTRUTOR
             Instrutor instrutor = new Instrutor();
             instrutor.setMatricula(1);
@@ -61,18 +60,16 @@ public class ConexaoBD {
             NegocioInstrutor n = new NegocioInstrutor();
             n.atualizar(instrutor);
             JOptionPane.showMessageDialog(null, "Instrutor atualizado com sucesso!");
-            */
- 
-            /*
+             */
+ /*
             //DELETAR INSTRUTOR
             Instrutor instrutor = new Instrutor();
             instrutor.setMatricula(2);
             NegocioInstrutor n = new NegocioInstrutor();
             n.remover(instrutor);
             JOptionPane.showMessageDialog(null, "Instrutor removido com sucesso!");
-            */
-            
-            /*
+             */
+ /*
             //LISTAR INSTRUTOR
             Instrutor instrutor = new Instrutor();
             NegocioInstrutor n = new NegocioInstrutor();
@@ -80,16 +77,14 @@ public class ConexaoBD {
             for (Instrutor i : retorno) {
                 JOptionPane.showMessageDialog(null, i.listarInstrutores());
             } 
-            */
-            
-            
+             */
             Atividade atividade = new Atividade();
             NegocioAtividade n = new NegocioAtividade();
-            Object retorno =  n.listar(atividade);
-            n.listar(atividade);
-            JOptionPane.showMessageDialog(null, retorno);
-            
-            
+            ArrayList<Atividade> retorno = n.listar();
+            for (Atividade i : retorno) {
+                JOptionPane.showMessageDialog(null, atividade.listarAtividade());
+            }
+
             /*
             Aluno a = new Aluno();
             
@@ -97,7 +92,6 @@ public class ConexaoBD {
             n.cadastrar(a);
             JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso!");
              */
-            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

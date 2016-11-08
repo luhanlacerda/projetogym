@@ -57,4 +57,9 @@ public class DadosAtividade extends Dados implements InterfaceAtividade {
         return retorno;
     }
 
+    @Override
+    public ArrayList<Atividade> listar() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
