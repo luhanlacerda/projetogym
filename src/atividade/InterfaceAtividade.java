@@ -24,4 +24,5 @@ public interface InterfaceAtividade {
     //listar as atividades de acordo com o filtro 
     Atividade listar(Atividade a) throws Exception;
      
+    ArrayList<Atividade> listar() throws Exception;
 }
