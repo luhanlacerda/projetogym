@@ -123,7 +123,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
                 i.setRg(leitor.getString("Rg"));
                 i.setCpf(leitor.getString("CPF"));
                 i.setNome(leitor.getString("Nome"));
-                i.setDtnascimento(leitor.getDate("Data Nascimento").getTime());
+                i.setDtnascimento(leitor.getDate("Data Nascimento"));
                 i.setContato(leitor.getString("Contato"));
                 retorno.add(i);
             }

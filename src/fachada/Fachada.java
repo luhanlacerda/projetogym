@@ -56,9 +56,9 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
     }
 
     @Override
-    public int selecionarMatAluno(Aluno a) throws Exception {
+    public Aluno selecionarAluno(Aluno a) throws Exception {
         NegocioAluno n = new NegocioAluno();
-        return n.selecionarMatAluno(a);
+        return n.selecionarAluno(a);
     }
 
     @Override

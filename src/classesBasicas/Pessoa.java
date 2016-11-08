@@ -55,8 +55,8 @@ public abstract class Pessoa {
         return dtnascimento;
     }
 
-    public void setDtnascimento(long dtnascimento) {
-        this.dtnascimento = new Date(dtnascimento);
+    public void setDtnascimento(Date dtnascimento) {
+        this.dtnascimento = dtnascimento;
     }
 
 }

@@ -37,8 +37,8 @@ public class Aluno extends Pessoa {
         return dtmatricula;
     }
 
-    public void setDtmatricula(String dtmatricula) {
-        this.dtmatricula = Date.valueOf(dtmatricula);
+    public void setDtmatricula(Date dtmatricula) {
+        this.dtmatricula = dtmatricula;
     }
 
     public float getAltura() {

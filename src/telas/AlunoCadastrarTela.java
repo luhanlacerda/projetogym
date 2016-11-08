@@ -411,9 +411,9 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
             aluno.getEndereco().setUf(jTextFieldUf.getText());
             aluno.getEndereco().setPais(jTextFieldPais.getText());
             aluno.setContato(jFormattedTextFieldCel.getText());
-            aluno.setDtnascimento(Long.parseLong(jFormattedTextFieldDataNascimento.getText()));
+            //aluno.setDtnascimento(Long.parseLong(jFormattedTextFieldDataNascimento.getText()));
             aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
-            aluno.setDtmatricula(jFormattedTextFieldDataMatricula.getText());
+            //aluno.setDtmatricula(jFormattedTextFieldDataMatricula.getString());
             aluno.setAltura(Float.parseFloat(jTextFieldAltura.getText()));
             aluno.setPeso(Float.parseFloat(jTextFieldPeso.getText()));
 

@@ -25,6 +25,6 @@ public interface InterfaceAluno {
     //verificar se uma determinada matricula está contida na tabela aluno
     boolean verificaExistencia(Aluno a) throws Exception;
     //selecionar matrícula do aluno
-    int selecionarMatAluno(Aluno a) throws Exception;
+    Aluno selecionarAluno(Aluno a) throws Exception;
     
 }

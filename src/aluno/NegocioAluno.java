@@ -135,7 +135,7 @@ public class NegocioAluno implements InterfaceAluno {
     }
 
     @Override
-    public int selecionarMatAluno(Aluno a) throws Exception {
+    public Aluno selecionarAluno(Aluno a) throws Exception {
         if (a.getNome().trim().equals("") == true) {
             throw new Exception("Informar o nome do aluno");
         }
@@ -146,7 +146,7 @@ public class NegocioAluno implements InterfaceAluno {
             throw new Exception("O nome do aluno não poderá ter mais de 100 caracteres");
         }
         DadosAluno d = new DadosAluno();
-        return d.selecionarMatAluno(a);
+        return d.selecionarAluno(a);
     }
 
 }

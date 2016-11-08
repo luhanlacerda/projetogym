@@ -5,11 +5,13 @@
  */
 package aluno;
 
+import classesBasicas.Endereco;
 import dados.Dados;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import classesBasicas.FormatacaoDataHora;
 
 /**
  *
@@ -155,27 +157,46 @@ public class DadosAluno extends Dados implements InterfaceAluno {
 
     //selecionar a matrícula do aluno atraves do nome
     @Override
-    public int selecionarMatAluno(Aluno a) throws Exception {
-        int matricula = 0;
+    public Aluno selecionarAluno(Aluno a) throws Exception {
+        Aluno retorno = new Aluno();
         //conectando no banco
         conectar();
         //instrução para selecionar uma matricula
-        String sql = " SELECT Alu_Matricula AS 'Matricula', Alu_Nome AS 'Nome'";
-        sql += " FROM Instrutor WHERE Ins_Nome LIKE ?";
+        String sql = " SELECT Alu_Matricula AS 'Matricula', Alu_Nome AS 'Nome', Alu_Cpf AS 'CPF', Alu_Rg AS 'RG', Alu_Contato AS 'Contato', + "
+                + " Alu_dtmatricula AS 'Data Matrícula', Alu_nascimento AS 'Data Nascimento', Alu_altura AS 'Altura', Alu_peso AS 'Peso', Alu_logradouro AS 'Logradouro' + "
+                + "Alu_Numero AS 'Numero', Alu_Complemento AS 'Complemento', Alu_Bairro AS 'Bairro', Alu_Cep AS 'CEP', Alu_Cidade AS 'Cidade' +"
+                + "Alu_Uf AS 'Uf', Alu_Pais AS 'País';";
+        sql += " FROM Instrutor WHERE Ins_Matricula = ?";
         try {
             PreparedStatement cmd = conn.prepareStatement(sql);
-            cmd.setString(1, a.getNome() + "%");
+            cmd.setInt(1, a.getMatricula());
             ResultSet result = cmd.executeQuery();
             if (result.next()) {
-                matricula = result.getInt("Matrícula");
+                retorno.setMatricula(result.getInt("Matrícula"));
+                retorno.setNome(result.getString("Nome"));
+                retorno.setCpf(result.getString("CPF"));
+                retorno.setRg(result.getString("RG"));
+                retorno.setContato(result.getString("Contato"));
+                retorno.setDtmatricula(result.getDate("Data Matrícula"));
+                retorno.setDtnascimento(result.getDate("Data Nascimento"));
+                retorno.setAltura(result.getFloat("Altura"));
+                retorno.setPeso(result.getFloat("Peso"));
+                Endereco e = new Endereco();
+                e.setLogradouro(result.getString("Logradouro"));
+                e.setNumero(result.getString("Numero"));
+                e.setComplemento(result.getString("Complemento"));
+                e.setCep(result.getString("CEP"));
+                e.setUf(result.getString("Uf"));
+                e.setPais(result.getString("País"));
+                retorno.setEndereco(e);
             }
         } catch (SQLException e) {
-            throw new Exception("Erro ao selecionar matrícula do aluno: " + e.getMessage());
+            throw new Exception("Erro ao selecionar matrícula do instrutor: " + e.getMessage());
         }
         //fechando conexão
         desconectar();
         //retornando a matricula
-        return matricula;
+        return retorno;
     }
 
 }
