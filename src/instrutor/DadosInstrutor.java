@@ -28,11 +28,11 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         try {
             //executando instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
-            cmd.setInt(1,    i.getMatricula());
+            cmd.setInt(1, i.getMatricula());
             cmd.setString(2, i.getRg());
             cmd.setString(3, i.getCpf());
             cmd.setString(4, i.getNome());
-            cmd.setDate(5,   i.getDtnascimento());
+            cmd.setDate(5, i.getDtnascimento());
             cmd.setString(6, i.getContato());
             cmd.execute();
         } catch (SQLException e) {
@@ -75,12 +75,12 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         conectar();
         //instrução para remover um instrutor
         String sql = " DELETE FROM Instrutor WHERE Ins_Matricula = ?";
-        try{
+        try {
             //executando instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
             cmd.setInt(1, i.getMatricula());
             cmd.execute();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             //caso ocorra algum erro será executada essa execeção
             throw new Exception("Erro ao remover: " + e.getMessage());
         }
@@ -126,7 +126,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
                 i.setDtnascimento(leitor.getDate("Data Nascimento").getTime());
                 i.setContato(leitor.getString("Contato"));
                 retorno.add(i);
-                     }
+            }
         } catch (SQLException e) {
             //caso ocorra algum erro será executada essa execeção
             throw new Exception("Erro ao executar inserção: " + e.getMessage());
@@ -186,39 +186,43 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         //fechando a conexão com o banco de dados
         desconectar();
         return retorno;
-    
+
     }
 
     //selecionar a matrícula do instrutor atraves do nome
     @Override
-    public int selecionarMatInstrutor(Instrutor i) throws Exception {
-        int matricula = 0;
-    //conectando no banco
-    conectar();
-    //instrução para selecionar uma matricula
-    String sql = " SELECT Ins_Matricula AS 'Matricula', Ins_Nome AS 'Nome'";
-    sql += " FROM Instrutor WHERE Ins_Nome LIKE ?";
-    try{
-     PreparedStatement cmd = conn.prepareStatement(sql);
-     cmd.setString(1, i.getNome() + "%");
-     ResultSet result = cmd.executeQuery();
+    public Instrutor selecionarInstrutor(Instrutor i) throws Exception {
+        Instrutor retorno = new Instrutor();
+        //conectando no banco
+        conectar();
+        //instrução para selecionar uma matricula
+        String sql = " SELECT Ins_Matricula AS 'Matricula', Ins_Nome AS 'Nome', Ins_Cpf AS 'CPF', Ins_Rg AS 'RG', Ins_Contato AS 'Contato'";
+        sql += " FROM Instrutor WHERE Ins_Matricula = ?";
+        try {
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            cmd.setInt(1, i.getMatricula());
+            ResultSet result = cmd.executeQuery();
             if (result.next()) {
-                matricula = result.getInt("Matrícula");
+                retorno.setMatricula(result.getInt("Matrícula"));
+                retorno.setNome(result.getString("Nome"));
+                retorno.setCpf(result.getString("CPF"));
+                retorno.setRg(result.getString("RG"));
+                retorno.setContato(result.getString("Contato"));
             }
-    } catch(SQLException e){
-        throw new Exception("Erro ao selecionar matrícula do instrutor: " + e.getMessage());
-    }
-    //fechando conexão
-    desconectar();
-    //retornando a matricula
-    return matricula;
+        } catch (SQLException e) {
+            throw new Exception("Erro ao selecionar matrícula do instrutor: " + e.getMessage());
+        }
+        //fechando conexão
+        desconectar();
+        //retornando a matricula
+        return retorno;
     }
 
     //pegar a próxima matricula caso o campo seja identity
     @Override
     public int pegarMatricula(Instrutor i) throws Exception {
-                int matricula = 0;
-        
+        int matricula = 0;
+
         //abrindo a conexao
         conectar();
         //instrução sql para pegar a próxima matricula caso o campo seja identity
@@ -237,9 +241,8 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         }
         //fechando a conexão com o banco de dados
         desconectar();
-        
+
         return matricula;
     }
-
 
 }
