@@ -6,6 +6,7 @@
 package turma;
 
 import aluno.Aluno;
+import instrutor.Instrutor;
 import java.util.ArrayList;
 
 /**
@@ -21,6 +22,9 @@ public class NegocioTurma implements InterfaceTurma {
         // Validando códio da turma
         if (t.getCodigo() <= 0) {
             throw new Exception("Informar código.");
+        }
+        if(verificaExistencia(t) == true){
+            throw new Exception("O código da turma já está cadastrado");
         }
         // Validando horário da aula
         if (t.getHorario() == null) {
@@ -61,10 +65,6 @@ public class NegocioTurma implements InterfaceTurma {
     //VALIDAÇÕES
     // Validando dados da atualização
     public void atualizar(Turma t) throws Exception {
-        // Validando códio da turma
-        if (t.getCodigo() <= 0) {
-            throw new Exception("Informar código!");
-        }
         // Validando horário da aula
         if (t.getHorario() == null) {
             throw new Exception("Informar o horário da aula!");
@@ -89,7 +89,7 @@ public class NegocioTurma implements InterfaceTurma {
         if (t.getDtfinal() == null) {
             throw new Exception("Informar a data final!");
         }
-        //Validando aluno matrícula
+        //Validando matrícula do monitor(aluno)
         if (t.getAluno().getMatricula() <= 0) {
             throw new Exception("Informar a matrícula do aluno!");
         }
@@ -108,36 +108,6 @@ public class NegocioTurma implements InterfaceTurma {
         if (verificaExistencia(t) != false) {
             throw new Exception("A turma informada já está cadastrada no sistema!");
         }
-        /*
-         // Validando horário da aula
-        if (t.getHorario() == null) {
-            throw new Exception("Horário Inválido!");
-        }
-         // Validando duração da aula
-        if (t.getDuracaoaula() == null) {
-            throw new Exception("Horário de duração da aula inválido!");
-        }
-        // Validando matrícicula do instrutor em turma
-        if (t.getInstrutor() == null) {
-            throw new Exception("Matrícula do Instrutor Inválida!");
-        }
-        //Validando código da atividade
-        if (t.getAtividade() == null) {
-            throw new Exception("Código da Atividade Inválido!");
-        }
-        //Validando data inicial da aula 
-        if (t.getDtinicial() == null) {
-            throw new Exception("Data inicial Inválida!");
-        }
-        //Validando data final da aula 
-        if (t.getDtfinal() == null) {
-            throw new Exception("Data final Inválida!");
-        }
-       //Validando aluno matrícula
-       if (t.getAluno().getMatricula()<=0){
-           throw new Exception("Matrícula do aluno Inválida!");
-       }
-         */
         // MÉTODO REMOVER
         DadosTurma d = new DadosTurma();
         d.remover(t);
@@ -178,6 +148,11 @@ public class NegocioTurma implements InterfaceTurma {
 
         DadosTurma d = new DadosTurma();
         return d.pegarMonitor(t);
+    }
+
+    @Override
+    public ArrayList<Instrutor> listarInstrutores(Turma filtro) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
   

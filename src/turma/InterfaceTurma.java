@@ -6,6 +6,7 @@
 package turma;
 
 import aluno.Aluno;
+import instrutor.Instrutor;
 import java.util.ArrayList;
 
 /**
@@ -28,5 +29,6 @@ public interface InterfaceTurma {
     Aluno pegarMonitor(Turma t) throws Exception;
     //listar alunos da turma
     ArrayList<Aluno> listarAlunos(Turma filtro) throws Exception;
-    
+    //pegar instrutor
+    ArrayList<Instrutor> listarInstrutores(Turma filtro) throws Exception;
 }

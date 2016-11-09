@@ -28,6 +28,7 @@ public class Turma {
     private Aluno aluno; //matricula do aluno(MONITOR)
     private Atividade atividade; // código
     private ArrayList<Aluno> listaAlunos;
+    private int qtdalunos;
 
     public Turma() {
         this.atividade = new Atividade();
@@ -164,4 +165,11 @@ public class Turma {
         this.listaAlunos = listaAlunos;
     }
 
+        public int getQtdalunos() {
+        return qtdalunos;
+    }
+
+    public void setQtdalunos(int qtdalunos) {
+        this.qtdalunos = qtdalunos;
+    }
 }

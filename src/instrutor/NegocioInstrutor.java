@@ -109,8 +109,8 @@ public class NegocioInstrutor implements InterfaceInstrutor {
 
     @Override
     public Instrutor selecionarInstrutor(Instrutor i) throws Exception {
-        if (i.getNome() == null || i.getNome().trim().equals("")) {
-            throw new Exception("Informar nome!");
+        if (i.getMatricula() < 0) {
+            throw new Exception("Informar Matrícula");
         }
        DadosInstrutor d = new DadosInstrutor();
        return d.selecionarInstrutor(i);

@@ -196,7 +196,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         //conectando no banco
         conectar();
         //instrução para selecionar uma matricula
-        String sql = " SELECT Ins_Matricula AS 'Matricula', Ins_Nome AS 'Nome', Ins_Cpf AS 'CPF', Ins_Rg AS 'RG', Ins_Contato AS 'Contato'";
+        String sql = " SELECT Ins_Matricula AS 'Matricula', Ins_Nome AS 'Nome'";
         sql += " FROM Instrutor WHERE Ins_Matricula = ?";
         try {
             PreparedStatement cmd = conn.prepareStatement(sql);
@@ -205,9 +205,6 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
             if (result.next()) {
                 retorno.setMatricula(result.getInt("Matrícula"));
                 retorno.setNome(result.getString("Nome"));
-                retorno.setCpf(result.getString("CPF"));
-                retorno.setRg(result.getString("RG"));
-                retorno.setContato(result.getString("Contato"));
             }
         } catch (SQLException e) {
             throw new Exception("Erro ao selecionar matrícula do instrutor: " + e.getMessage());

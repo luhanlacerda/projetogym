@@ -21,8 +21,12 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
     /**
      * Creates new form InstrutorConsultarTela
      */
+    DefaultTableModel modelo = new DefaultTableModel();
+
     public InstrutorConsultarTela() {
         initComponents();
+        modelo.setColumnIdentifiers(new String[]{"Matrícula", "Nome"});
+        jTableInstrutor.setModel(modelo);
     }
 
     /**
@@ -139,26 +143,25 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
         // TODO add your handling code here:
-        try{
+        try {
             Fachada fachada = new Fachada();
             Instrutor instrutor = new Instrutor();
-            if (jTextFieldMatricula.getText().trim().equals("") == false){
+            if (jTextFieldMatricula.getText().trim().equals("") == false) {
                 instrutor.setMatricula(Integer.parseInt(jTextFieldMatricula.getText().trim()));
             }
             instrutor.setNome("%" + jTextFieldNome.getText().trim() + "%");
             ArrayList<Instrutor> resposta = fachada.listar(instrutor);
-            DefaultTableModel modelo = new DefaultTableModel();
-            modelo.setColumnIdentifiers(new String[]{"Matrícula", "Nome", "RG", "CPF", "Contato", "Data Nascimento"});
-            if (resposta.size() > 0){
-                for (Instrutor ins : resposta){
-                    modelo.addRow(new String[]{ins.getMatricula() + "", ins.getNome() + "", ins.getRg() + "", ins.getContato() + "", ins.getDtnascimento().toString()});
+
+            if (resposta.size() > 0) {
+                for (Instrutor ins : resposta) {
+                    modelo.addRow(new String[]{ins.getMatricula() + "", ins.getNome()});
                 }
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "Não existe resultados com o filtro passado");
             }
-            jTableInstrutor.setModel(modelo);
-        }catch (Exception ex){
-             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
         }
     }//GEN-LAST:event_jButtonConsultarActionPerformed
 

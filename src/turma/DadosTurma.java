@@ -8,6 +8,7 @@ package turma;
 import aluno.Aluno;
 import classesBasicas.Endereco;
 import dados.Dados;
+import instrutor.Instrutor;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,7 +27,7 @@ public class DadosTurma extends Dados implements InterfaceTurma {
         conectar();
         //instrução sql correspondente a inserção da turma
         String sql = "INSERT INTO turma (tur_codigo, tur_horarioaulas, tur_duracaoaulas, "
-                    + "tur_datainicial, tur_datafinal, alu_matricula, ins_matricula, atv_codigo)";
+                + "tur_datainicial, tur_datafinal, alu_matricula, ins_matricula, atv_codigo)";
         sql += " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             //executando a instrução sql           
@@ -181,9 +182,9 @@ public class DadosTurma extends Dados implements InterfaceTurma {
         Aluno retorno = new Aluno();
         conectar();
         //INSTRUÇÃO SQL
-        String sql = "SELECT Alu.Alu_Matricula AS 'Matrícula', Alu.Alu_Nome AS 'Nome', Alu.Alu_Cpf AS 'CPF', Alu.Alu_Rg AS 'RG', Alu.Alu_Telefone AS 'Contato'," +
-                     "Alu.Alu_datamatricula AS 'Data Matrícula', Alu.Alu_nascimento AS 'Data Nascimento', Alu.Alu_altura AS 'Altura', Alu.Alu_peso AS 'Peso', Alu.Alu_logradouro AS 'Logradouro'," +
-                     "Alu.Alu_Numero AS 'Numero', Alu.Alu_Complemento AS 'Complemento', Alu.Alu_Bairro AS 'Bairro', Alu.Alu_Cep AS 'CEP', Alu.Alu_Cidade AS 'Cidade', Alu.Alu_Uf AS 'Uf', Alu.Alu_Pais AS 'País' ";
+        String sql = "SELECT Alu.Alu_Matricula AS 'Matrícula', Alu.Alu_Nome AS 'Nome', Alu.Alu_Cpf AS 'CPF', Alu.Alu_Rg AS 'RG', Alu.Alu_Telefone AS 'Contato',"
+                + "Alu.Alu_datamatricula AS 'Data Matrícula', Alu.Alu_nascimento AS 'Data Nascimento', Alu.Alu_altura AS 'Altura', Alu.Alu_peso AS 'Peso', Alu.Alu_logradouro AS 'Logradouro',"
+                + "Alu.Alu_Numero AS 'Numero', Alu.Alu_Complemento AS 'Complemento', Alu.Alu_Bairro AS 'Bairro', Alu.Alu_Cep AS 'CEP', Alu.Alu_Cidade AS 'Cidade', Alu.Alu_Uf AS 'Uf', Alu.Alu_Pais AS 'País' ";
         sql += "FROM Turma AS Tur ";
         sql += "INNER JOIN Aluno AS Alu ON Tur.Alu_Matricula = Alu.Alu_Matricula ";
         sql += "WHERE Tur.Tur_Codigo = ?;";
@@ -224,9 +225,78 @@ public class DadosTurma extends Dados implements InterfaceTurma {
 
     @Override
     public ArrayList<Aluno> listarAlunos(Turma filtro) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.   
+        int posPar = 1;
+        ArrayList<Aluno> retorno = new ArrayList<>();
+        // CONECTANDO
+        conectar();
+        //INSTRUÇÃO SQL
+        String sql = " SELECT Alu_Matricula AS 'Matrícula', Alu_Nome AS 'Nome'";
+        sql += " FROM Aluno WHERE Alu_Matricula > 0 ";
+        if (filtro.getAluno().getMatricula() > 0) {
+            sql += " AND Alu_Matricula = ?";
+        }
+        System.out.println(sql);
+        try {
+            //EXECUTANDO A INSTRUÇÃO
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            if (filtro.getAluno().getMatricula() > 0) {
+                cmd.setInt(posPar, filtro.getAluno().getMatricula());
+                posPar++;
+            }
+            ResultSet leitor = cmd.executeQuery();
+            while (leitor.next()) {
+                Aluno a = new Aluno();
+                a.setMatricula((leitor.getInt("Matrícula")));
+                a.setNome(leitor.getString("Nome"));
+
+                retorno.add(a);
+            }
+
+        } catch (SQLException e) {
+
+            throw new Exception("Erro ao executar a listagem: " + e.getMessage());
+        }
+        //DESCONECTANDO
+        desconectar();
+        return retorno;
     }
 
-   
+    @Override
+    public ArrayList<Instrutor> listarInstrutores(Turma filtro) throws Exception {
+            int posPar = 1;
+        ArrayList<Instrutor> retorno = new ArrayList<>();
+        // CONECTANDO
+        conectar();
+        //INSTRUÇÃO SQL
+        String sql = " SELECT Ins_Matricula AS 'Matrícula', Ins_Nome AS 'Nome'";
+        sql += " FROM Instrutor WHERE Ins_Matricula > 0 ";
+        if (filtro.getInstrutor().getMatricula() > 0) {
+            sql += " AND Ins_Matricula = ?";
+        }
+        System.out.println(sql);
+        try {
+            //EXECUTANDO A INSTRUÇÃO
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            if (filtro.getInstrutor().getMatricula() > 0) {
+                cmd.setInt(posPar, filtro.getInstrutor().getMatricula());
+                posPar++;
+            }
+            ResultSet leitor = cmd.executeQuery();
+            while (leitor.next()) {
+                Instrutor i = new Instrutor();
+                i.setMatricula((leitor.getInt("Matrícula")));
+                i.setNome(leitor.getString("Nome"));
+
+                retorno.add(i);
+            }
+
+        } catch (SQLException e) {
+
+            throw new Exception("Erro ao executar a listagem: " + e.getMessage());
+        }
+        //DESCONECTANDO
+        desconectar();
+        return retorno;   
+    }
 
 }

@@ -43,7 +43,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemTurmaCadastrar = new javax.swing.JMenuItem();
         jMenuItemTurmaAtualizar = new javax.swing.JMenuItem();
         jMenuItemTurmaConsultar = new javax.swing.JMenuItem();
-        jMenuItemTurmaDeletar = new javax.swing.JMenuItem();
         jMenuAtividade = new javax.swing.JMenu();
         jMenuItemAtividadeCadastrar = new javax.swing.JMenuItem();
         jMenuItemAtividadeAtualizar = new javax.swing.JMenuItem();
@@ -142,14 +141,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMenuItemTurmaConsultar);
-
-        jMenuItemTurmaDeletar.setText("Deletar");
-        jMenuItemTurmaDeletar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemTurmaDeletarActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItemTurmaDeletar);
 
         jMenuBar1.add(jMenu3);
 
@@ -324,12 +315,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
          turmaConsultarTela.setVisible(true);
     }//GEN-LAST:event_jMenuItemTurmaConsultarActionPerformed
 
-    private void jMenuItemTurmaDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTurmaDeletarActionPerformed
-        TurmaDeletarTela turmaDeletarTela = new TurmaDeletarTela();
-        jDesktopPaneTelaPrincipal.add(turmaDeletarTela);
-        turmaDeletarTela.setVisible(true);
-    }//GEN-LAST:event_jMenuItemTurmaDeletarActionPerformed
-
     private void jMenuItemAtividadeConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAtividadeConsultarActionPerformed
        AtividadeConsultarTela atividadeConsultarTela = new AtividadeConsultarTela();
        jDesktopPaneTelaPrincipal.add(atividadeConsultarTela);
@@ -412,7 +397,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemTurmaAtualizar;
     private javax.swing.JMenuItem jMenuItemTurmaCadastrar;
     private javax.swing.JMenuItem jMenuItemTurmaConsultar;
-    private javax.swing.JMenuItem jMenuItemTurmaDeletar;
     private javax.swing.JMenu jMenuSobre;
     // End of variables declaration//GEN-END:variables
 }
