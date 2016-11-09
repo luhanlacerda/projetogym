@@ -5,8 +5,14 @@
  */
 package telas;
 
+import aluno.Aluno;
+import atividade.Atividade;
+import classesBasicas.FormatacaoDataHora;
+import fachada.Fachada;
+import instrutor.Instrutor;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import turma.Turma;
 
 /**
  *
@@ -14,8 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
 //ArrayList<Turma> ListaTurma = new ArrayList<>();
-    
-    
+
     /**
      * Creates new form TelaCadastroTurma
      */
@@ -231,87 +236,46 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        // TODO add your handling code here:
-        
-       
-        /*
-        
-        if (jTextFieldCodTur.getText().equals("")){
-            jTextFieldCodTur.setVisible(true);
-            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Codigo da turma. ", "AVISO", JOptionPane.WARNING_MESSAGE);
-              jTextFieldCodTur.requestFocus();
-            
-        }else if (jTextFieldNumAlunos.getText().equals("")){
-            jTextFieldNumAlunos.setVisible(true);
-            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Número de Alunos. ", "AVISO", JOptionPane.WARNING_MESSAGE);
-            jTextFieldNumAlunos.requestFocus();
-       
-        }else if (jTextFieldMatInst.getText().equals("")){
-            jTextFieldMatInst.setVisible(isIcon);
-            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Matrícula do Instrutor. ", "AVISO", JOptionPane.WARNING_MESSAGE);
-            jTextFieldMatInst.requestFocus();
-            
-            
-        }else if (jTextFieldCodAtiv.getText().equals("")){
-            jTextFieldCodAtiv.setVisible(true);
-            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Código da Atividade. ", "AVISO", JOptionPane.WARNING_MESSAGE);
-            jTextFieldCodAtiv.requestFocus();
-            
-            
-        }else if (jFormattedTextFieldDurAula.getText().equals("  :  ")){
-            jFormattedTextFieldDurAula.setVisible(true);{
-            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Duração da Aula.", "AVISO", JOptionPane.WARNING_MESSAGE);
-             jFormattedTextFieldDurAula.requestFocus();
-        }
-            
-        } else if (jFormattedTextFieldHorarioAulasInicio.getText().equals("  :  ")){
-            jFormattedTextFieldHorarioAulasInicio.setVisible(true);
-            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Horário das Aula.", "AVISO", JOptionPane.WARNING_MESSAGE);
-            jFormattedTextFieldHorarioAulasInicio.requestFocus();
-      
-            
-        }else if (jFormattedTextFieldDtInicial.getText().equals("  /  /    ")){
-            jFormattedTextFieldDtInicial.setVisible(true);
-            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Data Inicial.", "AVISO", JOptionPane.WARNING_MESSAGE);
-            jFormattedTextFieldDtInicial.requestFocus();
-            
-        }else if (jFormattedTextFieldDtFinal.getText().equals("  /  /    ")){
-            jFormattedTextFieldDtFinal.setVisible(true);
-            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Data Final.", "AVISO", JOptionPane.WARNING_MESSAGE);
-            jFormattedTextFieldDtFinal.requestFocus();
-        
-        }else { 
-            
+
+        try {
+            //DADOS DA TURMA
             Turma turma = new Turma();
-            ListaTurma.add(turma);
-            JOptionPane.showMessageDialog(null, "Turma Cadastrada com Sucesso!");
-            
-            jTextFieldCodAtiv.setText("");
+            turma.setCodigo(Integer.parseInt(jTextFieldCodTur.getText()));
+            turma.setHorario(FormatacaoDataHora.getHorario(jFormattedTextFieldHorarioAulasInicio.getText()));
+            turma.setDuracaoaula(FormatacaoDataHora.getHorario(jFormattedTextFieldDurAula.getText()));
+            turma.setDtinicial(FormatacaoDataHora.getData(jFormattedTextFieldDtInicial.getText()));
+            turma.setDtfinal(FormatacaoDataHora.getData(jFormattedTextFieldDtFinal.getText()));
+            //DADOS DE ALUNO
+//            Aluno aluno = new Aluno();
+//            turma.setListaAlunos(); // PEGAR QUANTIDADE DE ALUNOS
+//            turma.setAluno(); // PEGAR ALUNO MONITOR
+//            //DADOS DE INSTRUTOR
+//            Instrutor instrutor = new Instrutor();
+//            turma.setInstrutor((Integer.parseInt(jTextFieldMatInst.getText()); // acho que terá que pegar o objeto instrutor é?
+//            //DADOS DE ATIVIDADE
+//            Atividade atividade = new Atividade();
+//            turma.setAtividade(Integer.parseInt(jTextFieldCodAtiv.getText())); // Pegar onjeto Atividade?
+
+            //Limpar Campos preenchidos 
             jTextFieldCodTur.setText("");
+            jTextFieldNumAlunos.setText("");
             jTextFieldMatAluno.setText("");
             jTextFieldMatInst.setText("");
-            jTextFieldNumAlunos.setText("");
-            jFormattedTextFieldDtFinal.setText("");
-            jFormattedTextFieldDtInicial.setText("");
-            jFormattedTextFieldDurAula.setText("");
-            jFormattedTextFieldHorarioAulasFinal.setText("");
+            jTextFieldCodAtiv.setText("");
             jFormattedTextFieldHorarioAulasInicio.setText("");
-            jTextFieldCodTur.requestFocus();
-            
-            
-        
-            
-            
-            
+            jFormattedTextFieldDurAula.setText("");
+            jFormattedTextFieldDtInicial.setText("");
+            jFormattedTextFieldDtFinal.setText("");
+            jTextFieldCodTur.requestFocus(); // Retornar para o início
+            Fachada fachada = new Fachada();
+            fachada.cadastrar(turma);
+            JOptionPane.showMessageDialog(rootPane, "Turma cadastrada com sucesso");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
-        */
-       
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
 
@@ -338,5 +302,4 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextFieldNumAlunos;
     // End of variables declaration//GEN-END:variables
 
-    
 }
