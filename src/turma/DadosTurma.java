@@ -29,7 +29,7 @@ public class DadosTurma extends Dados implements InterfaceTurma {
                     + "tur_datainicial, tur_datafinal, alu_matricula, ins_matricula, atv_codigo)";
         sql += " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try {
-            //executando a instrução sql            
+            //executando a instrução sql           
             PreparedStatement cmd = conn.prepareStatement(sql);
             cmd.setInt(1, t.getCodigo());
             cmd.setTime(2, t.getHorario());
@@ -128,10 +128,10 @@ public class DadosTurma extends Dados implements InterfaceTurma {
             while (leitor.next()) {
                 Turma t = new Turma();
                 t.setCodigo(leitor.getInt("Código"));
-                t.setHorario(leitor.getTime("Hora Aula").getTime());
-                t.setDuracaoaula(leitor.getTime("Duração Aula").getTime());
-                t.setDtinicial(leitor.getDate("Data Inicial").getTime());
-                t.setDtfinal(leitor.getDate("Data Final").getTime());
+                t.setHorario(leitor.getTime("Hora Aula"));
+                t.setDuracaoaula(leitor.getTime("Duração Aula"));
+                t.setDtinicial(leitor.getDate("Data Inicial"));
+                t.setDtfinal(leitor.getDate("Data Final"));
                 t.getAluno().setMatricula(leitor.getInt("Aluno Monitor"));
                 t.getInstrutor().setMatricula(leitor.getInt("Matrícula Instrutor"));
                 t.getAtividade().setCodigo(leitor.getInt("Código Atividade"));

@@ -16,24 +16,24 @@ import java.util.ArrayList;
  *
  * @author ELAINE
  */
-public class Turma { 
-                    
-    
-    private int codigo; 
+public class Turma {
+
+    private int codigo;
     //private int numAlunos; //TIRAR DO MINIMUNDO, VAI PAR ALUNOTURMA
     private Instrutor instrutor; //matricula
-    private Time duracaoaula; 
-    private Time horario;     
+    private Time duracaoaula;
+    private Time horario;
     private Date dtinicial;
-    private Date dtfinal; 
+    private Date dtfinal;
     private Aluno aluno; //matricula do aluno(MONITOR)
     private Atividade atividade; // código
     private ArrayList<Aluno> listaAlunos;
 
-    public Turma(){ 
+    public Turma() {
         this.atividade = new Atividade();
         this.instrutor = new Instrutor();
         this.aluno = new Aluno();
+        this.listaAlunos = new ArrayList<>();
     }
 
     public Aluno getAluno() {
@@ -43,7 +43,7 @@ public class Turma {
     public void setAluno(Aluno aluno) {
         this.aluno = aluno;
     }
-    
+
     /**
      * @return the codigo
      */
@@ -82,8 +82,8 @@ public class Turma {
     /**
      * @param duracaoaula the duracaoaula to set
      */
-    public void setDuracaoaula(long duracaoaula) {
-        this.duracaoaula = new Time(duracaoaula);
+    public void setDuracaoaula(Time duracaoaula) {
+        this.duracaoaula = duracaoaula;
     }
 
     /**
@@ -96,8 +96,8 @@ public class Turma {
     /**
      * @param horario the horario to set
      */
-    public void setHorario(long horario) {
-        this.horario = new Time(horario);
+    public void setHorario(Time horario) {
+        this.horario = horario;
     }
 
     /**
@@ -110,8 +110,8 @@ public class Turma {
     /**
      * @param dtinicial the dtinicial to set
      */
-    public void setDtinicial(long dtinicial) {
-        this.dtinicial = new Date(dtinicial);
+    public void setDtinicial(Date dtinicial) {
+        this.dtinicial = dtinicial;
     }
 
     /**
@@ -124,8 +124,8 @@ public class Turma {
     /**
      * @param dtfinal the dtfinal to set
      */
-    public void setDtfinal(long dtfinal) {
-        this.dtfinal = new Date(dtfinal);
+    public void setDtfinal(Date dtfinal) {
+        this.dtfinal = dtfinal;
     }
 
     /**
@@ -141,22 +141,22 @@ public class Turma {
     public void setAtividade(Atividade atividade) {
         this.atividade = atividade;
     }
-    
-    public String listarTurmas(){
+
+    public String listarTurmas() {
         String retorno = "";
         retorno = "codigo:" + this.getCodigo() + "\n";
         retorno += "Hora Aula" + this.getHorario() + "\n";
-        retorno += "Duração Aula" + this.getDuracaoaula()+ "\n";
+        retorno += "Duração Aula" + this.getDuracaoaula() + "\n";
         retorno += "Data Inicial" + this.getDtinicial() + "\n";
-        retorno += "Data Final"   + this.getDtfinal() + "\n";
+        retorno += "Data Final" + this.getDtfinal() + "\n";
         retorno += "Aluno Monitor" + this.getAluno().getMatricula() + "\n";
         retorno += "Matrícula Instrutor" + this.getInstrutor().getMatricula() + "\n";
         retorno += "Atividade Código" + this.getAtividade().getCodigo() + "\n";
         return retorno;
-  
+
     }
-    
-        public ArrayList<Aluno> getListaAlunos() {
+
+    public ArrayList<Aluno> getListaAlunos() {
         return listaAlunos;
     }
 
