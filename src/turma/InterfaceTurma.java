@@ -6,6 +6,7 @@
 package turma;
 
 import aluno.Aluno;
+import atividade.Atividade;
 import instrutor.Instrutor;
 import java.util.ArrayList;
 
@@ -27,8 +28,14 @@ public interface InterfaceTurma {
     boolean verificaExistencia(Turma t) throws Exception;
     //pegar aluno cadastrado no banco de dados
     Aluno pegarMonitor(Turma t) throws Exception;
-    //listar alunos da turma
+    //listar alunos cadastrados
     ArrayList<Aluno> listarAlunos(Turma filtro) throws Exception;
-    //pegar instrutor
+    //listar instrutores cadastrados
     ArrayList<Instrutor> listarInstrutores(Turma filtro) throws Exception;
+    //listar atividades cadastradas
+    ArrayList<Atividade> listarAtividades(Turma filtro) throws Exception;
+    //inserir aluno na turma
+    void inserirAlunoTurma(Turma t) throws Exception;
+    //lista a turma para mostrar cod turma, cod atividade e descricao da atividade
+    ArrayList<Turma> listarTurmaAtividade(Turma filtro) throws Exception;
 }

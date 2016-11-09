@@ -11,9 +11,6 @@ import classesBasicas.FormatacaoDataHora;
 import fachada.Fachada;
 import instrutor.Instrutor;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import turma.Turma;
@@ -23,7 +20,6 @@ import turma.Turma;
  * @author ELAINE
  */
 public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
-//ArrayList<Turma> ListaTurma = new ArrayList<>();
 
     /**
      * Creates new form TelaCadastroTurma
@@ -180,6 +176,11 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
         });
 
         jButtonPesquisarAtividade.setText("Pesquisar");
+        jButtonPesquisarAtividade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisarAtividadeActionPerformed(evt);
+            }
+        });
 
         jButtonPesquisarInstrutor.setText("Pesquisar");
         jButtonPesquisarInstrutor.addActionListener(new java.awt.event.ActionListener() {
@@ -335,12 +336,11 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
             turma.setDtinicial(FormatacaoDataHora.getData(jFormattedTextFieldDtInicial.getText()));
             turma.setDtfinal(FormatacaoDataHora.getData(jFormattedTextFieldDtFinal.getText()));
             //DADOS DE ALUNO
-            //turma.setAluno(monitores.get(jComboBoxMonitor.getSelectedIndex()));
-            //turma.getAluno().setMatricula(Integer.parseInt); 
+            turma.getAluno().setMatricula(Integer.parseInt(jTextFieldMonitor.getText()));
             //DADOS DE INSTRUTOR
-            //turma.getInstrutor().setMatricula(Integer.parseInt(jTextFieldMatInst.getText())); 
+            turma.getInstrutor().setMatricula(Integer.parseInt(jTextFieldInstrutor.getText()));
             //DADOS DE ATIVIDADE
-            //turma.getAtividade().setCodigo(Integer.parseInt(jTextFieldCodAtiv.getText()));
+            turma.getAtividade().setCodigo(Integer.parseInt(jTextFieldAtividade.getText()));
             fachada.cadastrar(turma);
             JOptionPane.showMessageDialog(rootPane, "Turma cadastrada com sucesso");
             //Limpar Campos preenchidos 
@@ -349,6 +349,12 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
             jFormattedTextFieldDurAula.setText("");
             jFormattedTextFieldDtInicial.setText("");
             jFormattedTextFieldDtFinal.setText("");
+            jTextFieldAtividade.setText("");
+            jTextFieldInstrutor.setText("");
+            jTextFieldMonitor.setText("");
+            modeloMonitor.setRowCount(0);
+            modeloAtividade.setRowCount(0);
+            modeloInstrutor.setRowCount(0);
             jTextFieldCodTur.requestFocus(); // Retornar para o início
 
         } catch (Exception e) {
@@ -363,7 +369,19 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
             modeloMonitor.removeRow(0);
         }
     }
-    
+
+    private void deleteRowsInstrutor() {
+        while (modeloInstrutor.getRowCount() > 0) {
+            modeloInstrutor.removeRow(0);
+        }
+    }
+
+    private void deleteRowsAtividade() {
+        while (modeloAtividade.getRowCount() > 0) {
+            modeloAtividade.removeRow(0);
+        }
+    }
+
     private void jButtonPesquisarMonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarMonitorActionPerformed
         // TODO add your handling code here:
         try {
@@ -378,9 +396,9 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
                 for (Aluno monitor : resposta) {
                     modeloMonitor.addRow(new String[]{monitor.getMatricula() + "", monitor.getNome()});
                 }
-                
+
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Não existe resultados com o filtro passado");
+                JOptionPane.showMessageDialog(rootPane, "Não existe resultados para alunos com o filtro passado");
             }
 
         } catch (Exception ex) {
@@ -397,19 +415,44 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
                 turma.getInstrutor().setMatricula(Integer.parseInt(jTextFieldInstrutor.getText().trim()));
             }
             ArrayList<Instrutor> resposta = fachada.listarInstrutores(turma);
+            deleteRowsInstrutor();
             if (resposta.size() > 0) {
                 for (Instrutor ins : resposta) {
                     modeloInstrutor.addRow(new String[]{ins.getMatricula() + "", ins.getNome()});
                 }
-                
+
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Não existe resultados com o filtro passado");
+                JOptionPane.showMessageDialog(rootPane, "Não existe resultados para instrutores com o filtro passado");
             }
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
         }
     }//GEN-LAST:event_jButtonPesquisarInstrutorActionPerformed
+
+    private void jButtonPesquisarAtividadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarAtividadeActionPerformed
+        // TODO add your handling code here:
+        try {
+            Turma turma = new Turma();
+            //atividade
+            if (jTextFieldAtividade.getText().trim().equals("") == false) {
+                turma.getAtividade().setCodigo(Integer.parseInt(jTextFieldAtividade.getText().trim()));
+            }
+            ArrayList<Atividade> resposta = fachada.listarAtividades(turma);
+            deleteRowsAtividade();
+            if (resposta.size() > 0) {
+                for (Atividade atv : resposta) {
+                    modeloAtividade.addRow(new String[]{atv.getCodigo() + "", atv.getDescricao()});
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Não existe resultados para atividades com o filtro passado");
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        }
+    }//GEN-LAST:event_jButtonPesquisarAtividadeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

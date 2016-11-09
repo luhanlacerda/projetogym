@@ -49,16 +49,15 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
         //abrindo a conexao
         conectar();
         //instrução para atualizar dados do instrutor
-        String sql = "UPDATE Instrutor SET Ins_Rg = ?, Ins_Cpf = ?, Ins_Nome = ?, Ins_Nascimento = ?, Ins_Telefone = ? WHERE Ins_Matricula = ?;";
+        String sql = "UPDATE Instrutor SET Ins_Rg = ?, Ins_Nome = ?, Ins_Nascimento = ?, Ins_Telefone = ? WHERE Ins_Matricula = ?;";
         try {
             //executando instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
             cmd.setString(1, i.getRg());
-            cmd.setString(2, i.getCpf());
-            cmd.setString(3, i.getNome());
-            cmd.setDate(4, i.getDtnascimento());
-            cmd.setString(5, i.getContato());
-            cmd.setInt(6, i.getMatricula());
+            cmd.setString(2, i.getNome());
+            cmd.setDate(3, i.getDtnascimento());
+            cmd.setString(4, i.getContato());
+            cmd.setInt(5, i.getMatricula());
             cmd.execute();
         } catch (SQLException e) {
             //caso ocorra algum erro será executada essa execeção

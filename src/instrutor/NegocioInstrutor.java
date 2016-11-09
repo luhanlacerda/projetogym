@@ -52,9 +52,6 @@ public class NegocioInstrutor implements InterfaceInstrutor {
         if (i.getRg() == null || i.getRg().trim().equals("")) {
             throw new Exception("Número de RG inválido!");
         }
-        if (i.getCpf() == null || i.getCpf().trim().equals("") || i.getCpf().trim().length() < 14 || i.getCpf().trim().length() > 14) {
-            throw new Exception("Número de CPF inválido!");
-        }
         if (i.getNome() == null || i.getNome().trim().equals("")) {
             throw new Exception("Informar nome!");
         }

@@ -43,6 +43,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemTurmaCadastrar = new javax.swing.JMenuItem();
         jMenuItemTurmaAtualizar = new javax.swing.JMenuItem();
         jMenuItemTurmaConsultar = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuAtividade = new javax.swing.JMenu();
         jMenuItemAtividadeCadastrar = new javax.swing.JMenuItem();
         jMenuItemAtividadeAtualizar = new javax.swing.JMenuItem();
@@ -141,6 +142,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMenuItemTurmaConsultar);
+
+        jMenuItem1.setText("Inserir Aluno");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
 
         jMenuBar1.add(jMenu3);
 
@@ -339,6 +348,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         instrutorConsultarTela.setVisible(true);
     }//GEN-LAST:event_jMenuItemInstrutorConsultarActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        TurmaInserirAlunoTela turmaInserirAlunoTela = new TurmaInserirAlunoTela();
+        jDesktopPaneTelaPrincipal.add(turmaInserirAlunoTela);
+        turmaInserirAlunoTela.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -382,6 +398,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuAtividade;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuInstrutor;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemAlunoAtualizar;
     private javax.swing.JMenuItem jMenuItemAlunoCadastrar;
     private javax.swing.JMenuItem jMenuItemAlunoConsultar;

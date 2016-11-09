@@ -6,6 +6,7 @@
 package turma;
 
 import aluno.Aluno;
+import atividade.Atividade;
 import instrutor.Instrutor;
 import java.util.ArrayList;
 
@@ -23,7 +24,7 @@ public class NegocioTurma implements InterfaceTurma {
         if (t.getCodigo() <= 0) {
             throw new Exception("Informar código.");
         }
-        if(verificaExistencia(t) == true){
+        if (verificaExistencia(t) == true) {
             throw new Exception("O código da turma já está cadastrado");
         }
         // Validando horário da aula
@@ -141,7 +142,7 @@ public class NegocioTurma implements InterfaceTurma {
         if (t.getCodigo() <= 0) {
             throw new Exception("Turma inválida!");
         }
-        
+
         if (t.getAluno() == null) {
             throw new Exception("Aluno inválido!");
         }
@@ -152,9 +153,32 @@ public class NegocioTurma implements InterfaceTurma {
 
     @Override
     public ArrayList<Instrutor> listarInstrutores(Turma filtro) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DadosTurma d = new DadosTurma();
+        return d.listarInstrutores(filtro);
     }
 
-  
+    @Override
+    public ArrayList<Atividade> listarAtividades(Turma filtro) throws Exception {
+        DadosTurma d = new DadosTurma();
+        return d.listarAtividades(filtro);
+    }
+
+    @Override
+    public void inserirAlunoTurma(Turma t) throws Exception {
+        if (t.getCodigo() <= 0) {
+            throw new Exception("Código Inválido!");
+        }
+        if (t.getAluno().getMatricula() <= 0) {
+            throw new Exception("Código Inválido!");
+        }
+        DadosTurma d = new DadosTurma();
+        d.inserirAlunoTurma(t);
+    }
+
+    @Override
+    public ArrayList<Turma> listarTurmaAtividade(Turma filtro) throws Exception {
+        DadosTurma d = new DadosTurma();
+        return d.listarTurmaAtividade(filtro);
+    }
 
 }

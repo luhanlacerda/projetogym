@@ -6,6 +6,7 @@
 package turma;
 
 import aluno.Aluno;
+import atividade.Atividade;
 import classesBasicas.Endereco;
 import dados.Dados;
 import instrutor.Instrutor;
@@ -42,8 +43,6 @@ public class DadosTurma extends Dados implements InterfaceTurma {
             cmd.setInt(8, t.getAtividade().getCodigo());
             cmd.execute();
         } catch (SQLException e) {
-//         
-
             throw new Exception("Erro ao executar inserção: " + e.getMessage());
         }
         //DESCONECTANDO
@@ -57,7 +56,7 @@ public class DadosTurma extends Dados implements InterfaceTurma {
         conectar();
         //instrução sql correspondente a inserção da turma
         String sql = "UPDATE Turma SET tur_horarioaulas = ?, tur_duracaoaulas = ?, tur_datainicial = ?,"
-                + " tur_datafinal= ?, alu_matricula = ?, ins_matricula = ?, atv_codigo= ? WHERE Tur_Codigo = ?;";
+                + " tur_datafinal= ?, alu_matricula = ?, ins_matricula = ?, atv_codigo = ? WHERE Tur_Codigo = ?;";
 
         try {
             //executando a instrução sql            
@@ -72,8 +71,6 @@ public class DadosTurma extends Dados implements InterfaceTurma {
             cmd.setInt(8, t.getCodigo());
             cmd.execute();
         } catch (SQLException e) {
-//         
-
             throw new Exception("Erro ao executar a atualização: " + e.getMessage());
         }
         //DESCONECTANDO
@@ -110,7 +107,7 @@ public class DadosTurma extends Dados implements InterfaceTurma {
         //INSTRUÇÃO SQL
         String sql = " SELECT tur_codigo AS 'Código', tur_horarioaulas AS 'Hora Aula', "
                 + "tur_duracaoaulas AS 'Duração Aula', tur_datainicial AS 'Data Inicial', "
-                + "tur_datafinal AS 'Data Final', alu_matricula AS 'Aluno Monitor', ins_matricula "
+                + "tur_datafinal AS 'Data Final', tur_quantidadealunos AS 'Quantidade Alunos', alu_matricula AS 'Aluno Monitor', ins_matricula "
                 + "AS 'Matrícula Instrutor', atv_codigo AS 'Código Atividade'";
 
         sql += " FROM Turma WHERE tur_codigo > 0 ";
@@ -133,6 +130,7 @@ public class DadosTurma extends Dados implements InterfaceTurma {
                 t.setDuracaoaula(leitor.getTime("Duração Aula"));
                 t.setDtinicial(leitor.getDate("Data Inicial"));
                 t.setDtfinal(leitor.getDate("Data Final"));
+                t.setQtdalunos(leitor.getInt("Quantidade Alunos"));
                 t.getAluno().setMatricula(leitor.getInt("Aluno Monitor"));
                 t.getInstrutor().setMatricula(leitor.getInt("Matrícula Instrutor"));
                 t.getAtividade().setCodigo(leitor.getInt("Código Atividade"));
@@ -169,7 +167,6 @@ public class DadosTurma extends Dados implements InterfaceTurma {
                 break;
             }
         } catch (SQLException e) {
-
             throw new Exception("Erro ao pesquisar existtencia: " + e.getMessage());
         }
 
@@ -235,7 +232,6 @@ public class DadosTurma extends Dados implements InterfaceTurma {
         if (filtro.getAluno().getMatricula() > 0) {
             sql += " AND Alu_Matricula = ?";
         }
-        System.out.println(sql);
         try {
             //EXECUTANDO A INSTRUÇÃO
             PreparedStatement cmd = conn.prepareStatement(sql);
@@ -248,12 +244,9 @@ public class DadosTurma extends Dados implements InterfaceTurma {
                 Aluno a = new Aluno();
                 a.setMatricula((leitor.getInt("Matrícula")));
                 a.setNome(leitor.getString("Nome"));
-
                 retorno.add(a);
             }
-
         } catch (SQLException e) {
-
             throw new Exception("Erro ao executar a listagem: " + e.getMessage());
         }
         //DESCONECTANDO
@@ -263,7 +256,7 @@ public class DadosTurma extends Dados implements InterfaceTurma {
 
     @Override
     public ArrayList<Instrutor> listarInstrutores(Turma filtro) throws Exception {
-            int posPar = 1;
+        int posPar = 1;
         ArrayList<Instrutor> retorno = new ArrayList<>();
         // CONECTANDO
         conectar();
@@ -273,7 +266,6 @@ public class DadosTurma extends Dados implements InterfaceTurma {
         if (filtro.getInstrutor().getMatricula() > 0) {
             sql += " AND Ins_Matricula = ?";
         }
-        System.out.println(sql);
         try {
             //EXECUTANDO A INSTRUÇÃO
             PreparedStatement cmd = conn.prepareStatement(sql);
@@ -296,7 +288,104 @@ public class DadosTurma extends Dados implements InterfaceTurma {
         }
         //DESCONECTANDO
         desconectar();
-        return retorno;   
+        return retorno;
+    }
+
+    @Override
+    public ArrayList<Atividade> listarAtividades(Turma filtro) throws Exception {
+        int posPar = 1;
+        ArrayList<Atividade> retorno = new ArrayList<>();
+        // CONECTANDO
+        conectar();
+        //INSTRUÇÃO SQL
+        String sql = " SELECT Atv_Codigo AS 'Código', Atv_Descricao AS 'Descrição'";
+        sql += " FROM Atividade WHERE Atv_Codigo > 0 ";
+        if (filtro.getAtividade().getCodigo() > 0) {
+            sql += " AND Atv_Codigo = ?";
+        }
+        try {
+            //EXECUTANDO A INSTRUÇÃO
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            if (filtro.getAtividade().getCodigo() > 0) {
+                cmd.setInt(posPar, filtro.getAtividade().getCodigo());
+                posPar++;
+            }
+            ResultSet leitor = cmd.executeQuery();
+            while (leitor.next()) {
+                Atividade a = new Atividade();
+                a.setCodigo((leitor.getInt("Código")));
+                a.setDescricao(leitor.getString("Descrição"));
+
+                retorno.add(a);
+            }
+
+        } catch (SQLException e) {
+
+            throw new Exception("Erro ao executar a listagem: " + e.getMessage());
+        }
+        //DESCONECTANDO
+        desconectar();
+        return retorno;
+    }
+
+    @Override
+    public void inserirAlunoTurma(Turma t) throws Exception {
+     // CONECTANDO
+        conectar();
+        //instrução sql correspondente a inserção da turma
+        String sql = "INSERT INTO AlunoTurma (Tur_Codigo, Alu_Matricula) ";
+        sql += " VALUES (?, ?)";
+        try {
+            //executando a instrução sql           
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            cmd.setInt(1, t.getCodigo());
+            cmd.setInt(2, t.getAluno().getMatricula());
+            cmd.execute();
+        } catch (SQLException e) {
+            throw new Exception("Erro ao executar inserção: " + e.getMessage());
+        }
+        //DESCONECTANDO
+        desconectar();
+    }
+
+    @Override
+    public ArrayList<Turma> listarTurmaAtividade(Turma filtro) throws Exception {
+       int posPar = 1;
+        ArrayList<Turma> retorno = new ArrayList<>();
+        // CONECTANDO
+        conectar();
+        //INSTRUÇÃO SQL
+        String sql = "SELECT T.Tur_Codigo AS 'Código Turma', T.Atv_Codigo AS 'Atividade Código', A.Atv_Descricao AS 'Descrição' ";
+        sql += "FROM Atividade AS A ";
+        sql += "INNER JOIN Turma AS T ON T.Atv_Codigo = A.Atv_Codigo ";
+        sql += "WHERE T.Tur_Codigo > 0";
+        if (filtro.getCodigo() > 0) {
+            sql += " AND T.Tur_Codigo = ?;";
+        }
+        try {
+            //EXECUTANDO A INSTRUÇÃO
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            if (filtro.getCodigo() > 0) {
+                cmd.setInt(posPar, filtro.getCodigo());
+                posPar++;
+            }
+            ResultSet leitor = cmd.executeQuery();
+            while (leitor.next()) {
+                Turma t = new Turma();
+                t.setCodigo(leitor.getInt("Código Turma"));
+                t.getAtividade().setCodigo(leitor.getInt("Atividade Código"));
+                t.getAtividade().setDescricao(leitor.getString("Descrição"));
+
+                retorno.add(t);
+            }
+
+        } catch (SQLException e) {
+
+            throw new Exception("Erro ao executar a listagem: " + e.getMessage());
+        }
+        //DESCONECTANDO
+        desconectar();
+        return retorno;
     }
 
 }

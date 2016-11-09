@@ -25,7 +25,7 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
 
     public InstrutorConsultarTela() {
         initComponents();
-        modelo.setColumnIdentifiers(new String[]{"Matrícula", "Nome"});
+        modelo.setColumnIdentifiers(new String[]{"Matrícula", "Nome", "RG", "CPF", "Data Nascimento", "Contato"});
         jTableInstrutor.setModel(modelo);
     }
 
@@ -154,7 +154,7 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
 
             if (resposta.size() > 0) {
                 for (Instrutor ins : resposta) {
-                    modelo.addRow(new String[]{ins.getMatricula() + "", ins.getNome()});
+                    modelo.addRow(new String[]{ins.getMatricula() + "", ins.getNome() + "", ins.getRg() + "", ins.getCpf() + "", ins.getDtnascimento() + "", ins.getContato()});
                 }
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Não existe resultados com o filtro passado");

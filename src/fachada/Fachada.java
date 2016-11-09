@@ -187,6 +187,24 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
         return d.listarInstrutores(filtro); 
     }
 
+    @Override
+    public ArrayList<Atividade> listarAtividades(Turma filtro) throws Exception {
+      DadosTurma d = new DadosTurma();
+      return d.listarAtividades(filtro);
+    }
+
+    @Override
+    public void inserirAlunoTurma(Turma t) throws Exception {
+       DadosTurma d = new DadosTurma();
+       d.inserirAlunoTurma(t);
+    }
+
+    @Override
+    public ArrayList<Turma> listarTurmaAtividade(Turma filtro) throws Exception {
+      DadosTurma d = new DadosTurma();
+      return d.listarTurmaAtividade(filtro);
+    }
+
     
 
 }
