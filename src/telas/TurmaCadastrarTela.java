@@ -241,10 +241,10 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
             //DADOS DA TURMA
             Turma turma = new Turma();
             turma.setCodigo(Integer.parseInt(jTextFieldCodTur.getText()));
-            turma.setHorario(FormatacaoDataHora.getHorario(jFormattedTextFieldHorarioAulasInicio.getText()));
-            turma.setDuracaoaula(FormatacaoDataHora.getHorario(jFormattedTextFieldDurAula.getText()));
-            turma.setDtinicial(FormatacaoDataHora.getData(jFormattedTextFieldDtInicial.getText()));
-            turma.setDtfinal(FormatacaoDataHora.getData(jFormattedTextFieldDtFinal.getText()));
+            //turma.setHorario(FormatacaoDataHora.getHorario(jFormattedTextFieldHorarioAulasInicio.getText())); FALTOU
+            //turma.setDuracaoaula(FormatacaoDataHora.getHorario(jFormattedTextFieldDurAula.getText()));    COMENTAR    
+            //turma.setDtinicial(FormatacaoDataHora.getData(jFormattedTextFieldDtInicial.getText()));       ESTES
+            //turma.setDtfinal(FormatacaoDataHora.getData(jFormattedTextFieldDtFinal.getText()));           TBM
             //DADOS DE ALUNO
 //            Aluno aluno = new Aluno();
 //            turma.setListaAlunos(); // PEGAR QUANTIDADE DE ALUNOS
