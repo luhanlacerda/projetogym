@@ -386,4 +386,28 @@ public class DadosTurma extends Dados implements InterfaceTurma {
         return retorno;
     }
 
+    @Override
+    public boolean verificarExistenciaAlunoTurma(Turma t) throws Exception {
+        boolean retorno = false;
+        conectar();
+        //INSTRUÇÃO SQL
+        String sql = " SELECT Tur_Codigo, Alu_Matricula ";
+        sql += " FROM AlunoTurma WHERE Tur_Codigo = ? AND Alu_Matricula = ? ";
+        try {
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            cmd.setInt(1, t.getCodigo());
+            cmd.setInt(2, t.getAluno().getMatricula());
+            ResultSet leitor = cmd.executeQuery();
+            while (leitor.next()) {
+                retorno = true;
+                break;
+            }
+        } catch (SQLException e) {
+            throw new Exception("Erro ao pesquisar existencia: " + e.getMessage());
+        }
+
+        desconectar();
+        return retorno;
+    }
+
 }

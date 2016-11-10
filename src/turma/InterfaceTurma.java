@@ -38,4 +38,6 @@ public interface InterfaceTurma {
     void inserirAlunoTurma(Turma t) throws Exception;
     //lista a turma para mostrar cod turma, cod atividade e descricao da atividade
     ArrayList<Turma> listarTurmaAtividade(Turma filtro) throws Exception;
+    //verifica se um aluno já esta cadastrado em uma determinada turma
+    boolean verificarExistenciaAlunoTurma (Turma t) throws Exception;
 }

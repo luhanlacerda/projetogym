@@ -9,15 +9,14 @@ import aluno.Aluno;
 import aluno.InterfaceAluno;
 import aluno.NegocioAluno;
 import atividade.Atividade;
-import atividade.DadosAtividade;
 import atividade.InterfaceAtividade;
 import atividade.NegocioAtividade;
 import instrutor.Instrutor;
 import instrutor.InterfaceInstrutor;
 import instrutor.NegocioInstrutor;
 import java.util.ArrayList;
-import turma.DadosTurma;
 import turma.InterfaceTurma;
+import turma.NegocioTurma;
 import turma.Turma;
 
 /**
@@ -83,14 +82,14 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
 
     @Override
     public boolean verificarExistenciaAtividade(Atividade a) throws Exception {
-        DadosAtividade d = new DadosAtividade();
-        return d.verificarExistenciaAtividade(a);
+        NegocioAtividade n = new NegocioAtividade();
+        return n.verificarExistenciaAtividade(a);
     }
 
     @Override
     public int pegarCodigoAtividade(Atividade a) throws Exception {
-        DadosAtividade d = new DadosAtividade();
-        return d.pegarCodigoAtividade(a);
+        NegocioAtividade n = new NegocioAtividade();
+        return n.pegarCodigoAtividade(a);
     }
 
     @Override
@@ -144,74 +143,80 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
 
     @Override
     public void cadastrar(Turma t) throws Exception {
-        DadosTurma d = new DadosTurma();
-        d.cadastrar(t);
+        NegocioTurma n = new NegocioTurma();
+        n.cadastrar(t);
     }
 
     @Override
     public void atualizar(Turma t) throws Exception {
-        DadosTurma d = new DadosTurma();
-        d.atualizar(t);
+        NegocioTurma n = new NegocioTurma();
+        n.atualizar(t);
     }
 
     @Override
     public void remover(Turma t) throws Exception {
-        DadosTurma d = new DadosTurma();
-        d.remover(t);
+        NegocioTurma n = new NegocioTurma();
+        n.remover(t);
     }
 
     @Override
     public ArrayList<Turma> listar(Turma filtro) throws Exception {
-        DadosTurma d = new DadosTurma();
-        return d.listar(filtro);
+        NegocioTurma n = new NegocioTurma();
+        return n.listar(filtro);
     }
 
     @Override
     public boolean verificaExistencia(Turma t) throws Exception {
-        DadosTurma d = new DadosTurma();
-        return d.verificaExistencia(t);
+        NegocioTurma n = new NegocioTurma();
+        return n.verificaExistencia(t);
     }
 
     @Override
     public Aluno pegarMonitor(Turma t) throws Exception {
-        DadosTurma d = new DadosTurma();
-        return d.pegarMonitor(t);
+        NegocioTurma n = new NegocioTurma();
+        return n.pegarMonitor(t);
     }
 
     @Override
     public ArrayList<Aluno> listarAlunos(Turma filtro) throws Exception {
-        DadosTurma d = new DadosTurma();
-        return d.listarAlunos(filtro);
+        NegocioTurma n = new NegocioTurma();
+        return n.listarAlunos(filtro);
     }
 
     @Override
     public ArrayList<Instrutor> listarInstrutores(Turma filtro) throws Exception {
-        DadosTurma d = new DadosTurma();
-        return d.listarInstrutores(filtro);
+        NegocioTurma n = new NegocioTurma();
+        return n.listarInstrutores(filtro);
     }
 
     @Override
     public ArrayList<Atividade> listarAtividades(Turma filtro) throws Exception {
-        DadosTurma d = new DadosTurma();
-        return d.listarAtividades(filtro);
+        NegocioTurma n = new NegocioTurma();
+        return n.listarAtividades(filtro);
     }
 
     @Override
     public void inserirAlunoTurma(Turma t) throws Exception {
-        DadosTurma d = new DadosTurma();
-        d.inserirAlunoTurma(t);
+        NegocioTurma n = new NegocioTurma();
+        n.inserirAlunoTurma(t);
     }
 
     @Override
     public ArrayList<Turma> listarTurmaAtividade(Turma filtro) throws Exception {
-        DadosTurma d = new DadosTurma();
-        return d.listarTurmaAtividade(filtro);
+        NegocioTurma n = new NegocioTurma();
+        return n.listarTurmaAtividade(filtro);
+    }
+
+    @Override
+    public boolean verificarExistenciaAlunoTurma(Turma t) throws Exception {
+        NegocioTurma n = new NegocioTurma();
+        return n.verificarExistenciaAlunoTurma(t);
     }
 
     @Override
     public ArrayList<Atividade> listar(Atividade filtro) throws Exception {
-        DadosAtividade d = new DadosAtividade();
-        return d.listar(filtro);
+        NegocioAtividade n = new NegocioAtividade();
+        return n.listar(filtro);
 
     }
 

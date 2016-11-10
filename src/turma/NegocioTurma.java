@@ -167,6 +167,9 @@ public class NegocioTurma implements InterfaceTurma {
         if (t.getAluno().getMatricula() <= 0) {
             throw new Exception("Código Inválido!");
         }
+        if (verificarExistenciaAlunoTurma(t) != false){
+            throw new Exception("Aluno já cadastrado na turma informada");
+        }
         DadosTurma d = new DadosTurma();
         d.inserirAlunoTurma(t);
     }
@@ -175,6 +178,15 @@ public class NegocioTurma implements InterfaceTurma {
     public ArrayList<Turma> listarTurmaAtividade(Turma filtro) throws Exception {
         DadosTurma d = new DadosTurma();
         return d.listarTurmaAtividade(filtro);
+    }
+
+    @Override
+    public boolean verificarExistenciaAlunoTurma(Turma t) throws Exception {
+        if (t.getCodigo() <= 0) {
+            throw new Exception("Turma inválida!");
+        }
+        DadosTurma d = new DadosTurma();
+        return d.verificarExistenciaAlunoTurma(t);
     }
 
 }
