@@ -35,8 +35,7 @@ public class AtividadeAtualizarTela extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextFieldCodigo = new javax.swing.JTextField();
         jButtonAtualizar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextAreaDescr = new javax.swing.JTextArea();
+        jTextFieldDescricao = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -48,6 +47,7 @@ public class AtividadeAtualizarTela extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Descrição:");
 
+        jButtonAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/arrow_refresh.png"))); // NOI18N
         jButtonAtualizar.setText("Atualizar");
         jButtonAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,9 +55,11 @@ public class AtividadeAtualizarTela extends javax.swing.JInternalFrame {
             }
         });
 
-        jTextAreaDescr.setColumns(20);
-        jTextAreaDescr.setRows(5);
-        jScrollPane1.setViewportView(jTextAreaDescr);
+        jTextFieldDescricao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldDescricaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -65,7 +67,7 @@ public class AtividadeAtualizarTela extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(31, 31, 31)
@@ -73,8 +75,8 @@ public class AtividadeAtualizarTela extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jTextFieldDescricao)))
+                .addContainerGap(270, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonAtualizar)
@@ -87,13 +89,13 @@ public class AtividadeAtualizarTela extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jTextFieldDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(97, 97, 97)
                 .addComponent(jButtonAtualizar)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -113,29 +115,13 @@ public class AtividadeAtualizarTela extends javax.swing.JInternalFrame {
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
         // TODO add your handling code here:
 
-        if (jTextFieldCodigo.getText().equals("")){
-            jTextFieldCodigo.setVisible(true);
-            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Código.", "AVISO", JOptionPane.WARNING_MESSAGE);
-            jTextFieldCodigo.requestFocus();
-
-        }else if (jTextAreaDescr.getText().equals("")){
-            jTextAreaDescr.setVisible(true);
-            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo Descrição.", "AVISO", JOptionPane.WARNING_MESSAGE);
-            jTextAreaDescr.requestFocus();
-
-        } else{
-
-//            Atividade atividade = new Atividade();
-            
-            JOptionPane.showMessageDialog(null, "Atividade Atualizada com Sucesso.", "AVISO", JOptionPane.WARNING_MESSAGE);
-
-            jTextFieldCodigo.setText("");
-            jTextAreaDescr.setText("");
-            jTextFieldCodigo.requestFocus();
-
-        }
+     
 
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
+
+    private void jTextFieldDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDescricaoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -143,8 +129,7 @@ public class AtividadeAtualizarTela extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextAreaDescr;
     private javax.swing.JTextField jTextFieldCodigo;
+    private javax.swing.JTextField jTextFieldDescricao;
     // End of variables declaration//GEN-END:variables
 }

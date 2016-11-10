@@ -9,6 +9,7 @@ import aluno.Aluno;
 import aluno.InterfaceAluno;
 import aluno.NegocioAluno;
 import atividade.Atividade;
+import atividade.DadosAtividade;
 import atividade.InterfaceAtividade;
 import atividade.NegocioAtividade;
 import instrutor.Instrutor;
@@ -62,21 +63,24 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
     }
 
     @Override
-    //não utilizado
+   
     public void cadastrar(Atividade a) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        NegocioAtividade n = new NegocioAtividade();
+        n.cadastrar(a);
     }
 
     @Override
-    //não utilizado
+    
     public void atualizar(Atividade a) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        NegocioAtividade n = new NegocioAtividade();
+        n.atualizar(a);
     }
 
     @Override
     //não utilizado
     public void remover(Atividade a) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          NegocioAtividade n = new NegocioAtividade();
+          n.remover(a);
     }
 
     @Override
@@ -205,6 +209,19 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
       return d.listarTurmaAtividade(filtro);
     }
 
+    @Override
+    public boolean verificarExistenciaAtividade(Atividade a) throws Exception {
+       DadosAtividade d = new DadosAtividade();
+        return d.verificarExistenciaAtividade(a);
+    }
+
+    @Override
+    public int pegarCodigoAtividade(Atividade a) throws Exception {
+         DadosAtividade d = new DadosAtividade();
+        return d.pegarCodigoAtividade(a);
+    }
+ 
+    
     
 
 }

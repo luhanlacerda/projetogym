@@ -45,15 +45,25 @@ public class NegocioAtividade implements InterfaceAtividade {
 
     @Override
     public Atividade listar(Atividade a) throws Exception {
+
         DadosAtividade d = new DadosAtividade();
         return d.listar(a);
     }
 
     @Override
+
     public ArrayList<Atividade> listar() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
+    @Override
+    public boolean verificarExistenciaAtividade(Atividade a) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int pegarCodigoAtividade(Atividade a) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

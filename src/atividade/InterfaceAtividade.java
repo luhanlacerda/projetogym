@@ -7,22 +7,28 @@ package atividade;
 
 import java.util.ArrayList;
 
-
 /**
  *
  * @author ELAINE
  */
-
 public interface InterfaceAtividade {
-    
+
     //cadastrar uma atividade
-    void cadastrar(Atividade a) throws Exception;
+    public void cadastrar(Atividade a) throws Exception;
+
     //atualizar dados de uma atividade cadastrada
-    void atualizar(Atividade a) throws Exception;
+    public void atualizar(Atividade a) throws Exception;
+
     //remover uma atividade cadastrada
-    void remover(Atividade a) throws Exception;
-    //listar as atividades de acordo com o filtro 
+    public void remover(Atividade a) throws Exception;
+
+    boolean verificarExistenciaAtividade(Atividade a) throws Exception;
+
+    int pegarCodigoAtividade(Atividade a) throws Exception;
+//listar as atividades de acordo com o filtro 
+
     Atividade listar(Atividade a) throws Exception;
-     
+
     ArrayList<Atividade> listar() throws Exception;
+
 }
