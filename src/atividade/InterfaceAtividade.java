@@ -14,13 +14,13 @@ import java.util.ArrayList;
 public interface InterfaceAtividade {
 
     //cadastrar uma atividade
-    public void cadastrar(Atividade a) throws Exception;
+    void cadastrar (Atividade a)throws Exception;
 
     //atualizar dados de uma atividade cadastrada
-    public void atualizar(Atividade a) throws Exception;
+    void atualizar(Atividade a) throws Exception;
 
     //remover uma atividade cadastrada
-    public void remover(Atividade a) throws Exception;
+    void remover(Atividade a) throws Exception;
 
     boolean verificarExistenciaAtividade(Atividade a) throws Exception;
 

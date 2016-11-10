@@ -5,6 +5,8 @@
  */
 package telas;
 
+import atividade.Atividade;
+import fachada.Fachada;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -13,10 +15,9 @@ import javax.swing.JOptionPane;
  * @author ELAINE
  */
 public class AtividadeCadastrarTela extends javax.swing.JInternalFrame {
- ArrayList<Atividade> ListaAtividade = new ArrayList<>();
- 
-    
-    
+
+    ArrayList<Atividade> ListaAtividade = new ArrayList<>();
+
     /**
      * Creates new form TelaCadastroAtividade
      */
@@ -110,10 +111,23 @@ public class AtividadeCadastrarTela extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        // TODO add your handling code here:
-      
-        
-        
+        try {
+            Atividade atividade = new Atividade();
+            atividade.setCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
+            atividade.setDescricao(jTextFieldDescricao.getText());
+            Fachada fachada = new Fachada();
+            fachada.cadastrar(atividade);
+            JOptionPane.showMessageDialog(rootPane, "Atividade cadastrada com sucesso"); 
+            //Limpando campos
+            jTextFieldCodigo.setText("");
+            jTextFieldDescricao.setText("");
+            jTextFieldCodigo.requestFocus();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }
+
+
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
 
@@ -126,9 +140,4 @@ public class AtividadeCadastrarTela extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextFieldDescricao;
     // End of variables declaration//GEN-END:variables
 
-    private static class Atividade {
-
-        public Atividade() {
-        }
-    }
 }

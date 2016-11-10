@@ -6,6 +6,7 @@
 package telas;
 
 import atividade.Atividade;
+import fachada.Fachada;
 import javax.swing.JOptionPane;
 
 /**
@@ -113,7 +114,22 @@ public class AtividadeAtualizarTela extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-        // TODO add your handling code here:
+        try{
+            Atividade atividade = new Atividade();
+            atividade.setCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
+            atividade.setDescricao(jTextFieldDescricao.getText());
+            Fachada fachada = new Fachada();
+            fachada.atualizar(atividade);
+            JOptionPane.showMessageDialog(rootPane, "Atividade atualizado com sucesso");
+            
+            //Deixando campos em branco após o preencimento
+            jTextFieldCodigo.setText("");
+            jTextFieldDescricao.setText("");
+            jTextFieldCodigo.requestFocus();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }
 
      
 

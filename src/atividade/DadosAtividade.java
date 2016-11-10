@@ -19,12 +19,46 @@ public class DadosAtividade extends Dados implements InterfaceAtividade {
 
     @Override
     public void cadastrar(Atividade a) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        //abrindo a conexão
+        conectar();
+        //instrução para cadastro de um instrutor
+        String sql = "INSERT INTO Atividade ( Atv_Codigo,   Atv_Descricao )";
+        sql += " VALUES  (?, ?)";
+        try {
+            //executando i énstrução sql
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            cmd.setInt   (1, a.getCodigo());
+            cmd.setString(2, a.getDescricao());
+            cmd.execute();
+        } catch (SQLException e) {
+            //caso ocorra algum erro será executada essa execeção
+            throw new Exception("Erro ao executar inserção: " + e.getMessage());
+        }
+        //fechando a conexão com o banco de dados
+        desconectar();
+        
     }
 
     @Override
     public void atualizar(Atividade a) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          
+        //abrindo a conexão
+        conectar();
+        //instrução para cadastro de um instrutor
+        String sql = "UPDATE Atividade  SET  Atv_Descricao  = ? WHERE Atv_Codigo= ?;";
+        try {
+            //executando instrução sql
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            cmd.setString(1, a.getDescricao());
+            cmd.setInt   (2, a.getCodigo());
+            cmd.execute();
+        } catch (SQLException e) {
+            //caso ocorra algum erro será executada essa execeção
+            throw new Exception("Erro ao executar inserção: " + e.getMessage());
+        }
+        //fechando a conexão com o banco de dados
+        desconectar();
     }
 
     @Override
