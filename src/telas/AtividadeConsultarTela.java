@@ -5,17 +5,24 @@
  */
 package telas;
 
+import atividade.Atividade;
+import fachada.Fachada;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ELAINE
  */
 public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form AtividadeConsultarTela
-     */
+    DefaultTableModel modelo = new DefaultTableModel();
+
     public AtividadeConsultarTela() {
         initComponents();
+        modelo.setColumnIdentifiers(new String[]{"Código", "Descrição"});
+        jTableAtividade.setModel(modelo);
     }
 
     /**
@@ -45,9 +52,19 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
 
         jButtonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/magnifier.png"))); // NOI18N
         jButtonConsultar.setText("Consultar");
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarActionPerformed(evt);
+            }
+        });
 
         jButtonDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete.png"))); // NOI18N
         jButtonDeletar.setText("Deletar");
+        jButtonDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeletarActionPerformed(evt);
+            }
+        });
 
         jTableAtividade.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -134,6 +151,44 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
+        try {
+            Fachada fachada = new Fachada();
+            Atividade atividade = new Atividade();
+            atividade.setCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
+            fachada.remover(atividade);
+            JOptionPane.showMessageDialog(rootPane, "Turma removida com sucesso");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }
+
+    }//GEN-LAST:event_jButtonDeletarActionPerformed
+
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+      
+        try {
+            Fachada fachada = new Fachada();
+            Atividade atividade = new Atividade();
+            if (jTextFieldCodigo.getText().trim().equals("") == false) {
+                atividade.setCodigo(Integer.parseInt(jTextFieldCodigo.getText().trim()));
+            }
+            atividade.setDescricao(title);
+           ArrayList<Atividade> resposta = fachada.listar(atividade);
+
+            if (resposta.size() > 0) {
+                for (Atividade atv : resposta) {
+                    modelo.addRow(new String[]{atv.getCodigo()+ "", atv.getDescricao()});
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Não existe resultados com o filtro passado");
+            }
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        }
+
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

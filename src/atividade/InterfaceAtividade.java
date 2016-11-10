@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public interface InterfaceAtividade {
 
     //cadastrar uma atividade
-    void cadastrar (Atividade a)throws Exception;
+    void cadastrar(Atividade a) throws Exception;
 
     //atualizar dados de uma atividade cadastrada
     void atualizar(Atividade a) throws Exception;
@@ -25,10 +25,10 @@ public interface InterfaceAtividade {
     boolean verificarExistenciaAtividade(Atividade a) throws Exception;
 
     int pegarCodigoAtividade(Atividade a) throws Exception;
-//listar as atividades de acordo com o filtro 
+    //listar as atividades de acordo com o filtro 
 
-    Atividade listar(Atividade a) throws Exception;
-
-    ArrayList<Atividade> listar() throws Exception;
+    ArrayList<Atividade> listar(Atividade filtro) throws Exception;
+     //selecionar uma atividade
+    Atividade selecionarAtividade(Atividade a) throws Exception;
 
 }

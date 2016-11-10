@@ -78,13 +78,14 @@ public class ConexaoBD {
                 JOptionPane.showMessageDialog(null, i.listarInstrutores());
             } 
              */
+            /*
             Atividade atividade = new Atividade();
             NegocioAtividade n = new NegocioAtividade();
             ArrayList<Atividade> retorno = n.listar();
             for (Atividade i : retorno) {
                 JOptionPane.showMessageDialog(null, atividade.listarAtividade());
             }
-
+            */
             /*
             Aluno a = new Aluno();
             

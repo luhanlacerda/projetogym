@@ -82,12 +82,6 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
     }
 
     @Override
-    public Atividade listar(Atividade filtro) throws Exception {
-        NegocioAtividade n = new NegocioAtividade();
-        return n.listar(filtro);
-    }
-    
-     @Override
     public boolean verificarExistenciaAtividade(Atividade a) throws Exception {
         DadosAtividade d = new DadosAtividade();
         return d.verificarExistenciaAtividade(a);
@@ -191,11 +185,6 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
     }
 
     @Override
-    public ArrayList<Atividade> listar() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public ArrayList<Instrutor> listarInstrutores(Turma filtro) throws Exception {
         DadosTurma d = new DadosTurma();
         return d.listarInstrutores(filtro);
@@ -219,6 +208,17 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
         return d.listarTurmaAtividade(filtro);
     }
 
-   
+    @Override
+    public ArrayList<Atividade> listar(Atividade filtro) throws Exception {
+        DadosAtividade d = new DadosAtividade();
+        return d.listar(filtro);
+
+    }
+
+    @Override
+    public Atividade selecionarAtividade(Atividade a) throws Exception {
+        NegocioAtividade n = new NegocioAtividade();
+        return n.selecionarAtividade(a);
+    }
 
 }

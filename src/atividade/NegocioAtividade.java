@@ -5,7 +5,7 @@
  */
 package atividade;
 
-import java.util.ArrayList; 
+import java.util.ArrayList;
 
 /**
  *
@@ -21,10 +21,10 @@ public class NegocioAtividade implements InterfaceAtividade {
         if (a.getDescricao() == null || a.getDescricao().trim().equals("")) {
             throw new Exception("Informar a descrição da atividade");
         }
-          //Cadastrando
+        //Cadastrando
         DadosAtividade d = new DadosAtividade();
         d.cadastrar(a);
-        
+
     }
 
     @Override
@@ -35,7 +35,7 @@ public class NegocioAtividade implements InterfaceAtividade {
         if (a.getDescricao() == null || a.getDescricao().trim().equals("")) {
             throw new Exception("Informar a descrição da atividade");
         }
-          //Atualizando
+        //Atualizando
         DadosAtividade d = new DadosAtividade();
         d.atualizar(a);
     }
@@ -48,27 +48,14 @@ public class NegocioAtividade implements InterfaceAtividade {
         if (a.getDescricao() == null || a.getDescricao().trim().equals("")) {
             throw new Exception("Informar a descrição da atividade");
         }
-          //Removendo
+        //Removendo
         DadosAtividade d = new DadosAtividade();
         d.remover(a);
     }
 
     @Override
-    public Atividade listar(Atividade a) throws Exception {
-
-        DadosAtividade d = new DadosAtividade();
-        return d.listar(a);
-    }
-
-    @Override
-
-    public ArrayList<Atividade> listar() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public boolean verificarExistenciaAtividade(Atividade a) throws Exception {
-         if (a.getCodigo()<= 0) {
+        if (a.getCodigo() <= 0) {
             throw new Exception("Código da Atividade Inválido!");
         }
         DadosAtividade d = new DadosAtividade();
@@ -77,11 +64,26 @@ public class NegocioAtividade implements InterfaceAtividade {
 
     @Override
     public int pegarCodigoAtividade(Atividade a) throws Exception {
-        if (a.getCodigo()< 0) {
+        if (a.getCodigo() < 0) {
             throw new Exception("Informar Código da Atividade");
         }
-       DadosAtividade d = new DadosAtividade();
+        DadosAtividade d = new DadosAtividade();
         return d.pegarCodigoAtividade(a);
     }
 
+    @Override
+    public ArrayList<Atividade> listar(Atividade filtro) throws Exception {
+        DadosAtividade d = new DadosAtividade();
+        return d.listar(filtro);
+    }
+
+    @Override
+    public Atividade selecionarAtividade(Atividade a) throws Exception {
+        if (a.getCodigo() < 0) {
+            throw new Exception("Informar Código");
+        }
+        DadosAtividade d = new DadosAtividade();
+        return d.selecionarAtividade(a);
+
+    }
 }
