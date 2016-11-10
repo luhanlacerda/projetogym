@@ -24,7 +24,7 @@ public class NegocioTurma implements InterfaceTurma {
         if (t.getCodigo() <= 0) {
             throw new Exception("Informar código.");
         }
-        if (verificaExistencia(t) == true) {
+        if (verificaExistencia(t) != false) {
             throw new Exception("O código da turma já está cadastrado");
         }
         // Validando horário da aula
@@ -104,10 +104,6 @@ public class NegocioTurma implements InterfaceTurma {
         //VALIDANDO DADOS REMOVER
         if (t.getCodigo() <= 0) {
             throw new Exception("Código Inválido!");
-        }
-        //Verificando existência
-        if (verificaExistencia(t) != false) {
-            throw new Exception("A turma informada já está cadastrada no sistema!");
         }
         // MÉTODO REMOVER
         DadosTurma d = new DadosTurma();

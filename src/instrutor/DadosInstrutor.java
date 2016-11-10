@@ -154,7 +154,7 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
             }
         } catch (SQLException e) {
             //caso ocorra algum erro será executada essa execeção
-            throw new Exception("Erro ao executar inserção: " + e.getMessage());
+            throw new Exception("Erro ao pesquisar existencia: " + e.getMessage());
         }
         //fechando a conexão com o banco de dados
         desconectar();

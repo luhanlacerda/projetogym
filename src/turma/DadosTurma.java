@@ -150,16 +150,14 @@ public class DadosTurma extends Dados implements InterfaceTurma {
     }
 
     @Override
-    public boolean verificaExistencia(Turma a) throws Exception {
+    public boolean verificaExistencia(Turma t) throws Exception {
         boolean retorno = false;
-
         conectar();
         //INSTRUÇÃO SQL
-        String sql = " SELECT tur_codigo";
+        String sql = " SELECT Tur_Codigo, Tur_HorarioAulas, Tur_DuracaoAulas, Tur_DataInicial, Tur_DataFinal, Alu_Matricula, Ins_Matricula, Atv_Codigo ";
         sql += " FROM Turma WHERE tur_codigo = ? ";
         try {
             PreparedStatement cmd = conn.prepareStatement(sql);
-            Turma t = new Turma();
             cmd.setInt(1, t.getCodigo());
             ResultSet leitor = cmd.executeQuery();
             while (leitor.next()) {
@@ -167,7 +165,7 @@ public class DadosTurma extends Dados implements InterfaceTurma {
                 break;
             }
         } catch (SQLException e) {
-            throw new Exception("Erro ao pesquisar existtencia: " + e.getMessage());
+            throw new Exception("Erro ao pesquisar existencia: " + e.getMessage());
         }
 
         desconectar();
