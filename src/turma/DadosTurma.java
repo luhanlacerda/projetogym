@@ -105,16 +105,17 @@ public class DadosTurma extends Dados implements InterfaceTurma {
         // CONECTANDO
         conectar();
         //INSTRUÇÃO SQL
-        String sql = " SELECT tur_codigo AS 'Código', tur_horarioaulas AS 'Hora Aula', "
-                + "tur_duracaoaulas AS 'Duração Aula', tur_datainicial AS 'Data Inicial', "
-                + "tur_datafinal AS 'Data Final', tur_quantidadealunos AS 'Quantidade Alunos', alu_matricula AS 'Aluno Monitor', ins_matricula "
-                + "AS 'Matrícula Instrutor', atv_codigo AS 'Código Atividade'";
-
-        sql += " FROM Turma WHERE tur_codigo > 0 ";
+        String sql = " SELECT T.Tur_Codigo AS 'Código', T.Tur_HorarioAulas AS 'Hora Aula', T.Tur_DuracaoAulas AS 'Duração Aula', T.Tur_DataInicial AS 'Data Inicial', "
+                + "T.Tur_DataFinal AS 'Data Final', T.Tur_QuantidadeAlunos AS 'Quantidade Alunos', T.Alu_Matricula AS 'Monitor Matrícula', A.Alu_Nome AS 'Monitor Nome', "
+                + "T.Ins_Matricula 'Instrutor Matricula', I.Ins_Nome AS 'Instrutor Nome', T.Atv_Codigo AS 'Atividade Código', ATV.Atv_Descricao AS 'Atividade Descrição'";
+        sql += " FROM Turma AS T ";
+        sql += " INNER JOIN Aluno AS A ON A.Alu_Matricula = T.Alu_Matricula ";
+        sql += " INNER JOIN Instrutor AS I ON I.Ins_Matricula = T.Ins_Matricula ";
+        sql += " INNER JOIN Atividade AS ATV ON T.Atv_Codigo = ATV.Atv_Codigo ";
+        sql += " WHERE T.Tur_Codigo > 0 ";
         if (filtro.getCodigo() > 0) {
-            sql += " AND tur_codigo = ?";
+            sql += " AND T.Tur_Codigo = ?";
         }
-
         try {
             //EXECUTANDO A INSTRUÇÃO
             PreparedStatement cmd = conn.prepareStatement(sql);
@@ -131,10 +132,12 @@ public class DadosTurma extends Dados implements InterfaceTurma {
                 t.setDtinicial(leitor.getDate("Data Inicial"));
                 t.setDtfinal(leitor.getDate("Data Final"));
                 t.setQtdalunos(leitor.getInt("Quantidade Alunos"));
-                t.getAluno().setMatricula(leitor.getInt("Aluno Monitor"));
-                t.getInstrutor().setMatricula(leitor.getInt("Matrícula Instrutor"));
-                t.getAtividade().setCodigo(leitor.getInt("Código Atividade"));
-
+                t.getAluno().setMatricula(leitor.getInt("Monitor Matrícula"));
+                t.getAluno().setNome(leitor.getString("Monitor Nome"));
+                t.getInstrutor().setMatricula(leitor.getInt("Instrutor Matricula"));
+                t.getInstrutor().setNome(leitor.getString("Instrutor Nome"));
+                t.getAtividade().setCodigo(leitor.getInt("Atividade Código"));
+                t.getAtividade().setDescricao(leitor.getString("Atividade Descrição"));
                 retorno.add(t);
 
             }

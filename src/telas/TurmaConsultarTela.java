@@ -24,7 +24,8 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
     
     public TurmaConsultarTela() {
         initComponents();
-        modelo.setColumnIdentifiers(new String[]{"Código", "Horario", "Duração", "Data Inicial", "Data Final", "Quantidade Alunos", "Monitor", "Instrutor", "Atividade"});
+        modelo.setColumnIdentifiers(new String[]{"Código", "Horario", "Duração", "Data Inicial", "Data Final", "Quantidade Alunos", "Monitor Código",
+            "Monitor", "Instrutor Código", "Instrutor", "Atividade Código", "Atividade"});
         jTableTurma.setModel(modelo);
     }
 
@@ -147,7 +148,8 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
                 for (Turma tur : resposta) {
                     modelo.addRow(new String[]{tur.getCodigo() + "", tur.getHorario() + "", tur.getDuracaoaula() + "", 
                         tur.getDtinicial() + "", tur.getDtfinal() + "", tur.getQtdalunos() + "", tur.getAluno().getMatricula()+ "", 
-                        tur.getInstrutor().getMatricula()+ "", tur.getAtividade().getCodigo() + ""});
+                        tur.getAluno().getNome(), tur.getInstrutor().getMatricula()+ "", tur.getInstrutor().getNome() , tur.getAtividade().getCodigo() + "", 
+                    tur.getAtividade().getDescricao()});
                 }
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Não existe resultados com o filtro passado");
