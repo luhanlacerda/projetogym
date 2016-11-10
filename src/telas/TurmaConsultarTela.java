@@ -52,6 +52,7 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Código Turma:");
 
+        jButtonPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/magnifier.png"))); // NOI18N
         jButtonPesquisar.setText("Pesquisar");
         jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +73,7 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTableTurma);
 
+        jButtonDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete.png"))); // NOI18N
         jButtonDeletar.setText("Deletar");
         jButtonDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +98,9 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
                         .addComponent(jButtonPesquisar)))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonDeletar, jButtonPesquisar});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -111,6 +116,8 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
                 .addComponent(jButtonDeletar)
                 .addContainerGap(66, Short.MAX_VALUE))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonDeletar, jButtonPesquisar});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -58,6 +58,7 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Matrícula:");
 
+        jButtonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/magnifier.png"))); // NOI18N
         jButtonConsultar.setText("Pesquisar");
         jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +76,7 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTableInstrutor);
 
+        jButtonLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete.png"))); // NOI18N
         jButtonLimpar.setText("Deletar");
         jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +109,9 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
                     .addComponent(jButtonConsultar))
                 .addContainerGap(98, Short.MAX_VALUE))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonConsultar, jButtonLimpar});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -126,6 +131,8 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
                 .addComponent(jButtonLimpar)
                 .addGap(54, 54, 54))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonConsultar, jButtonLimpar});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

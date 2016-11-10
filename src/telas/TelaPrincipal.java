@@ -38,7 +38,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemAlunoCadastrar = new javax.swing.JMenuItem();
         jMenuItemAlunoAtualizar = new javax.swing.JMenuItem();
         jMenuItemAlunoConsultar = new javax.swing.JMenuItem();
-        jMenuItemAlunoDeletar = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItemTurmaCadastrar = new javax.swing.JMenuItem();
         jMenuItemTurmaAtualizar = new javax.swing.JMenuItem();
@@ -48,7 +47,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemAtividadeCadastrar = new javax.swing.JMenuItem();
         jMenuItemAtividadeAtualizar = new javax.swing.JMenuItem();
         jMenuItemAtividadeConsultar = new javax.swing.JMenuItem();
-        jMenuItemAtividadeDeletar = new javax.swing.JMenuItem();
         jMenuInstrutor = new javax.swing.JMenu();
         jMenuItemInstrutorCadastrar = new javax.swing.JMenuItem();
         jMenuItemInstrutorAtualizar = new javax.swing.JMenuItem();
@@ -69,8 +67,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGap(0, 279, Short.MAX_VALUE)
         );
 
+        jMenuArquivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/application_view_list.png"))); // NOI18N
         jMenuArquivo.setText("Arquivo");
 
+        jMenuItemArquivoSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancel.png"))); // NOI18N
         jMenuItemArquivoSair.setText("Sair");
         jMenuItemArquivoSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,8 +81,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuArquivo);
 
+        jMenuAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/group.png"))); // NOI18N
         jMenuAluno.setText("Aluno");
 
+        jMenuItemAlunoCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
         jMenuItemAlunoCadastrar.setText("Cadastrar");
         jMenuItemAlunoCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +93,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenuAluno.add(jMenuItemAlunoCadastrar);
 
+        jMenuItemAlunoAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/arrow_refresh.png"))); // NOI18N
         jMenuItemAlunoAtualizar.setText("Atualizar");
         jMenuItemAlunoAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +102,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenuAluno.add(jMenuItemAlunoAtualizar);
 
+        jMenuItemAlunoConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/magnifier.png"))); // NOI18N
         jMenuItemAlunoConsultar.setText("Consultar");
         jMenuItemAlunoConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,18 +111,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenuAluno.add(jMenuItemAlunoConsultar);
 
-        jMenuItemAlunoDeletar.setText("Deletar");
-        jMenuItemAlunoDeletar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlunoDeletarActionPerformed(evt);
-            }
-        });
-        jMenuAluno.add(jMenuItemAlunoDeletar);
-
         jMenuBar1.add(jMenuAluno);
 
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/text_padding_left.png"))); // NOI18N
         jMenu3.setText("Turma");
 
+        jMenuItemTurmaCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
         jMenuItemTurmaCadastrar.setText("Cadastrar");
         jMenuItemTurmaCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +125,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItemTurmaCadastrar);
 
+        jMenuItemTurmaAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/arrow_refresh_1.png"))); // NOI18N
         jMenuItemTurmaAtualizar.setText("Atualizar");
         jMenuItemTurmaAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +134,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItemTurmaAtualizar);
 
+        jMenuItemTurmaConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/magnifier.png"))); // NOI18N
         jMenuItemTurmaConsultar.setText("Consultar");
         jMenuItemTurmaConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +143,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItemTurmaConsultar);
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/group_add_1.png"))); // NOI18N
         jMenuItem1.setText("Inserir Aluno");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,8 +154,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenuAtividade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/text_list_bullets.png"))); // NOI18N
         jMenuAtividade.setText("Atividade");
 
+        jMenuItemAtividadeCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
         jMenuItemAtividadeCadastrar.setText("Cadastrar");
         jMenuItemAtividadeCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,6 +166,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenuAtividade.add(jMenuItemAtividadeCadastrar);
 
+        jMenuItemAtividadeAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/arrow_refresh_1.png"))); // NOI18N
         jMenuItemAtividadeAtualizar.setText("Atualizar");
         jMenuItemAtividadeAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +175,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenuAtividade.add(jMenuItemAtividadeAtualizar);
 
+        jMenuItemAtividadeConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/magnifier.png"))); // NOI18N
         jMenuItemAtividadeConsultar.setText("Consultar");
         jMenuItemAtividadeConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,18 +184,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenuAtividade.add(jMenuItemAtividadeConsultar);
 
-        jMenuItemAtividadeDeletar.setText("Deletar");
-        jMenuItemAtividadeDeletar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAtividadeDeletarActionPerformed(evt);
-            }
-        });
-        jMenuAtividade.add(jMenuItemAtividadeDeletar);
-
         jMenuBar1.add(jMenuAtividade);
 
+        jMenuInstrutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/user_gray.png"))); // NOI18N
         jMenuInstrutor.setText("Instrutor");
 
+        jMenuItemInstrutorCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
         jMenuItemInstrutorCadastrar.setText("Cadastrar");
         jMenuItemInstrutorCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,6 +198,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenuInstrutor.add(jMenuItemInstrutorCadastrar);
 
+        jMenuItemInstrutorAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/arrow_refresh_1.png"))); // NOI18N
         jMenuItemInstrutorAtualizar.setText("Atualizar");
         jMenuItemInstrutorAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,6 +207,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenuInstrutor.add(jMenuItemInstrutorAtualizar);
 
+        jMenuItemInstrutorConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/magnifier.png"))); // NOI18N
         jMenuItemInstrutorConsultar.setText("Consultar");
         jMenuItemInstrutorConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,6 +218,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuInstrutor);
 
+        jMenuSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/world.png"))); // NOI18N
         jMenuSobre.setText("Sobre");
         jMenuSobre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -305,12 +307,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItemAlunoConsultarActionPerformed
 
-    private void jMenuItemAlunoDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlunoDeletarActionPerformed
-       AlunoDeletarTela alunoDeletarTela = new AlunoDeletarTela();
-       jDesktopPaneTelaPrincipal.add(alunoDeletarTela);
-       alunoDeletarTela.setVisible(true);
-    }//GEN-LAST:event_jMenuItemAlunoDeletarActionPerformed
-
     private void jMenuItemTurmaAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTurmaAtualizarActionPerformed
         TurmaAtualizarTela turmaAtualizarTela = new TurmaAtualizarTela();
         jDesktopPaneTelaPrincipal.add(turmaAtualizarTela);
@@ -329,12 +325,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
        jDesktopPaneTelaPrincipal.add(atividadeConsultarTela);
        atividadeConsultarTela.setVisible(true);
     }//GEN-LAST:event_jMenuItemAtividadeConsultarActionPerformed
-
-    private void jMenuItemAtividadeDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAtividadeDeletarActionPerformed
-        AtividadeDeletarTela atividadeDeletarTela = new AtividadeDeletarTela();
-        jDesktopPaneTelaPrincipal.add(atividadeDeletarTela);
-        atividadeDeletarTela.setVisible(true);
-    }//GEN-LAST:event_jMenuItemAtividadeDeletarActionPerformed
 
     private void jMenuItemInstrutorAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInstrutorAtualizarActionPerformed
        InstrutorAtualizarTela instrutorAtualizarTela = new InstrutorAtualizarTela();
@@ -402,12 +392,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemAlunoAtualizar;
     private javax.swing.JMenuItem jMenuItemAlunoCadastrar;
     private javax.swing.JMenuItem jMenuItemAlunoConsultar;
-    private javax.swing.JMenuItem jMenuItemAlunoDeletar;
     private javax.swing.JMenuItem jMenuItemArquivoSair;
     private javax.swing.JMenuItem jMenuItemAtividadeAtualizar;
     private javax.swing.JMenuItem jMenuItemAtividadeCadastrar;
     private javax.swing.JMenuItem jMenuItemAtividadeConsultar;
-    private javax.swing.JMenuItem jMenuItemAtividadeDeletar;
     private javax.swing.JMenuItem jMenuItemInstrutorAtualizar;
     private javax.swing.JMenuItem jMenuItemInstrutorCadastrar;
     private javax.swing.JMenuItem jMenuItemInstrutorConsultar;
