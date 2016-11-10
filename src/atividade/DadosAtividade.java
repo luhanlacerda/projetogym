@@ -138,7 +138,7 @@ public class DadosAtividade extends Dados implements InterfaceAtividade {
         //conectando no banco
         conectar();
         //instrução para selecionar um codigo de atividade
-        String sql = " SELECT Atv_Codigo AS 'Código', Atv_Descricao AS 'Descricao'";
+        String sql = " SELECT Atv_Codigo AS 'Código', Atv_Descricao AS 'Descrição'";
         sql += " FROM Atividade WHERE Atv_Codigo > 0";
         if (filtro.getCodigo()> 0) {
             sql += " AND Atv_Codigo = ?";
