@@ -107,6 +107,7 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
 
+        jButtonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
         jButtonSalvar.setText("Cadastrar");
         jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -328,7 +329,7 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
                     .addComponent(jLabel20)
                     .addComponent(jFormattedTextFieldDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addComponent(jButtonSalvar)
                 .addGap(25, 25, 25))
         );

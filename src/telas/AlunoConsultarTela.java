@@ -65,6 +65,7 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Matrícula:");
 
+        jButtonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/magnifier.png"))); // NOI18N
         jButtonConsultar.setText("Consultar");
         jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +93,7 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTableAluno);
 
+        jButtonLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete.png"))); // NOI18N
         jButtonLimpar.setText("Deletar");
         jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
