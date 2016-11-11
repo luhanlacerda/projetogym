@@ -24,21 +24,29 @@ public class DadosAluno extends Dados implements InterfaceAluno {
         //abrindo a conexao
         conectar();
         //instrução sql correspondente a inserção do aluno
-        String sql = "INSERT INTO aluno (alu_matricula, alu_datamatricula, alu_nome, alu_nascimento, alu_altura, alu_peso, alu_endereco, alu_telefone, alu_Rg, alu_Cpf)";
-        sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO aluno (Alu_Matricula, Alu_DataMatricula, Alu_Nome, Alu_Rg, Alu_Cpf, Alu_Nascimento, Alu_Altura,"
+                + " Alu_Peso, Alu_Logradouro, Alu_Numero, Alu_Complemento, Alu_Bairro, Alu_Cep, Alu_Cidade, Alu_Uf, Alu_Pais, Alu_Telefone)";
+        sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             //executando a instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
             cmd.setInt(1, a.getMatricula());
             cmd.setDate(2, a.getDtmatricula());
             cmd.setString(3, a.getNome());
-            cmd.setDate(4, a.getDtnascimento());
-            cmd.setFloat(5, a.getAltura());
-            cmd.setFloat(6, a.getPeso());
-            cmd.setString(7, a.getEndereco().toString());
-            cmd.setString(8, a.getContato());
-            cmd.setString(9, a.getRg());
-            cmd.setString(10, a.getCpf());
+            cmd.setString(4, a.getRg());
+            cmd.setString(5, a.getCpf());
+            cmd.setDate(6, a.getDtnascimento());
+            cmd.setFloat(7, a.getAltura());
+            cmd.setFloat(8, a.getPeso());
+            cmd.setString(9, a.getEndereco().getLogradouro());
+            cmd.setString(10, a.getEndereco().getNumero());
+            cmd.setString(11, a.getEndereco().getComplemento());
+            cmd.setString(12, a.getEndereco().getBairro());
+            cmd.setString(13, a.getEndereco().getCep());
+            cmd.setString(14, a.getEndereco().getCidade());
+            cmd.setString(15, a.getEndereco().getUf());
+            cmd.setString(16, a.getEndereco().getPais());
+            cmd.setString(17, a.getContato());
             cmd.execute();
         } catch (SQLException e) {
             //caso haja algum erro neste método será levantada esta execeção
@@ -53,7 +61,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
         //abrindo a conexao
         conectar();
         //instruçãoo sql correspondente a inserção do aluno
-        String sql = "UPDATE aluno SET nome = ? WHERE matricula = ? ;";
+        String sql = "UPDATE Aluno SET Alu_Nome = ? WHERE Alu_Matricula = ? ;";
         try {
             //executando a instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
@@ -73,14 +81,14 @@ public class DadosAluno extends Dados implements InterfaceAluno {
         //abrindo a conexao
         conectar();
         //instruçãoo sql correspondente a inserção do aluno
-        String sql = "DELETE FROM aluno WHERE matricula = ? ;";
+        String sql = "DELETE FROM Aluno WHERE Alu_Matricula = ? ;";
         try {
             //executando a instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
             cmd.setInt(1, a.getMatricula());
             cmd.execute();
         } catch (SQLException e) {
-            //caso haja algum erro neste método será¡ levantada esta execeção
+            //caso haja algum erro neste método será levantada esta execeção
             throw new Exception("Erro ao executar inserção: " + e.getMessage());
         }
         //fechando a conexão com o banco de dados
@@ -94,13 +102,14 @@ public class DadosAluno extends Dados implements InterfaceAluno {
         //abrindo a conexão
         conectar();
         //instrução sql correspondente a inserção do aluno
-        String sql = " select alu_matricula, alu_datamatricula, alu_nome, alu_nascimento, alu_altura, alu_peso, alu_endereco, alu_telefone, alu_Rg, alu_Cpf";
-        sql += " from aluno where matricula > 0 ";
+        String sql = " SELECT Alu_Matricula AS 'Matrícula', Alu_Datamatricula AS 'Data Matrícula', Alu_Nome AS 'Nome', Alu_Nascimento AS 'Data Nascimento',"
+                + " Alu_Altura AS 'Altura', Alu_Peso AS 'Peso', Alu_Endereco AS 'Endereço', Alu_Telefone AS 'Telefone', Alu_Rg AS 'RG', Alu_Cpf AS 'CPF'";
+        sql += " FROM Aluno WHERE Alu_Matricula > 0 ";
         if (filtro.getMatricula() > 0) {
-            sql += " and matricula = ?";
+            sql += " AND Alu_Matricula = ?";
         }
         if (filtro.getNome().trim().equals("") == false) {
-            sql += " and nome like ? ";
+            sql += " AND Alu_Nome LIKE ? ";
         }
         try {
             //executando a instrução sql
@@ -117,8 +126,8 @@ public class DadosAluno extends Dados implements InterfaceAluno {
             ResultSet leitor = cmd.executeQuery();
             while (leitor.next()) {
                 Aluno a = new Aluno();
-                a.setMatricula(leitor.getInt("matricula"));
-                a.setNome(leitor.getString("nome"));
+                a.setMatricula(leitor.getInt("Mmatrícula"));
+                a.setNome(leitor.getString("Nome"));
                 retorno.add(a);
             }
         } catch (SQLException e) {
