@@ -28,12 +28,6 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
         jTableAluno.setModel(modelo);
     }
 
-    private void deleteRows() {
-        while (modelo.getRowCount() > 0) {
-            modelo.removeRow(0);
-        }
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,6 +44,8 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAluno = new javax.swing.JTable();
         jButtonLimpar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldNome = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -60,7 +56,7 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 68, Short.MAX_VALUE)
+            .addGap(0, 18, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,7 +92,14 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTableAluno);
 
-        jButtonLimpar.setText("Limpar");
+        jButtonLimpar.setText("Deletar");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Nome:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,15 +108,20 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButtonLimpar, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonConsultar))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonLimpar, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldNome, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                            .addComponent(jTextFieldMatricula))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonConsultar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -123,13 +131,17 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextFieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonConsultar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonLimpar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -143,14 +155,14 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
             if (jTextFieldMatricula.getText().trim().equals("") == false) {
                 aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText().trim()));
             }
-            aluno.setNome("%" + jTextFieldMatricula.getText().trim() + "%");
+            aluno.setNome("%" + jTextFieldNome.getText().trim() + "%");
             ArrayList<Aluno> resposta = fachada.listar(aluno);
-
+            modelo.setRowCount(0);     //zera toda a tabela. Mesma coisa que o deleteRows() fazia.
             if (resposta.size() > 0) {
                 for (Aluno alu : resposta) {
                     modelo.addRow(new String[]{alu.getMatricula() + "", alu.getDtmatricula() + "", alu.getNome() + "", alu.getRg() + "", alu.getCpf() + "", alu.getDtnascimento() + "", alu.getAltura() + "",
-                    alu.getPeso() + "", alu.getEndereco().getLogradouro(), alu.getEndereco().getNumero(), alu.getEndereco().getComplemento(), alu.getEndereco().getBairro(), alu.getEndereco().getCep(),
-                    alu.getEndereco().getCep(), alu.getEndereco().getCep(), alu.getEndereco().getCidade(), alu.getEndereco().getUf(), alu.getEndereco().getPais(), alu.getContato()});
+                        alu.getPeso() + "", alu.getEndereco().getLogradouro(), alu.getEndereco().getNumero(), alu.getEndereco().getComplemento(), alu.getEndereco().getBairro(), alu.getEndereco().getCep(),
+                        alu.getEndereco().getCep(), alu.getEndereco().getCep(), alu.getEndereco().getCidade(), alu.getEndereco().getUf(), alu.getEndereco().getPais(), alu.getContato()});
                 }
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Não existe resultados com o filtro passado");
@@ -161,14 +173,29 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jButtonConsultarActionPerformed
 
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+        // TODO add your handling code here:
+        try {
+            Fachada fachada = new Fachada();
+            Aluno aluno = new Aluno();
+            aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
+            fachada.remover(aluno);
+            JOptionPane.showMessageDialog(rootPane, "Aluno removido com sucesso");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonLimparActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonConsultar;
     private javax.swing.JButton jButtonLimpar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableAluno;
     private javax.swing.JTextField jTextFieldMatricula;
+    private javax.swing.JTextField jTextFieldNome;
     // End of variables declaration//GEN-END:variables
 }

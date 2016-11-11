@@ -28,12 +28,6 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
             "Monitor", "Instrutor Código", "Instrutor", "Atividade Código", "Atividade"});
         jTableTurma.setModel(modelo);
     }
-
-        private void deleteRows() {
-        while (modelo.getRowCount() > 0) {
-            modelo.removeRow(0);
-        }
-    }
         
     /**
      * This method is called from within the constructor to initialize the form.
@@ -149,7 +143,7 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
                 turma.setCodigo(Integer.parseInt(jTextFieldCodigoTurma.getText().trim()));
             }
             ArrayList<Turma> resposta = fachada.listar(turma);
-            deleteRows();
+            modelo.setRowCount(0);     //zera toda a tabela. Mesma coisa que o deleteRows() fazia.
             if (resposta.size() > 0) {
                 for (Turma tur : resposta) {
                     modelo.addRow(new String[]{tur.getCodigo() + "", tur.getHorario() + "", tur.getDuracaoaula() + "", 

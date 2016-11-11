@@ -114,10 +114,7 @@ public class NegocioAluno implements InterfaceAluno {
         if (a.getMatricula() <= 0) {
             throw new Exception("Número de matrícula inválido");
         }
-        if (a.getNome().trim().equals("") == true) {
-            throw new Exception("Informar o nome do aluno");
-        }
-        if (a.getNome() == null) {
+        if (a.getNome().trim().equals("") == true || a.getNome() == null) {
             throw new Exception("Informar o nome do aluno");
         }
         if (a.getNome().trim().length() > 100) {
@@ -132,23 +129,14 @@ public class NegocioAluno implements InterfaceAluno {
         if (a.getPeso() <= 0) {
             throw new Exception("Informar peso");
         }
-        if (a.getCpf().trim().length() < 11) {
-            throw new Exception("Número de CPF inválido");
-        }
         if (a.getRg().trim().equals("") == true) {
             throw new Exception("Informar RG");
         }
         if (a.getRg() == null) {
             throw new Exception("Informar RG");
         }
-        if (a.getCpf().trim().length() > 11) {
-            throw new Exception("Número de CPF inválido");
-        }
         if (a.getContato().trim().length() < 14) {
             throw new Exception("Número de telefone inválido");
-        }
-        if (a.getDtnascimento() == null) {
-            throw new Exception("Informar data de nascimento");
         }
         if (a.getEndereco().getLogradouro().trim().equals("")) {
             throw new Exception("Informar nome da rua");

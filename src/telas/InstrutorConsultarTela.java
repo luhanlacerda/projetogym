@@ -29,12 +29,6 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
         jTableInstrutor.setModel(modelo);
     }
 
-    private void deleteRows() {
-        while (modelo.getRowCount() > 0) {
-            modelo.removeRow(0);
-        }
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -164,7 +158,7 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
             }
             instrutor.setNome("%" + jTextFieldNome.getText().trim() + "%");
             ArrayList<Instrutor> resposta = fachada.listar(instrutor);
-            deleteRows();
+            modelo.setRowCount(0);     //zera toda a tabela. Mesma coisa que o deleteRows() fazia.
             if (resposta.size() > 0) {
                 for (Instrutor ins : resposta) {
                     modelo.addRow(new String[]{ins.getMatricula() + "", ins.getNome() + "", ins.getRg() + "", ins.getCpf() + "", ins.getDtnascimento() + "", ins.getContato()});

@@ -26,12 +26,6 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
 
     }
 
-    private void deleteRows() {
-        while (modelo.getRowCount() > 0) {
-            modelo.removeRow(0);
-        }
-
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -173,7 +167,7 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
             }
             atividade.setDescricao(title);
             ArrayList<Atividade> resposta = fachada.listar(atividade);
-            deleteRows();
+            modelo.setRowCount(0);     //zera toda a tabela. Mesma coisa que o deleteRows() fazia.
             if (resposta.size() > 0) {
                 for (Atividade atv : resposta) {
                     modelo.addRow(new String[]{atv.getCodigo() + "", atv.getDescricao()});

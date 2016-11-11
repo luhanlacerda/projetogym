@@ -61,15 +61,30 @@ public class DadosAluno extends Dados implements InterfaceAluno {
         //abrindo a conexao
         conectar();
         //instruçãoo sql correspondente a inserção do aluno
-        String sql = "UPDATE Aluno SET Alu_Nome = ? WHERE Alu_Matricula = ? ;";
+        String sql = "UPDATE Aluno SET Alu_DataMatricula = ?, Alu_Nome = ?, Alu_Rg = ?, Alu_Altura = ?, "
+                + "Alu_Peso = ?, Alu_Logradouro = ?, Alu_Numero = ?, Alu_Complemento = ?, Alu_Bairro = ?, Alu_Cep = ?, Alu_Cidade = ?, Alu_Uf = ?, Alu_Pais = ?, Alu_Telefone = ?"
+                + " WHERE Alu_Matricula = ? ;";
         try {
             //executando a instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
-            cmd.setString(1, a.getNome());
-            cmd.setInt(2, a.getMatricula());
+            cmd.setDate(1, a.getDtmatricula());
+            cmd.setString(2, a.getNome());
+            cmd.setString(3, a.getRg());
+            cmd.setFloat(4, a.getAltura());
+            cmd.setFloat(5, a.getPeso());
+            cmd.setString(6, a.getEndereco().getLogradouro());
+            cmd.setString(7, a.getEndereco().getNumero());
+            cmd.setString(8, a.getEndereco().getComplemento());
+            cmd.setString(9, a.getEndereco().getBairro());
+            cmd.setString(10, a.getEndereco().getCep());
+            cmd.setString(11, a.getEndereco().getCidade());
+            cmd.setString(12, a.getEndereco().getUf());
+            cmd.setString(13, a.getEndereco().getPais());
+            cmd.setString(14, a.getContato());
+            cmd.setInt(15, a.getMatricula());
             cmd.execute();
         } catch (SQLException e) {
-            //caso haja algum erro neste método será¡ levantada esta execeção
+            //caso haja algum erro neste método será levantada esta execeção
             throw new Exception("Erro ao executar inserção: " + e.getMessage());
         }
         //fechando a conexão com o banco de dados
@@ -110,7 +125,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
         if (filtro.getMatricula() > 0) {
             sql += " AND Alu_Matricula = ?";
         }
-        if (filtro.getNome().trim().equals("") == false) {
+        if (filtro.getNome() != null && filtro.getNome().trim().equals("") == false) {
             sql += " AND Alu_Nome LIKE ? ";
         }
         try {
