@@ -5,6 +5,12 @@
  */
 package telas;
 
+import aluno.Aluno;
+import fachada.Fachada;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ELAINE
@@ -14,8 +20,18 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
     /**
      * Creates new form TelaConsultarAluno
      */
+    DefaultTableModel modelo = new DefaultTableModel();
+
     public AlunoConsultarTela() {
         initComponents();
+        modelo.setColumnIdentifiers(new String[]{"Matrícula", "Data Matricula", "Nome", "Rg", "Cpf", "Nascimento", "Altura", "Peso", "Logradouro", "Numero", "Complemento", "Bairro", "Cep", "Cidade", "Uf", "País", "Contato"});
+        jTableAluno.setModel(modelo);
+    }
+
+    private void deleteRows() {
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
     }
 
     /**
@@ -54,23 +70,28 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
         jLabel1.setText("Matrícula:");
 
         jButtonConsultar.setText("Consultar");
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarActionPerformed(evt);
+            }
+        });
 
         jTableAluno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Matrícula", "Nome", "Rf", "Cpf", "DtMatr", "DtNasc", "Altura", "Peso", "End", "Cont"
+
             }
         ));
         jScrollPane1.setViewportView(jTableAluno);
@@ -113,6 +134,32 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+        // TODO add your handling code here:
+        try {
+            Fachada fachada = new Fachada();
+            Aluno aluno = new Aluno();
+            if (jTextFieldMatricula.getText().trim().equals("") == false) {
+                aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText().trim()));
+            }
+            aluno.setNome("%" + jTextFieldMatricula.getText().trim() + "%");
+            ArrayList<Aluno> resposta = fachada.listar(aluno);
+
+            if (resposta.size() > 0) {
+                for (Aluno alu : resposta) {
+                    modelo.addRow(new String[]{alu.getMatricula() + "", alu.getDtmatricula() + "", alu.getNome() + "", alu.getRg() + "", alu.getCpf() + "", alu.getDtnascimento() + "", alu.getAltura() + "",
+                    alu.getPeso() + "", alu.getEndereco().getLogradouro(), alu.getEndereco().getNumero(), alu.getEndereco().getComplemento(), alu.getEndereco().getBairro(), alu.getEndereco().getCep(),
+                    alu.getEndereco().getCep(), alu.getEndereco().getCep(), alu.getEndereco().getCidade(), alu.getEndereco().getUf(), alu.getEndereco().getPais(), alu.getContato()});
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Não existe resultados com o filtro passado");
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        }
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

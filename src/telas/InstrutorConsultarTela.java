@@ -29,6 +29,12 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
         jTableInstrutor.setModel(modelo);
     }
 
+    private void deleteRows() {
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,7 +51,7 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
         jButtonConsultar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableInstrutor = new javax.swing.JTable();
-        jButtonLimpar = new javax.swing.JButton();
+        jButtonDeletar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jTextFieldNome = new javax.swing.JTextField();
 
@@ -76,11 +82,11 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTableInstrutor);
 
-        jButtonLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete.png"))); // NOI18N
-        jButtonLimpar.setText("Deletar");
-        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete.png"))); // NOI18N
+        jButtonDeletar.setText("Deletar");
+        jButtonDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLimparActionPerformed(evt);
+                jButtonDeletarActionPerformed(evt);
             }
         });
 
@@ -92,7 +98,7 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonLimpar)
+                    .addComponent(jButtonDeletar)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(28, 28, 28)
@@ -110,7 +116,7 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
                 .addContainerGap(98, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonConsultar, jButtonLimpar});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonConsultar, jButtonDeletar});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,11 +134,11 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonLimpar)
+                .addComponent(jButtonDeletar)
                 .addGap(54, 54, 54))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonConsultar, jButtonLimpar});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonConsultar, jButtonDeletar});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -158,7 +164,7 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
             }
             instrutor.setNome("%" + jTextFieldNome.getText().trim() + "%");
             ArrayList<Instrutor> resposta = fachada.listar(instrutor);
-
+            deleteRows();
             if (resposta.size() > 0) {
                 for (Instrutor ins : resposta) {
                     modelo.addRow(new String[]{ins.getMatricula() + "", ins.getNome() + "", ins.getRg() + "", ins.getCpf() + "", ins.getDtnascimento() + "", ins.getContato()});
@@ -166,13 +172,13 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Não existe resultados com o filtro passado");
             }
-            
+
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
         }
     }//GEN-LAST:event_jButtonConsultarActionPerformed
 
-    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+    private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
         // TODO add your handling code here:
         try {
             Fachada fachada = new Fachada();
@@ -183,12 +189,12 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
-    }//GEN-LAST:event_jButtonLimparActionPerformed
+    }//GEN-LAST:event_jButtonDeletarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonConsultar;
-    private javax.swing.JButton jButtonLimpar;
+    private javax.swing.JButton jButtonDeletar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

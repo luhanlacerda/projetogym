@@ -24,9 +24,9 @@ public class DadosAluno extends Dados implements InterfaceAluno {
         //abrindo a conexao
         conectar();
         //instrução sql correspondente a inserção do aluno
-        String sql = "INSERT INTO aluno (Alu_Matricula, Alu_DataMatricula, Alu_Nome, Alu_Rg, Alu_Cpf, Alu_Nascimento, Alu_Altura,"
-                + " Alu_Peso, Alu_Logradouro, Alu_Numero, Alu_Complemento, Alu_Bairro, Alu_Cep, Alu_Cidade, Alu_Uf, Alu_Pais, Alu_Telefone)";
-        sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Aluno (Alu_Matricula, Alu_DataMatricula, Alu_Nome, Alu_Rg, Alu_Cpf, Alu_Nascimento, Alu_Altura, "
+                + "Alu_Peso, Alu_Logradouro, Alu_Numero, Alu_Complemento, Alu_Bairro, Alu_Cep, Alu_Cidade, Alu_Uf, Alu_Pais, Alu_Telefone)";
+        sql += " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             //executando a instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
@@ -103,7 +103,9 @@ public class DadosAluno extends Dados implements InterfaceAluno {
         conectar();
         //instrução sql correspondente a inserção do aluno
         String sql = " SELECT Alu_Matricula AS 'Matrícula', Alu_Datamatricula AS 'Data Matrícula', Alu_Nome AS 'Nome', Alu_Nascimento AS 'Data Nascimento',"
-                + " Alu_Altura AS 'Altura', Alu_Peso AS 'Peso', Alu_Endereco AS 'Endereço', Alu_Telefone AS 'Telefone', Alu_Rg AS 'RG', Alu_Cpf AS 'CPF'";
+                + " Alu_Altura AS 'Altura', Alu_Peso AS 'Peso', Alu_Logradouro AS 'Logradouro', Alu_Numero AS 'Número', Alu_Complemento AS 'Complemento',"
+                + " Alu_Bairro AS 'Bairro', Alu_Cep AS 'CEP', Alu_Cidade AS 'Cidade', Alu_Uf AS 'UF', Alu_Pais AS 'País', Alu_Telefone AS 'Telefone', "
+                + " Alu_Rg AS 'RG', Alu_Cpf AS 'CPF'";
         sql += " FROM Aluno WHERE Alu_Matricula > 0 ";
         if (filtro.getMatricula() > 0) {
             sql += " AND Alu_Matricula = ?";
@@ -126,8 +128,23 @@ public class DadosAluno extends Dados implements InterfaceAluno {
             ResultSet leitor = cmd.executeQuery();
             while (leitor.next()) {
                 Aluno a = new Aluno();
-                a.setMatricula(leitor.getInt("Mmatrícula"));
+                a.setMatricula(leitor.getInt("Matrícula"));
+                a.setDtmatricula(leitor.getDate("Data Matrícula"));
                 a.setNome(leitor.getString("Nome"));
+                a.setDtnascimento(leitor.getDate("Data Nascimento"));
+                a.setAltura(leitor.getFloat("Altura"));
+                a.setPeso(leitor.getFloat("Peso"));
+                a.getEndereco().setLogradouro(leitor.getString("Logradouro"));
+                a.getEndereco().setNumero(leitor.getString("Número"));
+                a.getEndereco().setComplemento(leitor.getString("Complemento"));
+                a.getEndereco().setBairro(leitor.getString("Bairro"));
+                a.getEndereco().setCep(leitor.getString("CEP"));
+                a.getEndereco().setCidade(leitor.getString("Cidade"));
+                a.getEndereco().setUf(leitor.getString("UF"));
+                a.getEndereco().setPais(leitor.getString("País"));
+                a.setContato(leitor.getString("Telefone"));
+                a.setRg(leitor.getString("RG"));
+                a.setCpf(leitor.getString("CPF"));
                 retorno.add(a);
             }
         } catch (SQLException e) {

@@ -89,6 +89,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Consultar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonConsultarActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -100,18 +103,7 @@
         <Component class="javax.swing.JTable" name="jTableAluno">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="10" rowCount="11">
-                <Column editable="true" title="Matr&#xed;cula" type="java.lang.Object"/>
-                <Column editable="true" title="Nome" type="java.lang.Object"/>
-                <Column editable="true" title="Rf" type="java.lang.Object"/>
-                <Column editable="true" title="Cpf" type="java.lang.Object"/>
-                <Column editable="true" title="DtMatr" type="java.lang.Object"/>
-                <Column editable="true" title="DtNasc" type="java.lang.Object"/>
-                <Column editable="true" title="Altura" type="java.lang.Object"/>
-                <Column editable="true" title="Peso" type="java.lang.Object"/>
-                <Column editable="true" title="End" type="java.lang.Object"/>
-                <Column editable="true" title="Cont" type="java.lang.Object"/>
-              </Table>
+              <Table columnCount="0" rowCount="11"/>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">

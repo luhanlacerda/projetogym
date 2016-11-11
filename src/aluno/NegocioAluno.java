@@ -95,6 +95,9 @@ public class NegocioAluno implements InterfaceAluno {
         if (a.getEndereco().getUf() == null) {
             throw new Exception("Informar nome da UF(Estado)");
         }
+        if (a.getEndereco().getUf().trim().length() > 2 || a.getEndereco().getUf().trim().length() < 2){
+            throw new Exception("Informar UF com 2 caracteres");
+        }
         if (a.getEndereco().getPais().trim().equals("")) {
             throw new Exception("Informar nome do país");
         }
