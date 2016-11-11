@@ -21,6 +21,9 @@ public class NegocioAtividade implements InterfaceAtividade {
         if (a.getDescricao() == null || a.getDescricao().trim().equals("")) {
             throw new Exception("Informar a descrição da atividade");
         }
+        if (verificarExistenciaAtividade(a) != false) {
+            throw new Exception("A Atividade informada já existe");
+        }
         //Cadastrando
         DadosAtividade d = new DadosAtividade();
         d.cadastrar(a);
