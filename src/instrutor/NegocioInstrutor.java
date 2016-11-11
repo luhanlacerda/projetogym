@@ -55,9 +55,6 @@ public class NegocioInstrutor implements InterfaceInstrutor {
         if (i.getNome() == null || i.getNome().trim().equals("")) {
             throw new Exception("Informar nome!");
         }
-        if (i.getDtnascimento() == null) {
-            throw new Exception("Informar data de nascimento!");
-        }
         if (i.getContato().trim().equals("") || i.getContato() == null || i.getContato().trim().length() < 14) {
             throw new Exception("Informar número de contato!");
         }
