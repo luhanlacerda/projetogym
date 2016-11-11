@@ -23,6 +23,14 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
         initComponents();
         modelo.setColumnIdentifiers(new String[]{"Código", "Descrição"});
         jTableAtividade.setModel(modelo);
+
+    }
+
+    private void deleteRows() {
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
+
     }
 
     /**
@@ -41,7 +49,6 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
         jButtonDeletar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAtividade = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -94,18 +101,18 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(23, 23, 23)
                         .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(73, 73, 73)
+                        .addGap(60, 60, 60)
                         .addComponent(jButtonConsultar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
+                        .addGap(23, 23, 23)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(82, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButtonDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+                .addGap(70, 70, 70))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,34 +126,22 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButtonConsultar)))
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addComponent(jButtonDeletar)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
-
-        jLabel2.setText("Resultado da Consulta:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(239, 239, 239)
-                    .addComponent(jLabel2)
-                    .addContainerGap(239, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(238, 238, 238)
-                    .addComponent(jLabel2)
-                    .addContainerGap(69, Short.MAX_VALUE)))
         );
 
         pack();
@@ -158,7 +153,10 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
             Atividade atividade = new Atividade();
             atividade.setCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
             fachada.remover(atividade);
-            JOptionPane.showMessageDialog(rootPane, "Turma removida com sucesso");
+            JOptionPane.showMessageDialog(rootPane, "Atividade removida com sucesso");
+            jTextFieldCodigo.setText("");
+            modelo.setRowCount(0);
+            jTextFieldCodigo.requestFocus();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
@@ -166,7 +164,7 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
-      
+
         try {
             Fachada fachada = new Fachada();
             Atividade atividade = new Atividade();
@@ -174,16 +172,16 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
                 atividade.setCodigo(Integer.parseInt(jTextFieldCodigo.getText().trim()));
             }
             atividade.setDescricao(title);
-           ArrayList<Atividade> resposta = fachada.listar(atividade);
-
+            ArrayList<Atividade> resposta = fachada.listar(atividade);
+            deleteRows();
             if (resposta.size() > 0) {
                 for (Atividade atv : resposta) {
-                    modelo.addRow(new String[]{atv.getCodigo()+ "", atv.getDescricao()});
+                    modelo.addRow(new String[]{atv.getCodigo() + "", atv.getDescricao()});
                 }
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Não existe resultados com o filtro passado");
             }
-            
+
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
         }
@@ -195,7 +193,6 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonConsultar;
     private javax.swing.JButton jButtonDeletar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableAtividade;

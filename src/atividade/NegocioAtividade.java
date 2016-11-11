@@ -45,9 +45,7 @@ public class NegocioAtividade implements InterfaceAtividade {
         if (a.getCodigo() <= 0) {
             throw new Exception("O código precisa ser maior que zero");
         }
-        if (a.getDescricao() == null || a.getDescricao().trim().equals("")) {
-            throw new Exception("Informar a descrição da atividade");
-        }
+        
         //Removendo
         DadosAtividade d = new DadosAtividade();
         d.remover(a);
