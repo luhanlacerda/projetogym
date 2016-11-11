@@ -29,6 +29,12 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
         jTableTurma.setModel(modelo);
     }
 
+        private void deleteRows() {
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
+    }
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -143,7 +149,7 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
                 turma.setCodigo(Integer.parseInt(jTextFieldCodigoTurma.getText().trim()));
             }
             ArrayList<Turma> resposta = fachada.listar(turma);
-
+            deleteRows();
             if (resposta.size() > 0) {
                 for (Turma tur : resposta) {
                     modelo.addRow(new String[]{tur.getCodigo() + "", tur.getHorario() + "", tur.getDuracaoaula() + "", 
@@ -167,6 +173,9 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
             turma.setCodigo(Integer.parseInt(jTextFieldCodigoTurma.getText()));
             fachada.remover(turma);
             JOptionPane.showMessageDialog(rootPane, "Turma removida com sucesso");
+            jTextFieldCodigoTurma.setText("");
+            modelo.setRowCount(0);
+            jTextFieldCodigoTurma.requestFocus();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }

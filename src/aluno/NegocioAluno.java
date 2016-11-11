@@ -26,19 +26,9 @@ public class NegocioAluno implements InterfaceAluno {
         if (a.getNome().trim().length() > 100) {
             throw new Exception("O nome do aluno não poderá ter mais de 100 caracteres");
         }
-        /*
-        if (a.getDtmatricula().trim().equals("") == true) {
-            throw new Exception("Informar data da matrícula");
-        }
-         */
         if (a.getDtmatricula() == null) {
             throw new Exception("Informar data da matrícula");
         }
-        /*
-        if (a.getDtmatricula().trim().length() <= 0) {
-            throw new Exception("Informar data da matrícula");
-        }
-         */
         if (a.getAltura() <= 0) {
             throw new Exception("A altura é inválida");
         }

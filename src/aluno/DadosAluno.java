@@ -136,8 +136,9 @@ public class DadosAluno extends Dados implements InterfaceAluno {
         //abrindo a conexão
         conectar();
         //instrução sql correspondente a inserção do aluno
-        String sql = " select matricula, nome ";
-        sql += " from aluno where matricula = ? ";
+        String sql = " Alu_Matricula, Alu_DataMatricula, Alu_Nome, Alu_Rg, Alu_Cpf, Alu_Nascimento, Alu_Altura,"
+                + " Alu_Peso, Alu_Logradouro, Alu_Numero, Alu_Complemento, Alu_Bairro, Alu_Cep, Alu_Cidade, Alu_Uf, Alu_Pais, Alu_Telefone ";
+        sql += " FROM ALUNO WHERE Alu_Matricula = ? ";
         try {
             PreparedStatement cmd = conn.prepareStatement(sql);
             cmd.setInt(1, a.getMatricula());
@@ -150,7 +151,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
             //caso haja algum erro neste método será levantada esta execeção
             throw new Exception("Erro ao executar inserção: " + e.getMessage());
         }
-        //fechando a conexÃ£o com o banco de dados
+        //fechando a conexão com o banco de dados
         desconectar();
         return retorno;
     }
