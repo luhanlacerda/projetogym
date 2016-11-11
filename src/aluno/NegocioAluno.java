@@ -41,7 +41,7 @@ public class NegocioAluno implements InterfaceAluno {
         if (a.getPeso() <= 0) {
             throw new Exception("Informar peso");
         }
-        if (a.getCpf().trim().length() < 11) {
+        if (a.getCpf().trim().length() < 14) {
             throw new Exception("Número de CPF inválido");
         }
         if (a.getRg().trim().equals("") == true) {
@@ -50,7 +50,7 @@ public class NegocioAluno implements InterfaceAluno {
         if (a.getRg() == null) {
             throw new Exception("Informar RG");
         }
-        if (a.getCpf().trim().length() > 11) {
+        if (a.getCpf().trim().length() > 14) {
             throw new Exception("Número de CPF inválido");
         }
         if (a.getContato().trim().length() < 14) {

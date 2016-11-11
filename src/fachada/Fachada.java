@@ -27,8 +27,8 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
 
     @Override
     public void cadastrar(Aluno a) throws Exception {
-       NegocioAluno n = new NegocioAluno();
-       n.cadastrar(a);
+        NegocioAluno n = new NegocioAluno();
+        n.cadastrar(a);
     }
 
     @Override
