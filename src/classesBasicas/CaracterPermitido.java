@@ -14,6 +14,7 @@ import javax.swing.text.PlainDocument;
  */
 public class CaracterPermitido extends PlainDocument {
    
+    @Override
     public void insertString (int offset, String str, javax.swing.text.AttributeSet attr)
             throws BadLocationException{
      

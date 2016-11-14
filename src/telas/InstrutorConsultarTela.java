@@ -24,9 +24,8 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
     DefaultTableModel modelo = new DefaultTableModel();
 
     public InstrutorConsultarTela() {
-        initComponents();
         modelo.setColumnIdentifiers(new String[]{"Matrícula", "Nome", "RG", "CPF", "Data Nascimento", "Contato"});
-        jTableInstrutor.setModel(modelo);
+        initComponents();
     }
 
     /**
@@ -66,14 +65,7 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
             }
         });
 
-        jTableInstrutor.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
+        jTableInstrutor.setModel(modelo);
         jScrollPane1.setViewportView(jTableInstrutor);
 
         jButtonDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete.png"))); // NOI18N

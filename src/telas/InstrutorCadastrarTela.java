@@ -23,6 +23,7 @@ public class InstrutorCadastrarTela extends javax.swing.JInternalFrame {
      */
     public InstrutorCadastrarTela() {
         initComponents();
+        jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60)); //Limite de caracateres e apenas caracteres permitidos
     }
 
     /**
