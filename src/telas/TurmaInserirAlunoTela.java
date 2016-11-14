@@ -43,12 +43,12 @@ public class TurmaInserirAlunoTela extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextFieldCodTurma = new javax.swing.JTextField();
+        jTextFieldCodTurma = new classesBasicas.JTextFieldSomenteNumeros();
         jButtonPesquisarTurma = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableTurma = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldMatAluno = new javax.swing.JTextField();
+        jTextFieldMatAluno = new classesBasicas.JTextFieldSomenteNumeros();
         jButtonPesquisarAluno = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableAluno = new javax.swing.JTable();
@@ -159,14 +159,13 @@ public class TurmaInserirAlunoTela extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextFieldMatAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonPesquisarAluno)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldMatAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonPesquisarAluno)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(jButtonInserirAlunoTurma)
                 .addGap(56, 56, 56))
         );

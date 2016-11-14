@@ -42,10 +42,10 @@ public class TurmaAtualizarTela extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextFieldCodTur = new javax.swing.JTextField();
-        jTextFieldMatAluno = new javax.swing.JTextField();
-        jTextFieldMatInst = new javax.swing.JTextField();
-        jTextFieldCodAtiv = new javax.swing.JTextField();
+        jTextFieldCodTur = new classesBasicas.JTextFieldSomenteNumeros();
+        jTextFieldMatAluno = new classesBasicas.JTextFieldSomenteNumeros();
+        jTextFieldMatInst = new classesBasicas.JTextFieldSomenteNumeros();
+        jTextFieldCodAtiv = new classesBasicas.JTextFieldSomenteNumeros();
         jFormattedTextFieldDurAula = new javax.swing.JFormattedTextField();
         jFormattedTextFieldDtInicial = new javax.swing.JFormattedTextField();
         jFormattedTextFieldDtFinal = new javax.swing.JFormattedTextField();
@@ -67,7 +67,7 @@ public class TurmaAtualizarTela extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Data Final:");
 
-        jLabel7.setText("Aluno Monitor:");
+        jLabel7.setText("Matrícula Monitor:");
 
         jLabel8.setText("Matrícula Instrutor:");
 

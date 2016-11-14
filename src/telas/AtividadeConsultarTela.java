@@ -38,7 +38,7 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldCodigo = new javax.swing.JTextField();
+        jTextFieldCodigo = new classesBasicas.JTextFieldSomenteNumeros();
         jButtonConsultar = new javax.swing.JButton();
         jButtonDeletar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();

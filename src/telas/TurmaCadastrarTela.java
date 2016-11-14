@@ -55,7 +55,7 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextFieldCodTur = new javax.swing.JTextField();
+        jTextFieldCodTur = new classesBasicas.JTextFieldSomenteNumeros();
         jFormattedTextFieldDurAula = new javax.swing.JFormattedTextField();
         jFormattedTextFieldDtInicial = new javax.swing.JFormattedTextField();
         jFormattedTextFieldDtFinal = new javax.swing.JFormattedTextField();
@@ -63,13 +63,13 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
         jButtonCadastrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAtividade = new javax.swing.JTable();
-        jTextFieldMonitor = new javax.swing.JTextField();
+        jTextFieldMonitor = new classesBasicas.JTextFieldSomenteNumeros();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableMonitor = new javax.swing.JTable();
-        jTextFieldAtividade = new javax.swing.JTextField();
+        jTextFieldAtividade = new classesBasicas.JTextFieldSomenteNumeros();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableInstrutor = new javax.swing.JTable();
-        jTextFieldInstrutor = new javax.swing.JTextField();
+        jTextFieldInstrutor = new classesBasicas.JTextFieldSomenteNumeros();
         jButtonPesquisarMonitor = new javax.swing.JButton();
         jButtonPesquisarAtividade = new javax.swing.JButton();
         jButtonPesquisarInstrutor = new javax.swing.JButton();
@@ -89,11 +89,11 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Data Final:");
 
-        jLabel7.setText("Monitor:");
+        jLabel7.setText("Mat. Monitor:");
 
-        jLabel8.setText("Instrutor:");
+        jLabel8.setText("Mat. Instrutor:");
 
-        jLabel9.setText("Atividade:");
+        jLabel9.setText("Cod. Atividade:");
 
         try {
             jFormattedTextFieldDurAula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
@@ -251,7 +251,7 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
                                 .addComponent(jTextFieldInstrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonPesquisarInstrutor)))))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jFormattedTextFieldDtFinal, jFormattedTextFieldDtInicial, jFormattedTextFieldDurAula, jFormattedTextFieldHorarioAulasInicio});

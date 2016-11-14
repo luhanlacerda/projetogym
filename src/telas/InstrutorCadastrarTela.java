@@ -8,8 +8,6 @@ package telas;
 import classesBasicas.FormatacaoDataHora;
 import fachada.Fachada;
 import instrutor.Instrutor;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +22,7 @@ public class InstrutorCadastrarTela extends javax.swing.JInternalFrame {
     public InstrutorCadastrarTela() {
         initComponents();
         jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60)); //Limite de caracateres e apenas caracteres permitidos
+        jTextFieldRg.setDocument(new classesBasicas.JTextFieldLimite(20));          //Limitando os caracteres para (N), independende de ser numero ou letras
     }
 
     /**
@@ -49,7 +48,7 @@ public class InstrutorCadastrarTela extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextFieldMatricula = new javax.swing.JTextField();
+        jTextFieldMatricula = new classesBasicas.JTextFieldSomenteNumeros();
         jTextFieldNome = new javax.swing.JTextField();
         jFormattedTextFieldContato = new javax.swing.JFormattedTextField();
         jButtonSalvar = new javax.swing.JButton();

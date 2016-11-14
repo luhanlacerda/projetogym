@@ -26,6 +26,7 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
         initComponents();
         modelo.setColumnIdentifiers(new String[]{"Matrícula", "Data Matricula", "Nome", "Rg", "Cpf", "Nascimento", "Altura", "Peso", "Logradouro", "Numero", "Complemento", "Bairro", "Cep", "Cidade", "Uf", "País", "Contato"});
         jTableAluno.setModel(modelo);
+        jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));     //Limite de caracateres(N) e apenas caracteres permitidos
     }
 
     /**
@@ -39,7 +40,7 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldMatricula = new javax.swing.JTextField();
+        jTextFieldMatricula = new classesBasicas.JTextFieldSomenteNumeros();
         jButtonConsultar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAluno = new javax.swing.JTable();

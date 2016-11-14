@@ -168,7 +168,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Aluno Monitor:"/>
+            <Property name="text" type="java.lang.String" value="Matr&#xed;cula Monitor:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
@@ -182,12 +182,24 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldCodTur">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new classesBasicas.JTextFieldSomenteNumeros()"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldMatAluno">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new classesBasicas.JTextFieldSomenteNumeros()"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldMatInst">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new classesBasicas.JTextFieldSomenteNumeros()"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldCodAtiv">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new classesBasicas.JTextFieldSomenteNumeros()"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldDurAula">
           <Properties>

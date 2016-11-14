@@ -5,7 +5,6 @@
  */
 package telas;
 
-import classesBasicas.FormatacaoDataHora;
 import fachada.Fachada;
 import instrutor.Instrutor;
 import java.util.ArrayList;
@@ -26,6 +25,7 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
     public InstrutorConsultarTela() {
         modelo.setColumnIdentifiers(new String[]{"Matrícula", "Nome", "RG", "CPF", "Data Nascimento", "Contato"});
         initComponents();
+        jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));     //Limite de caracateres e apenas caracteres permitidos
     }
 
     /**
@@ -40,7 +40,7 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldMatricula = new javax.swing.JTextField();
+        jTextFieldMatricula = new classesBasicas.JTextFieldSomenteNumeros();
         jButtonConsultar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableInstrutor = new javax.swing.JTable();

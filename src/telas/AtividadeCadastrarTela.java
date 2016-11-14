@@ -23,6 +23,7 @@ public class AtividadeCadastrarTela extends javax.swing.JInternalFrame {
      */
     public AtividadeCadastrarTela() {
         initComponents();
+        jTextFieldDescricao.setDocument(new classesBasicas.JTextFieldLimite(100));      //Limitando os caracteres para (N), independende de ser numero ou letras
     }
 
     /**
@@ -37,7 +38,7 @@ public class AtividadeCadastrarTela extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldCodigo = new javax.swing.JTextField();
+        jTextFieldCodigo = new classesBasicas.JTextFieldSomenteNumeros();
         jButtonSalvar = new javax.swing.JButton();
         jTextFieldDescricao = new javax.swing.JTextField();
 

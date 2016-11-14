@@ -6,27 +6,27 @@
 package telas;
 
 import aluno.Aluno;
-import aluno.NegocioAluno;
-import classesBasicas.CaracterPermitido;
 import classesBasicas.FormatacaoDataHora;
 import fachada.Fachada;
-import java.util.Date;
-import java.text.DateFormat;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.text.Document;
 
 /**
  *
  * @author ELAINE
  */
 public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
-//ArrayList<Aluno> listaAluno = new ArrayList<>();
 
     public AlunoCadastrarTela() {
         initComponents();
-        jTextFieldNome.setDocument(new CaracterPermitido());  // PEDIU PARA IMPORTAR A CLASSE CaracterPermitido
-
+        jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));     //Limite de caracateres(N) e apenas caracteres permitidos
+        jTextFieldRg.setDocument(new classesBasicas.JTextFieldLimite(20));              //Limitando os caracteres para (N), independende de ser numero ou letras
+        jTextFieldLogradouro.setDocument(new classesBasicas.JTextFieldLimite(100));
+        jTextFieldNumero.setDocument(new classesBasicas.JTextFieldLimite(10));
+        jTextFieldComplemento.setDocument(new classesBasicas.JTextFieldLimite(10));
+        jTextFieldBairro.setDocument(new classesBasicas.JTextFieldLimite(20));
+        jTextFieldCidade.setDocument(new classesBasicas.JTextFieldLimite(15));
+        jTextFieldUf.setDocument(new classesBasicas.JTextFieldLimite(2));
+        jTextFieldPais.setDocument(new classesBasicas.JTextFieldLimite(10));
     }
 
     /**
@@ -45,10 +45,8 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextFieldMatricula = new javax.swing.JTextField();
+        jTextFieldMatricula = new classesBasicas.JTextFieldSomenteNumeros();
         jTextFieldNome = new javax.swing.JTextField();
-        jTextFieldAltura = new javax.swing.JTextField();
-        jTextFieldPeso = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jFormattedTextFieldContato = new javax.swing.JFormattedTextField();
         jButtonSalvar = new javax.swing.JButton();
@@ -75,6 +73,8 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
         jFormattedTextFieldCpf = new javax.swing.JFormattedTextField();
         jFormattedTextFieldCep = new javax.swing.JFormattedTextField();
         jFormattedTextFieldDataMatricula = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldAltura = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldPeso = new javax.swing.JFormattedTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -161,6 +161,18 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
 
+        try {
+            jFormattedTextFieldAltura.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#.##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            jFormattedTextFieldPeso.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -171,39 +183,33 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel3))
+                                .addComponent(jLabel7))
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jTextFieldAltura, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                                        .addComponent(jTextFieldNome)))
-                                .addGap(428, 428, 428))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel17)
-                                            .addComponent(jLabel3))
-                                        .addComponent(jLabel7))
-                                    .addComponent(jLabel8))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextFieldRg, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(jTextFieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jFormattedTextFieldDataMatricula)
-                                            .addComponent(jTextFieldMatricula)
-                                            .addComponent(jTextFieldPeso))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel11)
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                            .addComponent(jFormattedTextFieldPeso)
+                                            .addComponent(jFormattedTextFieldAltura, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jFormattedTextFieldDataMatricula, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE))
+                                        .addGap(11, 11, 11)
+                                        .addComponent(jLabel11)))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldRg, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonSalvar)
@@ -260,15 +266,12 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel20)
                                         .addGap(18, 18, 18)
                                         .addComponent(jFormattedTextFieldDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldPais, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextFieldAltura, jTextFieldMatricula, jTextFieldNome, jTextFieldPeso});
-
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -287,12 +290,12 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextFieldAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFormattedTextFieldAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel11))
+                    .addComponent(jLabel11)
+                    .addComponent(jFormattedTextFieldPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
@@ -329,12 +332,12 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
                     .addComponent(jLabel20)
                     .addComponent(jFormattedTextFieldDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addComponent(jButtonSalvar)
                 .addGap(25, 25, 25))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jTextFieldAltura, jTextFieldMatricula, jTextFieldNome, jTextFieldPeso});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jTextFieldMatricula, jTextFieldNome});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -361,8 +364,8 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
             aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
             aluno.setDtmatricula(FormatacaoDataHora.getData(jFormattedTextFieldDataMatricula.getText()));
             aluno.setNome(jTextFieldNome.getText());
-            aluno.setAltura(Float.parseFloat(jTextFieldAltura.getText()));
-            aluno.setPeso(Float.parseFloat(jTextFieldPeso.getText()));
+            aluno.setAltura(Float.parseFloat(jFormattedTextFieldAltura.getText()));
+            aluno.setPeso(Float.parseFloat(jFormattedTextFieldPeso.getText()));
             aluno.setRg(jTextFieldRg.getText());
             aluno.setCpf(jFormattedTextFieldCpf.getText());
             aluno.getEndereco().setLogradouro(jTextFieldLogradouro.getText());
@@ -381,8 +384,8 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
             jTextFieldMatricula.setText("");
             jFormattedTextFieldDataMatricula.setText("");
             jTextFieldNome.setText("");
-            jTextFieldAltura.setText("");
-            jTextFieldPeso.setText("");
+            jFormattedTextFieldAltura.setText("");
+            jFormattedTextFieldPeso.setText("");
             jTextFieldRg.setText("");
             jFormattedTextFieldCpf.setText("");
             jTextFieldLogradouro.setText("");
@@ -405,11 +408,13 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonSalvar;
+    private javax.swing.JFormattedTextField jFormattedTextFieldAltura;
     private javax.swing.JFormattedTextField jFormattedTextFieldCep;
     private javax.swing.JFormattedTextField jFormattedTextFieldContato;
     private javax.swing.JFormattedTextField jFormattedTextFieldCpf;
     private javax.swing.JFormattedTextField jFormattedTextFieldDataMatricula;
     private javax.swing.JFormattedTextField jFormattedTextFieldDataNascimento;
+    private javax.swing.JFormattedTextField jFormattedTextFieldPeso;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -429,7 +434,6 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextFieldAltura;
     private javax.swing.JTextField jTextFieldBairro;
     private javax.swing.JTextField jTextFieldCidade;
     private javax.swing.JTextField jTextFieldComplemento;
@@ -438,7 +442,6 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldNumero;
     private javax.swing.JTextField jTextFieldPais;
-    private javax.swing.JTextField jTextFieldPeso;
     private javax.swing.JTextField jTextFieldRg;
     private javax.swing.JTextField jTextFieldUf;
     // End of variables declaration//GEN-END:variables

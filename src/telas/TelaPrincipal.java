@@ -52,6 +52,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemInstrutorAtualizar = new javax.swing.JMenuItem();
         jMenuItemInstrutorConsultar = new javax.swing.JMenuItem();
         jMenuSobre = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Principal");
@@ -225,6 +226,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jMenuSobreActionPerformed(evt);
             }
         });
+
+        jMenuItem2.setText("Informações");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenuSobre.add(jMenuItem2);
+
         jMenuBar1.add(jMenuSobre);
 
         setJMenuBar(jMenuBar1);
@@ -345,6 +355,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         turmaInserirAlunoTela.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        TelaSobre telasobre = new TelaSobre();
+        jDesktopPaneTelaPrincipal.add(telasobre);
+        telasobre.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -389,6 +406,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuInstrutor;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItemAlunoAtualizar;
     private javax.swing.JMenuItem jMenuItemAlunoCadastrar;
     private javax.swing.JMenuItem jMenuItemAlunoConsultar;
