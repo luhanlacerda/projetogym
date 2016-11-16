@@ -50,6 +50,8 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Atualizar Instrutor");
 
+        jTextFieldMatricula.setEditable(false);
+
         jLabel1.setText("Matrícula:");
 
         jLabel2.setText("Nome:");
@@ -61,6 +63,8 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
         });
 
         jLabel3.setText("Rg:");
+
+        jTextFieldRg.setEditable(false);
 
         jLabel8.setText("Contato:");
 

@@ -13,14 +13,12 @@ import javax.swing.JOptionPane;
  *
  * @author ELAINE
  */
-public class AtividadeAtualizarTela extends javax.swing.JInternalFrame {
+public class AtividadeAtualizarTelaJFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AtividadeAtualizarTela
-     */
-    public AtividadeAtualizarTela() {
+    public AtividadeAtualizarTelaJFrame(Atividade atividade) {
         initComponents();
-        jTextFieldDescricao.setDocument(new classesBasicas.JTextFieldLimite(100));      //Limitando os caracteres para (N), independende de ser numero ou letras
+        jTextFieldDescricao.setDocument(new classesBasicas.JTextFieldLimite(100));
+        jTextFieldCodigo.setText(atividade.getCodigo()+"");
     }
 
     /**
@@ -39,15 +37,14 @@ public class AtividadeAtualizarTela extends javax.swing.JInternalFrame {
         jButtonAtualizar = new javax.swing.JButton();
         jTextFieldDescricao = new javax.swing.JTextField();
 
-        setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Atualizar Atividade");
-        setToolTipText("");
 
         jLabel1.setText("Código:");
 
         jLabel2.setText("Descrição:");
+
+        jTextFieldCodigo.setEditable(false);
 
         jButtonAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/arrow_refresh.png"))); // NOI18N
         jButtonAtualizar.setText("Atualizar");
@@ -78,7 +75,7 @@ public class AtividadeAtualizarTela extends javax.swing.JInternalFrame {
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
                         .addComponent(jTextFieldDescricao)))
-                .addContainerGap(270, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonAtualizar)
@@ -97,7 +94,7 @@ public class AtividadeAtualizarTela extends javax.swing.JInternalFrame {
                     .addComponent(jTextFieldDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(97, 97, 97)
                 .addComponent(jButtonAtualizar)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -115,14 +112,14 @@ public class AtividadeAtualizarTela extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-        try{
+        try {
             Atividade atividade = new Atividade();
             atividade.setCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
             atividade.setDescricao(jTextFieldDescricao.getText());
             Fachada fachada = new Fachada();
             fachada.atualizar(atividade);
             JOptionPane.showMessageDialog(rootPane, "Atividade atualizado com sucesso");
-            
+
             //Deixando campos em branco após o preencimento
             jTextFieldCodigo.setText("");
             jTextFieldDescricao.setText("");
@@ -132,14 +129,46 @@ public class AtividadeAtualizarTela extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
 
-     
-
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
     private void jTextFieldDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDescricaoActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(AtividadeAtualizarTelaJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(AtividadeAtualizarTelaJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(AtividadeAtualizarTelaJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(AtividadeAtualizarTelaJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new AtividadeAtualizarTelaJFrame(new Atividade()).setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAtualizar;

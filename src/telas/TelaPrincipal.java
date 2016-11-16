@@ -46,7 +46,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuAtividade = new javax.swing.JMenu();
         jMenuItemAtividadeCadastrar = new javax.swing.JMenuItem();
-        jMenuItemAtividadeAtualizar = new javax.swing.JMenuItem();
         jMenuItemAtividadeConsultar = new javax.swing.JMenuItem();
         jMenuInstrutor = new javax.swing.JMenu();
         jMenuItemInstrutorCadastrar = new javax.swing.JMenuItem();
@@ -149,15 +148,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenuAtividade.add(jMenuItemAtividadeCadastrar);
 
-        jMenuItemAtividadeAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/arrow_refresh_1.png"))); // NOI18N
-        jMenuItemAtividadeAtualizar.setText("Atualizar");
-        jMenuItemAtividadeAtualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAtividadeAtualizarActionPerformed(evt);
-            }
-        });
-        jMenuAtividade.add(jMenuItemAtividadeAtualizar);
-
         jMenuItemAtividadeConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/magnifier.png"))); // NOI18N
         jMenuItemAtividadeConsultar.setText("Consultar");
         jMenuItemAtividadeConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -232,9 +222,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         AlunoCadastrarTela telaCadastroAluno = new AlunoCadastrarTela();
         jDesktopPaneTelaPrincipal.add(telaCadastroAluno);
         telaCadastroAluno.setVisible(true);
-        
-        
-        
+
     }//GEN-LAST:event_jMenuItemAlunoCadastrarActionPerformed
 
     private void jMenuItemTurmaCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTurmaCadastrarActionPerformed
@@ -270,12 +258,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
       System.exit(0);
     }//GEN-LAST:event_jMenuItemArquivoSairActionPerformed
 
-    private void jMenuItemAtividadeAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAtividadeAtualizarActionPerformed
-        AtividadeAtualizarTela atividadeAtualizarTela = new AtividadeAtualizarTela();
-        jDesktopPaneTelaPrincipal.add(atividadeAtualizarTela);
-        atividadeAtualizarTela.setVisible(true);
-    }//GEN-LAST:event_jMenuItemAtividadeAtualizarActionPerformed
-
     private void jMenuItemAlunoConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlunoConsultarActionPerformed
        AlunoConsultarTela alunoConsultarTela = new AlunoConsultarTela(this);
        jDesktopPaneTelaPrincipal.add(alunoConsultarTela);
@@ -290,9 +272,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemTurmaConsultarActionPerformed
 
     private void jMenuItemAtividadeConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAtividadeConsultarActionPerformed
-       AtividadeConsultarTela atividadeConsultarTela = new AtividadeConsultarTela();
-       jDesktopPaneTelaPrincipal.add(atividadeConsultarTela);
-       atividadeConsultarTela.setVisible(true);
+       AtividadeConsultarTela atividadeAConsultarTela = new AtividadeConsultarTela(this);
+       jDesktopPaneTelaPrincipal.add(atividadeAConsultarTela);
+       atividadeAConsultarTela.setVisible(true);
     }//GEN-LAST:event_jMenuItemAtividadeConsultarActionPerformed
 
     private void jMenuItemInstrutorConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInstrutorConsultarActionPerformed
@@ -363,7 +345,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemAlunoCadastrar;
     private javax.swing.JMenuItem jMenuItemAlunoConsultar;
     private javax.swing.JMenuItem jMenuItemArquivoSair;
-    private javax.swing.JMenuItem jMenuItemAtividadeAtualizar;
     private javax.swing.JMenuItem jMenuItemAtividadeCadastrar;
     private javax.swing.JMenuItem jMenuItemAtividadeConsultar;
     private javax.swing.JMenuItem jMenuItemInstrutorCadastrar;

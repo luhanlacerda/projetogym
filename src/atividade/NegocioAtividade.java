@@ -38,6 +38,9 @@ public class NegocioAtividade implements InterfaceAtividade {
         if (a.getDescricao() == null || a.getDescricao().trim().equals("")) {
             throw new Exception("Informar a descrição da atividade");
         }
+        if(verificarExistenciaAtividade(a) == false){
+            throw new Exception("Atividade não cadastrada no sistema");
+        }
         //Atualizando
         DadosAtividade d = new DadosAtividade();
         d.atualizar(a);
