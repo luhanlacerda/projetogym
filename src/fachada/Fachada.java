@@ -226,4 +226,16 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
         return n.selecionarAtividade(a);
     }
 
+    @Override
+    public boolean verificarExistenciaMonitor(Turma t) throws Exception {
+        NegocioTurma n = new NegocioTurma();
+        return n.verificarExistenciaMonitor(t);
+    }
+
+    @Override
+    public boolean verificarExistenciaInstrutor(Turma t) throws Exception {
+        NegocioTurma n = new NegocioTurma();
+        return n.verificarExistenciaInstrutor(t);
+    }
+
 }

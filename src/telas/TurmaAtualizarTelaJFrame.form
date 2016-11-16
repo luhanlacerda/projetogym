@@ -58,7 +58,7 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jTextFieldMatAluno" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldMatMonitor" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jTextFieldMatInst" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jTextFieldCodTur" alignment="0" min="-2" pref="186" max="-2" attributes="0"/>
                                   </Group>
@@ -97,7 +97,7 @@
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextFieldMatAluno" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldMatMonitor" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -164,7 +164,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldMatAluno">
+        <Component class="javax.swing.JTextField" name="jTextFieldMatMonitor">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new classesBasicas.JTextFieldSomenteNumeros()"/>
           </AuxValues>

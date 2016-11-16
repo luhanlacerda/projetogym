@@ -331,7 +331,7 @@ public class DadosTurma extends Dados implements InterfaceTurma {
 
     @Override
     public void inserirAlunoTurma(Turma t) throws Exception {
-     // CONECTANDO
+        // CONECTANDO
         conectar();
         //instrução sql correspondente a inserção da turma
         String sql = "INSERT INTO AlunoTurma (Tur_Codigo, Alu_Matricula) ";
@@ -351,7 +351,7 @@ public class DadosTurma extends Dados implements InterfaceTurma {
 
     @Override
     public ArrayList<Turma> listarTurmaAtividade(Turma filtro) throws Exception {
-       int posPar = 1;
+        int posPar = 1;
         ArrayList<Turma> retorno = new ArrayList<>();
         // CONECTANDO
         conectar();
@@ -412,5 +412,50 @@ public class DadosTurma extends Dados implements InterfaceTurma {
         desconectar();
         return retorno;
     }
+
+    @Override
+    public boolean verificarExistenciaMonitor(Turma t) throws Exception {
+        boolean retorno = false;
+        conectar();
+        //INSTRUÇÃO SQL
+        String sql = " SELECT Alu_Matricula";
+        sql += " FROM Aluno WHERE Alu_Matricula =  ? ";
+        try {
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            cmd.setInt(1, t.getAluno().getMatricula());
+            ResultSet leitor = cmd.executeQuery();
+            while (leitor.next()) {
+                retorno = true;
+                break;
+            }
+        } catch (SQLException e) {
+            throw new Exception("Erro ao pesquisar existencia: " + e.getMessage());
+        }
+
+        desconectar();
+        return retorno;
+    }
+
+    @Override
+    public boolean verificarExistenciaInstrutor(Turma t) throws Exception {
+       boolean retorno = false;
+        conectar();
+        //INSTRUÇÃO SQL
+        String sql = " SELECT Ins_Matricula";
+        sql += " FROM Instrutor WHERE Ins_Matricula =  ? ";
+        try {
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            cmd.setInt(1, t.getInstrutor().getMatricula());
+            ResultSet leitor = cmd.executeQuery();
+            while (leitor.next()) {
+                retorno = true;
+                break;
+            }
+        } catch (SQLException e) {
+            throw new Exception("Erro ao pesquisar existencia: " + e.getMessage());
+        }
+
+        desconectar();
+        return retorno;    }
 
 }

@@ -94,6 +94,12 @@ public class NegocioTurma implements InterfaceTurma {
         if (t.getAluno().getMatricula() <= 0) {
             throw new Exception("Informar a matrícula do aluno!");
         }
+        if (verificarExistenciaMonitor(t) == false) {
+            throw new Exception("Monitor(Aluno) não cadastrado no sistema");
+        }
+        if (verificarExistenciaInstrutor(t) == false) {
+            throw new Exception("Instrutor não cadastrado no sistema");
+        }
         //MÉTODO ATUALIZAR
         DadosTurma d = new DadosTurma();
         d.atualizar(t);
@@ -167,7 +173,7 @@ public class NegocioTurma implements InterfaceTurma {
         if (t.getAluno().getMatricula() <= 0) {
             throw new Exception("Código Inválido!");
         }
-        if (verificarExistenciaAlunoTurma(t) != false){
+        if (verificarExistenciaAlunoTurma(t) != false) {
             throw new Exception("Aluno já cadastrado na turma informada");
         }
         DadosTurma d = new DadosTurma();
@@ -189,4 +195,21 @@ public class NegocioTurma implements InterfaceTurma {
         return d.verificarExistenciaAlunoTurma(t);
     }
 
+    @Override
+    public boolean verificarExistenciaMonitor(Turma t) throws Exception {
+        if (t.getAluno().getMatricula() <= 0) {
+            throw new Exception("Matrícula inválida!");
+        }
+        DadosTurma d = new DadosTurma();
+        return d.verificarExistenciaMonitor(t);
+    }
+
+    @Override
+    public boolean verificarExistenciaInstrutor(Turma t) throws Exception {
+        if (t.getInstrutor().getMatricula() <= 0) {
+            throw new Exception("Matrícula inválida!");
+        }
+        DadosTurma d = new DadosTurma();
+        return d.verificarExistenciaInstrutor(t);
+    }
 }

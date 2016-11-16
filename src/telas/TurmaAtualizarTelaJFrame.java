@@ -38,7 +38,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
         jTextFieldCodTur = new classesBasicas.JTextFieldSomenteNumeros();
         jFormattedTextFieldHorarioAulasInicio = new javax.swing.JFormattedTextField();
         jFormattedTextFieldDurAula = new javax.swing.JFormattedTextField();
-        jTextFieldMatAluno = new classesBasicas.JTextFieldSomenteNumeros();
+        jTextFieldMatMonitor = new classesBasicas.JTextFieldSomenteNumeros();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jTextFieldMatInst = new classesBasicas.JTextFieldSomenteNumeros();
@@ -129,7 +129,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
                                     .addComponent(jLabel1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextFieldMatAluno)
+                                    .addComponent(jTextFieldMatMonitor)
                                     .addComponent(jTextFieldMatInst)
                                     .addComponent(jTextFieldCodTur, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(58, 58, 58)
@@ -158,7 +158,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(jTextFieldMatAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldMatMonitor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
@@ -216,8 +216,8 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
             turma.setDuracaoaula(FormatacaoDataHora.getHorario(jFormattedTextFieldDurAula.getText()));
             turma.setDtinicial(FormatacaoDataHora.getData(jFormattedTextFieldDtInicial.getText()));
             turma.setDtfinal(FormatacaoDataHora.getData(jFormattedTextFieldDtFinal.getText()));
-            //DADOS DE ALUNO
-            turma.getAluno().setMatricula(Integer.parseInt(jTextFieldMatInst.getText()));
+            //DADOS DE ALUNO(MONITOR)
+            turma.getAluno().setMatricula(Integer.parseInt(jTextFieldMatMonitor.getText()));
             //DADOS DE INSTRUTOR
             turma.getInstrutor().setMatricula(Integer.parseInt(jTextFieldMatInst.getText()));
             //DADOS DE ATIVIDADE
@@ -227,7 +227,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Turma atualizada com sucesso");
             //Limpar Campos preenchidos
             jTextFieldCodTur.setText("");
-            jTextFieldMatAluno.setText("");
+            jTextFieldMatMonitor.setText("");
             jTextFieldMatInst.setText("");
             jTextFieldCodAtiv.setText("");
             jFormattedTextFieldHorarioAulasInicio.setText("");
@@ -294,7 +294,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextFieldCodAtiv;
     private javax.swing.JTextField jTextFieldCodTur;
-    private javax.swing.JTextField jTextFieldMatAluno;
     private javax.swing.JTextField jTextFieldMatInst;
+    private javax.swing.JTextField jTextFieldMatMonitor;
     // End of variables declaration//GEN-END:variables
 }

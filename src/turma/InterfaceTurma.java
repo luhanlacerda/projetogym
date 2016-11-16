@@ -40,4 +40,8 @@ public interface InterfaceTurma {
     ArrayList<Turma> listarTurmaAtividade(Turma filtro) throws Exception;
     //verifica se um aluno já esta cadastrado em uma determinada turma
     boolean verificarExistenciaAlunoTurma (Turma t) throws Exception;
+    //verifica se um monitor(aluno) já esta cadastrado no sistema
+    boolean verificarExistenciaMonitor(Turma t) throws Exception;
+    //verificia se um instrutor já esta cadastrado no sistema
+    boolean verificarExistenciaInstrutor(Turma t) throws Exception;
 }
