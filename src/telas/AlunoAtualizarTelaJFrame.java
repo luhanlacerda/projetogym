@@ -19,7 +19,7 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
     /**
      * Creates new form AlunoAtualizarTelaJFrame
      */
-    public AlunoAtualizarTelaJFrame(Aluno a) {
+    public AlunoAtualizarTelaJFrame(Aluno aluno) {
         initComponents();
         jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));   //Limite de caracateres(N) e apenas caracteres permitidos
         //jTextFieldRg.setDocument(new classesBasicas.JTextFieldLimite(20));              //Limitando os caracteres para (N), independende de ser numero ou letras
@@ -30,8 +30,7 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
         jTextFieldCidade.setDocument(new classesBasicas.JTextFieldLimite(15));
         jTextFieldUf.setDocument(new classesBasicas.JTextFieldLimite(2));
         //jTextFieldPais.setDocument(new classesBasicas.JTextFieldLimite(10));
-        
-        jTextFieldMatricula.setText(a.getMatricula()+"");
+        jTextFieldMatricula.setText(aluno.getMatricula()+"");
     }
 
     /**
@@ -55,7 +54,7 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jFormattedTextFieldDataMatricula = new javax.swing.JFormattedTextField();
         jFormattedTextFieldContato = new javax.swing.JFormattedTextField();
-        jButtonSalvar = new javax.swing.JButton();
+        jButtonAtualizar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -114,11 +113,11 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        jButtonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/arrow_refresh.png"))); // NOI18N
-        jButtonSalvar.setText("Atualizar");
-        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/arrow_refresh.png"))); // NOI18N
+        jButtonAtualizar.setText("Atualizar");
+        jButtonAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalvarActionPerformed(evt);
+                jButtonAtualizarActionPerformed(evt);
             }
         });
 
@@ -248,7 +247,7 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
                         .addGap(46, 46, 46))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonSalvar)
+                .addComponent(jButtonAtualizar)
                 .addGap(30, 30, 30))
         );
         jPanel1Layout.setVerticalGroup(
@@ -304,7 +303,7 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
                     .addComponent(jTextFieldUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(118, 118, 118)
-                .addComponent(jButtonSalvar)
+                .addComponent(jButtonAtualizar)
                 .addGap(52, 52, 52))
         );
 
@@ -325,7 +324,7 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+    private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
         // TODO add your handling code here:
         try {
             Aluno aluno = new Aluno();
@@ -346,14 +345,14 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
             //aluno.getEndereco().setPais(jTextFieldPais.getText());
             aluno.setContato(jFormattedTextFieldContato.getText());
             Fachada fachada = new Fachada();
-            fachada.atualizar(aluno);
+            fachada.atualizar(aluno); 
             JOptionPane.showMessageDialog(rootPane, "Aluno atualizado com sucesso");
             jTextFieldMatricula.setText("");
             jFormattedTextFieldDataMatricula.setText("");
             jTextFieldNome.setText("");
             jFormattedTextFieldAltura.setText("");
             jFormattedTextFieldPeso.setText("");
-            jTextFieldRg.setText("");
+            //jTextFieldRg.setText("");
             jTextFieldLogradouro.setText("");
             jTextFieldNumero.setText("");
             jTextFieldComplemento.setText("");
@@ -364,11 +363,10 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
             // jTextFieldPais.setText("");
             jFormattedTextFieldContato.setText("");
             jTextFieldMatricula.requestFocus();
-            jTextFieldMatricula.requestFocus();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
-    }//GEN-LAST:event_jButtonSalvarActionPerformed
+    }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
     private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
         // TODO add your handling code here:
@@ -410,7 +408,7 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonSalvar;
+    private javax.swing.JButton jButtonAtualizar;
     private javax.swing.JFormattedTextField jFormattedTextFieldAltura;
     private javax.swing.JFormattedTextField jFormattedTextFieldCep;
     private javax.swing.JFormattedTextField jFormattedTextFieldContato;

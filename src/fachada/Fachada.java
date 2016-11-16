@@ -32,14 +32,12 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
     }
 
     @Override
-    //não utilizado
     public void atualizar(Aluno a) throws Exception {
         NegocioAluno n = new NegocioAluno();
         n.atualizar(a);
     }
 
     @Override
-    //não utilizado
     public void remover(Aluno a) throws Exception {
         NegocioAluno n = new NegocioAluno();
         n.remover(a);
@@ -52,7 +50,6 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
     }
 
     @Override
-    //não utilizado
     public boolean verificaExistencia(Aluno a) throws Exception {
         NegocioAluno n = new NegocioAluno();
         return n.verificaExistencia(a);
@@ -78,7 +75,6 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
     }
 
     @Override
-    //não utilizado
     public void remover(Atividade a) throws Exception {
         NegocioAtividade n = new NegocioAtividade();
         n.remover(a);

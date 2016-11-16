@@ -129,12 +129,6 @@ public class NegocioAluno implements InterfaceAluno {
         if (a.getPeso() <= 0) {
             throw new Exception("Informar peso");
         }
-        if (a.getRg().trim().equals("") == true) {
-            throw new Exception("Informar RG");
-        }
-        if (a.getRg() == null) {
-            throw new Exception("Informar RG");
-        }
         if (a.getContato().trim().length() < 14) {
             throw new Exception("Número de telefone inválido");
         }
@@ -173,12 +167,6 @@ public class NegocioAluno implements InterfaceAluno {
         }
         if (a.getEndereco().getUf() == null) {
             throw new Exception("Informar nome da UF(Estado)");
-        }
-        if (a.getEndereco().getPais().trim().equals("")) {
-            throw new Exception("Informar nome do país");
-        }
-        if (a.getEndereco().getPais() == null) {
-            throw new Exception("Informar nome do país");
         }
         DadosAluno d = new DadosAluno();
         d.atualizar(a);
