@@ -39,7 +39,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemArquivoSair = new javax.swing.JMenuItem();
         jMenuAluno = new javax.swing.JMenu();
         jMenuItemAlunoCadastrar = new javax.swing.JMenuItem();
-        jMenuItemAlunoAtualizar = new javax.swing.JMenuItem();
         jMenuItemAlunoConsultar = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItemTurmaCadastrar = new javax.swing.JMenuItem();
@@ -52,7 +51,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemAtividadeConsultar = new javax.swing.JMenuItem();
         jMenuInstrutor = new javax.swing.JMenu();
         jMenuItemInstrutorCadastrar = new javax.swing.JMenuItem();
-        jMenuItemInstrutorAtualizar = new javax.swing.JMenuItem();
         jMenuItemInstrutorConsultar = new javax.swing.JMenuItem();
         jMenuSobre = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -96,15 +94,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenuAluno.add(jMenuItemAlunoCadastrar);
-
-        jMenuItemAlunoAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/arrow_refresh.png"))); // NOI18N
-        jMenuItemAlunoAtualizar.setText("Atualizar");
-        jMenuItemAlunoAtualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlunoAtualizarActionPerformed(evt);
-            }
-        });
-        jMenuAluno.add(jMenuItemAlunoAtualizar);
 
         jMenuItemAlunoConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/magnifier.png"))); // NOI18N
         jMenuItemAlunoConsultar.setText("Consultar");
@@ -202,15 +191,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenuInstrutor.add(jMenuItemInstrutorCadastrar);
 
-        jMenuItemInstrutorAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/arrow_refresh_1.png"))); // NOI18N
-        jMenuItemInstrutorAtualizar.setText("Atualizar");
-        jMenuItemInstrutorAtualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemInstrutorAtualizarActionPerformed(evt);
-            }
-        });
-        jMenuInstrutor.add(jMenuItemInstrutorAtualizar);
-
         jMenuItemInstrutorConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/magnifier.png"))); // NOI18N
         jMenuItemInstrutorConsultar.setText("Consultar");
         jMenuItemInstrutorConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -306,13 +286,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         atividadeAtualizarTela.setVisible(true);
     }//GEN-LAST:event_jMenuItemAtividadeAtualizarActionPerformed
 
-    private void jMenuItemAlunoAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlunoAtualizarActionPerformed
-       /*AlunoAtualizarTela alunoAtualizarTela = new AlunoAtualizarTela();
-       jDesktopPaneTelaPrincipal.add(alunoAtualizarTela);
-       alunoAtualizarTela.setVisible(true);
-  */
-    }//GEN-LAST:event_jMenuItemAlunoAtualizarActionPerformed
-
     private void jMenuItemAlunoConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlunoConsultarActionPerformed
        AlunoConsultarTela alunoConsultarTela = new AlunoConsultarTela(this);
        jDesktopPaneTelaPrincipal.add(alunoConsultarTela);
@@ -338,12 +311,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
        jDesktopPaneTelaPrincipal.add(atividadeConsultarTela);
        atividadeConsultarTela.setVisible(true);
     }//GEN-LAST:event_jMenuItemAtividadeConsultarActionPerformed
-
-    private void jMenuItemInstrutorAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInstrutorAtualizarActionPerformed
-       InstrutorAtualizarTela instrutorAtualizarTela = new InstrutorAtualizarTela();
-       jDesktopPaneTelaPrincipal.add(instrutorAtualizarTela);
-       instrutorAtualizarTela.setVisible(true);
-    }//GEN-LAST:event_jMenuItemInstrutorAtualizarActionPerformed
 
     private void jMenuItemInstrutorConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInstrutorConsultarActionPerformed
         InstrutorConsultarTela instrutorConsultarTela = new InstrutorConsultarTela(this);
@@ -410,14 +377,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuInstrutor;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItemAlunoAtualizar;
     private javax.swing.JMenuItem jMenuItemAlunoCadastrar;
     private javax.swing.JMenuItem jMenuItemAlunoConsultar;
     private javax.swing.JMenuItem jMenuItemArquivoSair;
     private javax.swing.JMenuItem jMenuItemAtividadeAtualizar;
     private javax.swing.JMenuItem jMenuItemAtividadeCadastrar;
     private javax.swing.JMenuItem jMenuItemAtividadeConsultar;
-    private javax.swing.JMenuItem jMenuItemInstrutorAtualizar;
     private javax.swing.JMenuItem jMenuItemInstrutorCadastrar;
     private javax.swing.JMenuItem jMenuItemInstrutorConsultar;
     private javax.swing.JMenuItem jMenuItemTurmaAtualizar;
