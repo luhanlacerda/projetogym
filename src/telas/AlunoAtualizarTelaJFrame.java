@@ -22,7 +22,7 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
     public AlunoAtualizarTelaJFrame(Aluno a) {
         initComponents();
         jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));   //Limite de caracateres(N) e apenas caracteres permitidos
-        jTextFieldRg.setDocument(new classesBasicas.JTextFieldLimite(20));              //Limitando os caracteres para (N), independende de ser numero ou letras
+        //jTextFieldRg.setDocument(new classesBasicas.JTextFieldLimite(20));              //Limitando os caracteres para (N), independende de ser numero ou letras
         jTextFieldLogradouro.setDocument(new classesBasicas.JTextFieldLimite(100));
         jTextFieldNumero.setDocument(new classesBasicas.JTextFieldLimite(10)); // só recebe números
         jTextFieldComplemento.setDocument(new classesBasicas.JTextFieldLimite(10));
@@ -243,12 +243,13 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
                                             .addComponent(jFormattedTextFieldCep, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(18, 18, 18)
                                             .addComponent(jLabel6))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                                .addComponent(jTextFieldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButtonSalvar)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                                .addComponent(jTextFieldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(46, 46, 46))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonSalvar)
+                .addGap(30, 30, 30))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,43 +303,39 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel14)
                     .addComponent(jTextFieldUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addGap(29, 29, 29)
+                .addGap(118, 118, 118)
                 .addComponent(jButtonSalvar)
-                .addGap(141, 141, 141))
+                .addGap(52, 52, 52))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNomeActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         // TODO add your handling code here:
         try {
             Aluno aluno = new Aluno();
             aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
-             aluno.setCpf(jFormattedTextFieldCpf.getText());
+            //aluno.setCpf(jFormattedTextFieldCpf.getText());
             aluno.setDtmatricula(FormatacaoDataHora.getData(jFormattedTextFieldDataMatricula.getText()));
             aluno.setNome(jTextFieldNome.getText());
             aluno.setAltura(Float.parseFloat(jFormattedTextFieldAltura.getText()));
             aluno.setPeso(Float.parseFloat(jFormattedTextFieldPeso.getText()));
-            aluno.setRg(jTextFieldRg.getText());
+            //aluno.setRg(jTextFieldRg.getText());
             aluno.getEndereco().setLogradouro(jTextFieldLogradouro.getText());
             aluno.getEndereco().setNumero(jTextFieldComplemento.getText());
             aluno.getEndereco().setComplemento(jTextFieldNumero.getText());
@@ -364,7 +361,7 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
             jFormattedTextFieldCep.setText("");
             jTextFieldCidade.setText("");
             jTextFieldUf.setText("");
-           // jTextFieldPais.setText("");
+            // jTextFieldPais.setText("");
             jFormattedTextFieldContato.setText("");
             jTextFieldMatricula.requestFocus();
             jTextFieldMatricula.requestFocus();
@@ -372,6 +369,10 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
+
+    private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNomeActionPerformed
 
     /**
      * @param args the command line arguments
