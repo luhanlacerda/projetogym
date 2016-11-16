@@ -346,7 +346,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemInstrutorAtualizarActionPerformed
 
     private void jMenuItemInstrutorConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInstrutorConsultarActionPerformed
-        InstrutorConsultarTela instrutorConsultarTela = new InstrutorConsultarTela();
+        InstrutorConsultarTela instrutorConsultarTela = new InstrutorConsultarTela(this);
         jDesktopPaneTelaPrincipal.add(instrutorConsultarTela);
         instrutorConsultarTela.setVisible(true);
     }//GEN-LAST:event_jMenuItemInstrutorConsultarActionPerformed

@@ -21,10 +21,14 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
      * Creates new form InstrutorConsultarTela
      */
     DefaultTableModel modelo = new DefaultTableModel();
+    ArrayList<Instrutor> listaInstrutores; // Ficou global e não mais local 
+    TelaPrincipal pai;
 
-    public InstrutorConsultarTela() {
-        modelo.setColumnIdentifiers(new String[]{"Matrícula", "Nome", "RG", "CPF", "Data Nascimento", "Contato"});
+    public InstrutorConsultarTela(TelaPrincipal pai) {
         initComponents();
+        this.pai = pai;
+        modelo.setColumnIdentifiers(new String[]{"Matrícula", "Nome", "RG", "CPF", "Data Nascimento", "Contato"});
+        jTableInstrutor.setModel(modelo);
         jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));     //Limite de caracateres e apenas caracteres permitidos
     }
 
@@ -66,6 +70,11 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
         });
 
         jTableInstrutor.setModel(modelo);
+        jTableInstrutor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableInstrutorMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableInstrutor);
 
         jButtonDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete.png"))); // NOI18N
@@ -149,10 +158,10 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
                 instrutor.setMatricula(Integer.parseInt(jTextFieldMatricula.getText().trim()));
             }
             instrutor.setNome("%" + jTextFieldNome.getText().trim() + "%");
-            ArrayList<Instrutor> resposta = fachada.listar(instrutor);
+            this.listaInstrutores = fachada.listar(instrutor);
             modelo.setRowCount(0);     //zera toda a tabela. Mesma coisa que o deleteRows() fazia.
-            if (resposta.size() > 0) {
-                for (Instrutor ins : resposta) {
+            if (this.listaInstrutores.size() > 0) {     //alterado pq ficou global 
+                for (Instrutor ins : this.listaInstrutores) {
                     modelo.addRow(new String[]{ins.getMatricula() + "", ins.getNome() + "", ins.getRg() + "", ins.getCpf() + "", ins.getDtnascimento() + "", ins.getContato()});
                 }
             } else {
@@ -176,6 +185,17 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
     }//GEN-LAST:event_jButtonDeletarActionPerformed
+
+    private void jTableInstrutorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableInstrutorMouseClicked
+        // TODO add your handling code here:
+        // clique do botão
+        jTextFieldMatricula.setEditable(false);
+        jTextFieldMatricula.setEnabled(false);
+        int index = jTableInstrutor.getSelectedRow();
+        Instrutor instrutorEscolhido = this.listaInstrutores.get(index);
+        InstrutorAtualizarTelaJFrame instrutorAtualizarTela = new InstrutorAtualizarTelaJFrame(instrutorEscolhido); // Vincula a tela atualizar
+        instrutorAtualizarTela.setVisible(true);
+    }//GEN-LAST:event_jTableInstrutorMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
