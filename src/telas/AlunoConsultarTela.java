@@ -21,10 +21,13 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
      * Creates new form TelaConsultarAluno
      */
     DefaultTableModel modelo = new DefaultTableModel();
+    ArrayList<Aluno> listaAlunos; // Ficou global e não mais local 
+    TelaPrincipal pai;
 
-    public AlunoConsultarTela() {
+    public AlunoConsultarTela(TelaPrincipal pai) {
         initComponents();
-        modelo.setColumnIdentifiers(new String[]{"Matrícula", "Data Matricula", "Nome", "Rg", "Cpf", "Nascimento", "Altura", "Peso", "Logradouro", "Numero", "Complemento", "Bairro", "Cep", "Cidade", "Uf", "País", "Contato"});
+        this.pai = pai;
+        modelo.setColumnIdentifiers(new String[]{"Matrícula", "Data Matricula", "Nome", "Rg", "Cpf"});
         jTableAluno.setModel(modelo);
         jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));     //Limite de caracateres(N) e apenas caracteres permitidos
     }
@@ -92,6 +95,11 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
 
             }
         ));
+        jTableAluno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableAlunoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableAluno);
 
         jButtonLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete.png"))); // NOI18N
@@ -159,13 +167,11 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
                 aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText().trim()));
             }
             aluno.setNome("%" + jTextFieldNome.getText().trim() + "%");
-            ArrayList<Aluno> resposta = fachada.listar(aluno);
+            this.listaAlunos = fachada.listar(aluno); //alterado pq ficou global 
             modelo.setRowCount(0);     //zera toda a tabela. Mesma coisa que o deleteRows() fazia.
-            if (resposta.size() > 0) {
-                for (Aluno alu : resposta) {
-                    modelo.addRow(new String[]{alu.getMatricula() + "", alu.getDtmatricula() + "", alu.getNome() + "", alu.getRg() + "", alu.getCpf() + "", alu.getDtnascimento() + "", alu.getAltura() + "",
-                        alu.getPeso() + "", alu.getEndereco().getLogradouro(), alu.getEndereco().getNumero(), alu.getEndereco().getComplemento(), alu.getEndereco().getBairro(), alu.getEndereco().getCep(),
-                        alu.getEndereco().getCep(), alu.getEndereco().getCep(), alu.getEndereco().getCidade(), alu.getEndereco().getUf(), alu.getEndereco().getPais(), alu.getContato()});
+            if (this.listaAlunos.size() > 0) { //alterado pq ficou global 
+                for (Aluno alu : this.listaAlunos) {
+                    modelo.addRow(new String[]{alu.getMatricula() + "", alu.getDtmatricula() + "", alu.getNome() + "", alu.getRg() + "", alu.getCpf() + ""});
                 }
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Não existe resultados com o filtro passado");
@@ -188,6 +194,16 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
     }//GEN-LAST:event_jButtonLimparActionPerformed
+
+    private void jTableAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAlunoMouseClicked
+        // O clique do botão que Melo mexeu 
+        jTextFieldMatricula.setEditable(false);
+        jTextFieldMatricula.setEnabled(false);
+        int index = jTableAluno.getSelectedRow();
+        Aluno alunoEscolhido = this.listaAlunos.get(index);
+        AlunoAtualizarTelaJFrame alunoAtualizarTela = new AlunoAtualizarTelaJFrame(alunoEscolhido); // Vincula a tela atualizar
+        alunoAtualizarTela.setVisible(true);
+    }//GEN-LAST:event_jTableAlunoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

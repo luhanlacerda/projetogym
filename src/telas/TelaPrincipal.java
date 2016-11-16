@@ -5,6 +5,8 @@
  */
 package telas;
 
+import javax.swing.JFrame;
+
 
 
 /**
@@ -18,6 +20,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
        // conecta.conexao(); // conecta é o objeto que chama a conexão (com o banco)
     }
 
@@ -304,14 +307,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemAtividadeAtualizarActionPerformed
 
     private void jMenuItemAlunoAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlunoAtualizarActionPerformed
-       AlunoAtualizarTela alunoAtualizarTela = new AlunoAtualizarTela();
+       /*AlunoAtualizarTela alunoAtualizarTela = new AlunoAtualizarTela();
        jDesktopPaneTelaPrincipal.add(alunoAtualizarTela);
        alunoAtualizarTela.setVisible(true);
-  
+  */
     }//GEN-LAST:event_jMenuItemAlunoAtualizarActionPerformed
 
     private void jMenuItemAlunoConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlunoConsultarActionPerformed
-       AlunoConsultarTela alunoConsultarTela = new AlunoConsultarTela();
+       AlunoConsultarTela alunoConsultarTela = new AlunoConsultarTela(this);
        jDesktopPaneTelaPrincipal.add(alunoConsultarTela);
        alunoConsultarTela.setVisible(true);
         
