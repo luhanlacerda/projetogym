@@ -21,9 +21,12 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
      * Creates new form TurmaConsultarTela
      */
     DefaultTableModel modelo = new DefaultTableModel();
+    ArrayList<Turma> listaTurmas;
+    TelaPrincipal pai;
     
-    public TurmaConsultarTela() {
+    public TurmaConsultarTela(TelaPrincipal pai) {
         initComponents();
+        this.pai = pai;
         modelo.setColumnIdentifiers(new String[]{"Código", "Horario", "Duração", "Data Inicial", "Data Final", "Quantidade Alunos", "Monitor Código",
             "Monitor", "Instrutor Código", "Instrutor", "Atividade Código", "Atividade"});
         jTableTurma.setModel(modelo);
@@ -72,6 +75,11 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
 
             }
         ));
+        jTableTurma.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableTurmaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableTurma);
 
         jButtonDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete.png"))); // NOI18N
@@ -144,10 +152,10 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
             if (jTextFieldCodigoTurma.getText().trim().equals("") == false) {
                 turma.setCodigo(Integer.parseInt(jTextFieldCodigoTurma.getText().trim()));
             }
-            ArrayList<Turma> resposta = fachada.listar(turma);
+            this.listaTurmas = fachada.listar(turma);
             modelo.setRowCount(0);     //zera toda a tabela. Mesma coisa que o deleteRows() fazia.
-            if (resposta.size() > 0) {
-                for (Turma tur : resposta) {
+            if (this.listaTurmas.size() > 0) {
+                for (Turma tur : this.listaTurmas) {
                     modelo.addRow(new String[]{tur.getCodigo() + "", tur.getHorario() + "", tur.getDuracaoaula() + "", 
                         tur.getDtinicial() + "", tur.getDtfinal() + "", tur.getQtdalunos() + "", tur.getAluno().getMatricula()+ "", 
                         tur.getAluno().getNome(), tur.getInstrutor().getMatricula()+ "", tur.getInstrutor().getNome() , tur.getAtividade().getCodigo() + "", 
@@ -176,6 +184,16 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
     }//GEN-LAST:event_jButtonDeletarActionPerformed
+
+    private void jTableTurmaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTurmaMouseClicked
+        // TODO add your handling code here:
+        jTextFieldCodigoTurma.setEditable(false);
+        jTextFieldCodigoTurma.setEnabled(false);
+        int index = jTableTurma.getSelectedRow();
+        Turma turmaEscolhido = this.listaTurmas.get(index);
+        TurmaAtualizarTelaJFrame turmaAtualizarTela = new TurmaAtualizarTelaJFrame(turmaEscolhido); // Vincula a tela atualizar
+        turmaAtualizarTela.setVisible(true);
+    }//GEN-LAST:event_jTableTurmaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
