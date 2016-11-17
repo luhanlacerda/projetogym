@@ -44,8 +44,8 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
         jFormattedTextFieldCep.setText(aluno.getEndereco().getCep()+"");
         jFormattedTextFieldContato.setText(aluno.getContato()+"");
         jFormattedTextFieldAltura.setText(aluno.getAltura()+"");
-        jFormattedTextFieldPeso.setText(aluno.getPeso()+"");
-        jFormattedTextFieldDataMatricula.setText(aluno.getDtmatricula()+"");
+        //jFormattedTextFieldPeso.setText(aluno.getPeso()+"");
+        //jFormattedTextFieldDataMatricula.setText(aluno.getDtmatricula()+"");
     }
 
     /**

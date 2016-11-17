@@ -22,6 +22,13 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
     public TurmaAtualizarTelaJFrame(Turma turma) {
         initComponents();
         jTextFieldCodTur.setText(turma.getCodigo() + "");
+        jFormattedTextFieldDtFinal.setText(turma.getDtfinal() + "");
+        jFormattedTextFieldDtInicial.setText(turma.getDtinicial() + "");
+        jFormattedTextFieldDurAula.setText(turma.getDuracaoaula() + "");
+        jFormattedTextFieldHorarioAulasInicio.setText(turma.getHorario() + "");
+        jTextFieldCodAtiv.setText(turma.getAtividade().getCodigo() + "");
+        jTextFieldMatInst.setText(turma.getInstrutor().getMatricula() + "");
+        jTextFieldMatMonitor.setText(turma.getAluno().getMatricula() + "");
     }
 
     /**
@@ -229,16 +236,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
             fachada.atualizar(turma);
             JOptionPane.showMessageDialog(rootPane, "Turma atualizada com sucesso");
             dispose();      //fecha a tela após clicar no OK de turma atualizada com sucesso.
-            
-            jTextFieldCodTur.setText(turma.getCodigo()+"");
-            jTextFieldMatMonitor.setText(""); // FALTA PEGAR
-            jTextFieldMatInst.setText(turma.getInstrutor()+"");
-            jTextFieldCodAtiv.setText(turma.getAtividade()+"");
-            jFormattedTextFieldHorarioAulasInicio.setText(turma.getHorario()+"");
-            jFormattedTextFieldDurAula.setText(turma.getDuracaoaula()+"");
-            jFormattedTextFieldDtInicial.setText(turma.getDtinicial()+"");
-            jFormattedTextFieldDtFinal.setText(turma.getDtfinal()+"");
-            jTextFieldCodTur.requestFocus(); // Retornar para o início
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
