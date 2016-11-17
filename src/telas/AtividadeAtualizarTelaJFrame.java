@@ -19,6 +19,7 @@ public class AtividadeAtualizarTelaJFrame extends javax.swing.JFrame {
         initComponents();
         jTextFieldDescricao.setDocument(new classesBasicas.JTextFieldLimite(100));
         jTextFieldCodigo.setText(atividade.getCodigo()+"");
+        jTextFieldDescricao.setText(atividade.getDescricao());
     }
 
     /**

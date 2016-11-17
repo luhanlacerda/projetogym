@@ -22,10 +22,10 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
     public TurmaAtualizarTelaJFrame(Turma turma) {
         initComponents();
         jTextFieldCodTur.setText(turma.getCodigo() + "");
-        jFormattedTextFieldDtFinal.setText(turma.getDtfinal() + "");
-        jFormattedTextFieldDtInicial.setText(turma.getDtinicial() + "");
+        jFormattedTextFieldDtFinal.setText(FormatacaoDataHora.dateToString(turma.getDtfinal()));           //converte de date para string
+        jFormattedTextFieldDtInicial.setText(FormatacaoDataHora.dateToString(turma.getDtinicial()));      //converte de date para string
         jFormattedTextFieldDurAula.setText(turma.getDuracaoaula() + "");
-        jFormattedTextFieldHorarioAulasInicio.setText(turma.getHorario() + "");
+        jFormattedTextFieldHorarioAulas.setText(turma.getHorario() + "");
         jTextFieldCodAtiv.setText(turma.getAtividade().getCodigo() + "");
         jTextFieldMatInst.setText(turma.getInstrutor().getMatricula() + "");
         jTextFieldMatMonitor.setText(turma.getAluno().getMatricula() + "");
@@ -43,7 +43,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextFieldCodTur = new classesBasicas.JTextFieldSomenteNumeros();
-        jFormattedTextFieldHorarioAulasInicio = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldHorarioAulas = new javax.swing.JFormattedTextField();
         jFormattedTextFieldDurAula = new javax.swing.JFormattedTextField();
         jTextFieldMatMonitor = new classesBasicas.JTextFieldSomenteNumeros();
         jLabel7 = new javax.swing.JLabel();
@@ -68,7 +68,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
         jTextFieldCodTur.setBackground(new java.awt.Color(153, 153, 153));
 
         try {
-            jFormattedTextFieldHorarioAulasInicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+            jFormattedTextFieldHorarioAulas.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -83,6 +83,8 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
 
         jLabel8.setText("Matrícula Instrutor:");
 
+        jFormattedTextFieldDtInicial.setEditable(false);
+        jFormattedTextFieldDtInicial.setBackground(new java.awt.Color(153, 153, 153));
         try {
             jFormattedTextFieldDtInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -94,11 +96,18 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
             }
         });
 
+        jFormattedTextFieldDtFinal.setEditable(false);
+        jFormattedTextFieldDtFinal.setBackground(new java.awt.Color(153, 153, 153));
         try {
             jFormattedTextFieldDtFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextFieldDtFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldDtFinalActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Data Final:");
 
@@ -151,9 +160,10 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jFormattedTextFieldDurAula, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFormattedTextFieldDtInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFormattedTextFieldHorarioAulasInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFormattedTextFieldDtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jFormattedTextFieldHorarioAulas, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jFormattedTextFieldDtFinal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                                .addComponent(jFormattedTextFieldDtInicial, javax.swing.GroupLayout.Alignment.LEADING)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -180,7 +190,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jFormattedTextFieldHorarioAulasInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jFormattedTextFieldHorarioAulas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
@@ -222,10 +232,10 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
             //DADOS DA TURMA
             Turma turma = new Turma();
             turma.setCodigo(Integer.parseInt(jTextFieldCodTur.getText()));
-            turma.setHorario(FormatacaoDataHora.getHorario(jFormattedTextFieldHorarioAulasInicio.getText()));
-            turma.setDuracaoaula(FormatacaoDataHora.getHorario(jFormattedTextFieldDurAula.getText()));
-            turma.setDtinicial(FormatacaoDataHora.getData(jFormattedTextFieldDtInicial.getText()));
-            turma.setDtfinal(FormatacaoDataHora.getData(jFormattedTextFieldDtFinal.getText()));
+            turma.setHorario(FormatacaoDataHora.stringToTime(jFormattedTextFieldHorarioAulas.getText()));
+            turma.setDuracaoaula(FormatacaoDataHora.stringToTime(jFormattedTextFieldDurAula.getText()));
+            turma.setDtinicial(FormatacaoDataHora.stringToDate(jFormattedTextFieldDtInicial.getText()));
+            turma.setDtfinal(FormatacaoDataHora.stringToDate(jFormattedTextFieldDtFinal.getText()));
             //DADOS DE ALUNO(MONITOR)
             turma.getAluno().setMatricula(Integer.parseInt(jTextFieldMatMonitor.getText()));
             //DADOS DE INSTRUTOR
@@ -241,6 +251,10 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
+
+    private void jFormattedTextFieldDtFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldDtFinalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldDtFinalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,7 +297,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextFieldDtFinal;
     private javax.swing.JFormattedTextField jFormattedTextFieldDtInicial;
     private javax.swing.JFormattedTextField jFormattedTextFieldDurAula;
-    private javax.swing.JFormattedTextField jFormattedTextFieldHorarioAulasInicio;
+    private javax.swing.JFormattedTextField jFormattedTextFieldHorarioAulas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

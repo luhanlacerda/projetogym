@@ -42,7 +42,7 @@ public class ConexaoBD {
             instrutor.setRg("6543210");
             instrutor.setCpf("333.333.333-33");
             instrutor.setNome("Mirosmar");
-            instrutor.setDtnascimento(FormatacaoDataHora.getData("02/02/2002"));
+            instrutor.setDtnascimento(FormatacaoDataHora.stringToDate("02/02/2002"));
             instrutor.setContato("(81)9.9999-9999");
             NegocioInstrutor n = new NegocioInstrutor();
             n.cadastrar(instrutor);

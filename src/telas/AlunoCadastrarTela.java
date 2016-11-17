@@ -362,7 +362,7 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
         try {
             Aluno aluno = new Aluno();
             aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
-            aluno.setDtmatricula(FormatacaoDataHora.getData(jFormattedTextFieldDataMatricula.getText()));
+            aluno.setDtmatricula(FormatacaoDataHora.stringToDate(jFormattedTextFieldDataMatricula.getText()));
             aluno.setNome(jTextFieldNome.getText());
             aluno.setAltura(Float.parseFloat(jFormattedTextFieldAltura.getText()));
             aluno.setPeso(Float.parseFloat(jFormattedTextFieldPeso.getText()));
@@ -377,7 +377,7 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
             aluno.getEndereco().setUf(jTextFieldUf.getText());
             aluno.getEndereco().setPais(jTextFieldPais.getText());
             aluno.setContato(jFormattedTextFieldContato.getText());
-            aluno.setDtnascimento(FormatacaoDataHora.getData(jFormattedTextFieldDataNascimento.getText()));
+            aluno.setDtnascimento(FormatacaoDataHora.stringToDate(jFormattedTextFieldDataNascimento.getText()));
             Fachada fachada = new Fachada();
             fachada.cadastrar(aluno);
             JOptionPane.showMessageDialog(rootPane, "Aluno cadastrado com sucesso");

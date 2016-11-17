@@ -41,10 +41,10 @@ public class ConexaoBDElaine {
            // CADASTRANDO
 //            Turma t = new Turma();
 //            t.setCodigo(3);
-//            t.setHorario(FormatacaoDataHora.getHorario("8:00"));
-//            t.setDuracaoaula(FormatacaoDataHora.getHorario("9:00"));
-//            t.setDtinicial(FormatacaoDataHora.getData("06/11/2016"));
-//            t.setDtfinal(FormatacaoDataHora.getData("10/11/2016"));
+//            t.setHorario(FormatacaoDataHora.stringToTime("8:00"));
+//            t.setDuracaoaula(FormatacaoDataHora.stringToTime("9:00"));
+//            t.setDtinicial(FormatacaoDataHora.stringToDate("06/11/2016"));
+//            t.setDtfinal(FormatacaoDataHora.stringToDate("10/11/2016"));
 //            t.getInstrutor().setMatricula(1);
 //            t.getAluno().setMatricula(1);
 //            t.getAtividade().setCodigo(1);
@@ -55,10 +55,10 @@ public class ConexaoBDElaine {
             //ATUALIZANDO  
             /*Turma t = new Turma();
             t.setCodigo(1);
-            t.setHorario(FormatacaoDataHora.getHorario("16:00"));
-            t.setDuracaoaula(FormatacaoDataHora.getHorario("06:00"));
-            t.setDtinicial(FormatacaoDataHora.getData("31/10/2016"));
-            t.setDtfinal(FormatacaoDataHora.getData("01/12/2020"));
+            t.setHorario(FormatacaoDataHora.stringToTime("16:00"));
+            t.setDuracaoaula(FormatacaoDataHora.stringToTime("06:00"));
+            t.setDtinicial(FormatacaoDataHora.stringToDate("31/10/2016"));
+            t.setDtfinal(FormatacaoDataHora.stringToDate("01/12/2020"));
             t.getInstrutor().setMatricula(1);
             t.getAluno().setMatricula(1);
             t.getAtividade().setCodigo(1);

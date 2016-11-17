@@ -74,9 +74,11 @@
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jFormattedTextFieldDurAula" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
-                              <Component id="jFormattedTextFieldDtInicial" alignment="0" min="-2" pref="51" max="-2" attributes="0"/>
                               <Component id="jFormattedTextFieldHorarioAulas" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
-                              <Component id="jFormattedTextFieldDtFinal" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jFormattedTextFieldDtFinal" alignment="0" pref="86" max="32767" attributes="0"/>
+                                  <Component id="jFormattedTextFieldDtInicial" alignment="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -192,6 +194,10 @@
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldDtInicial">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="99" red="99" type="rgb"/>
+            </Property>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="##/##/####" subtype="-1" type="5"/>
             </Property>
@@ -202,10 +208,17 @@
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldDtFinal">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="99" red="99" type="rgb"/>
+            </Property>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="##/##/####" subtype="-1" type="5"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFormattedTextFieldDtFinalActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>

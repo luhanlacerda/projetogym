@@ -227,7 +227,7 @@ public class InstrutorCadastrarTela extends javax.swing.JInternalFrame {
             instrutor.setNome(jTextFieldNome.getText());
             instrutor.setCpf(jFormattedTextFieldCpf.getText());
             instrutor.setRg(jTextFieldRg.getText());
-            instrutor.setDtnascimento(FormatacaoDataHora.getData(jFormattedTextFieldDtNasc.getText()));
+            instrutor.setDtnascimento(FormatacaoDataHora.stringToDate(jFormattedTextFieldDtNasc.getText()));
             instrutor.setContato(jFormattedTextFieldContato.getText());
             Fachada fachada = new Fachada();
             fachada.cadastrar(instrutor);

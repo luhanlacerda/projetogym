@@ -11,7 +11,7 @@ import fachada.Fachada;
 import javax.swing.JOptionPane;
 
 /**
- * 
+ *
  * @author ELAINE
  */
 public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
@@ -26,26 +26,26 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
         jTextFieldLogradouro.setDocument(new classesBasicas.JTextFieldLimite(100));
         jTextFieldNumero.setDocument(new classesBasicas.JTextFieldLimite(10)); // só recebe números
         jTextFieldComplemento.setDocument(new classesBasicas.JTextFieldLimite(10));
-        jTextFieldBairro.setDocument(new classesBasicas.JTextFieldLimite(20)); 
+        jTextFieldBairro.setDocument(new classesBasicas.JTextFieldLimite(20));
         jTextFieldCidade.setDocument(new classesBasicas.JTextFieldLimite(15));
         jTextFieldUf.setDocument(new classesBasicas.JTextFieldLimite(2));
         //jTextFieldPais.setDocument(new classesBasicas.JTextFieldLimite(10));
-       
-        jTextFieldMatricula.setText(aluno.getMatricula()+"");
-        jTextFieldRg.setText(aluno.getRg()+"");
-        jFormattedTextFieldCpf.setText(aluno.getCpf()+"");
-        jTextFieldNome.setText(aluno.getNome()+"");
-        jTextFieldLogradouro.setText(aluno.getEndereco().getLogradouro()+"");
-        jTextFieldBairro.setText(aluno.getEndereco().getBairro()+"");
-        jTextFieldCidade.setText(aluno.getEndereco().getCidade()+"");
-        jTextFieldComplemento.setText(aluno.getEndereco().getComplemento()+"");
-        jTextFieldNumero.setText(aluno.getEndereco().getNumero()+"");
-        jTextFieldUf.setText(aluno.getEndereco().getUf()+"");
-        jFormattedTextFieldCep.setText(aluno.getEndereco().getCep()+"");
-        jFormattedTextFieldContato.setText(aluno.getContato()+"");
-        jFormattedTextFieldAltura.setText(aluno.getAltura()+"");
+
+        jTextFieldMatricula.setText(aluno.getMatricula() + "");
+        jTextFieldRg.setText(aluno.getRg());
+        jFormattedTextFieldCpf.setText(aluno.getCpf());
+        jTextFieldNome.setText(aluno.getNome());
+        jTextFieldLogradouro.setText(aluno.getEndereco().getLogradouro());
+        jTextFieldBairro.setText(aluno.getEndereco().getBairro());
+        jTextFieldCidade.setText(aluno.getEndereco().getCidade());
+        jTextFieldComplemento.setText(aluno.getEndereco().getComplemento());
+        jTextFieldNumero.setText(aluno.getEndereco().getNumero());
+        jTextFieldUf.setText(aluno.getEndereco().getUf());
+        jFormattedTextFieldCep.setText(aluno.getEndereco().getCep());
+        jFormattedTextFieldContato.setText(aluno.getContato());
+        jFormattedTextFieldAltura.setText(aluno.getAltura() + "");
         //jFormattedTextFieldPeso.setText(aluno.getPeso()+"");
-        //jFormattedTextFieldDataMatricula.setText(aluno.getDtmatricula()+"");
+        jFormattedTextFieldDataMatricula.setText(FormatacaoDataHora.dateToString(aluno.getDtmatricula()));  //converte de date para string
     }
 
     /**
@@ -117,6 +117,8 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
 
         jLabel11.setText("Kg");
 
+        jFormattedTextFieldDataMatricula.setEditable(false);
+        jFormattedTextFieldDataMatricula.setBackground(new java.awt.Color(153, 153, 153));
         try {
             jFormattedTextFieldDataMatricula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -347,7 +349,7 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
             Aluno aluno = new Aluno();
             aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
             //aluno.setCpf(jFormattedTextFieldCpf.getText());
-            aluno.setDtmatricula(FormatacaoDataHora.getData(jFormattedTextFieldDataMatricula.getText()));
+            aluno.setDtmatricula(FormatacaoDataHora.stringToDate(jFormattedTextFieldDataMatricula.getText()));
             aluno.setNome(jTextFieldNome.getText());
             aluno.setAltura(Float.parseFloat(jFormattedTextFieldAltura.getText()));
             aluno.setPeso(Float.parseFloat(jFormattedTextFieldPeso.getText()));
@@ -362,7 +364,7 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
             //aluno.getEndereco().setPais(jTextFieldPais.getText());
             aluno.setContato(jFormattedTextFieldContato.getText());
             Fachada fachada = new Fachada();
-            fachada.atualizar(aluno); 
+            fachada.atualizar(aluno);
             JOptionPane.showMessageDialog(rootPane, "Aluno atualizado com sucesso");
             dispose();      //fecha a tela após clicar no OK de aluno atualizado com sucesso.
             /*
@@ -382,7 +384,7 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
             // jTextFieldPais.setText("");
             jFormattedTextFieldContato.setText("");
             jTextFieldMatricula.requestFocus();
-            */
+             */
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
