@@ -57,6 +57,8 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
 
         jLabel1.setText("Codigo Turma: ");
 
+        jTextFieldCodTur.setEditable(false);
+
         try {
             jFormattedTextFieldHorarioAulasInicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
         } catch (java.text.ParseException ex) {
