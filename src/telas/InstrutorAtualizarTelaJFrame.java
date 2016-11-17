@@ -191,6 +191,8 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
             jTextFieldNome.setText("");
             jTextFieldRg.setText("");
             jFormattedTextFieldContato.setText("");
+            jFormattedTextFieldContato.setText(instrutor.getContato()+"");
+            jTextFieldNome.setText(instrutor.getNome()+"");
             jTextFieldMatricula.requestFocus();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());

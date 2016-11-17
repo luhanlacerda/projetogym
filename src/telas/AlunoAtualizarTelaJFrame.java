@@ -30,9 +30,22 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
         jTextFieldCidade.setDocument(new classesBasicas.JTextFieldLimite(15));
         jTextFieldUf.setDocument(new classesBasicas.JTextFieldLimite(2));
         //jTextFieldPais.setDocument(new classesBasicas.JTextFieldLimite(10));
+       
         jTextFieldMatricula.setText(aluno.getMatricula()+"");
         jTextFieldRg.setText(aluno.getRg()+"");
         jFormattedTextFieldCpf.setText(aluno.getCpf()+"");
+        jTextFieldNome.setText(aluno.getNome()+"");
+        jTextFieldLogradouro.setText(aluno.getEndereco().getLogradouro());
+        jTextFieldBairro.setText(aluno.getEndereco().getBairro());
+        jTextFieldCidade.setText(aluno.getEndereco().getCidade());
+        jTextFieldComplemento.setText(aluno.getEndereco().getComplemento());
+        jTextFieldNumero.setText(aluno.getEndereco().getNumero());
+        jTextFieldUf.setText(aluno.getEndereco().getUf());
+        jFormattedTextFieldCep.setText(aluno.getEndereco().getCep());
+        jFormattedTextFieldContato.setText(aluno.getContato());
+        jFormattedTextFieldAltura.setText(aluno.getAltura()+ "");
+        jFormattedTextFieldPeso.setText(aluno.getPeso()+ "");
+        jFormattedTextFieldDataMatricula.setText(aluno.getDtmatricula()+"");
     }
 
     /**
