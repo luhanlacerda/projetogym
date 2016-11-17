@@ -188,11 +188,11 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
             fachada.atualizar(instrutor);
             JOptionPane.showMessageDialog(rootPane, "Instrutor atualizado com sucesso");
             dispose();      //fecha a tela após clicar no OK de instrutor atualizado com sucesso.
+            jTextFieldNome.setText(instrutor.getNome()+"");
+            jFormattedTextFieldContato.setText(instrutor.getContato()+"");
             /*
             jTextFieldMatricula.setText("");
-            jTextFieldNome.setText("");
             jTextFieldRg.setText("");
-            jFormattedTextFieldContato.setText("");
             jFormattedTextFieldContato.setText(instrutor.getContato()+"");
             jTextFieldNome.setText(instrutor.getNome()+"");
             jTextFieldMatricula.requestFocus();

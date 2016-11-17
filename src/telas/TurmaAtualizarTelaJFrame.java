@@ -229,18 +229,16 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
             fachada.atualizar(turma);
             JOptionPane.showMessageDialog(rootPane, "Turma atualizada com sucesso");
             dispose();      //fecha a tela após clicar no OK de turma atualizada com sucesso.
-            /*
-            //Limpar Campos preenchidos
-            jTextFieldCodTur.setText("");
-            jTextFieldMatMonitor.setText("");
-            jTextFieldMatInst.setText("");
-            jTextFieldCodAtiv.setText("");
-            jFormattedTextFieldHorarioAulasInicio.setText("");
-            jFormattedTextFieldDurAula.setText("");
-            jFormattedTextFieldDtInicial.setText("");
-            jFormattedTextFieldDtFinal.setText("");
+            
+            jTextFieldCodTur.setText(turma.getCodigo()+"");
+            jTextFieldMatMonitor.setText(""); // FALTA PEGAR
+            jTextFieldMatInst.setText(turma.getInstrutor()+"");
+            jTextFieldCodAtiv.setText(turma.getAtividade()+"");
+            jFormattedTextFieldHorarioAulasInicio.setText(turma.getHorario()+"");
+            jFormattedTextFieldDurAula.setText(turma.getDuracaoaula()+"");
+            jFormattedTextFieldDtInicial.setText(turma.getDtinicial()+"");
+            jFormattedTextFieldDtFinal.setText(turma.getDtfinal()+"");
             jTextFieldCodTur.requestFocus(); // Retornar para o início
-            */
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
