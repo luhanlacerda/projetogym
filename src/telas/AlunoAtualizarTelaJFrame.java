@@ -92,6 +92,7 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
         jLabel8.setText("Data da Matrícula:");
 
         jTextFieldMatricula.setEditable(false);
+        jTextFieldMatricula.setBackground(new java.awt.Color(153, 153, 153));
 
         jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,6 +137,7 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
         jLabel9.setText("Rg:");
 
         jTextFieldRg.setEditable(false);
+        jTextFieldRg.setBackground(new java.awt.Color(153, 153, 153));
 
         try {
             jFormattedTextFieldCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###-###")));
@@ -160,6 +162,7 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
         jLabelCPF.setText("Cpf:");
 
         jFormattedTextFieldCpf.setEditable(false);
+        jFormattedTextFieldCpf.setBackground(new java.awt.Color(153, 153, 153));
         try {
             jFormattedTextFieldCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {

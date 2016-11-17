@@ -45,6 +45,7 @@ public class AtividadeAtualizarTelaJFrame extends javax.swing.JFrame {
         jLabel2.setText("Descrição:");
 
         jTextFieldCodigo.setEditable(false);
+        jTextFieldCodigo.setBackground(new java.awt.Color(153, 153, 153));
 
         jButtonAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/arrow_refresh.png"))); // NOI18N
         jButtonAtualizar.setText("Atualizar");

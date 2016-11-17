@@ -51,6 +51,7 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
         setTitle("Atualizar Instrutor");
 
         jTextFieldMatricula.setEditable(false);
+        jTextFieldMatricula.setBackground(new java.awt.Color(153, 153, 153));
 
         jLabel1.setText("Matrícula:");
 
