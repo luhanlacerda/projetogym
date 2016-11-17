@@ -228,6 +228,8 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
             Fachada fachada = new Fachada();
             fachada.atualizar(turma);
             JOptionPane.showMessageDialog(rootPane, "Turma atualizada com sucesso");
+            dispose();      //fecha a tela após clicar no OK de turma atualizada com sucesso.
+            /*
             //Limpar Campos preenchidos
             jTextFieldCodTur.setText("");
             jTextFieldMatMonitor.setText("");
@@ -238,7 +240,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
             jFormattedTextFieldDtInicial.setText("");
             jFormattedTextFieldDtFinal.setText("");
             jTextFieldCodTur.requestFocus(); // Retornar para o início
-
+            */
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }

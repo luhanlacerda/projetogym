@@ -119,13 +119,14 @@ public class AtividadeAtualizarTelaJFrame extends javax.swing.JFrame {
             atividade.setDescricao(jTextFieldDescricao.getText());
             Fachada fachada = new Fachada();
             fachada.atualizar(atividade);
-            JOptionPane.showMessageDialog(rootPane, "Atividade atualizado com sucesso");
-
+            JOptionPane.showMessageDialog(rootPane, "Atividade atualizada com sucesso");
+            dispose();      //fecha a tela após clicar no OK de atividade atualizada com sucesso.
+            /*
             //Deixando campos em branco após o preencimento
             jTextFieldCodigo.setText("");
             jTextFieldDescricao.setText("");
             jTextFieldCodigo.requestFocus();
-
+            */
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }

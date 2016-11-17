@@ -22,9 +22,9 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
         initComponents();
         jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));   //Limite de caracateres(N) e apenas caracteres permitidos
         jTextFieldRg.setDocument(new classesBasicas.JTextFieldLimite(20));              //Limitando os caracteres para (N), independende de ser numero ou letras
-        jTextFieldMatricula.setText(instrutor.getMatricula()+"");
-        jTextFieldRg.setText(instrutor.getRg()+"");
-        jFormattedTextFieldCpf.setText(instrutor.getCpf()+"");
+        jTextFieldMatricula.setText(instrutor.getMatricula() + "");
+        jTextFieldRg.setText(instrutor.getRg() + "");
+        jFormattedTextFieldCpf.setText(instrutor.getCpf() + "");
     }
 
     /**
@@ -178,7 +178,7 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
         // TODO add your handling code here:
-        try{
+        try {
             Instrutor instrutor = new Instrutor();
             instrutor.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
             instrutor.setNome(jTextFieldNome.getText());
@@ -187,6 +187,8 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
             Fachada fachada = new Fachada();
             fachada.atualizar(instrutor);
             JOptionPane.showMessageDialog(rootPane, "Instrutor atualizado com sucesso");
+            dispose();      //fecha a tela após clicar no OK de instrutor atualizado com sucesso.
+            /*
             jTextFieldMatricula.setText("");
             jTextFieldNome.setText("");
             jTextFieldRg.setText("");
@@ -194,6 +196,7 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
             jFormattedTextFieldContato.setText(instrutor.getContato()+"");
             jTextFieldNome.setText(instrutor.getNome()+"");
             jTextFieldMatricula.requestFocus();
+             */
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }

@@ -35,16 +35,16 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
         jTextFieldRg.setText(aluno.getRg()+"");
         jFormattedTextFieldCpf.setText(aluno.getCpf()+"");
         jTextFieldNome.setText(aluno.getNome()+"");
-        jTextFieldLogradouro.setText(aluno.getEndereco().getLogradouro());
-        jTextFieldBairro.setText(aluno.getEndereco().getBairro());
-        jTextFieldCidade.setText(aluno.getEndereco().getCidade());
-        jTextFieldComplemento.setText(aluno.getEndereco().getComplemento());
-        jTextFieldNumero.setText(aluno.getEndereco().getNumero());
-        jTextFieldUf.setText(aluno.getEndereco().getUf());
-        jFormattedTextFieldCep.setText(aluno.getEndereco().getCep());
-        jFormattedTextFieldContato.setText(aluno.getContato());
-        jFormattedTextFieldAltura.setText(aluno.getAltura()+ "");
-        jFormattedTextFieldPeso.setText(aluno.getPeso()+ "");
+        jTextFieldLogradouro.setText(aluno.getEndereco().getLogradouro()+"");
+        jTextFieldBairro.setText(aluno.getEndereco().getBairro()+"");
+        jTextFieldCidade.setText(aluno.getEndereco().getCidade()+"");
+        jTextFieldComplemento.setText(aluno.getEndereco().getComplemento()+"");
+        jTextFieldNumero.setText(aluno.getEndereco().getNumero()+"");
+        jTextFieldUf.setText(aluno.getEndereco().getUf()+"");
+        jFormattedTextFieldCep.setText(aluno.getEndereco().getCep()+"");
+        jFormattedTextFieldContato.setText(aluno.getContato()+"");
+        jFormattedTextFieldAltura.setText(aluno.getAltura()+"");
+        jFormattedTextFieldPeso.setText(aluno.getPeso()+"");
         jFormattedTextFieldDataMatricula.setText(aluno.getDtmatricula()+"");
     }
 
@@ -314,7 +314,7 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
                     .addComponent(jFormattedTextFieldCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(jTextFieldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jFormattedTextFieldContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
@@ -334,9 +334,8 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -365,6 +364,8 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
             Fachada fachada = new Fachada();
             fachada.atualizar(aluno); 
             JOptionPane.showMessageDialog(rootPane, "Aluno atualizado com sucesso");
+            dispose();      //fecha a tela após clicar no OK de aluno atualizado com sucesso.
+            /*
             jTextFieldMatricula.setText("");
             jFormattedTextFieldDataMatricula.setText("");
             jTextFieldNome.setText("");
@@ -381,6 +382,7 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
             // jTextFieldPais.setText("");
             jFormattedTextFieldContato.setText("");
             jTextFieldMatricula.requestFocus();
+            */
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
