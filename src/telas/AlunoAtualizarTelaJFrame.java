@@ -31,8 +31,8 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
         jTextFieldUf.setDocument(new classesBasicas.JTextFieldLimite(2));
         //jTextFieldPais.setDocument(new classesBasicas.JTextFieldLimite(10));
         jTextFieldMatricula.setText(aluno.getMatricula()+"");
-        jTextFieldRg.setText(aluno.getRg());
-        jFormattedTextFieldCpf.setText(aluno.getCpf());
+        jTextFieldRg.setText(aluno.getRg()+"");
+        jFormattedTextFieldCpf.setText(aluno.getCpf()+"");
     }
 
     /**

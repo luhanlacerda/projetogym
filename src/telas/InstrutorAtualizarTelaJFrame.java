@@ -23,8 +23,8 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
         jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));   //Limite de caracateres(N) e apenas caracteres permitidos
         jTextFieldRg.setDocument(new classesBasicas.JTextFieldLimite(20));              //Limitando os caracteres para (N), independende de ser numero ou letras
         jTextFieldMatricula.setText(instrutor.getMatricula()+"");
-        jTextFieldRg.setText(instrutor.getRg() + "");
-        jFormattedTextFieldCpf.setText(instrutor.getCpf() + "");
+        jTextFieldRg.setText(instrutor.getRg()+"");
+        jFormattedTextFieldCpf.setText(instrutor.getCpf()+"");
     }
 
     /**
