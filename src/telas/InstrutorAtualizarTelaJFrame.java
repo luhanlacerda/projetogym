@@ -68,6 +68,7 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
         jLabel3.setText("Rg:");
 
         jTextFieldRg.setEditable(false);
+        jTextFieldRg.setBackground(new java.awt.Color(153, 153, 153));
 
         jLabel8.setText("Contato:");
 
@@ -88,6 +89,7 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
         jLabel4.setText("CPF:");
 
         jFormattedTextFieldCpf.setEditable(false);
+        jFormattedTextFieldCpf.setBackground(new java.awt.Color(153, 153, 153));
         try {
             jFormattedTextFieldCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
