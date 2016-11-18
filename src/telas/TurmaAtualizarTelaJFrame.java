@@ -79,9 +79,15 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        jTextFieldMatMonitor.setEditable(false);
+        jTextFieldMatMonitor.setBackground(new java.awt.Color(153, 153, 153));
+
         jLabel7.setText("Matrícula Monitor:");
 
         jLabel8.setText("Matrícula Instrutor:");
+
+        jTextFieldMatInst.setEditable(false);
+        jTextFieldMatInst.setBackground(new java.awt.Color(153, 153, 153));
 
         jFormattedTextFieldDtInicial.setEditable(false);
         jFormattedTextFieldDtInicial.setBackground(new java.awt.Color(153, 153, 153));
@@ -116,6 +122,14 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
         jLabel4.setText("Duração Aula:");
 
         jLabel3.setText("Horário da Aula:");
+
+        jTextFieldCodAtiv.setEditable(false);
+        jTextFieldCodAtiv.setBackground(new java.awt.Color(153, 153, 153));
+        jTextFieldCodAtiv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCodAtivActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Código Atividade:");
 
@@ -255,6 +269,10 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
     private void jFormattedTextFieldDtFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldDtFinalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextFieldDtFinalActionPerformed
+
+    private void jTextFieldCodAtivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodAtivActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCodAtivActionPerformed
 
     /**
      * @param args the command line arguments
