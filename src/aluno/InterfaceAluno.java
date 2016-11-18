@@ -25,5 +25,6 @@ public interface InterfaceAluno {
     boolean verificaExistencia(Aluno a) throws Exception;
     //selecionar aluno
     Aluno selecionarAluno(Aluno a) throws Exception;
-    
+    //verificar se um determinado cpf já está cadastrado
+    boolean verificarExistenciaCpf(Aluno a) throws Exception;
 }

@@ -238,4 +238,10 @@ public class Fachada implements InterfaceAluno, InterfaceAtividade, InterfaceIns
         return n.verificarExistenciaInstrutor(t);
     }
 
+    @Override
+    public boolean verificarExistenciaCpf(Aluno a) throws Exception {
+        NegocioAluno n = new NegocioAluno();
+        return n.verificarExistenciaCpf(a);
+    }
+
 }

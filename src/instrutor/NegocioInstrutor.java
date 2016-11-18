@@ -29,6 +29,9 @@ public class NegocioInstrutor implements InterfaceInstrutor {
         if (i.getCpf() == null || i.getCpf().trim().equals("   .   .   -  ") || i.getCpf().trim().length() < 14 || i.getCpf().trim().length() > 14)  {
             throw new Exception("Número de CPF inválido!");
         }
+        if(verificarExistenciaCpf(i) != false){
+            throw new Exception("O CPF informado já está cadastrado");
+        }
         if (i.getNome() == null || i.getNome().trim().equals("")) {
             throw new Exception("Informar nome!");
         }
@@ -94,7 +97,7 @@ public class NegocioInstrutor implements InterfaceInstrutor {
     //metodo para verificar se um determinado cpf já se encontra cadastrado no sistema, caso o campo nao seja unique
     @Override
     public boolean verificarExistenciaCpf(Instrutor i) throws Exception {
-        if (i.getCpf() == null || i.getCpf().trim().equals("") || i.getCpf().trim().length() < 13 || i.getCpf().trim().length() > 13) {
+        if (i.getCpf() == null || i.getCpf().trim().equals("") || i.getCpf().trim().length() < 14 || i.getCpf().trim().length() > 14) {
             throw new Exception("Número de CPF inválido!");
         }
        DadosInstrutor d = new DadosInstrutor();

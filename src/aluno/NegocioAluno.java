@@ -44,6 +44,9 @@ public class NegocioAluno implements InterfaceAluno {
         if (a.getCpf().trim().length() < 14) {
             throw new Exception("Número de CPF inválido");
         }
+        if(verificarExistenciaCpf(a) != false){
+            throw new Exception("Número de CPF já cadastrado no sistema");
+        }
         if (a.getRg().trim().equals("") == true) {
             throw new Exception("Informar RG");
         }
@@ -72,10 +75,10 @@ public class NegocioAluno implements InterfaceAluno {
             throw new Exception("Informar número da residência");
         }
         if (a.getEndereco().getComplemento().trim().equals("")) {
-            throw new Exception("Informar número da residência");
+            throw new Exception("Informar complemento, caso não tenha, colocar um -");
         }
         if (a.getEndereco().getComplemento() == null) {
-            throw new Exception("Informar número da residência");
+            throw new Exception("Informar complemento, caso não tenha, colocar um -");
         }
         if (a.getEndereco().getCep().trim().equals("")) {
             throw new Exception("Informar número do CEP");
@@ -212,6 +215,15 @@ public class NegocioAluno implements InterfaceAluno {
         }
         DadosAluno d = new DadosAluno();
         return d.selecionarAluno(a);
+    }
+
+    @Override
+    public boolean verificarExistenciaCpf(Aluno a) throws Exception {
+    if (a.getCpf() == null || a.getCpf().trim().equals("") || a.getCpf().trim().length() < 14 || a.getCpf().trim().length() > 14) {
+            throw new Exception("Número de CPF inválido!");
+        }
+       DadosAluno d = new DadosAluno();
+       return d.verificarExistenciaCpf(a);    
     }
 
 }

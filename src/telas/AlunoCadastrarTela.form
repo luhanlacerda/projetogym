@@ -65,13 +65,13 @@
                                       <Component id="jTextFieldMatricula" min="-2" pref="113" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="jFormattedTextFieldPeso" max="32767" attributes="0"/>
+                                              <Component id="jFormattedTextFieldPeso" pref="52" max="32767" attributes="0"/>
                                               <Component id="jFormattedTextFieldAltura" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jFormattedTextFieldDataMatricula" alignment="0" pref="52" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <Component id="jFormattedTextFieldDataMatricula" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -238,7 +238,7 @@
                       <Component id="jFormattedTextFieldDataNascimento" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="86" max="32767" attributes="0"/>
+                  <EmptySpace pref="90" max="32767" attributes="0"/>
                   <Component id="jButtonSalvar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
@@ -407,6 +407,9 @@
               <Format format="##/##/####" subtype="-1" type="5"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFormattedTextFieldDataMatriculaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldAltura">
           <Properties>

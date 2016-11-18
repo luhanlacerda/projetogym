@@ -160,6 +160,11 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextFieldDataMatricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldDataMatriculaActionPerformed(evt);
+            }
+        });
 
         try {
             jFormattedTextFieldAltura.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#.##")));
@@ -199,11 +204,11 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
                                     .addComponent(jTextFieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jFormattedTextFieldPeso)
-                                            .addComponent(jFormattedTextFieldAltura, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jFormattedTextFieldDataMatricula, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE))
+                                            .addComponent(jFormattedTextFieldPeso, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                                            .addComponent(jFormattedTextFieldAltura, javax.swing.GroupLayout.Alignment.LEADING))
                                         .addGap(11, 11, 11)
-                                        .addComponent(jLabel11)))
+                                        .addComponent(jLabel11))
+                                    .addComponent(jFormattedTextFieldDataMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,7 +337,7 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
                     .addComponent(jLabel20)
                     .addComponent(jFormattedTextFieldDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addComponent(jButtonSalvar)
                 .addGap(25, 25, 25))
         );
@@ -404,6 +409,10 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
         }
 
     }//GEN-LAST:event_jButtonSalvarActionPerformed
+
+    private void jFormattedTextFieldDataMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldDataMatriculaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldDataMatriculaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

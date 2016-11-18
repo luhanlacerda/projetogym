@@ -212,7 +212,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
             cmd.setInt(1, a.getMatricula());
             ResultSet result = cmd.executeQuery();
             if (result.next()) {
-                retorno.setMatricula(result.getInt("Matrícula")); 
+                retorno.setMatricula(result.getInt("Matrícula"));
                 retorno.setNome(result.getString("Nome"));
                 retorno.setCpf(result.getString("CPF"));
                 retorno.setRg(result.getString("RG"));
@@ -238,6 +238,31 @@ public class DadosAluno extends Dados implements InterfaceAluno {
         //fechando conexão
         desconectar();
         //retornando a matricula
+        return retorno;
+    }
+
+    @Override
+    public boolean verificarExistenciaCpf(Aluno a) throws Exception {
+        boolean retorno = false;
+        //abrindo a conexão
+        conectar();
+        //instrução para verificação de existencia de um cpf já cadastrado, caso o campo não seja unique
+        String sql = " SELECT Alu_Matricula, Alu_Nome, Alu_Cpf ";
+        sql += " FROM Aluno WHERE Alu_Cpf = ? ";
+        try {
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            cmd.setString(1, a.getCpf());
+            ResultSet leitor = cmd.executeQuery();
+            while (leitor.next()) {
+                retorno = true;
+                break;
+            }
+        } catch (SQLException e) {
+            //caso ocorra algum erro será executada essa execeção
+            throw new Exception("Erro ao executar inserção: " + e.getMessage());
+        }
+        //fechando a conexão com o banco de dados
+        desconectar();
         return retorno;
     }
 
