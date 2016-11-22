@@ -370,77 +370,54 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         try {
-            Aluno aluno = new Aluno();
             if (jTextFieldMatricula.getText().trim().equals("")) {
                 JOptionPane.showMessageDialog(null, "Digite a matrícula");
                 jTextFieldMatricula.requestFocus();
-            } else {
-                aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
+                return;
             }
             if (jFormattedTextFieldDataMatricula.getText().equals("  /  /    ")) {
                 JOptionPane.showMessageDialog(null, "Digite a data de matrícula");
                 jFormattedTextFieldDataMatricula.requestFocus();
-            } else {
-                aluno.setDtmatricula(FormatacaoDataHora.stringToDate(jFormattedTextFieldDataMatricula.getText()));
-            }
-            if (jTextFieldNome.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(null, "Digite o nome");
-                jTextFieldNome.requestFocus();
-            } else {
-                aluno.setNome(jTextFieldNome.getText());
+                return;
             }
             if (jFormattedTextFieldAltura.getText().equals(" .  ")) {
                 JOptionPane.showMessageDialog(null, "Digite a altura");
                 jFormattedTextFieldAltura.requestFocus();
-            } else {
-                aluno.setAltura(Float.parseFloat(jFormattedTextFieldAltura.getText()));
+                return;
             }
             if (jFormattedTextFieldPeso.getText().equals("   .  ")) {
                 JOptionPane.showMessageDialog(null, "Digite o peso");
                 jFormattedTextFieldPeso.requestFocus();
-            } else {
-                aluno.setPeso(Float.parseFloat(jFormattedTextFieldPeso.getText()));
+                return;
             }
-            if (jTextFieldRg.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(null, "Digite o RG");
-                jTextFieldRg.requestFocus();
-            } else {
-                aluno.setRg(jTextFieldRg.getText());
+            if (jFormattedTextFieldDataNascimento.getText().equals("  /  /    ")) {
+                JOptionPane.showMessageDialog(null, "Digite a data de nascimento");
+                jFormattedTextFieldDataNascimento.requestFocus();
+                return;
             }
-            if (jFormattedTextFieldCpf.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Digite o CPF");
-                jFormattedTextFieldCpf.requestFocus();
-            } else {
-                aluno.setCpf(jFormattedTextFieldCpf.getText());
-            }
-            if (jTextFieldLogradouro.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(null, "Digite o logradouro");
-                jTextFieldLogradouro.requestFocus();
-            } else {
-                aluno.getEndereco().setLogradouro(jTextFieldLogradouro.getText());
-            }
-            if (jTextFieldNumero.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(null, "Digite o numero do logradouro");
-                jTextFieldNumero.requestFocus();
-            } else {
-                aluno.getEndereco().setComplemento(jTextFieldNumero.getText());
-            }
-            if (jTextFieldComplemento.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Digitar o complemento");
-                jTextFieldComplemento.requestFocus();
-            } else {
-                aluno.getEndereco().setNumero(jTextFieldComplemento.getText());
-            }
+            Aluno aluno = new Aluno();
+            aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
+            aluno.setDtmatricula(FormatacaoDataHora.stringToDate(jFormattedTextFieldDataMatricula.getText()));
+            aluno.setNome(jTextFieldNome.getText());
+            aluno.setAltura(Float.parseFloat(jFormattedTextFieldAltura.getText()));
+            aluno.getEndereco().setPais(jTextFieldPais.getText());
+            aluno.setContato(jFormattedTextFieldContato.getText());
+            aluno.setDtnascimento(FormatacaoDataHora.stringToDate(jFormattedTextFieldDataNascimento.getText()));
+            aluno.setPeso(Float.parseFloat(jFormattedTextFieldPeso.getText()));
+            aluno.setRg(jTextFieldRg.getText());
+            aluno.setCpf(jFormattedTextFieldCpf.getText());
+            aluno.getEndereco().setLogradouro(jTextFieldLogradouro.getText());
+            aluno.getEndereco().setComplemento(jTextFieldNumero.getText());
+            aluno.getEndereco().setNumero(jTextFieldComplemento.getText());
             aluno.getEndereco().setBairro(jTextFieldBairro.getText());
             aluno.getEndereco().setCep(jFormattedTextFieldCep.getText());
             aluno.getEndereco().setCidade(jTextFieldCidade.getText());
             aluno.getEndereco().setUf(jTextFieldUf.getText());
-            aluno.getEndereco().setPais(jTextFieldPais.getText());
-            aluno.setContato(jFormattedTextFieldContato.getText());
-            aluno.setDtnascimento(FormatacaoDataHora.stringToDate(jFormattedTextFieldDataNascimento.getText()));
             Fachada fachada = new Fachada();
             fachada.cadastrar(aluno);
             JOptionPane.showMessageDialog(rootPane, "Aluno cadastrado com sucesso");
+            dispose();
+            /*
             jTextFieldMatricula.setText("");
             jFormattedTextFieldDataMatricula.setText("");
             jTextFieldNome.setText("");
@@ -459,6 +436,7 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
             jFormattedTextFieldDataNascimento.setText("");
             jFormattedTextFieldContato.setText("");
             jTextFieldMatricula.requestFocus();
+             */
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
