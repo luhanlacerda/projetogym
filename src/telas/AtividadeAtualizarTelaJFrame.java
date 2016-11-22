@@ -19,7 +19,7 @@ public class AtividadeAtualizarTelaJFrame extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         initComponents();
         jTextFieldDescricao.setDocument(new classesBasicas.JTextFieldLimite(100));
-        jTextFieldCodigo.setText(atividade.getCodigo()+"");
+        jTextFieldCodigo.setText(atividade.getCodigo() + "");
         jTextFieldDescricao.setText(atividade.getDescricao());
     }
 
@@ -116,6 +116,11 @@ public class AtividadeAtualizarTelaJFrame extends javax.swing.JFrame {
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
         try {
+            if (jTextFieldCodigo.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Digite o código");
+                jTextFieldCodigo.requestFocus();
+                return;
+            }
             Atividade atividade = new Atividade();
             atividade.setCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
             atividade.setDescricao(jTextFieldDescricao.getText());
@@ -128,7 +133,7 @@ public class AtividadeAtualizarTelaJFrame extends javax.swing.JFrame {
             jTextFieldCodigo.setText("");
             jTextFieldDescricao.setText("");
             jTextFieldCodigo.requestFocus();
-            */
+             */
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }

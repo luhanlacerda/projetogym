@@ -18,9 +18,7 @@ public class NegocioAtividade implements InterfaceAtividade {
         if (a.getCodigo() <= 0) {
             throw new Exception("O código precisa ser maior que zero");
         }
-        if (a.getDescricao() == null || a.getDescricao().trim().equals("")) {
-            throw new Exception("Informar a descrição da atividade");
-        }
+       
         if (verificarExistenciaAtividade(a) != false) {
             throw new Exception("A Atividade informada já existe");
         }
@@ -35,9 +33,7 @@ public class NegocioAtividade implements InterfaceAtividade {
         if (a.getCodigo() <= 0) {
             throw new Exception("O código precisa ser maior que zero");
         }
-        if (a.getDescricao() == null || a.getDescricao().trim().equals("")) {
-            throw new Exception("Informar a descrição da atividade");
-        }
+        
         if(verificarExistenciaAtividade(a) == false){
             throw new Exception("Atividade não cadastrada no sistema");
         }
