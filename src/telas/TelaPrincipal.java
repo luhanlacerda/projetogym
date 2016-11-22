@@ -222,7 +222,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         AlunoCadastrarTela telaCadastroAluno = new AlunoCadastrarTela();
         jDesktopPaneTelaPrincipal.add(telaCadastroAluno);
         telaCadastroAluno.setVisible(true);
-
+        telaCadastroAluno.setPosicao();
     }//GEN-LAST:event_jMenuItemAlunoCadastrarActionPerformed
 
     private void jMenuItemTurmaCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTurmaCadastrarActionPerformed
@@ -230,7 +230,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TurmaCadastrarTela telaCadastroTurma = new  TurmaCadastrarTela();
         jDesktopPaneTelaPrincipal.add(telaCadastroTurma);
         telaCadastroTurma.setVisible(true);
-        
+        telaCadastroTurma.setPosicao();
     }//GEN-LAST:event_jMenuItemTurmaCadastrarActionPerformed
 
     private void jMenuItemAtividadeCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAtividadeCadastrarActionPerformed
@@ -238,6 +238,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         AtividadeCadastrarTela telaCadastroAtividade = new AtividadeCadastrarTela();
         jDesktopPaneTelaPrincipal.add(telaCadastroAtividade);
         telaCadastroAtividade.setVisible(true);
+        telaCadastroAtividade.setPosicao();
     }//GEN-LAST:event_jMenuItemAtividadeCadastrarActionPerformed
 
     private void jMenuItemInstrutorCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInstrutorCadastrarActionPerformed
@@ -245,6 +246,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         InstrutorCadastrarTela telaCadastroInstrutor = new InstrutorCadastrarTela();
         jDesktopPaneTelaPrincipal.add(telaCadastroInstrutor);
         telaCadastroInstrutor.setVisible(true);
+        telaCadastroInstrutor.setPosicao();
     }//GEN-LAST:event_jMenuItemInstrutorCadastrarActionPerformed
 
     private void jMenuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSobreActionPerformed
@@ -252,6 +254,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TelaSobre telaSobre = new TelaSobre();
         jDesktopPaneTelaPrincipal.add(telaSobre);
         telaSobre.setVisible(true);
+        telaSobre.setPosicao();
     }//GEN-LAST:event_jMenuSobreActionPerformed
 
     private void jMenuItemArquivoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemArquivoSairActionPerformed
@@ -262,25 +265,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
        AlunoConsultarTela alunoConsultarTela = new AlunoConsultarTela(this);
        jDesktopPaneTelaPrincipal.add(alunoConsultarTela);
        alunoConsultarTela.setVisible(true);
-        
+       alunoConsultarTela.setPosicao();
     }//GEN-LAST:event_jMenuItemAlunoConsultarActionPerformed
 
     private void jMenuItemTurmaConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTurmaConsultarActionPerformed
          TurmaConsultarTela turmaConsultarTela = new TurmaConsultarTela(this);
          jDesktopPaneTelaPrincipal.add(turmaConsultarTela);
          turmaConsultarTela.setVisible(true);
+         turmaConsultarTela.setPosicao();
     }//GEN-LAST:event_jMenuItemTurmaConsultarActionPerformed
 
     private void jMenuItemAtividadeConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAtividadeConsultarActionPerformed
-       AtividadeConsultarTela atividadeAConsultarTela = new AtividadeConsultarTela(this);
-       jDesktopPaneTelaPrincipal.add(atividadeAConsultarTela);
-       atividadeAConsultarTela.setVisible(true);
+       AtividadeConsultarTela atividadeConsultarTela = new AtividadeConsultarTela(this);
+       jDesktopPaneTelaPrincipal.add(atividadeConsultarTela);
+       atividadeConsultarTela.setVisible(true);
+       atividadeConsultarTela.setPosicao();
     }//GEN-LAST:event_jMenuItemAtividadeConsultarActionPerformed
 
     private void jMenuItemInstrutorConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInstrutorConsultarActionPerformed
         InstrutorConsultarTela instrutorConsultarTela = new InstrutorConsultarTela(this);
         jDesktopPaneTelaPrincipal.add(instrutorConsultarTela);
         instrutorConsultarTela.setVisible(true);
+        instrutorConsultarTela.setPosicao();
     }//GEN-LAST:event_jMenuItemInstrutorConsultarActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -288,13 +294,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TurmaInserirAlunoTela turmaInserirAlunoTela = new TurmaInserirAlunoTela();
         jDesktopPaneTelaPrincipal.add(turmaInserirAlunoTela);
         turmaInserirAlunoTela.setVisible(true);
+        turmaInserirAlunoTela.setPosicao();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        TelaSobre telasobre = new TelaSobre();
-        jDesktopPaneTelaPrincipal.add(telasobre);
-        telasobre.setVisible(true);
+        TelaSobre telaSobre = new TelaSobre();
+        jDesktopPaneTelaPrincipal.add(telaSobre);
+        telaSobre.setVisible(true);
+        telaSobre.setPosicao();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**

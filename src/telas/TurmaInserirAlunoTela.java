@@ -7,6 +7,7 @@ package telas;
 
 import aluno.Aluno;
 import fachada.Fachada;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -30,6 +31,11 @@ public class TurmaInserirAlunoTela extends javax.swing.JInternalFrame {
         jTableAluno.setModel(modeloAluno);
         modeloTurma.setColumnIdentifiers(new String[]{"Código", "Atividade", "Descrição"});
         jTableTurma.setModel(modeloTurma);
+    }
+    
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
     /**

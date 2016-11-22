@@ -7,6 +7,7 @@ package telas;
 
 import fachada.Fachada;
 import instrutor.Instrutor;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -30,6 +31,10 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
         modelo.setColumnIdentifiers(new String[]{"Matrícula", "Nome", "RG", "CPF", "Data Nascimento", "Contato"});
         jTableInstrutor.setModel(modelo);
         jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));     //Limite de caracateres e apenas caracteres permitidos
+    }
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
     /**
@@ -176,11 +181,19 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
         // TODO add your handling code here:
         try {
-            Fachada fachada = new Fachada();
-            Instrutor instrutor = new Instrutor();
-            instrutor.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
-            fachada.remover(instrutor);
-            JOptionPane.showMessageDialog(rootPane, "Instrutor removido com sucesso");
+            if (jTableInstrutor.getSelectedRow() >= 0) {
+                if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente remover?", "Atenção", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+                    Fachada fachada = new Fachada();
+                    Instrutor instrutor = this.listaInstrutores.get(jTableInstrutor.getSelectedRow());
+
+                    fachada.remover(instrutor);
+                    JOptionPane.showMessageDialog(rootPane, "Instrutor removido com sucesso");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Selecionar o Instrutor");
+            }
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }

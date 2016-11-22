@@ -21,6 +21,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
      */
     public TurmaAtualizarTelaJFrame(Turma turma) {
         initComponents();
+        this.setLocationRelativeTo(null);
         jTextFieldCodTur.setText(turma.getCodigo() + "");
         jFormattedTextFieldDtFinal.setText(FormatacaoDataHora.dateToString(turma.getDtfinal()));           //converte de date para string
         jFormattedTextFieldDtInicial.setText(FormatacaoDataHora.dateToString(turma.getDtinicial()));      //converte de date para string

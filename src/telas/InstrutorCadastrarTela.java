@@ -8,6 +8,7 @@ package telas;
 import classesBasicas.FormatacaoDataHora;
 import fachada.Fachada;
 import instrutor.Instrutor;
+import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +24,11 @@ public class InstrutorCadastrarTela extends javax.swing.JInternalFrame {
         initComponents();
         jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60)); //Limite de caracateres e apenas caracteres permitidos
         jTextFieldRg.setDocument(new classesBasicas.JTextFieldLimite(20));          //Limitando os caracteres para (N), independende de ser numero ou letras
+    }
+
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
     /**

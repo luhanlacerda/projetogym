@@ -7,6 +7,7 @@ package telas;
 
 import aluno.Aluno;
 import fachada.Fachada;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -30,6 +31,11 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
         modelo.setColumnIdentifiers(new String[]{"Matrícula", "Data Matricula", "Nome", "Rg", "Cpf"});
         jTableAluno.setModel(modelo);
         jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));     //Limite de caracateres(N) e apenas caracteres permitidos
+    }
+    
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
     /**
@@ -184,12 +190,20 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
         // TODO add your handling code here:
-        try {
-            Fachada fachada = new Fachada();
-            Aluno aluno = new Aluno();
-            aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
-            fachada.remover(aluno);
-            JOptionPane.showMessageDialog(rootPane, "Aluno removido com sucesso");
+try {
+            if (jTableAluno.getSelectedRow() >= 0) {
+                if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente remover?", "Atenção", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+                    Fachada fachada = new Fachada();
+                    Aluno aluno = this.listaAlunos.get(jTableAluno.getSelectedRow());
+
+                    fachada.remover(aluno);
+                    JOptionPane.showMessageDialog(rootPane, "Aluno removido com sucesso");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Selecionar o Aluno");
+            }
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }

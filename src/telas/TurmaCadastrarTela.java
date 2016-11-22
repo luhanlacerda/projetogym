@@ -10,6 +10,7 @@ import atividade.Atividade;
 import classesBasicas.FormatacaoDataHora;
 import fachada.Fachada;
 import instrutor.Instrutor;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -35,6 +36,11 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
         jTableMonitor.setModel(modeloMonitor);
         modeloAtividade.setColumnIdentifiers(new String[]{"Código", "Descrição"});
         jTableAtividade.setModel(modeloAtividade);
+    }
+
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
     /**

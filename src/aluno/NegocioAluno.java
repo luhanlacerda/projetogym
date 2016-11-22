@@ -23,10 +23,7 @@ public class NegocioAluno implements InterfaceAluno {
         if (verificaExistencia(a) != false) {
             throw new Exception("Matrícula já cadastrada no sistema");
         }
-        if (a.getNome().trim().equals("") == true) {
-            throw new Exception("Informar o nome do aluno");
-        }
-        if (a.getNome() == null) {
+        if (a.getNome().trim().equals("") == true || a.getNome() == null) {
             throw new Exception("Informar o nome do aluno");
         }
         if (a.getNome().trim().length() > 100) {

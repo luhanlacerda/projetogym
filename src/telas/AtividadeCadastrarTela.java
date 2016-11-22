@@ -7,6 +7,7 @@ package telas;
 
 import atividade.Atividade;
 import fachada.Fachada;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -24,6 +25,11 @@ public class AtividadeCadastrarTela extends javax.swing.JInternalFrame {
     public AtividadeCadastrarTela() {
         initComponents();
         jTextFieldDescricao.setDocument(new classesBasicas.JTextFieldLimite(100));      //Limitando os caracteres para (N), independende de ser numero ou letras
+    }
+
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
     /**
@@ -118,12 +124,12 @@ public class AtividadeCadastrarTela extends javax.swing.JInternalFrame {
             atividade.setDescricao(jTextFieldDescricao.getText());
             Fachada fachada = new Fachada();
             fachada.cadastrar(atividade);
-            JOptionPane.showMessageDialog(rootPane, "Atividade cadastrada com sucesso"); 
+            JOptionPane.showMessageDialog(rootPane, "Atividade cadastrada com sucesso");
             //Limpando campos
             jTextFieldCodigo.setText("");
             jTextFieldDescricao.setText("");
             jTextFieldCodigo.requestFocus();
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }

@@ -8,6 +8,7 @@ package telas;
 import aluno.Aluno;
 import classesBasicas.FormatacaoDataHora;
 import fachada.Fachada;
+import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,6 +28,11 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
         jTextFieldCidade.setDocument(new classesBasicas.JTextFieldLimite(15));
         jTextFieldUf.setDocument(new classesBasicas.JTextFieldLimite(2));
         jTextFieldPais.setDocument(new classesBasicas.JTextFieldLimite(10));
+    }
+
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
     /**
@@ -363,10 +369,18 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextFieldNomeActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-
         try {
             Aluno aluno = new Aluno();
-            aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
+            if (jTextFieldMatricula.getText().trim().equals("") == true) {
+                JOptionPane.showMessageDialog(rootPane, "Digite a matrícula do aluno");
+                jTextFieldMatricula.requestFocus();
+            } else {
+                aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
+            }
+            if(jFormattedTextFieldDataMatricula.getText().trim().equals("") == true){
+                JOptionPane.showConfirmDialog(rootPane, "Digite a data de matrícula");
+                jFormattedTextFieldDataMatricula.requestFocus();
+            }
             aluno.setDtmatricula(FormatacaoDataHora.stringToDate(jFormattedTextFieldDataMatricula.getText()));
             aluno.setNome(jTextFieldNome.getText());
             aluno.setAltura(Float.parseFloat(jFormattedTextFieldAltura.getText()));

@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 public class AtividadeAtualizarTelaJFrame extends javax.swing.JFrame {
 
     public AtividadeAtualizarTelaJFrame(Atividade atividade) {
+        this.setLocationRelativeTo(null);
         initComponents();
         jTextFieldDescricao.setDocument(new classesBasicas.JTextFieldLimite(100));
         jTextFieldCodigo.setText(atividade.getCodigo()+"");

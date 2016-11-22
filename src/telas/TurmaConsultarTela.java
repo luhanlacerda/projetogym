@@ -6,6 +6,7 @@
 package telas;
 
 import fachada.Fachada;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -23,15 +24,23 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
     DefaultTableModel modelo = new DefaultTableModel();
     ArrayList<Turma> listaTurmas;
     TelaPrincipal pai;
-    
+
     public TurmaConsultarTela(TelaPrincipal pai) {
         initComponents();
+
         this.pai = pai;
-        modelo.setColumnIdentifiers(new String[]{"Código", "Horario", "Duração", "Data Inicial", "Data Final", "Quantidade Alunos", "Monitor Código",
-            "Monitor", "Instrutor Código", "Instrutor", "Atividade Código", "Atividade"});
+
+        modelo.setColumnIdentifiers(new String[]{"Código", "Horario", "Duração", "Data Inicial", "Data Final", "Quantidade Alunos",
+            "Monitor", "Instrutor", "Atividade"});
         jTableTurma.setModel(modelo);
+
     }
-        
+
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -156,15 +165,15 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
             modelo.setRowCount(0);     //zera toda a tabela. Mesma coisa que o deleteRows() fazia.
             if (this.listaTurmas.size() > 0) {
                 for (Turma tur : this.listaTurmas) {
-                    modelo.addRow(new String[]{tur.getCodigo() + "", tur.getHorario() + "", tur.getDuracaoaula() + "", 
-                        tur.getDtinicial() + "", tur.getDtfinal() + "", tur.getQtdalunos() + "", tur.getAluno().getMatricula()+ "", 
-                        tur.getAluno().getNome(), tur.getInstrutor().getMatricula()+ "", tur.getInstrutor().getNome() , tur.getAtividade().getCodigo() + "", 
-                    tur.getAtividade().getDescricao()});
+                    modelo.addRow(new String[]{tur.getCodigo() + "", tur.getHorario() + "", tur.getDuracaoaula() + "",
+                        tur.getDtinicial() + "", tur.getDtfinal() + "", tur.getQtdalunos() + "",
+                        tur.getAluno().getNome(), tur.getInstrutor().getNome(),
+                        tur.getAtividade().getDescricao()});
                 }
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Não existe resultados com o filtro passado");
-            } 
-        }catch (Exception ex) {
+            }
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
         }
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
@@ -172,14 +181,19 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
         // TODO add your handling code here:
         try {
-            Fachada fachada = new Fachada();
-            Turma turma = new Turma();
-            turma.setCodigo(Integer.parseInt(jTextFieldCodigoTurma.getText()));
-            fachada.remover(turma);
-            JOptionPane.showMessageDialog(rootPane, "Turma removida com sucesso");
-            jTextFieldCodigoTurma.setText("");
-            modelo.setRowCount(0);
-            jTextFieldCodigoTurma.requestFocus();
+            if (jTableTurma.getSelectedRow() >= 0) {
+                if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente remover?", "Atenção", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+                    Fachada fachada = new Fachada();
+                    Turma turma = this.listaTurmas.get(jTableTurma.getSelectedRow());
+
+                    fachada.remover(turma);
+                    JOptionPane.showMessageDialog(rootPane, "Turma removida com sucesso");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Selecionar a Turma");
+            }
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }

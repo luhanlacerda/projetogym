@@ -7,6 +7,7 @@ package telas;
 
 import atividade.Atividade;
 import fachada.Fachada;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -26,8 +27,11 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
         this.pai = pai;
         modelo.setColumnIdentifiers(new String[]{"Código", "Descrição"});
         jTableAtividade.setModel(modelo);
-        
-
+    }
+    
+    public void setPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
     @SuppressWarnings("unchecked")
@@ -145,19 +149,23 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
-        try {
-            Fachada fachada = new Fachada();
-            Atividade atividade = new Atividade();
-            atividade.setCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
-            fachada.remover(atividade);
-            JOptionPane.showMessageDialog(rootPane, "Atividade removida com sucesso");
-            jTextFieldCodigo.setText("");
-            modelo.setRowCount(0);
-            jTextFieldCodigo.requestFocus();
+       try {
+            if (jTableAtividade.getSelectedRow() >= 0) {
+                if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente remover?", "Atenção", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+                    Fachada fachada = new Fachada();
+                    Atividade atividade = this.listaAtividades.get(jTableAtividade.getSelectedRow());
+
+                    fachada.remover(atividade);
+                    JOptionPane.showMessageDialog(rootPane, "Atividade removida com sucesso");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Selecionar a Atividade");
+            }
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
-
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
@@ -169,7 +177,7 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
                 atividade.setCodigo(Integer.parseInt(jTextFieldCodigo.getText().trim()));
             }
             atividade.setDescricao(title);
-            this.listaAtividades = fachada.listar (atividade);
+            this.listaAtividades = fachada.listar(atividade);
             modelo.setRowCount(0);     //zera toda a tabela. Mesma coisa que o deleteRows() fazia.
             if (this.listaAtividades.size() > 0) {
                 for (Atividade atv : this.listaAtividades) {
@@ -182,8 +190,7 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
         }
-        
-        
+
 
     }//GEN-LAST:event_jButtonConsultarActionPerformed
 
