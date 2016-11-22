@@ -195,8 +195,8 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonConsultarActionPerformed
 
     private void jTableAtividadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAtividadeMouseClicked
-        jTextFieldCodigo.setEditable(false);
-        jTextFieldCodigo.setEnabled(false);
+        jTextFieldCodigo.setEditable(true);
+        jTextFieldCodigo.setEnabled(true);
         int index = jTableAtividade.getSelectedRow();
         Atividade atividadeEscolhida = this.listaAtividades.get(index);
         AtividadeAtualizarTelaJFrame atividadeAtualizarTela = new AtividadeAtualizarTelaJFrame(atividadeEscolhida); // Vincula a tela atualizar

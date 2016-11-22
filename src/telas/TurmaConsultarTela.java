@@ -201,8 +201,8 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
 
     private void jTableTurmaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTurmaMouseClicked
         // TODO add your handling code here:
-        jTextFieldCodigoTurma.setEditable(false);
-        jTextFieldCodigoTurma.setEnabled(false);
+        jTextFieldCodigoTurma.setEditable(true);
+        jTextFieldCodigoTurma.setEnabled(true);
         int index = jTableTurma.getSelectedRow();
         Turma turmaEscolhido = this.listaTurmas.get(index);
         TurmaAtualizarTelaJFrame turmaAtualizarTela = new TurmaAtualizarTelaJFrame(turmaEscolhido); // Vincula a tela atualizar

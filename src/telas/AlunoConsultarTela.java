@@ -211,8 +211,8 @@ try {
 
     private void jTableAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAlunoMouseClicked
         // O clique do botão que Melo mexeu 
-        jTextFieldMatricula.setEditable(false);
-        jTextFieldMatricula.setEnabled(false);
+        jTextFieldMatricula.setEditable(true);
+        jTextFieldMatricula.setEnabled(true);
         int index = jTableAluno.getSelectedRow();
         Aluno alunoEscolhido = this.listaAlunos.get(index);
         AlunoAtualizarTelaJFrame alunoAtualizarTela = new AlunoAtualizarTelaJFrame(alunoEscolhido); // Vincula a tela atualizar

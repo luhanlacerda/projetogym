@@ -202,8 +202,8 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
     private void jTableInstrutorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableInstrutorMouseClicked
         // TODO add your handling code here:
         // clique do botão
-        jTextFieldMatricula.setEditable(false);
-        jTextFieldMatricula.setEnabled(false);
+        jTextFieldMatricula.setEditable(true);
+        jTextFieldMatricula.setEnabled(true);
         int index = jTableInstrutor.getSelectedRow();
         Instrutor instrutorEscolhido = this.listaInstrutores.get(index);
         InstrutorAtualizarTelaJFrame instrutorAtualizarTela = new InstrutorAtualizarTelaJFrame(instrutorEscolhido); // Vincula a tela atualizar
