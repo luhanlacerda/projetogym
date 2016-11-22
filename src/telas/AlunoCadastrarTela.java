@@ -372,26 +372,41 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
         try {
             Aluno aluno = new Aluno();
             if (jTextFieldMatricula.getText().trim().equals("") == true) {
-                JOptionPane.showMessageDialog(null, "Digite a matrícula do aluno");
+                JOptionPane.showMessageDialog(null, "Digite a matrícula");
                 jTextFieldMatricula.requestFocus();
             } else {
                 aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
             }
-            if (jFormattedTextFieldDataMatricula.getText().trim().equals("") == true) {
-                JOptionPane.showConfirmDialog(null, "Digite a data de matrícula");
+            if (jFormattedTextFieldDataMatricula.getText().equals("  /  /    ") == true) {
+                JOptionPane.showMessageDialog(null, "Digite a data de matrícula");
                 jFormattedTextFieldDataMatricula.requestFocus();
             } else {
                 aluno.setDtmatricula(FormatacaoDataHora.stringToDate(jFormattedTextFieldDataMatricula.getText()));
             }
             if (jTextFieldNome.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(null, "Digite o nome do aluno");
+                JOptionPane.showMessageDialog(null, "Digite o nome");
                 jTextFieldNome.requestFocus();
             } else {
                 aluno.setNome(jTextFieldNome.getText());
             }
-            aluno.setAltura(Float.parseFloat(jFormattedTextFieldAltura.getText()));
-            aluno.setPeso(Float.parseFloat(jFormattedTextFieldPeso.getText()));
+            if (jFormattedTextFieldAltura.getText().equals(" .  ")) {
+                JOptionPane.showMessageDialog(null, "Digite a altura");
+                jFormattedTextFieldAltura.requestFocus();
+            } else {
+                aluno.setAltura(Float.parseFloat(jFormattedTextFieldAltura.getText()));
+            }
+            if (jFormattedTextFieldPeso.getText().equals("   .  ")) {
+                JOptionPane.showMessageDialog(null, "Digite o peso");
+                jFormattedTextFieldPeso.requestFocus();
+            } else {
+                aluno.setPeso(Float.parseFloat(jFormattedTextFieldPeso.getText()));
+            }
+            if(jTextFieldRg.getText().trim().equals("")){
+                JOptionPane.showMessageDialog(null, "Digite o RG");
+                jTextFieldRg.requestFocus();
+            } else {
             aluno.setRg(jTextFieldRg.getText());
+            }
             aluno.setCpf(jFormattedTextFieldCpf.getText());
             aluno.getEndereco().setLogradouro(jTextFieldLogradouro.getText());
             aluno.getEndereco().setNumero(jTextFieldComplemento.getText());

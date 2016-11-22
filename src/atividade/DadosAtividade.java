@@ -19,7 +19,7 @@ public class DadosAtividade extends Dados implements InterfaceAtividade {
 
     @Override
     public void cadastrar(Atividade a) throws Exception {
-       
+
         //abrindo a conexão
         conectar();
         //instrução para cadastro de uma atividade
@@ -28,7 +28,7 @@ public class DadosAtividade extends Dados implements InterfaceAtividade {
         try {
             //executando i énstrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
-            cmd.setInt   (1, a.getCodigo());
+            cmd.setInt(1, a.getCodigo());
             cmd.setString(2, a.getDescricao());
             cmd.execute();
         } catch (SQLException e) {
@@ -37,12 +37,12 @@ public class DadosAtividade extends Dados implements InterfaceAtividade {
         }
         //fechando a conexão com o banco de dados
         desconectar();
-        
+
     }
 
     @Override
     public void atualizar(Atividade a) throws Exception {
-          
+
         //abrindo a conexão
         conectar();
         //instrução para cadastro de uma atividade
@@ -51,7 +51,7 @@ public class DadosAtividade extends Dados implements InterfaceAtividade {
             //executando instrução sql
             PreparedStatement cmd = conn.prepareStatement(sql);
             cmd.setString(1, a.getDescricao());
-            cmd.setInt   (2, a.getCodigo());
+            cmd.setInt(2, a.getCodigo());
             cmd.execute();
         } catch (SQLException e) {
             //caso ocorra algum erro será executada essa execeção
@@ -74,7 +74,11 @@ public class DadosAtividade extends Dados implements InterfaceAtividade {
             cmd.execute();
         } catch (SQLException e) {
             //caso ocorra algum erro será executada essa execeção
-            throw new Exception("Erro ao remover: " + e.getMessage());
+            if (e.getErrorCode() == 547) {
+                throw new Exception("Erro ao remover: Atividade vinculada a turma.");
+            } else {
+                throw new Exception("Erro ao remover: " + e.getMessage());
+            }
         }
         //fechando conexão com o banco de dados
         desconectar();
@@ -107,7 +111,7 @@ public class DadosAtividade extends Dados implements InterfaceAtividade {
 
     @Override
     public int pegarCodigoAtividade(Atividade a) throws Exception {
-         int codigo = 0;
+        int codigo = 0;
 
         //abrindo a conexao
         conectar();
@@ -118,7 +122,7 @@ public class DadosAtividade extends Dados implements InterfaceAtividade {
             PreparedStatement cmd = conn.prepareStatement(sql);
             ResultSet result = cmd.executeQuery();
             if (result.next()) {
-                codigo= result.getInt("Código");
+                codigo = result.getInt("Código");
             }
 
         } catch (SQLException e) {
@@ -140,38 +144,38 @@ public class DadosAtividade extends Dados implements InterfaceAtividade {
         //instrução para selecionar um codigo de atividade
         String sql = " SELECT Atv_Codigo AS 'Código', Atv_Descricao AS 'Descrição'";
         sql += " FROM Atividade WHERE Atv_Codigo > 0";
-        if (filtro.getCodigo()> 0) {
+        if (filtro.getCodigo() > 0) {
             sql += " AND Atv_Codigo = ?";
         }
 
         try {
-            
+
             PreparedStatement cmd = conn.prepareStatement(sql);
             if (filtro.getCodigo() > 0) {
                 cmd.setInt(posPar, filtro.getCodigo());
                 posPar++;
             }
-            
-             ResultSet leitor = cmd.executeQuery();
+
+            ResultSet leitor = cmd.executeQuery();
             while (leitor.next()) {
                 Atividade a = new Atividade();
                 a.setCodigo(leitor.getInt("Código"));
                 a.setDescricao(leitor.getString("Descrição"));
                 retorno.add(a);
             }
-            
+
         } catch (SQLException e) {
             throw new Exception("Erro ao executar seleção: " + e.getMessage());
         }
         //fechando conexão
         desconectar();
         //retornando o codigo da atividade
-        return retorno; 
+        return retorno;
     }
 
     @Override
     public Atividade selecionarAtividade(Atividade a) throws Exception {
-         Atividade retorno = new Atividade();
+        Atividade retorno = new Atividade();
         //conectando no banco
         conectar();
         //instrução para selecionar um código
@@ -193,12 +197,4 @@ public class DadosAtividade extends Dados implements InterfaceAtividade {
         //retornando o código
         return retorno;
     }
-    }
-  
-    
-            
-    
- 
-    
-
-
+}

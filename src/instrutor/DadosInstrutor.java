@@ -80,7 +80,11 @@ public class DadosInstrutor extends Dados implements InterfaceInstrutor {
             cmd.execute();
         } catch (SQLException e) {
             //caso ocorra algum erro será executada essa execeção
-            throw new Exception("Erro ao remover: " + e.getMessage());
+            if (e.getErrorCode() == 547) {
+                throw new Exception("Erro ao remover: Construtor vinculado a turma.");
+            } else {
+                throw new Exception("Erro ao remover: " + e.getMessage());
+            }
         }
         //fechando conexão com o banco de dados
         desconectar();

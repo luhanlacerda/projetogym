@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import classesBasicas.FormatacaoDataHora;
 
 /**
  *
@@ -102,7 +101,11 @@ public class DadosAluno extends Dados implements InterfaceAluno {
             cmd.execute();
         } catch (SQLException e) {
             //caso haja algum erro neste método será levantada esta execeção
-            throw new Exception("Erro ao executar inserção: " + e.getMessage());
+            if (e.getErrorCode() == 547) {
+                throw new Exception("Erro ao remover: Aluno vinculado a turma.");
+            } else {
+                throw new Exception("Erro ao remover: " + e.getMessage());
+            }
         }
         //fechando a conexão com o banco de dados
         desconectar();
