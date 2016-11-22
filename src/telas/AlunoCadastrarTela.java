@@ -371,13 +371,13 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         try {
             Aluno aluno = new Aluno();
-            if (jTextFieldMatricula.getText().trim().equals("") == true) {
+            if (jTextFieldMatricula.getText().trim().equals("")) {
                 JOptionPane.showMessageDialog(null, "Digite a matrícula");
                 jTextFieldMatricula.requestFocus();
             } else {
                 aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
             }
-            if (jFormattedTextFieldDataMatricula.getText().equals("  /  /    ") == true) {
+            if (jFormattedTextFieldDataMatricula.getText().equals("  /  /    ")) {
                 JOptionPane.showMessageDialog(null, "Digite a data de matrícula");
                 jFormattedTextFieldDataMatricula.requestFocus();
             } else {
@@ -401,16 +401,36 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
             } else {
                 aluno.setPeso(Float.parseFloat(jFormattedTextFieldPeso.getText()));
             }
-            if(jTextFieldRg.getText().trim().equals("")){
+            if (jTextFieldRg.getText().trim().equals("")) {
                 JOptionPane.showMessageDialog(null, "Digite o RG");
                 jTextFieldRg.requestFocus();
             } else {
-            aluno.setRg(jTextFieldRg.getText());
+                aluno.setRg(jTextFieldRg.getText());
             }
-            aluno.setCpf(jFormattedTextFieldCpf.getText());
-            aluno.getEndereco().setLogradouro(jTextFieldLogradouro.getText());
-            aluno.getEndereco().setNumero(jTextFieldComplemento.getText());
-            aluno.getEndereco().setComplemento(jTextFieldNumero.getText());
+            if (jFormattedTextFieldCpf.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Digite o CPF");
+                jFormattedTextFieldCpf.requestFocus();
+            } else {
+                aluno.setCpf(jFormattedTextFieldCpf.getText());
+            }
+            if (jTextFieldLogradouro.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Digite o logradouro");
+                jTextFieldLogradouro.requestFocus();
+            } else {
+                aluno.getEndereco().setLogradouro(jTextFieldLogradouro.getText());
+            }
+            if (jTextFieldNumero.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Digite o numero do logradouro");
+                jTextFieldNumero.requestFocus();
+            } else {
+                aluno.getEndereco().setComplemento(jTextFieldNumero.getText());
+            }
+            if (jTextFieldComplemento.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Digitar o complemento");
+                jTextFieldComplemento.requestFocus();
+            } else {
+                aluno.getEndereco().setNumero(jTextFieldComplemento.getText());
+            }
             aluno.getEndereco().setBairro(jTextFieldBairro.getText());
             aluno.getEndereco().setCep(jFormattedTextFieldCep.getText());
             aluno.getEndereco().setCidade(jTextFieldCidade.getText());
