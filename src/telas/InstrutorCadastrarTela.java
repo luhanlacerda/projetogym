@@ -228,6 +228,16 @@ public class InstrutorCadastrarTela extends javax.swing.JInternalFrame {
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         // TODO add your handling code here:
         try {
+            if (jTextFieldMatricula.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Digite a matrícula");
+                jTextFieldMatricula.requestFocus();
+                return;
+            }
+            if (jFormattedTextFieldDtNasc.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Digite a data de nascimento");
+                jFormattedTextFieldDtNasc.requestFocus();
+                return;
+            }
             Instrutor instrutor = new Instrutor();
             instrutor.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
             instrutor.setNome(jTextFieldNome.getText());

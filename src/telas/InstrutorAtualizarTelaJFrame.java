@@ -5,6 +5,7 @@
  */
 package telas;
 
+import classesBasicas.FormatacaoDataHora;
 import fachada.Fachada;
 import instrutor.Instrutor;
 import javax.swing.JOptionPane;
@@ -24,10 +25,11 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
         jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));   //Limite de caracateres(N) e apenas caracteres permitidos
         jTextFieldRg.setDocument(new classesBasicas.JTextFieldLimite(20));              //Limitando os caracteres para (N), independende de ser numero ou letras
         jTextFieldMatricula.setText(instrutor.getMatricula() + "");
-        jTextFieldNome.setText(instrutor.getNome()+"");
+        jTextFieldNome.setText(instrutor.getNome() + "");
         jTextFieldRg.setText(instrutor.getRg() + "");
         jFormattedTextFieldCpf.setText(instrutor.getCpf() + "");
-        jFormattedTextFieldContato.setText(instrutor.getContato()+""); 
+        jFormattedTextFieldContato.setText(instrutor.getContato() + "");
+        jFormattedTextFieldDtNascimento.setText(FormatacaoDataHora.dateToString(instrutor.getDtnascimento()));  //converte de date para string
     }
 
     /**
@@ -51,6 +53,8 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
         jButtonAtualizar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jFormattedTextFieldCpf = new javax.swing.JFormattedTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jFormattedTextFieldDtNascimento = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Atualizar Instrutor");
@@ -70,9 +74,6 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
 
         jLabel3.setText("Rg:");
 
-        jTextFieldRg.setEditable(false);
-        jTextFieldRg.setBackground(new java.awt.Color(153, 153, 153));
-
         jLabel8.setText("Contato:");
 
         try {
@@ -91,10 +92,16 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
 
         jLabel4.setText("CPF:");
 
-        jFormattedTextFieldCpf.setEditable(false);
-        jFormattedTextFieldCpf.setBackground(new java.awt.Color(153, 153, 153));
         try {
             jFormattedTextFieldCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel5.setText("Data Nascimento:");
+
+        try {
+            jFormattedTextFieldDtNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -103,32 +110,33 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonAtualizar)
+                .addGap(53, 53, 53))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(jFormattedTextFieldContato, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel4))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel8))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldRg, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jFormattedTextFieldCpf)
-                                .addGap(103, 103, 103)))))
-                .addContainerGap(67, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonAtualizar)
-                .addGap(53, 53, 53))
+                            .addComponent(jTextFieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldRg, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jFormattedTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jFormattedTextFieldContato, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 92, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jFormattedTextFieldDtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +164,11 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jFormattedTextFieldContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jFormattedTextFieldDtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(jButtonAtualizar)
                 .addGap(25, 25, 25))
         );
@@ -182,24 +194,23 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
         // TODO add your handling code here:
         try {
+            if (jFormattedTextFieldDtNascimento.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Digite a data de nascimento");
+                jFormattedTextFieldDtNascimento.requestFocus();
+                return;
+            }
             Instrutor instrutor = new Instrutor();
             instrutor.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
             instrutor.setNome(jTextFieldNome.getText());
             instrutor.setRg(jTextFieldRg.getText());
             instrutor.setContato(jFormattedTextFieldContato.getText());
+            instrutor.setDtnascimento(FormatacaoDataHora.stringToDate(jFormattedTextFieldDtNascimento.getText()));
             Fachada fachada = new Fachada();
             fachada.atualizar(instrutor);
             JOptionPane.showMessageDialog(rootPane, "Instrutor atualizado com sucesso");
             dispose();      //fecha a tela após clicar no OK de instrutor atualizado com sucesso.
-            jTextFieldNome.setText(instrutor.getNome()+"");
-            jFormattedTextFieldContato.setText(instrutor.getContato()+"");
-            /*
-            jTextFieldMatricula.setText("");
-            jTextFieldRg.setText("");
-            jFormattedTextFieldContato.setText(instrutor.getContato()+"");
-            jTextFieldNome.setText(instrutor.getNome()+"");
-            jTextFieldMatricula.requestFocus();
-             */
+            jTextFieldNome.setText(instrutor.getNome() + "");
+            jFormattedTextFieldContato.setText(instrutor.getContato() + "");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
@@ -245,10 +256,12 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAtualizar;
     private javax.swing.JFormattedTextField jFormattedTextFieldContato;
     private javax.swing.JFormattedTextField jFormattedTextFieldCpf;
+    private javax.swing.JFormattedTextField jFormattedTextFieldDtNascimento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextFieldMatricula;
