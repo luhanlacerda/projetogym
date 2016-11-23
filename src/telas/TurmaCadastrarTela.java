@@ -8,11 +8,15 @@ package telas;
 import aluno.Aluno;
 import atividade.Atividade;
 import classesBasicas.FormatacaoDataHora;
+import classesBasicas.MyTableModel;
 import fachada.Fachada;
 import instrutor.Instrutor;
 import java.awt.Dimension;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import turma.Turma;
 
@@ -26,12 +30,15 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
      * Creates new form TelaCadastroTurma
      */
     Fachada fachada = new Fachada();
-    DefaultTableModel modeloInstrutor = new DefaultTableModel(), modeloAtividade = new DefaultTableModel(), modeloMonitor = new DefaultTableModel();
+    MyTableModel modeloInstrutor = new MyTableModel(), modeloAtividade = new MyTableModel(), modeloMonitor = new MyTableModel();
+    ArrayList<Instrutor> instrutores = new ArrayList<>();
 
     public TurmaCadastrarTela() {
         initComponents();
+        jTableInstrutor.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);      //permite selecionar apenas uma linha
         modeloInstrutor.setColumnIdentifiers(new String[]{"Matrícula", "Nome"});
-        jTableInstrutor.setModel(modeloInstrutor);
+        carregarInstrutores();
+        jTableMonitor.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         modeloMonitor.setColumnIdentifiers(new String[]{"Matrícula", "Nome"});
         jTableMonitor.setModel(modeloMonitor);
         modeloAtividade.setColumnIdentifiers(new String[]{"Código", "Descrição"});
@@ -173,6 +180,12 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
             }
         ));
         jTableInstrutor.setToolTipText("");
+        jTableInstrutor.getTableHeader().setReorderingAllowed(false);
+        jTableInstrutor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableInstrutorMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTableInstrutor);
 
         jButtonPesquisarMonitor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/magnifier.png"))); // NOI18N
@@ -436,7 +449,8 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
             if (jTextFieldInstrutor.getText().trim().equals("") == false) {
                 turma.getInstrutor().setMatricula(Integer.parseInt(jTextFieldInstrutor.getText().trim()));
             }
-            ArrayList<Instrutor> resposta = fachada.listarInstrutores(turma);
+            carregarInstrutores();
+            /*ArrayList<Instrutor> resposta = fachada.listarInstrutores(turma);
             deleteRowsInstrutor();
             if (resposta.size() > 0) {
                 for (Instrutor ins : resposta) {
@@ -445,7 +459,7 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
 
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Não existe resultados para instrutores com o filtro passado");
-            }
+            }*/
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
@@ -475,6 +489,14 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
         }
     }//GEN-LAST:event_jButtonPesquisarAtividadeActionPerformed
+
+    private void jTableInstrutorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableInstrutorMouseClicked
+        // TODO add your handling code here:
+        int row = jTableInstrutor.getSelectedRow();
+        if (row > -1) {
+            jTextFieldInstrutor.setText(instrutores.get(row).getMatricula() + "");
+        }
+    }//GEN-LAST:event_jTableInstrutorMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -506,5 +528,22 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextFieldInstrutor;
     private javax.swing.JTextField jTextFieldMonitor;
     // End of variables declaration//GEN-END:variables
+
+    private void carregarInstrutores() {
+        modeloInstrutor.setRowCount(0);
+        try {
+            instrutores = fachada.listarInstrutores(new Turma());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        }
+        if (instrutores.size() > 0) {
+            for (Instrutor ins : instrutores) {
+                modeloInstrutor.addRow(new String[]{ins.getMatricula() + "", ins.getNome()});
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Não existe resultados para instrutor com o filtro passado");
+        }
+        jTableInstrutor.setModel(modeloInstrutor);
+    }
 
 }
