@@ -5,6 +5,7 @@
  */
 package telas;
 
+import classesBasicas.MyTableModel;
 import fachada.Fachada;
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
     /**
      * Creates new form TurmaConsultarTela
      */
-    DefaultTableModel modelo = new DefaultTableModel();
+    MyTableModel modelo = new MyTableModel();
     ArrayList<Turma> listaTurmas;
     TelaPrincipal pai;
 
@@ -206,7 +207,7 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
         jTextFieldCodigoTurma.setEnabled(true);
         int index = jTableTurma.getSelectedRow();
         Turma turmaEscolhido = this.listaTurmas.get(index);
-        TurmaAtualizarTelaJFrame turmaAtualizarTela = new TurmaAtualizarTelaJFrame(turmaEscolhido); // Vincula a tela atualizar
+        TurmaAtualizarTelaJFrame turmaAtualizarTela = new TurmaAtualizarTelaJFrame(turmaEscolhido, this, index); // Vincula a tela atualizar
         turmaAtualizarTela.setVisible(true);
     }//GEN-LAST:event_jTableTurmaMouseClicked
 

@@ -30,8 +30,20 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
     ArrayList<Instrutor> instrutores = new ArrayList<>();
     ArrayList<Aluno> monitores = new ArrayList<>();
     ArrayList<Atividade> atividades = new ArrayList<>();
+    TurmaConsultarTela consultarTela;
+    int indexConsultar;
 
     public TurmaAtualizarTelaJFrame(Turma turma) {
+        inicio(turma);
+    }
+
+    public TurmaAtualizarTelaJFrame(Turma turma, TurmaConsultarTela consultarTela, int indexConsultar) {
+        inicio(turma);
+        this.consultarTela = consultarTela;
+        this.indexConsultar = indexConsultar;
+    }
+
+    public void inicio(Turma turma) {
         initComponents();
         this.setLocationRelativeTo(null);
         jTableInstrutor.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);      //permite selecionar apenas uma linha
@@ -82,7 +94,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextFieldAtividade = new classesBasicas.JTextFieldSomenteNumeros();
         jLabel9 = new javax.swing.JLabel();
-        jButtonCadastrar = new javax.swing.JButton();
+        jButtonAtualizar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTableInstrutor = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -150,11 +162,11 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
 
         jLabel9.setText("Código Atividade:");
 
-        jButtonCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/arrow_refresh.png"))); // NOI18N
-        jButtonCadastrar.setText("Atualizar");
-        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/arrow_refresh.png"))); // NOI18N
+        jButtonAtualizar.setText("Atualizar");
+        jButtonAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCadastrarActionPerformed(evt);
+                jButtonAtualizarActionPerformed(evt);
             }
         });
 
@@ -228,7 +240,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
                         .addGap(44, 44, 44)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonCadastrar))
+                        .addComponent(jButtonAtualizar))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,7 +328,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonCadastrar)
+                        .addComponent(jButtonAtualizar)
                         .addGap(22, 22, 22))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -347,7 +359,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+    private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
 
         try {
             //DADOS DA TURMA
@@ -366,12 +378,18 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
             Fachada fachada = new Fachada();
             fachada.atualizar(turma);
             JOptionPane.showMessageDialog(rootPane, "Turma atualizada com sucesso");
+            /*
+            consultarTela.modelo.setValueAt(FormatacaoDataHora.stringToTime(jFormattedTextFieldHorarioAulas.getText()), indexConsultar, 1);
+            consultarTela.modelo.setValueAt(FormatacaoDataHora.stringToTime(jFormattedTextFieldDurAula.getText()), indexConsultar, 2);
+            consultarTela.modelo.setValueAt(FormatacaoDataHora.stringToDate(jFormattedTextFieldDtInicial.getText()), indexConsultar, 3);
+            consultarTela.modelo.setValueAt(FormatacaoDataHora.stringToDate(jFormattedTextFieldDtFinal.getText()), indexConsultar, 4);
+            */
             dispose();      //fecha a tela após clicar no OK de turma atualizada com sucesso.
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
-    }//GEN-LAST:event_jButtonCadastrarActionPerformed
+    }//GEN-LAST:event_jButtonAtualizarActionPerformed
 
     private void jTextFieldAtividadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAtividadeActionPerformed
         // TODO add your handling code here:
@@ -439,7 +457,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCadastrar;
+    private javax.swing.JButton jButtonAtualizar;
     private javax.swing.JFormattedTextField jFormattedTextFieldDtFinal;
     private javax.swing.JFormattedTextField jFormattedTextFieldDtInicial;
     private javax.swing.JFormattedTextField jFormattedTextFieldDurAula;
