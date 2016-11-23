@@ -75,6 +75,7 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
         });
 
         jTableInstrutor.setModel(modelo);
+        jTableInstrutor.getTableHeader().setReorderingAllowed(false);
         jTableInstrutor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableInstrutorMouseClicked(evt);

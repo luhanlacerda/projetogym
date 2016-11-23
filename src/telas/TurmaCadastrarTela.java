@@ -13,11 +13,8 @@ import fachada.Fachada;
 import instrutor.Instrutor;
 import java.awt.Dimension;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
-import javax.swing.table.DefaultTableModel;
 import turma.Turma;
 
 /**
@@ -32,16 +29,22 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
     Fachada fachada = new Fachada();
     MyTableModel modeloInstrutor = new MyTableModel(), modeloAtividade = new MyTableModel(), modeloMonitor = new MyTableModel();
     ArrayList<Instrutor> instrutores = new ArrayList<>();
+    ArrayList<Aluno> monitores = new ArrayList<>();
+    ArrayList<Atividade> atividades = new ArrayList<>();
 
     public TurmaCadastrarTela() {
         initComponents();
         jTableInstrutor.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);      //permite selecionar apenas uma linha
         modeloInstrutor.setColumnIdentifiers(new String[]{"Matrícula", "Nome"});
         carregarInstrutores();
+        jTableInstrutor.setModel(modeloInstrutor);
         jTableMonitor.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         modeloMonitor.setColumnIdentifiers(new String[]{"Matrícula", "Nome"});
+        carregarMonitores();
         jTableMonitor.setModel(modeloMonitor);
+        jTableAtividade.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         modeloAtividade.setColumnIdentifiers(new String[]{"Código", "Descrição"});
+        carregarAtividades();
         jTableAtividade.setModel(modeloAtividade);
     }
 
@@ -77,15 +80,12 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAtividade = new javax.swing.JTable();
         jTextFieldMonitor = new classesBasicas.JTextFieldSomenteNumeros();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTableMonitor = new javax.swing.JTable();
         jTextFieldAtividade = new classesBasicas.JTextFieldSomenteNumeros();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableInstrutor = new javax.swing.JTable();
         jTextFieldInstrutor = new classesBasicas.JTextFieldSomenteNumeros();
-        jButtonPesquisarMonitor = new javax.swing.JButton();
-        jButtonPesquisarAtividade = new javax.swing.JButton();
-        jButtonPesquisarInstrutor = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTableMonitor = new javax.swing.JTable();
 
         setClosable(true);
         setIconifiable(true);
@@ -152,21 +152,14 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
             }
         ));
         jTableAtividade.setToolTipText("");
-        jScrollPane1.setViewportView(jTableAtividade);
-
-        jTableMonitor.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
+        jTableAtividade.getTableHeader().setReorderingAllowed(false);
+        jTableAtividade.setUpdateSelectionOnSort(false);
+        jTableAtividade.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableAtividadeMouseClicked(evt);
             }
-        ));
-        jTableMonitor.setToolTipText("");
-        jScrollPane2.setViewportView(jTableMonitor);
+        });
+        jScrollPane1.setViewportView(jTableAtividade);
 
         jTableInstrutor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -188,29 +181,25 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
         });
         jScrollPane3.setViewportView(jTableInstrutor);
 
-        jButtonPesquisarMonitor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/magnifier.png"))); // NOI18N
-        jButtonPesquisarMonitor.setText("Pesquisar");
-        jButtonPesquisarMonitor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPesquisarMonitorActionPerformed(evt);
-            }
-        });
+        jTableMonitor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
 
-        jButtonPesquisarAtividade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/magnifier.png"))); // NOI18N
-        jButtonPesquisarAtividade.setText("Pesquisar");
-        jButtonPesquisarAtividade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPesquisarAtividadeActionPerformed(evt);
+            }
+        ));
+        jTableMonitor.setToolTipText("");
+        jTableMonitor.getTableHeader().setReorderingAllowed(false);
+        jTableMonitor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableMonitorMouseClicked(evt);
             }
         });
-
-        jButtonPesquisarInstrutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/magnifier.png"))); // NOI18N
-        jButtonPesquisarInstrutor.setText("Pesquisar");
-        jButtonPesquisarInstrutor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPesquisarInstrutorActionPerformed(evt);
-            }
-        });
+        jScrollPane4.setViewportView(jTableMonitor);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -250,36 +239,28 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextFieldMonitor, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16)
-                        .addComponent(jButtonPesquisarMonitor))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldAtividade, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonPesquisarAtividade))
+                        .addComponent(jTextFieldMonitor, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextFieldAtividade, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextFieldInstrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonPesquisarInstrutor)))))
-                .addContainerGap(37, Short.MAX_VALUE))
+                                .addComponent(jTextFieldInstrutor, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jFormattedTextFieldDtFinal, jFormattedTextFieldDtInicial, jFormattedTextFieldDurAula, jFormattedTextFieldHorarioAulasInicio});
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jScrollPane1, jScrollPane2, jScrollPane3});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jScrollPane1, jScrollPane3});
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextFieldAtividade, jTextFieldInstrutor, jTextFieldMonitor});
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonCadastrar, jButtonPesquisarAtividade, jButtonPesquisarInstrutor, jButtonPesquisarMonitor});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextFieldInstrutor, jTextFieldMonitor});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,9 +274,7 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
                             .addComponent(jTextFieldCodTur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonPesquisarMonitor)
-                            .addComponent(jTextFieldMonitor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jTextFieldMonitor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
@@ -315,42 +294,36 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
                             .addComponent(jLabel6)
                             .addComponent(jFormattedTextFieldDtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(jTextFieldAtividade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonPesquisarAtividade))
+                            .addComponent(jTextFieldAtividade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(31, 31, 31)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(jTextFieldInstrutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonPesquisarInstrutor))))
+                            .addComponent(jTextFieldInstrutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(jButtonCadastrar)
                 .addContainerGap())
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jFormattedTextFieldDtFinal, jFormattedTextFieldDtInicial, jFormattedTextFieldDurAula});
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jScrollPane1, jScrollPane2, jScrollPane3});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jScrollPane1, jScrollPane3});
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jTextFieldAtividade, jTextFieldInstrutor, jTextFieldMonitor});
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonCadastrar, jButtonPesquisarAtividade, jButtonPesquisarInstrutor, jButtonPesquisarMonitor});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -417,79 +390,6 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
         }
     }
 
-    private void jButtonPesquisarMonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarMonitorActionPerformed
-        // TODO add your handling code here:
-        try {
-            Turma turma = new Turma();
-            //monitor
-            if (jTextFieldMonitor.getText().trim().equals("") == false) {
-                turma.getAluno().setMatricula(Integer.parseInt(jTextFieldMonitor.getText().trim()));
-            }
-            ArrayList<Aluno> resposta = fachada.listarAlunos(turma);
-            deleteRowsMonitor();
-            if (resposta.size() > 0) {
-                for (Aluno monitor : resposta) {
-                    modeloMonitor.addRow(new String[]{monitor.getMatricula() + "", monitor.getNome()});
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Não existe resultados para alunos com o filtro passado");
-            }
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
-        }
-    }//GEN-LAST:event_jButtonPesquisarMonitorActionPerformed
-
-    private void jButtonPesquisarInstrutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarInstrutorActionPerformed
-        // TODO add your handling code here:
-        try {
-            Turma turma = new Turma();
-            //instrutor
-            if (jTextFieldInstrutor.getText().trim().equals("") == false) {
-                turma.getInstrutor().setMatricula(Integer.parseInt(jTextFieldInstrutor.getText().trim()));
-            }
-            carregarInstrutores();
-            /*ArrayList<Instrutor> resposta = fachada.listarInstrutores(turma);
-            deleteRowsInstrutor();
-            if (resposta.size() > 0) {
-                for (Instrutor ins : resposta) {
-                    modeloInstrutor.addRow(new String[]{ins.getMatricula() + "", ins.getNome()});
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Não existe resultados para instrutores com o filtro passado");
-            }*/
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
-        }
-    }//GEN-LAST:event_jButtonPesquisarInstrutorActionPerformed
-
-    private void jButtonPesquisarAtividadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarAtividadeActionPerformed
-        // TODO add your handling code here:
-        try {
-            Turma turma = new Turma();
-            //atividade
-            if (jTextFieldAtividade.getText().trim().equals("") == false) {
-                turma.getAtividade().setCodigo(Integer.parseInt(jTextFieldAtividade.getText().trim()));
-            }
-            ArrayList<Atividade> resposta = fachada.listarAtividades(turma);
-            deleteRowsAtividade();
-            if (resposta.size() > 0) {
-                for (Atividade atv : resposta) {
-                    modeloAtividade.addRow(new String[]{atv.getCodigo() + "", atv.getDescricao()});
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Não existe resultados para atividades com o filtro passado");
-            }
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
-        }
-    }//GEN-LAST:event_jButtonPesquisarAtividadeActionPerformed
-
     private void jTableInstrutorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableInstrutorMouseClicked
         // TODO add your handling code here:
         int row = jTableInstrutor.getSelectedRow();
@@ -498,12 +398,25 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jTableInstrutorMouseClicked
 
+    private void jTableMonitorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMonitorMouseClicked
+        // TODO add your handling code here:
+        int row = jTableMonitor.getSelectedRow();
+        if (row > -1) {
+            jTextFieldMonitor.setText(monitores.get(row).getMatricula() + "");
+        }
+    }//GEN-LAST:event_jTableMonitorMouseClicked
+
+    private void jTableAtividadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAtividadeMouseClicked
+        // TODO add your handling code here:
+        int row = jTableAtividade.getSelectedRow();
+        if (row > -1) {
+            jTextFieldAtividade.setText(atividades.get(row).getCodigo() + "");
+        }
+    }//GEN-LAST:event_jTableAtividadeMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadastrar;
-    private javax.swing.JButton jButtonPesquisarAtividade;
-    private javax.swing.JButton jButtonPesquisarInstrutor;
-    private javax.swing.JButton jButtonPesquisarMonitor;
     private javax.swing.JFormattedTextField jFormattedTextFieldDtFinal;
     private javax.swing.JFormattedTextField jFormattedTextFieldDtInicial;
     private javax.swing.JFormattedTextField jFormattedTextFieldDurAula;
@@ -518,8 +431,8 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTableAtividade;
     private javax.swing.JTable jTableInstrutor;
     private javax.swing.JTable jTableMonitor;
@@ -543,7 +456,37 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(rootPane, "Não existe resultados para instrutor com o filtro passado");
         }
-        jTableInstrutor.setModel(modeloInstrutor);
     }
 
+    private void carregarMonitores() {
+        modeloMonitor.setRowCount(0);
+        try {
+            monitores = fachada.listarAlunos(new Turma());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        }
+        if (monitores.size() > 0) {
+            for (Aluno monitor : monitores) {
+                modeloMonitor.addRow(new String[]{monitor.getMatricula() + "", monitor.getNome()});
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Não existe resultados para monitor com o filtro passado");
+        }
+    }
+
+    private void carregarAtividades() {
+        modeloAtividade.setRowCount(0);
+        try {
+            atividades = fachada.listarAtividades(new Turma());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        }
+        if (atividades.size() > 0) {
+            for (Atividade atv : atividades) {
+                modeloAtividade.addRow(new String[]{atv.getCodigo() + "", atv.getDescricao()});
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Não existe resultados para monitor com o filtro passado");
+        }
+    }
 }

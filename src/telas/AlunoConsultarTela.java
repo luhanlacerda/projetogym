@@ -101,6 +101,7 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
 
             }
         ));
+        jTableAluno.getTableHeader().setReorderingAllowed(false);
         jTableAluno.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableAlunoMouseClicked(evt);

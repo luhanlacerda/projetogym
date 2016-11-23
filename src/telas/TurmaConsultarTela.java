@@ -84,6 +84,7 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
 
             }
         ));
+        jTableTurma.getTableHeader().setReorderingAllowed(false);
         jTableTurma.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableTurmaMouseClicked(evt);
