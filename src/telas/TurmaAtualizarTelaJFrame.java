@@ -96,7 +96,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
         jLabel1.setText("Codigo Turma: ");
 
         jTextFieldCodTur.setEditable(false);
-        jTextFieldCodTur.setBackground(new java.awt.Color(153, 153, 153));
+        jTextFieldCodTur.setBackground(new java.awt.Color(204, 204, 204));
 
         try {
             jFormattedTextFieldHorarioAulas.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
@@ -110,15 +110,16 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        jTextFieldMonitor.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldMonitor.setEditable(false);
+        jTextFieldMonitor.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel7.setText("Matrícula Monitor:");
 
         jLabel8.setText("Matrícula Instrutor:");
 
-        jTextFieldInstrutor.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldInstrutor.setEditable(false);
+        jTextFieldInstrutor.setBackground(new java.awt.Color(204, 204, 204));
 
-        jFormattedTextFieldDtInicial.setBackground(new java.awt.Color(255, 255, 255));
         try {
             jFormattedTextFieldDtInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -139,7 +140,8 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
 
         jLabel3.setText("Horário da Aula:");
 
-        jTextFieldAtividade.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldAtividade.setEditable(false);
+        jTextFieldAtividade.setBackground(new java.awt.Color(204, 204, 204));
         jTextFieldAtividade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldAtividadeActionPerformed(evt);
@@ -221,14 +223,14 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addGap(44, 44, 44)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonCadastrar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,12 +239,11 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel9))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextFieldMonitor)
-                                        .addComponent(jTextFieldInstrutor, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jTextFieldCodTur, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTextFieldAtividade, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFieldMonitor)
+                                    .addComponent(jTextFieldInstrutor, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jTextFieldCodTur, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldAtividade, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -254,18 +255,25 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel6))
                         .addGap(10, 10, 10)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFormattedTextFieldDurAula, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFormattedTextFieldHorarioAulas, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jFormattedTextFieldDtFinal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-                                .addComponent(jFormattedTextFieldDtInicial, javax.swing.GroupLayout.Alignment.LEADING)))))
+                                .addComponent(jFormattedTextFieldDtInicial, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jFormattedTextFieldHorarioAulas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                                .addComponent(jFormattedTextFieldDurAula, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addGap(13, 13, 13)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(44, 44, 44)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGap(245, 245, 245)))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextFieldAtividade, jTextFieldCodTur, jTextFieldInstrutor, jTextFieldMonitor});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jScrollPane4, jScrollPane5, jScrollPane6});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -320,6 +328,10 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(269, Short.MAX_VALUE)))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jTextFieldAtividade, jTextFieldCodTur, jTextFieldInstrutor, jTextFieldMonitor});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jScrollPane4, jScrollPane5, jScrollPane6});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
