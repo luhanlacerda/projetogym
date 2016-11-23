@@ -6,11 +6,12 @@
 package telas;
 
 import aluno.Aluno;
+import classesBasicas.MyTableModel;
 import fachada.Fachada;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.ListSelectionModel;
 import turma.Turma;
 
 /**
@@ -23,16 +24,22 @@ public class TurmaInserirAlunoTela extends javax.swing.JInternalFrame {
      * Creates new form TurmaInserirAlunoTela
      */
     Fachada fachada = new Fachada();
-    DefaultTableModel modeloAluno = new DefaultTableModel(), modeloTurma = new DefaultTableModel();
-    
+    MyTableModel modeloAluno = new MyTableModel(), modeloTurma = new MyTableModel();
+    ArrayList<Aluno> alunos = new ArrayList<>();
+    ArrayList<Turma> turmas = new ArrayList<>();
+
     public TurmaInserirAlunoTela() {
         initComponents();
+        jTableAluno.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         modeloAluno.setColumnIdentifiers(new String[]{"Matrícula", "Nome"});
+        carregarAlunos();
         jTableAluno.setModel(modeloAluno);
+        jTableTurma.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         modeloTurma.setColumnIdentifiers(new String[]{"Código", "Atividade", "Descrição"});
+        carregarTurmas();
         jTableTurma.setModel(modeloTurma);
     }
-    
+
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
@@ -49,13 +56,11 @@ public class TurmaInserirAlunoTela extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextFieldCodTurma = new classesBasicas.JTextFieldSomenteNumeros();
-        jButtonPesquisarTurma = new javax.swing.JButton();
+        jTextFieldTurma = new classesBasicas.JTextFieldSomenteNumeros();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableTurma = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldMatAluno = new classesBasicas.JTextFieldSomenteNumeros();
-        jButtonPesquisarAluno = new javax.swing.JButton();
+        jTextFieldAluno = new classesBasicas.JTextFieldSomenteNumeros();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableAluno = new javax.swing.JTable();
         jButtonInserirAlunoTurma = new javax.swing.JButton();
@@ -66,13 +71,8 @@ public class TurmaInserirAlunoTela extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Cod Turma:");
 
-        jButtonPesquisarTurma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/magnifier.png"))); // NOI18N
-        jButtonPesquisarTurma.setText("Pesquisar");
-        jButtonPesquisarTurma.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPesquisarTurmaActionPerformed(evt);
-            }
-        });
+        jTextFieldTurma.setEditable(false);
+        jTextFieldTurma.setBackground(new java.awt.Color(204, 204, 204));
 
         jTableTurma.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -85,21 +85,21 @@ public class TurmaInserirAlunoTela extends javax.swing.JInternalFrame {
 
             }
         ));
+        jTableTurma.getTableHeader().setReorderingAllowed(false);
+        jTableTurma.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableTurmaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableTurma);
 
         jLabel1.setText("Mat Aluno:");
 
-        jTextFieldMatAluno.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldAluno.setEditable(false);
+        jTextFieldAluno.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldMatAlunoActionPerformed(evt);
-            }
-        });
-
-        jButtonPesquisarAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/magnifier.png"))); // NOI18N
-        jButtonPesquisarAluno.setText("Pesquisar");
-        jButtonPesquisarAluno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPesquisarAlunoActionPerformed(evt);
+                jTextFieldAlunoActionPerformed(evt);
             }
         });
 
@@ -114,6 +114,12 @@ public class TurmaInserirAlunoTela extends javax.swing.JInternalFrame {
 
             }
         ));
+        jTableAluno.getTableHeader().setReorderingAllowed(false);
+        jTableAluno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableAlunoMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTableAluno);
 
         jButtonInserirAlunoTurma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
@@ -133,50 +139,40 @@ public class TurmaInserirAlunoTela extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonInserirAlunoTurma)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addGap(18, 18, 18)
-                            .addComponent(jTextFieldMatAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonPesquisarAluno))
+                            .addComponent(jTextFieldAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel3)
                             .addGap(18, 18, 18)
-                            .addComponent(jTextFieldCodTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonPesquisarTurma))))
+                            .addComponent(jTextFieldTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(86, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonInserirAlunoTurma, jButtonPesquisarAluno, jButtonPesquisarTurma});
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextFieldCodTurma, jTextFieldMatAluno});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextFieldAluno, jTextFieldTurma});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextFieldCodTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonPesquisarTurma))
+                    .addComponent(jTextFieldTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldMatAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonPesquisarAluno)
+                    .addComponent(jTextFieldAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addComponent(jButtonInserirAlunoTurma)
                 .addGap(56, 56, 56))
         );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonInserirAlunoTurma, jButtonPesquisarAluno, jButtonPesquisarTurma});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -192,32 +188,33 @@ public class TurmaInserirAlunoTela extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldMatAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMatAlunoActionPerformed
+    private void jTextFieldAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAlunoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldMatAlunoActionPerformed
+    }//GEN-LAST:event_jTextFieldAlunoActionPerformed
 
     private void jButtonInserirAlunoTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirAlunoTurmaActionPerformed
         // TODO add your handling code here:
         try {
             //DADOS DA TURMA
             Turma turma = new Turma();
-            turma.setCodigo(Integer.parseInt(jTextFieldCodTurma.getText()));
-            turma.getAluno().setMatricula(Integer.parseInt(jTextFieldMatAluno.getText()));
+            turma.setCodigo(Integer.parseInt(jTextFieldTurma.getText()));
+            turma.getAluno().setMatricula(Integer.parseInt(jTextFieldAluno.getText()));
             fachada.inserirAlunoTurma(turma);
             JOptionPane.showMessageDialog(rootPane, "Aluno cadastrado na turma com sucesso");
+            dispose();
             //Limpar Campos preenchidos 
-            jTextFieldCodTurma.setText("");
-            jTextFieldMatAluno.setText("");
+            jTextFieldTurma.setText("");
+            jTextFieldAluno.setText("");
             modeloAluno.setRowCount(0);
             modeloTurma.setRowCount(0);
-            jTextFieldCodTurma.requestFocus(); // Retornar para o início
+            jTextFieldTurma.requestFocus(); // Retornar para o início
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
     }//GEN-LAST:event_jButtonInserirAlunoTurmaActionPerformed
 
-        private void deleteRowsAluno() {
+    private void deleteRowsAluno() {
         while (modeloAluno.getRowCount() > 0) {
             modeloAluno.removeRow(0);
         }
@@ -228,60 +225,26 @@ public class TurmaInserirAlunoTela extends javax.swing.JInternalFrame {
             modeloTurma.removeRow(0);
         }
     }
-    
-    private void jButtonPesquisarTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarTurmaActionPerformed
+
+    private void jTableTurmaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTurmaMouseClicked
         // TODO add your handling code here:
-        try {
-            Turma turma = new Turma();
-            //turma
-            if (jTextFieldCodTurma.getText().trim().equals("") == false) {
-                turma.setCodigo(Integer.parseInt(jTextFieldCodTurma.getText().trim()));
-            }
-            ArrayList<Turma> resposta = fachada.listarTurmaAtividade(turma);
-            deleteRowsTurma();
-            if (resposta.size() > 0) {
-                for (Turma tur : resposta) {
-                    modeloTurma.addRow(new String[]{tur.getCodigo() + "", tur.getAtividade().getCodigo() + "", tur.getAtividade().getDescricao()});
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Não existe resultados para turmas com o filtro desejado");
-            }
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        int row = jTableTurma.getSelectedRow();
+        if (row > -1) {
+            jTextFieldTurma.setText(turmas.get(row).getCodigo() + "");
         }
-    }//GEN-LAST:event_jButtonPesquisarTurmaActionPerformed
+    }//GEN-LAST:event_jTableTurmaMouseClicked
 
-    private void jButtonPesquisarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarAlunoActionPerformed
+    private void jTableAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAlunoMouseClicked
         // TODO add your handling code here:
-        try {
-            Turma turma = new Turma();
-            //turma
-            if (jTextFieldMatAluno.getText().trim().equals("") == false) {
-                turma.getAluno().setMatricula(Integer.parseInt(jTextFieldMatAluno.getText().trim()));
-            }
-            ArrayList<Aluno> resposta = fachada.listarAlunos(turma);
-            deleteRowsAluno();
-            if (resposta.size() > 0) {
-                for (Aluno alu : resposta) {
-                    modeloAluno.addRow(new String[]{alu.getMatricula()+ "", alu.getNome()});
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Não existe resultados para alunos com o filtro desejado");
-            }
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        int row = jTableAluno.getSelectedRow();
+        if (row > -1) {
+            jTextFieldAluno.setText(alunos.get(row).getMatricula() + "");
         }
-    }//GEN-LAST:event_jButtonPesquisarAlunoActionPerformed
+    }//GEN-LAST:event_jTableAlunoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonInserirAlunoTurma;
-    private javax.swing.JButton jButtonPesquisarAluno;
-    private javax.swing.JButton jButtonPesquisarTurma;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -289,7 +252,40 @@ public class TurmaInserirAlunoTela extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableAluno;
     private javax.swing.JTable jTableTurma;
-    private javax.swing.JTextField jTextFieldCodTurma;
-    private javax.swing.JTextField jTextFieldMatAluno;
+    private javax.swing.JTextField jTextFieldAluno;
+    private javax.swing.JTextField jTextFieldTurma;
     // End of variables declaration//GEN-END:variables
+
+    private void carregarAlunos() {
+        modeloAluno.setRowCount(0);
+        try {
+            alunos = fachada.listarAlunos(new Turma());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        }
+        if (alunos.size() > 0) {
+            for (Aluno al : alunos) {
+                modeloAluno.addRow(new String[]{al.getMatricula() + "", al.getNome()});
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Não existe resultados para monitor com o filtro passado");
+        }
+    }
+
+    private void carregarTurmas() {
+        modeloTurma.setRowCount(0);
+        try {
+            turmas = fachada.listar(new Turma());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        }
+        if (turmas.size() > 0) {
+            for (Turma tur : turmas) {
+                modeloTurma.addRow(new String[]{tur.getCodigo() + "", tur.getAtividade().getCodigo() + "", tur.getAtividade().getDescricao()});
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Não existe resultados para monitor com o filtro passado");
+        }
+
+    }
 }
