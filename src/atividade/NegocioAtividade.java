@@ -22,6 +22,12 @@ public class NegocioAtividade implements InterfaceAtividade {
         if (verificarExistenciaAtividade(a) != false) {
             throw new Exception("A Atividade informada já existe");
         }
+        
+        if (a.getDescricao().trim().equalsIgnoreCase("")){
+           throw new Exception("Digite a descrição!");  
+            
+        }
+            
         //Cadastrando
         DadosAtividade d = new DadosAtividade();
         d.cadastrar(a);
@@ -36,6 +42,11 @@ public class NegocioAtividade implements InterfaceAtividade {
         
         if(verificarExistenciaAtividade(a) == false){
             throw new Exception("Atividade não cadastrada no sistema");
+        }
+        
+        if (a.getDescricao().trim().equalsIgnoreCase("")){
+           throw new Exception("Digite a descrição!");  
+            
         }
         //Atualizando
         DadosAtividade d = new DadosAtividade();

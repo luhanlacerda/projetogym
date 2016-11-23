@@ -119,6 +119,12 @@ public class AtividadeCadastrarTela extends javax.swing.JInternalFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         try {
+             if (jTextFieldCodigo.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Digite o código");
+                jTextFieldCodigo.requestFocus();
+                return;
+            }
+            
             Atividade atividade = new Atividade();
             atividade.setCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
             atividade.setDescricao(jTextFieldDescricao.getText());

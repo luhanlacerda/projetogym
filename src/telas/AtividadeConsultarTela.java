@@ -86,6 +86,7 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
 
             }
         ));
+        jTableAtividade.getTableHeader().setReorderingAllowed(false);
         jTableAtividade.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableAtividadeMouseClicked(evt);
