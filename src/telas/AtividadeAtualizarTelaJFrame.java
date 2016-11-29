@@ -15,10 +15,28 @@ import javax.swing.JOptionPane;
  */
 public class AtividadeAtualizarTelaJFrame extends javax.swing.JFrame {
 
+    Atividade atividade = new Atividade();
+    AtividadeConsultarTela consultarTela;
+    int indexConsultar;
+
     public AtividadeAtualizarTelaJFrame(Atividade atividade) {
+        this.atividade = atividade;
+        inicio(atividade);
+    }
+
+    public AtividadeAtualizarTelaJFrame(Atividade atividade, AtividadeConsultarTela consultarTela, int indexConsultar) {
+        this.atividade = atividade;
+        inicio(atividade);
+        this.consultarTela = consultarTela;
+        this.indexConsultar = indexConsultar;
+    }
+
+    public void inicio(Atividade atividade) {
         this.setLocationRelativeTo(null);
         initComponents();
+        //limite de caracteres
         jTextFieldDescricao.setDocument(new classesBasicas.JTextFieldLimite(100));
+        //preenchimento dos campos automaticamente com os dados do objeto selecionado na tela consultar
         jTextFieldCodigo.setText(atividade.getCodigo() + "");
         jTextFieldDescricao.setText(atividade.getDescricao());
     }
@@ -119,25 +137,23 @@ public class AtividadeAtualizarTelaJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
+        //validação de tela
         try {
             if (jTextFieldCodigo.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Digite o código");
                 jTextFieldCodigo.requestFocus();
                 return;
             }
-            Atividade atividade = new Atividade();
-            atividade.setCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
-            atividade.setDescricao(jTextFieldDescricao.getText());
+            //atualizando os dados do objeto atividade
+            this.atividade.setCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
+            this.atividade.setDescricao(jTextFieldDescricao.getText());
             Fachada fachada = new Fachada();
             fachada.atualizar(atividade);
             JOptionPane.showMessageDialog(rootPane, "Atividade atualizada com sucesso");
-            dispose();      //fecha a tela após clicar no OK de atividade atualizada com sucesso.
-            /*
-            //Deixando campos em branco após o preencimento
-            jTextFieldCodigo.setText("");
-            jTextFieldDescricao.setText("");
-            jTextFieldCodigo.requestFocus();
-             */
+            consultarTela.modelo.setValueAt(Integer.parseInt(jTextFieldCodigo.getText()), indexConsultar, 0);
+            consultarTela.modelo.setValueAt(jTextFieldDescricao.getText(), indexConsultar, 1);
+            //fecha a tela após clicar no OK de atividade atualizada com sucesso.
+            dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }

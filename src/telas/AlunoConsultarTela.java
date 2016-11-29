@@ -28,6 +28,7 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
     public AlunoConsultarTela(TelaPrincipal pai) {
         initComponents();
         this.pai = pai;
+        //criando o modelo da tabela
         modelo.setColumnIdentifiers(new String[]{"Matrícula", "Data Matricula", "Nome", "Rg", "Cpf"});
         jTableAluno.setModel(modelo);
         jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));     //Limite de caracateres(N) e apenas caracteres permitidos
@@ -220,7 +221,7 @@ try {
         jTextFieldMatricula.setEnabled(true);
         int index = jTableAluno.getSelectedRow();
         Aluno alunoEscolhido = this.listaAlunos.get(index);
-        AlunoAtualizarTelaJFrame alunoAtualizarTela = new AlunoAtualizarTelaJFrame(alunoEscolhido); // Vincula a tela atualizar
+        AlunoAtualizarTelaJFrame alunoAtualizarTela = new AlunoAtualizarTelaJFrame(alunoEscolhido, this, index); // Vincula a tela atualizar
         alunoAtualizarTela.setVisible(true);
     }//GEN-LAST:event_jTableAlunoMouseClicked
 

@@ -10,7 +10,6 @@ import fachada.Fachada;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import turma.Turma;
 
 /**
@@ -30,7 +29,7 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
         initComponents();
 
         this.pai = pai;
-
+        //criando o modelo da tabela
         modelo.setColumnIdentifiers(new String[]{"Código", "Horario", "Duração", "Data Inicial", "Data Final", "Quantidade Alunos",
             "Monitor", "Instrutor", "Atividade"});
         jTableTurma.setModel(modelo);

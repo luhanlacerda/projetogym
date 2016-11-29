@@ -62,6 +62,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
         modeloAtividade.setColumnIdentifiers(new String[]{"Código", "Descrição"});
         carregarAtividades();
         jTableAtividade.setModel(modeloAtividade);
+        //preenchimento dos campos automaticamente com os dados do objeto selecionado na tela consultar
         jTextFieldCodTur.setText(turma.getCodigo() + "");
         jFormattedTextFieldDtFinal.setText(FormatacaoDataHora.dateToString(turma.getDtfinal()));           //converte de date para string
         jFormattedTextFieldDtInicial.setText(FormatacaoDataHora.dateToString(turma.getDtinicial()));      //converte de date para string
@@ -364,37 +365,40 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-
+        //validação de tela
         try {
-            //DADOS DA TURMA
+            //conferindo se existe algum monitor selecionado na tabela monitor
             if (jTableMonitor.getSelectedRow() < 0) {
                 JOptionPane.showMessageDialog(rootPane, "Selecionar o monitor");
                 return;
             }
+            //conferindo se existe algum instrutor selecionado na tabela instrutor
             if (jTableInstrutor.getSelectedRow() < 0) {
                 JOptionPane.showMessageDialog(rootPane, "Selecionar o instrutor");
                 return;
             }
+            //conferindo se existe alguma atividade selecionada na tabela atividade
             if (jTableAtividade.getSelectedRow() < 0) {
                 JOptionPane.showMessageDialog(rootPane, "Selecionar a atividade");
                 return;
             }
-
+            //atualizando os dados do objeto turma
             this.turma.setCodigo(Integer.parseInt(jTextFieldCodTur.getText()));
             this.turma.setHorario(FormatacaoDataHora.stringToTime(jFormattedTextFieldHorarioAulas.getText()));
             this.turma.setDuracaoaula(FormatacaoDataHora.stringToTime(jFormattedTextFieldDurAula.getText()));
             this.turma.setDtinicial(FormatacaoDataHora.stringToDate(jFormattedTextFieldDtInicial.getText()));
             this.turma.setDtfinal(FormatacaoDataHora.stringToDate(jFormattedTextFieldDtFinal.getText()));
-            //DADOS DE ALUNO(MONITOR)
+            //atualizando monitor
             Aluno monitor = this.monitores.get(jTableMonitor.getSelectedRow());
             this.turma.setMonitor(monitor);
-            //DADOS DE INSTRUTOR
+            //atualizando instrutor
             Instrutor instrutor = this.instrutores.get(jTableInstrutor.getSelectedRow());
             this.turma.setInstrutor(instrutor);
-            //DADOS DE ATIVIDADE
+            //atualizando atividade
             Atividade atividade = this.atividades.get(jTableAtividade.getSelectedRow());
             this.turma.setAtividade(atividade);
             Fachada fachada = new Fachada();
+            //atualizando o objeto
             fachada.atualizar(this.turma);
             JOptionPane.showMessageDialog(rootPane, "Turma atualizada com sucesso");
             //atualizando a tela de consultar após atualizar a turma
