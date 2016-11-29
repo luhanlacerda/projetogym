@@ -169,7 +169,7 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
                 for (Turma tur : this.listaTurmas) {
                     modelo.addRow(new String[]{tur.getCodigo() + "", tur.getHorario() + "", tur.getDuracaoaula() + "",
                         tur.getDtinicial() + "", tur.getDtfinal() + "", tur.getQtdalunos() + "",
-                        tur.getAluno().getNome(), tur.getInstrutor().getNome(),
+                        tur.getMonitor().getNome(), tur.getInstrutor().getNome(),
                         tur.getAtividade().getDescricao()});
                 }
             } else {

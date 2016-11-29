@@ -25,7 +25,7 @@ public class Turma {
     private Time horario;
     private Date dtinicial;
     private Date dtfinal;
-    private Aluno aluno; //matricula do aluno(MONITOR)
+    private Aluno monitor; //matricula do monitor(MONITOR)
     private Atividade atividade; // código
     private ArrayList<Aluno> listaAlunos;
     private int qtdalunos;
@@ -33,16 +33,16 @@ public class Turma {
     public Turma() {
         this.atividade = new Atividade();
         this.instrutor = new Instrutor();
-        this.aluno = new Aluno();
+        this.monitor = new Aluno();
         this.listaAlunos = new ArrayList<>();
     }
 
-    public Aluno getAluno() {
-        return aluno;
+    public Aluno getMonitor() {
+        return monitor;
     }
 
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
+    public void setMonitor(Aluno monitor) {
+        this.monitor = monitor;
     }
 
     /**
@@ -150,7 +150,7 @@ public class Turma {
         retorno += "Duração Aula" + this.getDuracaoaula() + "\n";
         retorno += "Data Inicial" + this.getDtinicial() + "\n";
         retorno += "Data Final" + this.getDtfinal() + "\n";
-        retorno += "Aluno Monitor" + this.getAluno().getMatricula() + "\n";
+        retorno += "Aluno Monitor" + this.getMonitor().getMatricula() + "\n";
         retorno += "Matrícula Instrutor" + this.getInstrutor().getMatricula() + "\n";
         retorno += "Atividade Código" + this.getAtividade().getCodigo() + "\n";
         return retorno;

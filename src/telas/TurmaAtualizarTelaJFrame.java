@@ -33,11 +33,15 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
     TurmaConsultarTela consultarTela;
     int indexConsultar;
 
+    Turma turma = new Turma();
+
     public TurmaAtualizarTelaJFrame(Turma turma) {
+        this.turma = turma;
         inicio(turma);
     }
 
     public TurmaAtualizarTelaJFrame(Turma turma, TurmaConsultarTela consultarTela, int indexConsultar) {
+        this.turma = turma;
         inicio(turma);
         this.consultarTela = consultarTela;
         this.indexConsultar = indexConsultar;
@@ -65,7 +69,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
         jFormattedTextFieldHorarioAulas.setText(turma.getHorario() + "");
         jTextFieldAtividade.setText(turma.getAtividade().getCodigo() + "");
         jTextFieldInstrutor.setText(turma.getInstrutor().getMatricula() + "");
-        jTextFieldMonitor.setText(turma.getAluno().getMatricula() + "");
+        jTextFieldMonitor.setText(turma.getMonitor().getMatricula() + "");
     }
 
     /**
@@ -363,20 +367,35 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
 
         try {
             //DADOS DA TURMA
-            Turma turma = new Turma();
-            turma.setCodigo(Integer.parseInt(jTextFieldCodTur.getText()));
-            turma.setHorario(FormatacaoDataHora.stringToTime(jFormattedTextFieldHorarioAulas.getText()));
-            turma.setDuracaoaula(FormatacaoDataHora.stringToTime(jFormattedTextFieldDurAula.getText()));
-            turma.setDtinicial(FormatacaoDataHora.stringToDate(jFormattedTextFieldDtInicial.getText()));
-            turma.setDtfinal(FormatacaoDataHora.stringToDate(jFormattedTextFieldDtFinal.getText()));
+            if (jTableMonitor.getSelectedRow() < 0) {
+                JOptionPane.showMessageDialog(rootPane, "Selecionar o monitor");
+                return;
+            }
+            if (jTableInstrutor.getSelectedRow() < 0) {
+                JOptionPane.showMessageDialog(rootPane, "Selecionar o instrutor");
+                return;
+            }
+            if (jTableAtividade.getSelectedRow() < 0) {
+                JOptionPane.showMessageDialog(rootPane, "Selecionar a atividade");
+                return;
+            }
+
+            this.turma.setCodigo(Integer.parseInt(jTextFieldCodTur.getText()));
+            this.turma.setHorario(FormatacaoDataHora.stringToTime(jFormattedTextFieldHorarioAulas.getText()));
+            this.turma.setDuracaoaula(FormatacaoDataHora.stringToTime(jFormattedTextFieldDurAula.getText()));
+            this.turma.setDtinicial(FormatacaoDataHora.stringToDate(jFormattedTextFieldDtInicial.getText()));
+            this.turma.setDtfinal(FormatacaoDataHora.stringToDate(jFormattedTextFieldDtFinal.getText()));
             //DADOS DE ALUNO(MONITOR)
-            turma.getAluno().setMatricula(Integer.parseInt(jTextFieldMonitor.getText()));
+            Aluno monitor = this.monitores.get(jTableMonitor.getSelectedRow());
+            this.turma.setMonitor(monitor);
             //DADOS DE INSTRUTOR
-            turma.getInstrutor().setMatricula(Integer.parseInt(jTextFieldInstrutor.getText()));
+            Instrutor instrutor = this.instrutores.get(jTableInstrutor.getSelectedRow());
+            this.turma.setInstrutor(instrutor);
             //DADOS DE ATIVIDADE
-            turma.getAtividade().setCodigo(Integer.parseInt(jTextFieldAtividade.getText()));
+            Atividade atividade = this.atividades.get(jTableAtividade.getSelectedRow());
+            this.turma.setAtividade(atividade);
             Fachada fachada = new Fachada();
-            fachada.atualizar(turma);
+            fachada.atualizar(this.turma);
             JOptionPane.showMessageDialog(rootPane, "Turma atualizada com sucesso");
             //atualizando a tela de consultar após atualizar a turma
             consultarTela.modelo.setValueAt(Integer.parseInt(jTextFieldCodTur.getText()), indexConsultar, 0);
@@ -384,9 +403,9 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
             consultarTela.modelo.setValueAt(FormatacaoDataHora.stringToTime(jFormattedTextFieldDurAula.getText()), indexConsultar, 2);
             consultarTela.modelo.setValueAt(FormatacaoDataHora.stringToDate(jFormattedTextFieldDtInicial.getText()), indexConsultar, 3);
             consultarTela.modelo.setValueAt(FormatacaoDataHora.stringToDate(jFormattedTextFieldDtFinal.getText()), indexConsultar, 4);
-            consultarTela.modelo.setValueAt(jTableMonitor.getSelectedRow(),indexConsultar,6);
-            consultarTela.modelo.setValueAt(turma.getInstrutor().getNome(), indexConsultar, 7);
-            consultarTela.modelo.setValueAt(turma.getAtividade().getDescricao(), indexConsultar, 8);
+            consultarTela.modelo.setValueAt(this.turma.getMonitor().getNome(), indexConsultar, 6);
+            consultarTela.modelo.setValueAt(this.turma.getInstrutor().getNome(), indexConsultar, 7);
+            consultarTela.modelo.setValueAt(this.turma.getAtividade().getDescricao(), indexConsultar, 8);
             dispose();      //fecha a tela após clicar no OK de turma atualizada com sucesso.
 
         } catch (Exception e) {
@@ -500,6 +519,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(rootPane, "Não existe resultados para instrutor com o filtro passado");
         }
+        //jTableInstrutor.getSelectionModel().setSelectionInterval(0, 0);
     }
 
     private void carregarMonitores() {

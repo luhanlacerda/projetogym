@@ -52,7 +52,7 @@ public class NegocioTurma implements InterfaceTurma {
             throw new Exception("Informar a data final");
         }
         //Validando aluno matrícula
-        if (t.getAluno().getMatricula() <= 0) {
+        if (t.getMonitor().getMatricula() <= 0) {
             throw new Exception("Informar a matrícula do aluno");
         }
         //MÉTODO CADASTRAR
@@ -91,7 +91,7 @@ public class NegocioTurma implements InterfaceTurma {
             throw new Exception("Informar a data final!");
         }
         //Validando matrícula do monitor(aluno)
-        if (t.getAluno().getMatricula() <= 0) {
+        if (t.getMonitor().getMatricula() <= 0) {
             throw new Exception("Informar a matrícula do aluno!");
         }
         if (verificarExistenciaMonitor(t) == false) {
@@ -145,7 +145,7 @@ public class NegocioTurma implements InterfaceTurma {
             throw new Exception("Turma inválida!");
         }
 
-        if (t.getAluno() == null) {
+        if (t.getMonitor() == null) {
             throw new Exception("Aluno inválido!");
         }
 
@@ -170,7 +170,7 @@ public class NegocioTurma implements InterfaceTurma {
         if (t.getCodigo() <= 0) {
             throw new Exception("Código Inválido!");
         }
-        if (t.getAluno().getMatricula() <= 0) {
+        if (t.getMonitor().getMatricula() <= 0) {
             throw new Exception("Código Inválido!");
         }
         if (verificarExistenciaAlunoTurma(t) != false) {
@@ -197,7 +197,7 @@ public class NegocioTurma implements InterfaceTurma {
 
     @Override
     public boolean verificarExistenciaMonitor(Turma t) throws Exception {
-        if (t.getAluno().getMatricula() <= 0) {
+        if (t.getMonitor().getMatricula() <= 0) {
             throw new Exception("Matrícula inválida!");
         }
         DadosTurma d = new DadosTurma();

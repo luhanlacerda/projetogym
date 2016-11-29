@@ -198,7 +198,7 @@ public class TurmaInserirAlunoTela extends javax.swing.JInternalFrame {
             //DADOS DA TURMA
             Turma turma = new Turma();
             turma.setCodigo(Integer.parseInt(jTextFieldTurma.getText()));
-            turma.getAluno().setMatricula(Integer.parseInt(jTextFieldAluno.getText()));
+            turma.getMonitor().setMatricula(Integer.parseInt(jTextFieldAluno.getText()));
             fachada.inserirAlunoTurma(turma);
             JOptionPane.showMessageDialog(rootPane, "Aluno cadastrado na turma com sucesso");
             dispose();

@@ -38,7 +38,7 @@ public class DadosTurma extends Dados implements InterfaceTurma {
             cmd.setTime(3, t.getDuracaoaula());
             cmd.setDate(4, t.getDtinicial());
             cmd.setDate(5, t.getDtfinal());
-            cmd.setInt(6, t.getAluno().getMatricula());
+            cmd.setInt(6, t.getMonitor().getMatricula());
             cmd.setInt(7, t.getInstrutor().getMatricula());
             cmd.setInt(8, t.getAtividade().getCodigo());
             cmd.execute();
@@ -65,7 +65,7 @@ public class DadosTurma extends Dados implements InterfaceTurma {
             cmd.setTime(2, t.getDuracaoaula());
             cmd.setDate(3, t.getDtinicial());
             cmd.setDate(4, t.getDtfinal());
-            cmd.setInt(5, t.getAluno().getMatricula());
+            cmd.setInt(5, t.getMonitor().getMatricula());
             cmd.setInt(6, t.getInstrutor().getMatricula());
             cmd.setInt(7, t.getAtividade().getCodigo());
             cmd.setInt(8, t.getCodigo());
@@ -132,8 +132,8 @@ public class DadosTurma extends Dados implements InterfaceTurma {
                 t.setDtinicial(leitor.getDate("Data Inicial"));
                 t.setDtfinal(leitor.getDate("Data Final"));
                 t.setQtdalunos(leitor.getInt("Quantidade Alunos"));
-                t.getAluno().setMatricula(leitor.getInt("Monitor Matrícula"));
-                t.getAluno().setNome(leitor.getString("Monitor Nome"));
+                t.getMonitor().setMatricula(leitor.getInt("Monitor Matrícula"));
+                t.getMonitor().setNome(leitor.getString("Monitor Nome"));
                 t.getInstrutor().setMatricula(leitor.getInt("Instrutor Matricula"));
                 t.getInstrutor().setNome(leitor.getString("Instrutor Nome"));
                 t.getAtividade().setCodigo(leitor.getInt("Atividade Código"));
@@ -230,14 +230,14 @@ public class DadosTurma extends Dados implements InterfaceTurma {
         //INSTRUÇÃO SQL
         String sql = " SELECT Alu_Matricula AS 'Matrícula', Alu_Nome AS 'Nome'";
         sql += " FROM Aluno WHERE Alu_Matricula > 0 ";
-        if (filtro.getAluno().getMatricula() > 0) {
+        if (filtro.getMonitor().getMatricula() > 0) {
             sql += " AND Alu_Matricula = ?";
         }
         try {
             //EXECUTANDO A INSTRUÇÃO
             PreparedStatement cmd = conn.prepareStatement(sql);
-            if (filtro.getAluno().getMatricula() > 0) {
-                cmd.setInt(posPar, filtro.getAluno().getMatricula());
+            if (filtro.getMonitor().getMatricula() > 0) {
+                cmd.setInt(posPar, filtro.getMonitor().getMatricula());
                 posPar++;
             }
             ResultSet leitor = cmd.executeQuery();
@@ -340,7 +340,7 @@ public class DadosTurma extends Dados implements InterfaceTurma {
             //executando a instrução sql           
             PreparedStatement cmd = conn.prepareStatement(sql);
             cmd.setInt(1, t.getCodigo());
-            cmd.setInt(2, t.getAluno().getMatricula());
+            cmd.setInt(2, t.getMonitor().getMatricula());
             cmd.execute();
         } catch (SQLException e) {
             throw new Exception("Erro ao executar inserção: " + e.getMessage());
@@ -399,7 +399,7 @@ public class DadosTurma extends Dados implements InterfaceTurma {
         try {
             PreparedStatement cmd = conn.prepareStatement(sql);
             cmd.setInt(1, t.getCodigo());
-            cmd.setInt(2, t.getAluno().getMatricula());
+            cmd.setInt(2, t.getMonitor().getMatricula());
             ResultSet leitor = cmd.executeQuery();
             while (leitor.next()) {
                 retorno = true;
@@ -422,7 +422,7 @@ public class DadosTurma extends Dados implements InterfaceTurma {
         sql += " FROM Aluno WHERE Alu_Matricula =  ? ";
         try {
             PreparedStatement cmd = conn.prepareStatement(sql);
-            cmd.setInt(1, t.getAluno().getMatricula());
+            cmd.setInt(1, t.getMonitor().getMatricula());
             ResultSet leitor = cmd.executeQuery();
             while (leitor.next()) {
                 retorno = true;
