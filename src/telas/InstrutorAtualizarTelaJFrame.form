@@ -54,12 +54,12 @@
                           </Group>
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jTextFieldNome" alignment="0" min="-2" pref="202" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="jFormattedTextFieldCpf" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jFormattedTextFieldContato" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jTextFieldRg" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
+                              <Component id="jTextFieldNome" alignment="0" min="-2" pref="251" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -73,7 +73,7 @@
                           <Component id="jTextFieldMatricula" min="-2" pref="49" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="114" max="32767" attributes="0"/>
+                  <EmptySpace pref="65" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
