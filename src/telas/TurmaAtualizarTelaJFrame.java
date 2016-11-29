@@ -378,12 +378,15 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
             Fachada fachada = new Fachada();
             fachada.atualizar(turma);
             JOptionPane.showMessageDialog(rootPane, "Turma atualizada com sucesso");
-            /*
+            //atualizando a tela de consultar após atualizar a turma
+            consultarTela.modelo.setValueAt(Integer.parseInt(jTextFieldCodTur.getText()), indexConsultar, 0);
             consultarTela.modelo.setValueAt(FormatacaoDataHora.stringToTime(jFormattedTextFieldHorarioAulas.getText()), indexConsultar, 1);
             consultarTela.modelo.setValueAt(FormatacaoDataHora.stringToTime(jFormattedTextFieldDurAula.getText()), indexConsultar, 2);
             consultarTela.modelo.setValueAt(FormatacaoDataHora.stringToDate(jFormattedTextFieldDtInicial.getText()), indexConsultar, 3);
             consultarTela.modelo.setValueAt(FormatacaoDataHora.stringToDate(jFormattedTextFieldDtFinal.getText()), indexConsultar, 4);
-            */
+            consultarTela.modelo.setValueAt(jTableMonitor.getSelectedRow(),indexConsultar,6);
+            consultarTela.modelo.setValueAt(turma.getInstrutor().getNome(), indexConsultar, 7);
+            consultarTela.modelo.setValueAt(turma.getAtividade().getDescricao(), indexConsultar, 8);
             dispose();      //fecha a tela após clicar no OK de turma atualizada com sucesso.
 
         } catch (Exception e) {
