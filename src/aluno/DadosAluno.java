@@ -214,6 +214,7 @@ public class DadosAluno extends Dados implements InterfaceAluno {
             PreparedStatement cmd = conn.prepareStatement(sql);
             cmd.setInt(1, a.getMatricula());
             ResultSet result = cmd.executeQuery();
+            //alimentando o objeto
             if (result.next()) {
                 retorno.setMatricula(result.getInt("Matrícula"));
                 retorno.setNome(result.getString("Nome"));

@@ -410,7 +410,8 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
             consultarTela.modelo.setValueAt(this.turma.getMonitor().getNome(), indexConsultar, 6);
             consultarTela.modelo.setValueAt(this.turma.getInstrutor().getNome(), indexConsultar, 7);
             consultarTela.modelo.setValueAt(this.turma.getAtividade().getDescricao(), indexConsultar, 8);
-            dispose();      //fecha a tela após clicar no OK de turma atualizada com sucesso.
+            //fecha a tela após clicar no OK de turma atualizada com sucesso.
+            dispose();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());

@@ -18,8 +18,6 @@ public class NegocioTurma implements InterfaceTurma {
 
     @Override
     public void cadastrar(Turma t) throws Exception {
-
-        // VALIDAÇÕES
         // Validando códio da turma
         if (t.getCodigo() <= 0) {
             throw new Exception("Informar código.");
