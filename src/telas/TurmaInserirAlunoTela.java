@@ -209,7 +209,8 @@ public class TurmaInserirAlunoTela extends javax.swing.JInternalFrame {
             jTextFieldAluno.setText("");
             modeloAluno.setRowCount(0);
             modeloTurma.setRowCount(0);
-            jTextFieldTurma.requestFocus(); // Retornar para o início
+            //Retornar para o início
+            jTextFieldTurma.requestFocus();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());

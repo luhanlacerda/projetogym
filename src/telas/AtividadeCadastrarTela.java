@@ -27,6 +27,7 @@ public class AtividadeCadastrarTela extends javax.swing.JInternalFrame {
         jTextFieldDescricao.setDocument(new classesBasicas.JTextFieldLimite(100));      //Limitando os caracteres para (N), independende de ser numero ou letras
     }
 
+    //centralizando a tela
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
@@ -133,11 +134,8 @@ public class AtividadeCadastrarTela extends javax.swing.JInternalFrame {
             Fachada fachada = new Fachada();
             fachada.cadastrar(atividade);
             JOptionPane.showMessageDialog(rootPane, "Atividade cadastrada com sucesso");
-            //Limpando campos
-            jTextFieldCodigo.setText("");
-            jTextFieldDescricao.setText("");
-            jTextFieldCodigo.requestFocus();
-
+            //fecha a tela após concluir o cadastro da atividade
+            dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }

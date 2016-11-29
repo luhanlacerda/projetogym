@@ -19,8 +19,10 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
 
     public AlunoCadastrarTela() {
         initComponents();
-        jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));     //Limite de caracateres(N) e apenas caracteres permitidos
-        jTextFieldRg.setDocument(new classesBasicas.JTextFieldLimite(20));              //Limitando os caracteres para (N), independende de ser numero ou letras
+        //Limite de caracateres(N) e apenas caracteres permitidos
+        jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));
+        //Limitando os caracteres para (N), independende de ser numero ou letras
+        jTextFieldRg.setDocument(new classesBasicas.JTextFieldLimite(20));
         jTextFieldLogradouro.setDocument(new classesBasicas.JTextFieldLimite(100));
         jTextFieldNumero.setDocument(new classesBasicas.JTextFieldLimite(10));
         jTextFieldComplemento.setDocument(new classesBasicas.JTextFieldLimite(10));
@@ -29,7 +31,8 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
         jTextFieldUf.setDocument(new classesBasicas.JTextFieldLimite(2));
         jTextFieldPais.setDocument(new classesBasicas.JTextFieldLimite(10));
     }
-
+    
+    //centralizando a tela
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
@@ -367,6 +370,7 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         try {
+            //validação de tela para somente para os campos que ocorrem a conversão de tipo
             if (jTextFieldMatricula.getText().trim().equals("")) {
                 JOptionPane.showMessageDialog(null, "Digite a matrícula");
                 jTextFieldMatricula.requestFocus();
@@ -393,6 +397,7 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
                 return;
             }
             Aluno aluno = new Aluno();
+            //cadastrando um novo objeto aluno
             aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
             aluno.setDtmatricula(FormatacaoDataHora.stringToDate(jFormattedTextFieldDataMatricula.getText()));
             aluno.setNome(jTextFieldNome.getText());
@@ -413,27 +418,8 @@ public class AlunoCadastrarTela extends javax.swing.JInternalFrame {
             Fachada fachada = new Fachada();
             fachada.cadastrar(aluno);
             JOptionPane.showMessageDialog(rootPane, "Aluno cadastrado com sucesso");
+            //fecha a tela apos concluir o cadastro do aluno
             dispose();
-            /*
-            jTextFieldMatricula.setText("");
-            jFormattedTextFieldDataMatricula.setText("");
-            jTextFieldNome.setText("");
-            jFormattedTextFieldAltura.setText("");
-            jFormattedTextFieldPeso.setText("");
-            jTextFieldRg.setText("");
-            jFormattedTextFieldCpf.setText("");
-            jTextFieldLogradouro.setText("");
-            jTextFieldNumero.setText("");
-            jTextFieldComplemento.setText("");
-            jTextFieldBairro.setText("");
-            jFormattedTextFieldCep.setText("");
-            jTextFieldCidade.setText("");
-            jTextFieldUf.setText("");
-            jTextFieldPais.setText("");
-            jFormattedTextFieldDataNascimento.setText("");
-            jFormattedTextFieldContato.setText("");
-            jTextFieldMatricula.requestFocus();
-             */
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }

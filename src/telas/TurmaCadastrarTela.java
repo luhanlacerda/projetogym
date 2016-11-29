@@ -34,7 +34,8 @@ public class TurmaCadastrarTela extends javax.swing.JInternalFrame {
 
     public TurmaCadastrarTela() {
         initComponents();
-        jTableInstrutor.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);      //permite selecionar apenas uma linha
+         //permite selecionar apenas uma linha
+        jTableInstrutor.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         modeloInstrutor.setColumnIdentifiers(new String[]{"Matrícula", "Nome"});
         carregarInstrutores();
         jTableInstrutor.setModel(modeloInstrutor);

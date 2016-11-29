@@ -64,8 +64,10 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
         jTableAtividade.setModel(modeloAtividade);
         //preenchimento dos campos automaticamente com os dados do objeto selecionado na tela consultar
         jTextFieldCodTur.setText(turma.getCodigo() + "");
-        jFormattedTextFieldDtFinal.setText(FormatacaoDataHora.dateToString(turma.getDtfinal()));           //converte de date para string
-        jFormattedTextFieldDtInicial.setText(FormatacaoDataHora.dateToString(turma.getDtinicial()));      //converte de date para string
+        //converte de date para string
+        jFormattedTextFieldDtFinal.setText(FormatacaoDataHora.dateToString(turma.getDtfinal()));
+        //converte de date para string
+        jFormattedTextFieldDtInicial.setText(FormatacaoDataHora.dateToString(turma.getDtinicial()));
         jFormattedTextFieldDurAula.setText(turma.getDuracaoaula() + "");
         jFormattedTextFieldHorarioAulas.setText(turma.getHorario() + "");
         jTextFieldAtividade.setText(turma.getAtividade().getCodigo() + "");
@@ -425,6 +427,7 @@ public class TurmaAtualizarTelaJFrame extends javax.swing.JFrame {
     private void jTableInstrutorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableInstrutorMouseClicked
         // TODO add your handling code here:
         int row = jTableInstrutor.getSelectedRow();
+        //atribui a matricula do instrutor de uma determinada linha(selecionada) e coloca no campo devido
         if (row > -1) {
             jTextFieldInstrutor.setText(instrutores.get(row).getMatricula() + "");
         }

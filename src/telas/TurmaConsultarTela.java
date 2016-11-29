@@ -161,7 +161,8 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
                 turma.setCodigo(Integer.parseInt(jTextFieldCodigoTurma.getText().trim()));
             }
             this.listaTurmas = fachada.listar(turma);
-            modelo.setRowCount(0);     //zera toda a tabela. Mesma coisa que o deleteRows() fazia.
+            //zera toda a tabela. Mesma coisa que o deleteRows() fazia.
+            modelo.setRowCount(0);
             if (this.listaTurmas.size() > 0) {
                 for (Turma tur : this.listaTurmas) {
                     modelo.addRow(new String[]{tur.getCodigo() + "", tur.getHorario() + "", tur.getDuracaoaula() + "",
@@ -204,7 +205,8 @@ public class TurmaConsultarTela extends javax.swing.JInternalFrame {
         jTextFieldCodigoTurma.setEnabled(true);
         int index = jTableTurma.getSelectedRow();
         Turma turmaEscolhido = this.listaTurmas.get(index);
-        TurmaAtualizarTelaJFrame turmaAtualizarTela = new TurmaAtualizarTelaJFrame(turmaEscolhido, this, index); // Vincula a tela atualizar
+        // Vincula a tela atualizar
+        TurmaAtualizarTelaJFrame turmaAtualizarTela = new TurmaAtualizarTelaJFrame(turmaEscolhido, this, index);
         turmaAtualizarTela.setVisible(true);
     }//GEN-LAST:event_jTableTurmaMouseClicked
 

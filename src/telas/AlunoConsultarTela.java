@@ -6,11 +6,11 @@
 package telas;
 
 import aluno.Aluno;
+import classesBasicas.MyTableModel;
 import fachada.Fachada;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,7 +21,7 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
     /**
      * Creates new form TelaConsultarAluno
      */
-    DefaultTableModel modelo = new DefaultTableModel();
+    MyTableModel modelo = new MyTableModel();
     ArrayList<Aluno> listaAlunos; // Ficou global e não mais local 
     TelaPrincipal pai;
 
@@ -33,7 +33,7 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
         jTableAluno.setModel(modelo);
         jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));     //Limite de caracateres(N) e apenas caracteres permitidos
     }
-    
+
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
@@ -179,9 +179,11 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
                 aluno.setMatricula(Integer.parseInt(jTextFieldMatricula.getText().trim()));
             }
             aluno.setNome("%" + jTextFieldNome.getText().trim() + "%");
-            this.listaAlunos = fachada.listar(aluno); //alterado pq ficou global 
-            modelo.setRowCount(0);     //zera toda a tabela. Mesma coisa que o deleteRows() fazia.
-            if (this.listaAlunos.size() > 0) { //alterado pq ficou global 
+            this.listaAlunos = fachada.listar(aluno);
+            //alterado pq ficou global 
+            modelo.setRowCount(0);
+            //zera toda a tabela. Mesma coisa que o deleteRows() fazia.
+            if (this.listaAlunos.size() > 0) { 
                 for (Aluno alu : this.listaAlunos) {
                     modelo.addRow(new String[]{alu.getMatricula() + "", alu.getDtmatricula() + "", alu.getNome() + "", alu.getRg() + "", alu.getCpf() + ""});
                 }
@@ -196,7 +198,7 @@ public class AlunoConsultarTela extends javax.swing.JInternalFrame {
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
         // TODO add your handling code here:
-try {
+        try {
             if (jTableAluno.getSelectedRow() >= 0) {
                 if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente remover?", "Atenção", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
                     Fachada fachada = new Fachada();

@@ -32,6 +32,7 @@ public class AtividadeAtualizarTelaJFrame extends javax.swing.JFrame {
     }
 
     public void inicio(Atividade atividade) {
+        //comando para centralizar a tela
         this.setLocationRelativeTo(null);
         initComponents();
         //limite de caracteres

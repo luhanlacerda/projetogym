@@ -5,12 +5,12 @@
  */
 package telas;
 
+import classesBasicas.MyTableModel;
 import fachada.Fachada;
 import instrutor.Instrutor;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,8 +21,8 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
     /**
      * Creates new form InstrutorConsultarTela
      */
-    DefaultTableModel modelo = new DefaultTableModel();
-    ArrayList<Instrutor> listaInstrutores; // Ficou global e não mais local 
+    MyTableModel modelo = new MyTableModel();
+    ArrayList<Instrutor> listaInstrutores; 
     TelaPrincipal pai;
 
     public InstrutorConsultarTela(TelaPrincipal pai) {
@@ -30,7 +30,8 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
         this.pai = pai;
         modelo.setColumnIdentifiers(new String[]{"Matrícula", "Nome", "RG", "CPF", "Data Nascimento", "Contato"});
         jTableInstrutor.setModel(modelo);
-        jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));     //Limite de caracateres e apenas caracteres permitidos
+        //Limite de caracateres e apenas caracteres permitidos
+        jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));
     }
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
@@ -168,8 +169,9 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
             }
             instrutor.setNome("%" + jTextFieldNome.getText().trim() + "%");
             this.listaInstrutores = fachada.listar(instrutor);
-            modelo.setRowCount(0);     //zera toda a tabela. Mesma coisa que o deleteRows() fazia.
-            if (this.listaInstrutores.size() > 0) {     //alterado pq ficou global 
+            //zera toda a tabela. Mesma coisa que o deleteRows() fazia.
+            modelo.setRowCount(0); 
+            if (this.listaInstrutores.size() > 0) {
                 for (Instrutor ins : this.listaInstrutores) {
                     modelo.addRow(new String[]{ins.getMatricula() + "", ins.getNome() + "", ins.getRg() + "", ins.getCpf() + "", ins.getDtnascimento() + "", ins.getContato()});
                 }
@@ -210,7 +212,7 @@ public class InstrutorConsultarTela extends javax.swing.JInternalFrame {
         jTextFieldMatricula.setEnabled(true);
         int index = jTableInstrutor.getSelectedRow();
         Instrutor instrutorEscolhido = this.listaInstrutores.get(index);
-        InstrutorAtualizarTelaJFrame instrutorAtualizarTela = new InstrutorAtualizarTelaJFrame(instrutorEscolhido); // Vincula a tela atualizar
+        InstrutorAtualizarTelaJFrame instrutorAtualizarTela = new InstrutorAtualizarTelaJFrame(instrutorEscolhido, this, index); // Vincula a tela atualizar
         instrutorAtualizarTela.setVisible(true);
     }//GEN-LAST:event_jTableInstrutorMouseClicked
 

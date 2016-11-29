@@ -19,11 +19,30 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
     /**
      * Creates new form InstrutorAtualizarTelaJframe
      */
+    Instrutor instrutor = new Instrutor();
+    InstrutorConsultarTela consultarTela;
+    int indexConsultar;
+
     public InstrutorAtualizarTelaJFrame(Instrutor instrutor) {
+        this.instrutor = instrutor;
+        inicio(instrutor);
+    }
+
+    public InstrutorAtualizarTelaJFrame(Instrutor instrutor, InstrutorConsultarTela consultarTela, int indexConsultar) {
+        this.instrutor = instrutor;
+        inicio(instrutor);
+        this.consultarTela = consultarTela;
+        this.indexConsultar = indexConsultar;
+    }
+
+    public void inicio(Instrutor instrutor) {
         initComponents();
+        //centralizando a tela
         this.setLocationRelativeTo(null);
-        jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));   //Limite de caracateres(N) e apenas caracteres permitidos
-        jTextFieldRg.setDocument(new classesBasicas.JTextFieldLimite(20));              //Limitando os caracteres para (N), independende de ser numero ou letras
+        //Limite de caracateres(N) e apenas caracteres permitidos
+        jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));
+        //Limitando os caracteres para (N), independende de ser numero ou letras
+        jTextFieldRg.setDocument(new classesBasicas.JTextFieldLimite(20));
         jTextFieldMatricula.setText(instrutor.getMatricula() + "");
         jTextFieldNome.setText(instrutor.getNome() + "");
         jTextFieldRg.setText(instrutor.getRg() + "");
@@ -203,18 +222,23 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
                 jFormattedTextFieldDtNascimento.requestFocus();
                 return;
             }
-            Instrutor instrutor = new Instrutor();
-            instrutor.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
-            instrutor.setNome(jTextFieldNome.getText());
-            instrutor.setRg(jTextFieldRg.getText());
-            instrutor.setContato(jFormattedTextFieldContato.getText());
-            instrutor.setDtnascimento(FormatacaoDataHora.stringToDate(jFormattedTextFieldDtNascimento.getText()));
+            this.instrutor.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
+            this.instrutor.setNome(jTextFieldNome.getText());
+            this.instrutor.setRg(jTextFieldRg.getText());
+            this.instrutor.setContato(jFormattedTextFieldContato.getText());
+            this.instrutor.setDtnascimento(FormatacaoDataHora.stringToDate(jFormattedTextFieldDtNascimento.getText()));
             Fachada fachada = new Fachada();
             fachada.atualizar(instrutor);
             JOptionPane.showMessageDialog(rootPane, "Instrutor atualizado com sucesso");
-            dispose();      //fecha a tela após clicar no OK de instrutor atualizado com sucesso.
-            jTextFieldNome.setText(instrutor.getNome() + "");
-            jFormattedTextFieldContato.setText(instrutor.getContato() + "");
+            //atualizando a tela da tela consultar após atualizar o aluno
+            consultarTela.modelo.setValueAt(Integer.parseInt(jTextFieldMatricula.getText()), indexConsultar, 0);
+            consultarTela.modelo.setValueAt(jTextFieldNome.getText(), indexConsultar, 1);
+            consultarTela.modelo.setValueAt(jTextFieldRg.getText(), indexConsultar, 2);
+            consultarTela.modelo.setValueAt(jFormattedTextFieldCpf.getText(), indexConsultar, 3);
+            consultarTela.modelo.setValueAt(FormatacaoDataHora.stringToDate(jFormattedTextFieldDtNascimento.getText()), indexConsultar, 4);
+            consultarTela.modelo.setValueAt(jFormattedTextFieldContato.getText(), indexConsultar, 4);
+            //fecha a tela após atualizar o aluno
+            dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }

@@ -37,10 +37,13 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
 
     public void inicio(Aluno aluno) {
         initComponents();
-        jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));   //Limite de caracateres(N) e apenas caracteres permitidos
-        jTextFieldRg.setDocument(new classesBasicas.JTextFieldLimite(20));              //Limitando os caracteres para (N), independende de ser numero ou letras
+        //Limite de caracateres(N) e apenas caracteres permitidos
+        jTextFieldNome.setDocument(new classesBasicas.CaracterLimitePermitido(60));
+        //Limitando os caracteres para (N), independende de ser numero ou letras
+        jTextFieldRg.setDocument(new classesBasicas.JTextFieldLimite(20));
         jTextFieldLogradouro.setDocument(new classesBasicas.JTextFieldLimite(100));
-        jTextFieldNumero.setDocument(new classesBasicas.JTextFieldLimite(10)); // só recebe números
+        //só recebe números
+        jTextFieldNumero.setDocument(new classesBasicas.JTextFieldLimite(10));
         jTextFieldComplemento.setDocument(new classesBasicas.JTextFieldLimite(10));
         jTextFieldBairro.setDocument(new classesBasicas.JTextFieldLimite(20));
         jTextFieldCidade.setDocument(new classesBasicas.JTextFieldLimite(15));
@@ -58,9 +61,12 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
         jTextFieldUf.setText(aluno.getEndereco().getUf());
         jFormattedTextFieldCep.setText(aluno.getEndereco().getCep());
         jFormattedTextFieldContato.setText(aluno.getContato());
+        //o + "" Converte para string
         jFormattedTextFieldAltura.setText(aluno.getAltura() + "");
-        jFormattedTextFieldDtNascimento.setText(FormatacaoDataHora.dateToString(aluno.getDtnascimento()));  //converte de date para string
-        jFormattedTextFieldDataMatricula.setText(FormatacaoDataHora.dateToString(aluno.getDtmatricula()));  //converte de date para string
+        //converte de date para string
+        jFormattedTextFieldDtNascimento.setText(FormatacaoDataHora.dateToString(aluno.getDtnascimento()));
+        //converte de date para string
+        jFormattedTextFieldDataMatricula.setText(FormatacaoDataHora.dateToString(aluno.getDtmatricula()));
     }
 
     /**
@@ -376,7 +382,7 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
 
     private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
         // TODO add your handling code here:
-        //validação de tela
+        //validação de tela para somente para os campos que ocorrem a conversão de tipo
         try {
             if (jFormattedTextFieldDataMatricula.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Digite a data de matrícula");
@@ -424,7 +430,7 @@ public class AlunoAtualizarTelaJFrame extends javax.swing.JFrame {
             consultarTela.modelo.setValueAt(jTextFieldNome.getText(), indexConsultar, 2);
             consultarTela.modelo.setValueAt(jTextFieldRg.getText(), indexConsultar, 3);
             consultarTela.modelo.setValueAt(jFormattedTextFieldCpf.getText(), indexConsultar, 4);
-            //fecha a tela após clicar no OK de aluno atualizado com sucesso.
+            //fecha a tela após atualizar o aluno
             dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());

@@ -6,11 +6,11 @@
 package telas;
 
 import atividade.Atividade;
+import classesBasicas.MyTableModel;
 import fachada.Fachada;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
 
-    DefaultTableModel modelo = new DefaultTableModel();
+    MyTableModel modelo = new MyTableModel();
     ArrayList<Atividade> listaAtividades;
     TelaPrincipal pai;
 
@@ -29,6 +29,7 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
         jTableAtividade.setModel(modelo);
     }
     
+    //centralizando a tela
     public void setPosicao() {
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
@@ -173,7 +174,8 @@ public class AtividadeConsultarTela extends javax.swing.JInternalFrame {
             }
             atividade.setDescricao(title);
             this.listaAtividades = fachada.listar(atividade);
-            modelo.setRowCount(0);     //zera toda a tabela. Mesma coisa que o deleteRows() fazia.
+            //zera toda a tabela. Mesma coisa que o deleteRows() fazia.
+            modelo.setRowCount(0);
             if (this.listaAtividades.size() > 0) {
                 for (Atividade atv : this.listaAtividades) {
                     modelo.addRow(new String[]{atv.getCodigo() + "", atv.getDescricao()});
