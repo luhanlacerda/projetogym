@@ -236,7 +236,7 @@ public class InstrutorAtualizarTelaJFrame extends javax.swing.JFrame {
             consultarTela.modelo.setValueAt(jTextFieldRg.getText(), indexConsultar, 2);
             consultarTela.modelo.setValueAt(jFormattedTextFieldCpf.getText(), indexConsultar, 3);
             consultarTela.modelo.setValueAt(FormatacaoDataHora.stringToDate(jFormattedTextFieldDtNascimento.getText()), indexConsultar, 4);
-            consultarTela.modelo.setValueAt(jFormattedTextFieldContato.getText(), indexConsultar, 4);
+            consultarTela.modelo.setValueAt(jFormattedTextFieldContato.getText(), indexConsultar, 5);
             //fecha a tela após atualizar o aluno
             dispose();
         } catch (Exception e) {
